@@ -16,16 +16,16 @@ export default function Gallery() {
 
   const allPairs = [
     [
-      { label: "Na", image: "/gallery/na1.jpg" },
-      { label: "Po", image: "/gallery/po1.jpg" },
+      { label: "Na", image: "/Frame 35138.png" },
+      { label: "Po", image: "/Frame 35139.png" },
     ],
     [
-      { label: "Na", image: "/gallery/na2.jpg" },
-      { label: "Po", image: "/gallery/po2.jpg" },
+      { label: "Na", image: "/Frame 35140.png" },
+      { label: "Po", image: "/Frame 35141.png" },
     ],
     [
-      { label: "Na", image: "/gallery/na3.jpg" },
-      { label: "Po", image: "/gallery/po3.jpg" },
+      { label: "Na", image: "/Frame 35142.png" },
+      { label: "Po", image: "/Frame 35143.png" },
     ],
   ];
 

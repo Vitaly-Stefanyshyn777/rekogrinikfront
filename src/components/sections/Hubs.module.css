@@ -25,8 +25,9 @@
 }
 
 .swiper {
-  width: 100%;
-  padding: 0 5vw 24px 5vw; /* make side slides visible (~10% total) */
+  width: 1200px;
+  height: 622px;
+  padding: 0 0 24px 0; /* centered single slide */
 }
 
 .slide {
@@ -49,10 +50,17 @@
 }
 
 @media (max-width: 768px) {
+  .section {
+    padding: 20px 0;
+  }
   .title {
     font-size: 28px;
   }
   .swiper {
+    width: 285px;
+    height: 158px;
     padding: 0 8vw 20px 8vw;
+  }
+  .title {
   }
 }

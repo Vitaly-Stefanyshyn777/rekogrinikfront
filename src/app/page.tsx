@@ -25,11 +25,17 @@ export default function Home() {
             <Services />
           </Reveal>
         </section>
+        <section id="hubs">
+          <Reveal>
+            <Hubs />
+          </Reveal>
+        </section>
         <section id="steps">
           <Reveal>
             <WorkflowSection />
           </Reveal>
         </section>
+
         <section id="reviews">
           <Reveal>
             <Reviews />
@@ -40,11 +46,7 @@ export default function Home() {
             <Gallery />
           </Reveal>
         </section>
-        <section id="hubs">
-          {/* <Reveal>
-            <Hubs />
-          </Reveal> */}
-        </section>
+        <section id="hubs"></section>
         <section id="faq">
           <Reveal>
             <Faq />

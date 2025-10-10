@@ -10,12 +10,7 @@ import "swiper/css/pagination";
 import SliderNav from "@/components/ui/SliderNav/SliderNavActions";
 import { useRef, useState } from "react";
 
-const images = [
-  "/images/hub1.jpg",
-  "/images/hub2.jpg",
-  "/images/hub3.jpg",
-  "/images/hub4.jpg",
-];
+const images = ["/Frame 35144.png", "/Frame 35145.png", "/Frame 35146.png"];
 
 export default function Hubs() {
   const swiperRef = useRef<SwiperType | null>(null);
@@ -29,10 +24,9 @@ export default function Hubs() {
           <Swiper
             modules={[Navigation, Pagination]}
             slidesPerView={1}
-            centeredSlides
-            loop
+            spaceBetween={20}
             onSwiper={(s) => (swiperRef.current = s)}
-            onSlideChange={(s) => setActive(s.realIndex)}
+            onSlideChange={(s) => setActive(s.activeIndex)}
             className={styles.swiper}
           >
             {images.map((src, i) => (
@@ -48,7 +42,7 @@ export default function Hubs() {
               dots={images.length}
               onPrev={() => swiperRef.current?.slidePrev()}
               onNext={() => swiperRef.current?.slideNext()}
-              onDotClick={(i) => swiperRef.current?.slideToLoop(i)}
+              onDotClick={(i) => swiperRef.current?.slideTo(i)}
             />
           </div>
         </div>
