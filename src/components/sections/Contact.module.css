@@ -1,0 +1,420 @@
+.section {
+  padding: 40px 106px;
+  background: linear-gradient(
+    135deg,
+    #004225 0%,
+    rgba(0, 66, 37, 0.95) 50%,
+    rgba(0, 66, 37, 0.9) 100%
+  );
+}
+.container {
+  width: 100%;
+  padding: 0 16px;
+  display: flex;
+  gap: 24px;
+}
+.left {
+  flex: 1;
+  background: linear-gradient(135deg, #0a513d, #004225);
+  color: #e7f0ec;
+
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-radius: 20px;
+  height: 100%;
+}
+.right {
+  flex: 1;
+}
+
+.leftTopRow {
+  display: flex;
+  gap: 33px;
+  flex-direction: column;
+}
+.leftCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.leftCol span {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 40px;
+  color: #fff;
+}
+.leftCol h1 {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 40px;
+  color: #fff;
+}
+.leftCol p {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.leftCollow {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.phoneTitle {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: #fff;
+}
+.phoneSub {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 143%;
+  color: rgba(255, 255, 255, 0.7);
+}
+.emailTitle {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: #fff;
+}
+.emailSub {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 143%;
+  color: rgba(255, 255, 255, 0.7);
+}
+.leftBottom {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+.scheduleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.socialBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.timeRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.timeRow p {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: #fff;
+}
+.timeIcon svg {
+  width: 20px;
+  height: 20px;
+}
+.schedule {
+  display: flex;
+  gap: 48px;
+}
+.scheduleCol {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.scheduleDays {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: rgba(231, 240, 236, 0.9);
+}
+.scheduleTime {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: #fff;
+}
+.followTitle {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 143%;
+  color: rgba(255, 255, 255, 0.7);
+}
+.iconsRow {
+  display: flex;
+  gap: 12px;
+}
+.iconWrap {
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* border-radius: 33554400px; */
+  width: 40px;
+  height: 40px;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.infoText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.emailTitle,
+.emailSub,
+.phoneTitle,
+.phoneSub {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.infoIcon {
+  border-radius: 33554400px;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.infoIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.form {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+.formGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.fieldPair {
+  display: flex;
+  gap: 16px;
+}
+.field {
+  flex: 1;
+  position: relative;
+}
+.field input {
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+
+  padding: 16px 12px;
+  box-sizing: border-box;
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  color: #717182;
+}
+.err {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  color: #d00;
+}
+
+.selectRow {
+  position: relative;
+  overflow: hidden;
+}
+.selectRow select {
+  width: 100%;
+  height: 37px;
+  border-radius: 10px;
+  border: none;
+
+  padding: 0 36px 0 12px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: none;
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 143%;
+  color: #717182;
+
+  background: #fff;
+}
+.checkIcon {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0a513d;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.textareaRow textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+
+  border-radius: 10px;
+  padding: 16px;
+  background: #fff;
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: rgba(10, 10, 10, 0.5);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.submit {
+  background: #0a513d;
+  color: #fff;
+  border: none;
+  width: 100%;
+
+  border-radius: 14px;
+
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 156%;
+  color: #fff;
+  height: 56px;
+  padding: 0 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.1),
+    0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.note {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 162%;
+  text-align: center;
+  color: #6a7282;
+}
+
+@media (max-width: 1000px) {
+  .section {
+    padding: 60px 20px;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .leftCol {
+    gap: 8px;
+  }
+  .leftCol span {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 23px;
+    color: #fff;
+  }
+  .leftCol p {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .submit {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 175%;
+    color: #fff;
+    height: 42px;
+  }
+  .textareaRow textarea {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 11px;
+    color: rgba(10, 10, 10, 0.5);
+  }
+  .selectRow select {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 11px;
+    color: #717182;
+  }
+  .field input {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 11px;
+    color: #717182;
+  }
+  .fieldPair {
+    flex-direction: column;
+  }
+  .formGrid {
+    gap: 16px;
+  }
+  .fieldPair {
+    gap: 16px;
+  }
+  .field {
+  }
+  .note {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 165%;
+    text-align: center;
+    color: #6a7282;
+  }
+}

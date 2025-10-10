@@ -1,0 +1,58 @@
+.section {
+  padding: 50px 0;
+}
+
+.container {
+  width: 100%;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.title {
+  font-family: var(--second-family);
+  font-weight: 800;
+  font-size: 36px;
+  text-align: center;
+  color: #151515;
+}
+
+.sliderWrap {
+  width: 100%;
+  overflow: visible;
+}
+
+.swiper {
+  width: 100%;
+  padding: 0 5vw 24px 5vw; /* make side slides visible (~10% total) */
+}
+
+.slide {
+  width: min(1125px, 90vw);
+  aspect-ratio: 1125 / 622;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #ddd;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.navWrap {
+  margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 28px;
+  }
+  .swiper {
+    padding: 0 8vw 20px 8vw;
+  }
+}

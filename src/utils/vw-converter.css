@@ -1,0 +1,101 @@
+/* Утиліти для конвертації px в vw */
+
+/* Десктоп (1920px) */
+@media (min-width: 1025px) {
+  .px-24 {
+    width: calc(24 * 100vw / 1920);
+  }
+  .px-63 {
+    height: calc(63 * 100vw / 1920);
+  }
+  .px-280 {
+    max-width: calc(280 * 100vw / 1920);
+  }
+  .px-400 {
+    max-width: calc(400 * 100vw / 1920);
+  }
+  .px-600 {
+    max-width: calc(600 * 100vw / 1920);
+  }
+  .px-800 {
+    max-width: calc(800 * 100vw / 1920);
+  }
+  .px-896 {
+    max-width: calc(896 * 100vw / 1920);
+  }
+  .px-1200 {
+    max-width: calc(1200 * 100vw / 1920);
+  }
+  .px-160 {
+    min-width: calc(160 * 100vw / 1920);
+  }
+  .px-200 {
+    min-width: calc(200 * 100vw / 1920);
+  }
+  .px-32 {
+    width: calc(32 * 100vw / 1920);
+    height: calc(32 * 100vw / 1920);
+  }
+  .px-40 {
+    width: calc(40 * 100vw / 1920);
+    height: calc(40 * 100vw / 1920);
+  }
+  .px-94 {
+    width: calc(94 * 100vw / 1920);
+    height: calc(94 * 100vw / 1920);
+  }
+  .px-80 {
+    width: calc(80 * 100vw / 1920);
+    height: calc(80 * 100vw / 1920);
+  }
+}
+
+/* Мобіль (375px) */
+@media (max-width: 1024px) {
+  .px-24 {
+    width: calc(24 * 100vw / 375);
+  }
+  .px-63 {
+    height: calc(63 * 100vw / 375);
+  }
+  .px-280 {
+    max-width: calc(280 * 100vw / 375);
+  }
+  .px-400 {
+    max-width: calc(400 * 100vw / 375);
+  }
+  .px-600 {
+    max-width: calc(600 * 100vw / 375);
+  }
+  .px-800 {
+    max-width: calc(800 * 100vw / 375);
+  }
+  .px-896 {
+    max-width: calc(896 * 100vw / 375);
+  }
+  .px-1200 {
+    max-width: calc(1200 * 100vw / 375);
+  }
+  .px-160 {
+    min-width: calc(160 * 100vw / 375);
+  }
+  .px-200 {
+    min-width: calc(200 * 100vw / 375);
+  }
+  .px-32 {
+    width: calc(32 * 100vw / 375);
+    height: calc(32 * 100vw / 375);
+  }
+  .px-40 {
+    width: calc(40 * 100vw / 375);
+    height: calc(40 * 100vw / 375);
+  }
+  .px-94 {
+    width: calc(94 * 100vw / 375);
+    height: calc(94 * 100vw / 375);
+  }
+  .px-80 {
+    width: calc(80 * 100vw / 375);
+    height: calc(80 * 100vw / 375);
+  }
+}

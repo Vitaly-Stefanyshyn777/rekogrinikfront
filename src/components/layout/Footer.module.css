@@ -1,0 +1,263 @@
+.footer {
+  background: #073d30;
+  color: #e7f0ec;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 50px 16px;
+}
+
+.contentSection {
+  display: flex;
+  flex-direction: row; /* desktop by default */
+  gap: 40px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.rightBlocks {
+  display: flex;
+  flex-direction: row; /* desktop by default */
+  gap: 40px;
+  justify-content: space-between;
+  width: 600px;
+  justify-content: space-around;
+}
+
+.brandSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.brandIcon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.tagline {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.contactsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contactsSection h5 {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 120%;
+  color: #fff;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contactInfo p {
+  font-family: var(--second-family);
+  font-weight: 600;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+}
+
+.label {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 12px;
+}
+
+.socialIcons svg {
+  width: 28px;
+  height: 28px;
+  color: #e7f0ec;
+}
+
+.servicesSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.servicesContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.servicesContent h5 {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 133%;
+  color: #e7f0ec;
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.servicesList p {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 143%;
+  color: #e7f0ec;
+}
+
+.bottomSection {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: row; /* desktop by default */
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 16px;
+}
+
+.copyright p {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.legalLinks {
+  display: flex;
+  gap: 16px;
+}
+
+.legalLinks p {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.legalLinks p:hover {
+  text-decoration: underline;
+}
+
+/* MOBILE overrides */
+@media (max-width: 1000px) {
+  .contentSection {
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .rightBlocks {
+    /* flex-direction: column; */
+    gap: 24px;
+    width: 100%;
+    justify-content: space-around;
+  }
+  .bottomSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .mainContent {
+    padding: 16px 22px 16px 22px;
+  }
+  .contentSection {
+    gap: 40px;
+  }
+  .brandIcon img {
+    width: 60px;
+    height: 60px;
+  }
+  .brandSection {
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+    flex-direction: row; /* override mobile: row instead of column */
+    gap: 4px;
+  }
+  .tagline {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .contactsSection h5 {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 240%;
+    color: #fff;
+  }
+  .servicesContent h5 {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 240%;
+    color: #fff;
+  }
+
+  .contactInfo p {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .label {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .servicesList p {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .socialIcons svg {
+    width: 20px;
+    height: 20px;
+  }
+  .bottomSection {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+  .legalLinks p {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+  }
+  .copyright p {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+  }
+  .legalLinks {
+    gap: 24px;
+  }
+}

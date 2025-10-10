@@ -1,0 +1,164 @@
+.about {
+  padding: 50px 0px 100px 0px;
+  background: #fff;
+}
+
+.container {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+.title {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 50px;
+  text-align: center;
+  color: #151515;
+}
+
+.content {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+}
+
+.leftBlock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.intro {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 150%;
+  color: #151515;
+}
+
+.description {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #151515;
+}
+
+.guarantee {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #151515;
+}
+
+.rightBlock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 584px;
+  align-items: stretch;
+}
+
+.card {
+  padding: 24px;
+  background: #fff;
+  display: flex;
+  gap: 16px;
+  width: 100%;
+
+  border-bottom: 1px solid #004225;
+  border-left: 4px solid #004225;
+  border-right: 1px solid #004225;
+  border-top: 1px solid #004225;
+  border-radius: 14px;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #004225;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.cardTitle {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: #151515;
+}
+
+.cardDescription {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: rgba(21, 21, 21, 0.7);
+}
+
+@media (max-width: 1000px) {
+  .content {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .title {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    color: #151515;
+  }
+
+  .about {
+    padding: 20px 0px 60px 0px;
+  }
+  .container {
+    gap: 40px;
+  }
+  .intro {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 171%;
+    color: #151515;
+  }
+  .cardTitle {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
+    color: #151515;
+  }
+  .cardDescription {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: rgba(21, 21, 21, 0.7);
+  }
+  .cardIcon svg {
+    width: 34px;
+    height: 34px;
+  }
+}
