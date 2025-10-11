@@ -50,11 +50,6 @@
   justify-content: center;
   max-width: 1200px;
 }
-.pairCol {
-  display: grid;
-  grid-auto-rows: minmax(0, auto);
-  gap: 20px;
-}
 
 .mobileGrid {
   width: 100%;

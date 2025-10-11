@@ -5,38 +5,45 @@ import styles from "./Gallery.module.css";
 import useIsMobile from "@/components/hooks/useIsMobile";
 
 export default function Gallery() {
-  const [visiblePairs, setVisiblePairs] = useState(1);
+  const [visibleItems, setVisibleItems] = useState(2);
   const isMobile = useIsMobile();
 
-  // На десктопі показуємо 3 пари (6 карток) за замовчуванням,
-  // на мобільному — 1 пару. Оновлюємо при зміні брейкпоінту.
+  // На десктопі показуємо 6 карток за замовчуванням,
+  // на мобільному — 2 картки. Оновлюємо при зміні брейкпоінту.
   useEffect(() => {
-    setVisiblePairs(isMobile ? 1 : 3);
+    setVisibleItems(isMobile ? 2 : 6);
   }, [isMobile]);
 
-  const allPairs = [
-    [
-      { label: "Na", image: "/Frame 35138.png" },
-      { label: "Po", image: "/Frame 35139.png" },
-    ],
-    [
-      { label: "Na", image: "/Frame 35140.png" },
-      { label: "Po", image: "/Frame 35141.png" },
-    ],
-    [
-      { label: "Na", image: "/Frame 35142.png" },
-      { label: "Po", image: "/Frame 35143.png" },
-    ],
+  const allItems = [
+    { label: "Na", image: "/Frame 35138.png" },
+    { label: "Po", image: "/Frame 35139.png" },
+    { label: "Na", image: "/Frame 35140.png" },
+    { label: "Po", image: "/Frame 35141.png" },
+    { label: "Na", image: "/Frame 35142.png" },
+    { label: "Po", image: "/Frame 35143.png" },
+    { label: "Na", image: "/Frame 35144.png" },
+    { label: "Po", image: "/Frame 35145.png" },
+    { label: "Na", image: "/Frame 35146.png" },
+    { label: "Po", image: "/gallery/na1.jpg" },
+    { label: "Na", image: "/gallery/na2.jpg" },
+    { label: "Po", image: "/gallery/na3.jpg" },
   ];
 
-  const visibleItems = allPairs.slice(0, visiblePairs).flat();
-  const hasMorePairs = visiblePairs < allPairs.length;
+  const displayedItems = allItems.slice(0, visibleItems);
+  const hasMoreItems = visibleItems < allItems.length;
 
   const handleShowMore = () => {
-    if (hasMorePairs) {
-      setVisiblePairs((prev) => prev + 1);
+    if (hasMoreItems) {
+      if (isMobile) {
+        // На мобільному показуємо по 2 картки за раз
+        setVisibleItems((prev) => Math.min(prev + 2, allItems.length));
+      } else {
+        // На десктопі показуємо всі картки одразу
+        setVisibleItems(allItems.length);
+      }
     } else {
-      setVisiblePairs(1); // Reset to first pair
+      // Повертаємо до початкового стану
+      setVisibleItems(isMobile ? 2 : 6);
     }
   };
 
@@ -71,20 +78,16 @@ export default function Gallery() {
         <div className={styles.gridBlock}>
           {isMobile ? (
             <div className={styles.mobileGrid}>
-              {visibleItems.map((item, index) => renderCard(item, index))}
+              {displayedItems.map((item, index) => renderCard(item, index))}
             </div>
           ) : (
             <div className={styles.gridPairs}>
-              {allPairs.slice(0, visiblePairs).map((pair, colIdx) => (
-                <div className={styles.pairCol} key={colIdx}>
-                  {pair.map((item, idx) => renderCard(item, colIdx * 2 + idx))}
-                </div>
-              ))}
+              {displayedItems.map((item, index) => renderCard(item, index))}
             </div>
           )}
 
           <button className={styles.ctaBtn} onClick={handleShowMore}>
-            {hasMorePairs ? "Zobrazit více" : "Zobrazit méně"}
+            {hasMoreItems ? "Zobrazit více" : "Zobrazit méně"}
           </button>
         </div>
       </div>
