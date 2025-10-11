@@ -1,3 +1,12 @@
+"use client";
+
+import { useState, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 import styles from "./Stats.module.css";
 import {
   ApartmentIcon,
@@ -5,8 +14,45 @@ import {
   TimeIcon,
   MedalIcon,
 } from "@/components/Icons/Icons";
+import useIsMobile from "@/components/hooks/useIsMobile";
+import SliderNav from "@/components/ui/SliderNav/SliderNavActions";
+import { Swiper as SwiperType } from "swiper";
 
 export default function Stats() {
+  const isMobile = useIsMobile();
+  const [activeSlide, setActiveSlide] = useState(0);
+  const swiperRef = useRef<SwiperType | null>(null);
+
+  const statsData = [
+    {
+      icon: ApartmentIcon,
+      number: "127",
+      unit: "+",
+      title: "Dokončené projekty",
+      subtitle: "Byty a stánky",
+    },
+    {
+      icon: UsersIcon,
+      number: "98",
+      unit: "%",
+      title: "Spokojení klienti",
+      subtitle: "Doporučte nás",
+    },
+    {
+      icon: TimeIcon,
+      number: "5",
+      unit: "+",
+      title: "Dlouholeté zkušenosti",
+      subtitle: "Na pražském trhu",
+    },
+    {
+      icon: MedalIcon,
+      number: "3",
+      unit: "roky",
+      title: "Záruky",
+      subtitle: "na veškeré práce",
+    },
+  ];
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -15,44 +61,61 @@ export default function Stats() {
           <p>Číslo skin odráží naši oddanost integritě a profesionalitě</p>
         </div>
 
-        <div className={styles.cards4}>
-          <div className={styles.card}>
-            <ApartmentIcon />
-            <div className={styles.numberRow}>
-              <p className={styles.number}>127</p>
-              <p className={styles.unit}>+</p>
+        {isMobile ? (
+          <div className={styles.swiperContainer}>
+            <Swiper
+              modules={[Navigation, Pagination]}
+              slidesPerView={1}
+              spaceBetween={20}
+              onSwiper={(s) => (swiperRef.current = s)}
+              onSlideChange={(s) => setActiveSlide(s.activeIndex)}
+              className={styles.swiper}
+            >
+              {statsData.map((stat, index) => {
+                const IconComponent = stat.icon;
+                return (
+                  <SwiperSlide key={index} className={styles.slide}>
+                    <div className={styles.card}>
+                      <IconComponent />
+                      <div className={styles.numberRow}>
+                        <p className={styles.number}>{stat.number}</p>
+                        <p className={styles.unit}>{stat.unit}</p>
+                      </div>
+                      <p className={styles.cardTitle}>{stat.title}</p>
+                      <span>{stat.subtitle}</span>
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+            <div className={styles.swiperControls}>
+              <SliderNav
+                activeIndex={activeSlide}
+                dots={statsData.length}
+                onPrev={() => swiperRef.current?.slidePrev()}
+                onNext={() => swiperRef.current?.slideNext()}
+                onDotClick={(i) => swiperRef.current?.slideTo(i)}
+              />
             </div>
-            <p className={styles.cardTitle}>Dokončené projekty</p>
-            <span>Byty a stánky</span>
           </div>
-          <div className={styles.card}>
-            <UsersIcon />
-            <div className={styles.numberRow}>
-              <p className={styles.number}>98</p>
-              <p className={styles.unit}>%</p>
-            </div>
-            <p className={styles.cardTitle}>Spokojení klienti</p>
-            <span>Doporučte nás</span>
+        ) : (
+          <div className={styles.cards4}>
+            {statsData.map((stat, index) => {
+              const IconComponent = stat.icon;
+              return (
+                <div key={index} className={styles.card}>
+                  <IconComponent />
+                  <div className={styles.numberRow}>
+                    <p className={styles.number}>{stat.number}</p>
+                    <p className={styles.unit}>{stat.unit}</p>
+                  </div>
+                  <p className={styles.cardTitle}>{stat.title}</p>
+                  <span>{stat.subtitle}</span>
+                </div>
+              );
+            })}
           </div>
-          <div className={styles.card}>
-            <TimeIcon />
-            <div className={styles.numberRow}>
-              <p className={styles.number}>5</p>
-              <p className={styles.unit}>+</p>
-            </div>
-            <p className={styles.cardTitle}>Dlouholeté zkušenosti</p>
-            <span>Na pražském trhu</span>
-          </div>
-          <div className={styles.card}>
-            <MedalIcon />
-            <div className={styles.numberRow}>
-              <p className={styles.number}>3</p>
-              <p className={styles.unit}>roky</p>
-            </div>
-            <p className={styles.cardTitle}>Záruky</p>
-            <span>na veškeré práce</span>
-          </div>
-        </div>
+        )}
 
         <div className={styles.reasonBox}>
           <h3>Proč si zákazníci vybírají RekoGrinik?</h3>

@@ -46,6 +46,29 @@
   align-items: center;
 }
 
+.swiperContainer {
+  width: 100%;
+  position: relative;
+}
+
+.swiper {
+  width: 100%;
+  padding: 0 0 60px 0;
+}
+
+.slide {
+  height: auto;
+  padding: 20px 0;
+}
+
+.swiperControls {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
 .card {
   border-radius: 16px;
   padding: 30px;
@@ -181,6 +204,14 @@
   }
   .cards4 {
     flex-direction: column;
+  }
+
+  .swiperContainer {
+    display: block;
+  }
+
+  .cards4 {
+    display: none;
   }
   .numbe {
     font-family: var(--font-family);
