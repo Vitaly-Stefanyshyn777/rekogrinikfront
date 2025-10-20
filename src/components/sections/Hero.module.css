@@ -25,6 +25,16 @@
   padding: 20px;
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 18px;
+  color: #fff;
+  font-family: var(--second-family);
+}
+
 .logo {
   position: relative;
   width: 94px;

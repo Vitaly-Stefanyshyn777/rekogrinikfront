@@ -192,3 +192,61 @@
     height: 180px;
   }
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 18px;
+  color: #666;
+  font-family: var(--second-family);
+}
+
+.title {
+  font-family: var(--second-family);
+  font-weight: 600;
+  font-size: 14px;
+  color: #151515;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.description {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.pairLabel {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 13px;
+  color: #004225;
+  margin-top: 6px;
+  text-align: center;
+  background: rgba(0, 66, 37, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.pairTile {
+  position: relative;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.pairTile:hover {
+  border-color: #004225;
+}
+
+.pairTile[data-pair-type="before"] {
+  border-left: 3px solid #004225;
+}
+
+.pairTile[data-pair-type="after"] {
+  border-right: 3px solid #004225;
+}

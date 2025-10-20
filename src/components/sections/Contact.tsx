@@ -13,6 +13,8 @@ import {
   MessageIcon,
   TimeIcon,
 } from "@/components/Icons/Icons";
+import { apiClient } from "@/api/client";
+import { useEffect, useMemo, useState } from "react";
 
 type FormValues = {
   email: string;
@@ -25,16 +27,78 @@ type FormValues = {
 };
 
 export default function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState<string | null>(null);
+
+  // Визначаємо мову інтерфейсу як locale для бекенду
+  const locale = useMemo(() => {
+    if (typeof navigator !== "undefined") {
+      return navigator.language?.slice(0, 2) || "uk";
+    }
+    return "uk";
+  }, []);
+
+  // Збір UTM-міток із URL
+  const utmSource = useMemo(() => {
+    if (typeof window === "undefined") return undefined;
+    const params = new URLSearchParams(window.location.search);
+    const obj: Record<string, string> = {};
+    [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_term",
+      "utm_content",
+    ].forEach((key) => {
+      const val = params.get(key);
+      if (val) obj[key] = val;
+    });
+    return Object.keys(obj).length ? obj : undefined;
+  }, []);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FormValues>({
     defaultValues: { workType: "", consent: false },
   });
 
-  const onSubmit = (data: FormValues) => {
-    console.log("contact form:", data);
+  const onSubmit = async (data: FormValues) => {
+    setSubmitError(null);
+    setSubmitSuccess(null);
+    setIsSubmitting(true);
+    try {
+      const payload = {
+        name: data.name,
+        phone: data.phone,
+        email: data.email,
+        workType: data.workType,
+        message: data.message,
+        consent: true,
+        address: data.address,
+        contactTime: undefined,
+        source: utmSource,
+        files: undefined,
+        locale,
+      };
+      const res = await apiClient.submitForm(payload);
+      setSubmitSuccess(res.id);
+      reset({
+        email: "",
+        phone: "",
+        name: "",
+        address: "",
+        workType: "",
+        consent: false,
+        message: "",
+      });
+    } catch (e: any) {
+      setSubmitError(e?.message || "Помилка відправки форми");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -166,13 +230,27 @@ export default function Contact() {
               ></textarea>
             </div>
             <div className={styles.actions}>
-              <button type="submit" className={styles.submit}>
-                Zanechte žádost
+              <button
+                type="submit"
+                className={styles.submit}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Відправлення..." : "Відправити запит"}
               </button>
               <p className={styles.note}>
                 Kliknutím na tlačítko souhlasíte se zpracováním osobních údajů v
                 souladu se zásadami <br /> ochrany osobních údajů.
               </p>
+              {submitError && (
+                <p className={styles.note} style={{ color: "#d00" }}>
+                  {submitError}
+                </p>
+              )}
+              {submitSuccess && (
+                <p className={styles.note} style={{ color: "#0a513d" }}>
+                  Дякуємо! Заявку прийнято (ID: {submitSuccess}).
+                </p>
+              )}
             </div>
           </form>
         </div>

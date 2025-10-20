@@ -49,6 +49,15 @@
   margin-top: 12px;
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 622px;
+  font-size: 18px;
+  color: #666;
+}
+
 @media (max-width: 768px) {
   .section {
     padding: 20px 0;

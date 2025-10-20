@@ -23,7 +23,13 @@ export default function Header() {
       <div className={styles.container}>
         <div className={styles.left}>
           <Link href="/" aria-label="RekoGrinik" className={styles.brand}>
-            <Image src="/Logo.svg" alt="RekoGrinik" width={63} height={63} />
+            <Image
+              src="/Logo.svg"
+              alt="RekoGrinik"
+              width={63}
+              height={63}
+              priority
+            />
           </Link>
         </div>
         <div className={styles.middle}>
