@@ -22,8 +22,12 @@ export default function Hero() {
   // Якщо heroData існує, використовуємо його, інакше fallback
   const data = heroData
     ? {
-        title: (heroData as any).title || fallbackData.title,
-        subtitle: (heroData as any).subtitle || fallbackData.subtitle,
+        title:
+          (heroData as { title?: string; subtitle?: string }).title ||
+          fallbackData.title,
+        subtitle:
+          (heroData as { title?: string; subtitle?: string }).subtitle ||
+          fallbackData.subtitle,
         primaryButtonText: fallbackData.primaryButtonText,
         secondaryButtonText: fallbackData.secondaryButtonText,
         primaryButtonLink: fallbackData.primaryButtonLink,
@@ -40,7 +44,9 @@ export default function Hero() {
   console.log("Final data being used:", data);
   console.log(
     "Using fallback:",
-    !heroData || (!(heroData as any)?.title && !(heroData as any)?.subtitle)
+    !heroData ||
+      (!(heroData as { title?: string; subtitle?: string })?.title &&
+        !(heroData as { title?: string; subtitle?: string })?.subtitle)
   );
   console.log("=========================");
 

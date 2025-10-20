@@ -41,26 +41,40 @@ export default function Gallery() {
       const pairGroup = pairs.slice(i, i + 3);
 
       // Створюємо колекцію "До" (3 фото)
-      const beforePhotos = pairGroup.map((pair: any) => ({
-        label: "До",
-        image: pair.beforePhoto?.url,
-        pairId: pair.id,
-        type: "before",
-        title: pair.beforePhoto?.title || "До",
-        description: pair.beforePhoto?.description || "",
-        pairLabel: pair.label || "",
-      }));
+      const beforePhotos = pairGroup.map(
+        (pair: {
+          id: string;
+          beforePhoto: { url: string; title?: string; description?: string };
+          afterPhoto: { url: string; title?: string; description?: string };
+          label?: string;
+        }) => ({
+          label: "До",
+          image: pair.beforePhoto?.url,
+          pairId: pair.id,
+          type: "before",
+          title: pair.beforePhoto?.title || "До",
+          description: pair.beforePhoto?.description || "",
+          pairLabel: pair.label || "",
+        })
+      );
 
       // Створюємо колекцію "Після" (3 фото)
-      const afterPhotos = pairGroup.map((pair: any) => ({
-        label: "Після",
-        image: pair.afterPhoto?.url,
-        pairId: pair.id,
-        type: "after",
-        title: pair.afterPhoto?.title || "Після",
-        description: pair.afterPhoto?.description || "",
-        pairLabel: pair.label || "",
-      }));
+      const afterPhotos = pairGroup.map(
+        (pair: {
+          id: string;
+          beforePhoto: { url: string; title?: string; description?: string };
+          afterPhoto: { url: string; title?: string; description?: string };
+          label?: string;
+        }) => ({
+          label: "Після",
+          image: pair.afterPhoto?.url,
+          pairId: pair.id,
+          type: "after",
+          title: pair.afterPhoto?.title || "Після",
+          description: pair.afterPhoto?.description || "",
+          pairLabel: pair.label || "",
+        })
+      );
 
       // Додаємо колекцію "До"
       collections.push({

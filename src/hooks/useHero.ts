@@ -3,7 +3,10 @@ import { useState, useEffect } from "react";
 import { apiClient } from "../api/client";
 
 export const useHero = () => {
-  const [heroData, setHeroData] = useState<any>(null);
+  const [heroData, setHeroData] = useState<{
+    title?: string;
+    subtitle?: string;
+  } | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

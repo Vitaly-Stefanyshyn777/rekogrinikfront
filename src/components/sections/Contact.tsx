@@ -2,9 +2,6 @@
 import { useForm } from "react-hook-form";
 import styles from "./Contact.module.css";
 import {
-  FacebookIcon,
-  InstagramIcon,
-  LogoIcon,
   CheckMarkIcon,
   NumberIcon,
   EmailIcon,
@@ -14,7 +11,7 @@ import {
   TimeIcon,
 } from "@/components/Icons/Icons";
 import { apiClient } from "@/api/client";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 type FormValues = {
   email: string;
@@ -94,8 +91,10 @@ export default function Contact() {
         consent: false,
         message: "",
       });
-    } catch (e: any) {
-      setSubmitError(e?.message || "Помилка відправки форми");
+    } catch (e: unknown) {
+      setSubmitError(
+        e instanceof Error ? e.message : "Помилка відправки форми"
+      );
     } finally {
       setIsSubmitting(false);
     }

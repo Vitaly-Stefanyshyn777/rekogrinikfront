@@ -9,17 +9,9 @@ import {
   KeyIcon,
   Icon3,
 } from "@/components/Icons/Icons";
-import TabSection from "@/components/ui/TabSection/TabSection";
-import MainTitle from "@/components/ui/MainTitle/MainTitle";
 import GridBackground from "@/components/GridBackground/GridBackground";
 import useIsMobile from "@/components/hooks/useIsMobile";
-import {
-  motion,
-  useInView,
-  useScroll,
-  useTransform,
-  useSpring,
-} from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import WorkflowMarker from "./WorkflowMarker";
 
 const steps = [
@@ -115,7 +107,7 @@ const addSpaceToDesc = (
   list: { type: string; text: string }[][]
 ): { type: string; text: string }[][] =>
   list.map((parts: { type: string; text: string }[]) =>
-    parts.map((part: { type: string; text: string }, idx: number) =>
+    parts.map((part: { type: string; text: string }) =>
       part.type === "desc" && !part.text.endsWith(" ")
         ? { ...part, text: part.text + " " }
         : part
@@ -152,8 +144,6 @@ export default function WorkflowSection({
     ...block,
   };
 
-  const lineRef = useRef(null);
-  const isInView = useInView(lineRef, { once: false, amount: 0.3 });
   const sectionRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -264,8 +254,8 @@ export default function WorkflowSection({
                       </div>
                     )}
                     <ul className={styles["step-list"]}>
-                      {step.list.map((parts, idx) => (
-                        <li className={styles["step-list-item"]} key={idx}>
+                      {step.list.map((parts, index) => (
+                        <li className={styles["step-list-item"]} key={index}>
                           <div className={styles["step-list-block"]}>
                             <span className={styles["step-list-icon"]}>
                               {/* <IconDot /> */}
@@ -423,8 +413,8 @@ export default function WorkflowSection({
                       </div>
                     )}
                     <ul className={styles["step-list"]}>
-                      {step.list.map((parts, idx) => (
-                        <li className={styles["step-list-item"]} key={idx}>
+                      {step.list.map((parts, index) => (
+                        <li className={styles["step-list-item"]} key={index}>
                           <span className={styles["step-list-icon"]}>
                             {/* <IconDot /> */}
                           </span>

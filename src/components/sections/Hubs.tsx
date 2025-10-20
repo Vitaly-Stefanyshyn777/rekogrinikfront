@@ -26,7 +26,7 @@ export default function Hubs() {
   // Використовуємо дані з API або fallback
   const images =
     photos.length > 0
-      ? photos.map((photo: any) => photo.url || fallbackImages[0])
+      ? photos.map((photo: { url: string }) => photo.url || fallbackImages[0])
       : fallbackImages;
 
   if (loading) {
