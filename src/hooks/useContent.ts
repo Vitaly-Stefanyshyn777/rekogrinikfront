@@ -24,3 +24,4 @@ export const useContent = () => {
 
   return { content, loading, error };
 };
+

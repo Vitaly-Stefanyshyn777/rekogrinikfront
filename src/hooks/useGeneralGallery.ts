@@ -24,3 +24,4 @@ export const useGeneralGallery = () => {
 
   return { photos, loading, error };
 };
+
