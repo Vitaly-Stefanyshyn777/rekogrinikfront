@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import styles from "./Hero.module.css";
 import { useHero } from "@/hooks/useHero";
 import { useState } from "react";
