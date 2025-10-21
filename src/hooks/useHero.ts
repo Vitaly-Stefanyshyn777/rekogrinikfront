@@ -14,8 +14,20 @@ export const useHero = () => {
     const fetchHeroData = async () => {
       try {
         const data = await apiClient.getHero();
-        setHeroData(data);
+        console.log("Raw hero data from API:", data);
+
+        // Перевіряємо чи є title або subtitle
+        if (data && (data.title || data.subtitle)) {
+          setHeroData({
+            title: data.title || undefined,
+            subtitle: data.subtitle || undefined,
+          });
+        } else {
+          console.log("No valid hero data found, using fallback");
+          setHeroData(null);
+        }
       } catch (err) {
+        console.error("Error fetching hero data:", err);
         setError(err instanceof Error ? err.message : "Unknown error");
       } finally {
         setLoading(false);

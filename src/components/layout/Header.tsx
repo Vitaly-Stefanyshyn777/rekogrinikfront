@@ -34,29 +34,35 @@ export default function Header() {
         </div>
         <div className={styles.middle}>
           <nav className={styles.nav} aria-label="Main Navigation">
+            <Link href="#hubs" className={styles.navLink}>
+              Хуби
+            </Link>
             <Link href="#stats" className={styles.navLink}>
-              Statistiky
+              Статистика
             </Link>
             <Link href="#services" className={styles.navLink}>
-              Naše služby
+              Наші послуги
             </Link>
             <Link href="#steps" className={styles.navLink}>
-              Fáze práce
+              Етапи роботи
             </Link>
             <Link href="#reviews" className={styles.navLink}>
-              Posudky
+              Відгуки
             </Link>
             <Link href="#gallery" className={styles.navLink}>
-              Galerie
+              Галерея
             </Link>
             <Link href="#faq" className={styles.navLink}>
-              FAQ
+              Найчастіші запитання
             </Link>
             <Link href="#contacts" className={styles.navLink}>
-              Kontakty
+              Контакти
             </Link>
             <Link href="#about" className={styles.navLink}>
-              O nás
+              Про нас
+            </Link>
+            <Link href="/privacy" className={styles.navLink}>
+              Privacy
             </Link>
           </nav>
         </div>
@@ -81,29 +87,35 @@ export default function Header() {
       {isMobileMenuOpen && (
         <div className={styles.mobileMenu}>
           <nav className={styles.mobileNav}>
+            <Link href="#hubs" onClick={() => setIsMobileMenuOpen(false)}>
+              Хуби
+            </Link>
             <Link href="#stats" onClick={() => setIsMobileMenuOpen(false)}>
-              Statistiky
+              Статистика
             </Link>
             <Link href="#services" onClick={() => setIsMobileMenuOpen(false)}>
-              Naše služby
+              Наші послуги
             </Link>
             <Link href="#steps" onClick={() => setIsMobileMenuOpen(false)}>
-              Fáze práce
+              Етапи роботи
             </Link>
             <Link href="#reviews" onClick={() => setIsMobileMenuOpen(false)}>
-              Posudky
+              Відгуки
             </Link>
             <Link href="#gallery" onClick={() => setIsMobileMenuOpen(false)}>
-              Galerie
+              Галерея
             </Link>
             <Link href="#faq" onClick={() => setIsMobileMenuOpen(false)}>
-              FAQ
+              Найчастіші запитання
             </Link>
             <Link href="#contacts" onClick={() => setIsMobileMenuOpen(false)}>
-              Kontakty
+              Контакти
             </Link>
             <Link href="#about" onClick={() => setIsMobileMenuOpen(false)}>
-              O nás
+              Про нас
+            </Link>
+            <Link href="/privacy" onClick={() => setIsMobileMenuOpen(false)}>
+              Privacy
             </Link>
           </nav>
 

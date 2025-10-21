@@ -33,7 +33,7 @@ export default function Hubs() {
     return (
       <section className={styles.section} id="hubs">
         <div className={styles.container}>
-          <h2 className={styles.title}>Naše HUBy</h2>
+          <h2 className={styles.title}>Наші Хуби</h2>
           <div className={styles.sliderWrap}>
             <div className={styles.loading}>Завантаження...</div>
           </div>
@@ -53,7 +53,7 @@ export default function Hubs() {
   return (
     <section className={styles.section} id="hubs">
       <div className={styles.container}>
-        <h2 className={styles.title}>Naše HUBy</h2>
+        <h2 className={styles.title}>Наші Хуби</h2>
         <div className={styles.sliderWrap}>
           <Swiper
             modules={[Navigation, Pagination]}

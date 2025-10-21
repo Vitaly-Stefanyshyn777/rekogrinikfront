@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./Footer.module.css";
 import { FacebookIcon, InstagramIcon } from "@/components/Icons/Icons";
 
@@ -65,8 +66,9 @@ export default function Footer() {
           </p>
         </div>
         <div className={styles.legalLinks}>
-          <p>Zásady ochrany osobních údajů</p>
-          <p>GDPR</p>
+          <Link href="/privacy" className={styles.legalLink}>
+            Zásady ochrany osobních údajů
+          </Link>
         </div>
       </div>
     </footer>

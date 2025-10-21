@@ -1,7 +1,7 @@
 // src/api/client.ts
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL ||
-  "https://rekogrinikfrontbeck-production-a699.up.railway.app/api/v1";
+  "https://rekogrinikfrontbeck-production.up.railway.app/api/v1";
 
 class ApiClient {
   private baseUrl: string;
