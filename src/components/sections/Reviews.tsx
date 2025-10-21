@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import useIsMobile from "@/components/hooks/useIsMobile";
 import SliderNav from "@/components/ui/SliderNav/SliderNavActions";
+import ConsultationModal from "@/components/modals/ConsultationModal";
 
 // Import Swiper styles
 import "swiper/css";
@@ -51,6 +52,7 @@ export default function Reviews() {
   const isMobile = useIsMobile();
   const [activeSlide, setActiveSlide] = useState(0);
   const swiperRef = useRef<SwiperType | null>(null);
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
 
   const handlePrev = () => {
     if (swiperRef.current) {
@@ -152,11 +154,19 @@ export default function Reviews() {
             </p>
           </div>
 
-          <button className={styles.ctaBtn}>
+          <button
+            className={styles.ctaBtn}
+            onClick={() => setIsConsultationModalOpen(true)}
+          >
             Získejte bezplatnou konzultaci
           </button>
         </div>
       </div>
+
+      <ConsultationModal
+        isOpen={isConsultationModalOpen}
+        onClose={() => setIsConsultationModalOpen(false)}
+      />
     </section>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 import { useForm } from "react-hook-form";
+import Link from "next/link";
 import styles from "./Contact.module.css";
 import {
   CheckMarkIcon,
@@ -107,12 +108,12 @@ export default function Contact() {
           <div className={styles.leftTopRow}>
             <div className={styles.leftCol}>
               <span className={styles.h1}>
-                Jste připraveni začít s vaším projektem?
+                Ви готові розпочати свій проєкт?
               </span>
               <p>
-                Zanechte nám požadavek a náš specialista se s vámi do hodiny
-                spojí, aby s vámi probral podrobnosti a provedl bezplatnou
-                prohlídku nemovitosti.
+                Залиште нам заявку, і наш спеціаліст зв'яжеться з вами протягом
+                години, щоб обговорити деталі та провести безкоштовний огляд
+                нерухомості.
               </p>
             </div>
             <div className={styles.leftCollow}>
@@ -122,7 +123,7 @@ export default function Contact() {
                 </span>
                 <div className={styles.infoText}>
                   <p className={styles.phoneTitle}>+420 608 583 115</p>
-                  <p className={styles.phoneSub}>Volejte kdykoliv</p>
+                  <p className={styles.phoneSub}>Дзвоніть будь-коли</p>
                 </div>
               </div>
               <div className={styles.infoItem}>
@@ -131,7 +132,9 @@ export default function Contact() {
                 </span>
                 <div className={styles.infoText}>
                   <p className={styles.emailTitle}>rekogrinikcz@gmail.com</p>
-                  <p className={styles.emailSub}>Odpovídáme do hodiny</p>
+                  <p className={styles.emailSub}>
+                    Ми відповідаємо протягом години
+                  </p>
                 </div>
               </div>
             </div>
@@ -142,7 +145,7 @@ export default function Contact() {
                   <span className={styles.timeIcon}>
                     <TimeIcon />
                   </span>
-                  <p>Pracovní harmonogram</p>
+                  <p>Графік роботи</p>
                 </div>
                 <div className={styles.schedule}>
                   <div className={styles.scheduleCol}>
@@ -150,7 +153,7 @@ export default function Contact() {
                     <p className={styles.scheduleTime}>08:00 - 20:00</p>
                   </div>
                   <div className={styles.scheduleCol}>
-                    <p className={styles.scheduleDays}>Сб–Нд</p>
+                    <p className={styles.scheduleDays}>Субота-Неділя</p>
                     <p className={styles.scheduleTime}>09:00 - 18:00</p>
                   </div>
                 </div>
@@ -178,15 +181,27 @@ export default function Contact() {
               <div className={styles.fieldPair}>
                 <div className={styles.field}>
                   <input
-                    placeholder="Email pro kontakt"
-                    {...register("email", { required: true })}
+                    placeholder="Електронна адреса для зв'язку"
+                    {...register("email", {
+                      required: "Email обов'язковий",
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: "Невірний формат email",
+                      },
+                    })}
                   />
                   {errors.email && <span className={styles.err}>*</span>}
                 </div>
                 <div className={styles.field}>
                   <input
-                    placeholder="Vaše telefonní číslo"
-                    {...register("phone", { required: true })}
+                    placeholder="Ваш номер телефону"
+                    {...register("phone", {
+                      required: "Телефон обов'язковий",
+                      pattern: {
+                        value: /^[\+]?[0-9\s\-\(\)]{10,}$/,
+                        message: "Невірний формат телефону",
+                      },
+                    })}
                   />
                   {errors.phone && <span className={styles.err}>*</span>}
                 </div>
@@ -194,28 +209,46 @@ export default function Contact() {
               <div className={styles.fieldPair}>
                 <div className={styles.field}>
                   <input
-                    placeholder="Jméno na adresu"
-                    {...register("name", { required: true })}
+                    placeholder="Ім'я для адреси"
+                    {...register("name", {
+                      required: "Ім'я обов'язкове",
+                      minLength: {
+                        value: 2,
+                        message: "Мінімум 2 символи",
+                      },
+                    })}
                   />
                   {errors.name && <span className={styles.err}>*</span>}
                 </div>
                 <div className={styles.field}>
                   <input
-                    placeholder="Vaše adresa"
-                    {...register("address", { required: true })}
+                    placeholder="Ваша адреса"
+                    {...register("address", {
+                      required: "Адреса обов'язкова",
+                      minLength: {
+                        value: 5,
+                        message: "Мінімум 5 символів",
+                      },
+                    })}
                   />
                   {errors.address && <span className={styles.err}>*</span>}
                 </div>
               </div>
             </div>
             <div className={styles.selectRow}>
-              <select {...register("workType", { required: true })}>
+              <select
+                {...register("workType", {
+                  required: "Тип роботи обов'язковий",
+                })}
+              >
                 <option value="" disabled>
-                  Vyberte typ práce
+                  Виберіть тип роботи
                 </option>
-                <option value="flat">Rekonstrukce bytu</option>
-                <option value="bath">Koupelny</option>
-                <option value="drywall">Sádrokarton</option>
+                <option value="Ремонт квартири">Ремонт квартири</option>
+                <option value="Ванні кімнати">Ванні кімнати</option>
+                <option value="Гіпсокартон">Гіпсокартон</option>
+                <option value="Повна реконструкція">Повна реконструкція</option>
+                <option value="Косметичний ремонт">Косметичний ремонт</option>
               </select>
               <span className={styles.checkIcon}>
                 <CheckMarkIcon />
@@ -224,8 +257,13 @@ export default function Contact() {
             <div className={styles.textareaRow}>
               <textarea
                 rows={4}
-                placeholder="Řekněte nám více o vašem projektu..."
-                {...register("message")}
+                placeholder="Розкажіть нам більше про ваш проєкт..."
+                {...register("message", {
+                  maxLength: {
+                    value: 500,
+                    message: "Максимум 500 символів",
+                  },
+                })}
               ></textarea>
             </div>
             <div className={styles.actions}>
@@ -237,8 +275,12 @@ export default function Contact() {
                 {isSubmitting ? "Відправлення..." : "Відправити запит"}
               </button>
               <p className={styles.note}>
-                Kliknutím na tlačítko souhlasíte se zpracováním osobních údajů v
-                souladu se zásadami <br /> ochrany osobních údajů.
+                Натискаючи кнопку, ви погоджуєтеся на обробку персональних даних
+                відповідно до{" "}
+                <Link href="/privacy" className={styles.privacyLink}>
+                  політики конфіденційності
+                </Link>
+                .
               </p>
               {submitError && (
                 <p className={styles.note} style={{ color: "#d00" }}>

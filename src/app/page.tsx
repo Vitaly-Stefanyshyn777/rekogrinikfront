@@ -15,9 +15,19 @@ export default function Home() {
     <main>
       <div className="page-stack">
         <Hero />
+        <section id="hubs">
+          <Reveal>
+            <Hubs />
+          </Reveal>
+        </section>
         <section id="stats">
           <Reveal>
             <Stats />
+          </Reveal>
+        </section>
+        <section id="gallery">
+          <Reveal>
+            <Gallery />
           </Reveal>
         </section>
         <section id="services">
@@ -25,11 +35,7 @@ export default function Home() {
             <Services />
           </Reveal>
         </section>
-        <section id="hubs">
-          <Reveal>
-            <Hubs />
-          </Reveal>
-        </section>
+
         <section id="steps">
           <Reveal>
             <WorkflowSection />
@@ -41,11 +47,7 @@ export default function Home() {
             <Reviews />
           </Reveal>
         </section>
-        <section id="gallery">
-          <Reveal>
-            <Gallery />
-          </Reveal>
-        </section>
+
         <section id="hubs"></section>
         <section id="faq">
           <Reveal>

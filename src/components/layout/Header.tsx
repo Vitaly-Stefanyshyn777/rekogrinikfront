@@ -5,9 +5,15 @@ import Image from "next/image";
 import styles from "./Header.module.css";
 import { BurgerMenuIcon, CloseIcon } from "@/components/Icons/Icons";
 import { useEffect, useState } from "react";
+import RequestModal from "@/components/modals/RequestModal";
+import CallModal from "@/components/modals/CallModal";
+import ConsultationModal from "@/components/modals/ConsultationModal";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isRequestModalOpen, setIsRequestModalOpen] = useState(false);
+  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -67,9 +73,12 @@ export default function Header() {
           </nav>
         </div>
         <div className={styles.right}>
-          <Link href="#request" className={styles.cta}>
+          <button
+            className={styles.cta}
+            onClick={() => setIsRequestModalOpen(true)}
+          >
             Odeslat žádost
-          </Link>
+          </button>
           <button
             className={`${styles.burger} no-vw`}
             aria-label={isMobileMenuOpen ? "Close menu" : "Menu"}
@@ -119,15 +128,30 @@ export default function Header() {
             </Link>
           </nav>
 
-          <Link
-            href="#request"
+          <button
             className={styles.mobileCta}
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              setIsRequestModalOpen(true);
+            }}
           >
             Odeslat žádost
-          </Link>
+          </button>
         </div>
       )}
+
+      <RequestModal
+        isOpen={isRequestModalOpen}
+        onClose={() => setIsRequestModalOpen(false)}
+      />
+      <CallModal
+        isOpen={isCallModalOpen}
+        onClose={() => setIsCallModalOpen(false)}
+      />
+      <ConsultationModal
+        isOpen={isConsultationModalOpen}
+        onClose={() => setIsConsultationModalOpen(false)}
+      />
     </header>
   );
 }

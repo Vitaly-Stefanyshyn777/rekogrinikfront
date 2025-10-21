@@ -196,6 +196,19 @@
   background: #f5a623;
   white-space: nowrap;
   min-width: fit-content;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ctaBtn:hover {
+  background: #e6951f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(245, 166, 35, 0.4);
+}
+
+.ctaBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(245, 166, 35, 0.3);
 }
 
 @media (max-width: 960px) {

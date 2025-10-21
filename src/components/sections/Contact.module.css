@@ -242,17 +242,28 @@
   position: relative;
 }
 .field input {
-  border: none;
+  border: 1px solid #e5e7eb;
   width: 100%;
   border-radius: 8px;
-
   padding: 16px 12px;
   box-sizing: border-box;
-
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 14px;
   color: #717182;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.field input:hover {
+  border-color: #0a513d;
+  background: #f8f9fa;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: #0a513d;
+  box-shadow: 0 0 0 3px rgba(10, 81, 61, 0.1);
 }
 .err {
   position: absolute;
@@ -270,20 +281,29 @@
   height: 37px;
   border-radius: 10px;
   border: none;
-
   padding: 0 36px 0 12px;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: none;
-
+  background: #fff;
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 14px;
   line-height: 143%;
   color: #717182;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-  background: #fff;
+.selectRow select:hover {
+  background: #f8f9fa;
+  border: 1px solid #0a513d;
+}
+
+.selectRow select:focus {
+  outline: none;
+  border: 2px solid #0a513d;
+  box-shadow: 0 0 0 3px rgba(10, 81, 61, 0.1);
 }
 .checkIcon {
   height: 20px;
@@ -302,17 +322,28 @@
 .textareaRow textarea {
   width: 100%;
   border-radius: 10px;
-  border: none;
-
-  border-radius: 10px;
+  border: 1px solid #e5e7eb;
   padding: 16px;
   background: #fff;
-
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
   color: rgba(10, 10, 10, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  resize: vertical;
+}
+
+.textareaRow textarea:hover {
+  border-color: #0a513d;
+  background: #f8f9fa;
+}
+
+.textareaRow textarea:focus {
+  outline: none;
+  border-color: #0a513d;
+  box-shadow: 0 0 0 3px rgba(10, 81, 61, 0.1);
 }
 
 .actions {
@@ -325,9 +356,7 @@
   color: #fff;
   border: none;
   width: 100%;
-
-  border-radius: 14px;
-
+  border-radius: 12px;
   font-family: var(--second-family);
   font-weight: 700;
   font-size: 18px;
@@ -335,11 +364,28 @@
   color: #fff;
   height: 56px;
   padding: 0 18px;
-  border-radius: 12px;
   box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.1),
     0 10px 15px -3px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.submit:hover:not(:disabled) {
+  background: #0d6b4f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(10, 81, 61, 0.3);
+}
+
+.submit:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(10, 81, 61, 0.2);
+}
+
+.submit:disabled {
+  background: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 .note {
   font-family: var(--font-family);
@@ -348,6 +394,17 @@
   line-height: 162%;
   text-align: center;
   color: #6a7282;
+}
+
+.privacyLink {
+  color: #0a513d;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.privacyLink:hover {
+  color: #0d6b4f;
 }
 
 @media (max-width: 1000px) {
