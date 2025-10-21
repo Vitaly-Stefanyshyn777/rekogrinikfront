@@ -18,18 +18,18 @@ export default function Gallery() {
 
   // Fallback статичні дані якщо API не працює
   const fallbackItems = [
-    { label: "До", image: "/Frame 35138.png" },
-    { label: "Після", image: "/Frame 35139.png" },
-    { label: "До", image: "/Frame 35140.png" },
-    { label: "Після", image: "/Frame 35141.png" },
-    { label: "До", image: "/Frame 35142.png" },
-    { label: "Після", image: "/Frame 35143.png" },
-    { label: "До", image: "/Frame 35144.png" },
-    { label: "Після", image: "/Frame 35145.png" },
-    { label: "До", image: "/Frame 35146.png" },
-    { label: "Після", image: "/Frame 35138.png" },
-    { label: "До", image: "/Frame 35139.png" },
-    { label: "Після", image: "/Frame 35140.png" },
+    { label: "Před", image: "/Frame 35138.png" },
+    { label: "Po", image: "/Frame 35139.png" },
+    { label: "Před", image: "/Frame 35140.png" },
+    { label: "Po", image: "/Frame 35141.png" },
+    { label: "Před", image: "/Frame 35142.png" },
+    { label: "Po", image: "/Frame 35143.png" },
+    { label: "Před", image: "/Frame 35144.png" },
+    { label: "Po", image: "/Frame 35145.png" },
+    { label: "Před", image: "/Frame 35146.png" },
+    { label: "Po", image: "/Frame 35138.png" },
+    { label: "Před", image: "/Frame 35139.png" },
+    { label: "Po", image: "/Frame 35140.png" },
   ];
 
   // Створюємо колекції по 3 пари "До/Після"
@@ -48,11 +48,11 @@ export default function Gallery() {
           afterPhoto: { url: string; title?: string; description?: string };
           label?: string;
         }) => ({
-          label: "До",
+          label: "Před",
           image: pair.beforePhoto?.url,
           pairId: pair.id,
           type: "before",
-          title: pair.beforePhoto?.title || "До",
+          title: pair.beforePhoto?.title || "Před",
           description: pair.beforePhoto?.description || "",
           pairLabel: pair.label || "",
         })
@@ -66,11 +66,11 @@ export default function Gallery() {
           afterPhoto: { url: string; title?: string; description?: string };
           label?: string;
         }) => ({
-          label: "Після",
+          label: "Po",
           image: pair.afterPhoto?.url,
           pairId: pair.id,
           type: "after",
-          title: pair.afterPhoto?.title || "Після",
+          title: pair.afterPhoto?.title || "Po",
           description: pair.afterPhoto?.description || "",
           pairLabel: pair.label || "",
         })
@@ -210,7 +210,7 @@ export default function Gallery() {
               detail.
             </p>
           </div>
-          <div className={styles.loading}>Завантаження...</div>
+          <div className={styles.loading}>Načítání...</div>
         </div>
       </section>
     );

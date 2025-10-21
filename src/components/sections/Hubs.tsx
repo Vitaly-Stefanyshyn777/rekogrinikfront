@@ -16,14 +16,14 @@ export default function Hubs() {
   const [active, setActive] = useState(0);
   const { photos, loading, error } = useGeneralGallery();
 
-  // Fallback images якщо API не працює
+  // Fallback images pokud API nefunguje
   const fallbackImages = [
     "/Frame 35144.png",
     "/Frame 35145.png",
     "/Frame 35146.png",
   ];
 
-  // Використовуємо дані з API або fallback
+  // Používáme data z API nebo fallback
   const images =
     photos.length > 0
       ? photos.map((photo: { url: string }) => photo.url || fallbackImages[0])
@@ -33,9 +33,9 @@ export default function Hubs() {
     return (
       <section className={styles.section} id="hubs">
         <div className={styles.container}>
-          <h2 className={styles.title}>Наші Хуби</h2>
+          <h2 className={styles.title}>Naše Huby</h2>
           <div className={styles.sliderWrap}>
-            <div className={styles.loading}>Завантаження...</div>
+            <div className={styles.loading}>Načítání...</div>
           </div>
         </div>
       </section>
@@ -43,17 +43,17 @@ export default function Hubs() {
   }
 
   if (error) {
-    console.error("Помилка завантаження галереї:", error);
+    console.error("Chyba načítání galerie:", error);
   }
 
-  // Дебаг логування
+  // Debug logování
   console.log("Photos from API:", photos);
   console.log("Processed images:", images);
 
   return (
     <section className={styles.section} id="hubs">
       <div className={styles.container}>
-        <h2 className={styles.title}>Наші Хуби</h2>
+        <h2 className={styles.title}>Naše Huby</h2>
         <div className={styles.sliderWrap}>
           <Swiper
             modules={[Navigation, Pagination]}

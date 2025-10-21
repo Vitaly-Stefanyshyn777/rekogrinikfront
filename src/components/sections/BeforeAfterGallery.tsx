@@ -10,8 +10,8 @@ export default function BeforeAfterGallery() {
     return (
       <section className={styles.section} id="before-after">
         <div className={styles.container}>
-          <h2 className={styles.title}>До та Після</h2>
-          <div className={styles.loading}>Завантаження...</div>
+          <h2 className={styles.title}>Před a Po</h2>
+          <div className={styles.loading}>Načítání...</div>
         </div>
       </section>
     );
@@ -25,9 +25,9 @@ export default function BeforeAfterGallery() {
     return (
       <section className={styles.section} id="before-after">
         <div className={styles.container}>
-          <h2 className={styles.title}>До та Після</h2>
+          <h2 className={styles.title}>Před a Po</h2>
           <div className={styles.empty}>
-            Немає доступних пар &quot;До/Після&quot;
+            Nejsou k dispozici páry &quot;Před/Po&quot;
           </div>
         </div>
       </section>
@@ -49,7 +49,7 @@ export default function BeforeAfterGallery() {
                 <div className={styles.beforePhoto}>
                   <img
                     src={pair.beforePhoto.url}
-                    alt={pair.beforePhoto.title || "До"}
+                    alt={pair.beforePhoto.title || "Před"}
                     onError={(e) => {
                       console.log(
                         "Before photo failed to load:",
@@ -58,7 +58,7 @@ export default function BeforeAfterGallery() {
                       e.currentTarget.style.display = "none";
                     }}
                   />
-                  <span className={styles.label}>До</span>
+                  <span className={styles.label}>Před</span>
                 </div>
 
                 <div className={styles.arrow}>→</div>
@@ -66,7 +66,7 @@ export default function BeforeAfterGallery() {
                 <div className={styles.afterPhoto}>
                   <img
                     src={pair.afterPhoto.url}
-                    alt={pair.afterPhoto.title || "Після"}
+                    alt={pair.afterPhoto.title || "Po"}
                     onError={(e) => {
                       console.log(
                         "After photo failed to load:",
@@ -75,7 +75,7 @@ export default function BeforeAfterGallery() {
                       e.currentTarget.style.display = "none";
                     }}
                   />
-                  <span className={styles.label}>Після</span>
+                  <span className={styles.label}>Po</span>
                 </div>
               </div>
             )

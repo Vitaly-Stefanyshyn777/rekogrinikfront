@@ -108,12 +108,12 @@ export default function Contact() {
           <div className={styles.leftTopRow}>
             <div className={styles.leftCol}>
               <span className={styles.h1}>
-                Ви готові розпочати свій проєкт?
+                Jste připraveni začít svůj projekt?
               </span>
               <p>
-                Залиште нам заявку, і наш спеціаліст зв&apos;яжеться з вами
-                протягом години, щоб обговорити деталі та провести безкоштовний
-                огляд нерухомості.
+                Nechte nám žádost a náš specialista vás kontaktuje do hodiny,
+                abychom prodiskutovali detaily a provedli bezplatnou prohlídku
+                nemovitosti.
               </p>
             </div>
             <div className={styles.leftCollow}>
@@ -123,7 +123,7 @@ export default function Contact() {
                 </span>
                 <div className={styles.infoText}>
                   <p className={styles.phoneTitle}>+420 608 583 115</p>
-                  <p className={styles.phoneSub}>Дзвоніть будь-коли</p>
+                  <p className={styles.phoneSub}>Volejte kdykoli</p>
                 </div>
               </div>
               <div className={styles.infoItem}>
@@ -132,9 +132,7 @@ export default function Contact() {
                 </span>
                 <div className={styles.infoText}>
                   <p className={styles.emailTitle}>rekogrinikcz@gmail.com</p>
-                  <p className={styles.emailSub}>
-                    Ми відповідаємо протягом години
-                  </p>
+                  <p className={styles.emailSub}>Odpovídáme do hodiny</p>
                 </div>
               </div>
             </div>
@@ -145,15 +143,15 @@ export default function Contact() {
                   <span className={styles.timeIcon}>
                     <TimeIcon />
                   </span>
-                  <p>Графік роботи</p>
+                  <p>Pracovní doba</p>
                 </div>
                 <div className={styles.schedule}>
                   <div className={styles.scheduleCol}>
-                    <p className={styles.scheduleDays}>Пн–Пт</p>
+                    <p className={styles.scheduleDays}>Po–Pá</p>
                     <p className={styles.scheduleTime}>08:00 - 20:00</p>
                   </div>
                   <div className={styles.scheduleCol}>
-                    <p className={styles.scheduleDays}>Субота-Неділя</p>
+                    <p className={styles.scheduleDays}>Sobota-Neděle</p>
                     <p className={styles.scheduleTime}>09:00 - 18:00</p>
                   </div>
                 </div>
@@ -181,12 +179,12 @@ export default function Contact() {
               <div className={styles.fieldPair}>
                 <div className={styles.field}>
                   <input
-                    placeholder="Електронна адреса для зв'язку"
+                    placeholder="E-mailová adresa pro kontakt"
                     {...register("email", {
-                      required: "Email обов'язковий",
+                      required: "E-mail je povinný",
                       pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: "Невірний формат email",
+                        message: "Neplatný formát e-mailu",
                       },
                     })}
                   />
@@ -194,12 +192,12 @@ export default function Contact() {
                 </div>
                 <div className={styles.field}>
                   <input
-                    placeholder="Ваш номер телефону"
+                    placeholder="Vaše telefonní číslo"
                     {...register("phone", {
-                      required: "Телефон обов'язковий",
+                      required: "Telefon je povinný",
                       pattern: {
                         value: /^[\+]?[0-9\s\-\(\)]{10,}$/,
-                        message: "Невірний формат телефону",
+                        message: "Neplatný formát telefonu",
                       },
                     })}
                   />
@@ -209,12 +207,12 @@ export default function Contact() {
               <div className={styles.fieldPair}>
                 <div className={styles.field}>
                   <input
-                    placeholder="Ім'я для адреси"
+                    placeholder="Jméno pro adresu"
                     {...register("name", {
-                      required: "Ім'я обов'язкове",
+                      required: "Jméno je povinné",
                       minLength: {
                         value: 2,
-                        message: "Мінімум 2 символи",
+                        message: "Minimálně 2 znaky",
                       },
                     })}
                   />
@@ -222,12 +220,12 @@ export default function Contact() {
                 </div>
                 <div className={styles.field}>
                   <input
-                    placeholder="Ваша адреса"
+                    placeholder="Vaše adresa"
                     {...register("address", {
-                      required: "Адреса обов'язкова",
+                      required: "Adresa je povinná",
                       minLength: {
                         value: 5,
-                        message: "Мінімум 5 символів",
+                        message: "Minimálně 5 znaků",
                       },
                     })}
                   />
@@ -238,17 +236,19 @@ export default function Contact() {
             <div className={styles.selectRow}>
               <select
                 {...register("workType", {
-                  required: "Тип роботи обов'язковий",
+                  required: "Typ práce je povinný",
                 })}
               >
                 <option value="" disabled>
-                  Виберіть тип роботи
+                  Vyberte typ práce
                 </option>
-                <option value="Ремонт квартири">Ремонт квартири</option>
-                <option value="Ванні кімнати">Ванні кімнати</option>
-                <option value="Гіпсокартон">Гіпсокартон</option>
-                <option value="Повна реконструкція">Повна реконструкція</option>
-                <option value="Косметичний ремонт">Косметичний ремонт</option>
+                <option value="Oprava bytu">Oprava bytu</option>
+                <option value="Koupelny">Koupelny</option>
+                <option value="Sádrokarton">Sádrokarton</option>
+                <option value="Kompletní rekonstrukce">
+                  Kompletní rekonstrukce
+                </option>
+                <option value="Kosmetické opravy">Kosmetické opravy</option>
               </select>
               <span className={styles.checkIcon}>
                 <CheckMarkIcon />
@@ -257,11 +257,11 @@ export default function Contact() {
             <div className={styles.textareaRow}>
               <textarea
                 rows={4}
-                placeholder="Розкажіть нам більше про ваш проєкт..."
+                placeholder="Řekněte nám více o vašem projektu..."
                 {...register("message", {
                   maxLength: {
                     value: 500,
-                    message: "Максимум 500 символів",
+                    message: "Maximálně 500 znaků",
                   },
                 })}
               ></textarea>
@@ -272,13 +272,13 @@ export default function Contact() {
                 className={styles.submit}
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Відправлення..." : "Відправити запит"}
+                {isSubmitting ? "Odesílání..." : "Odeslat žádost"}
               </button>
               <p className={styles.note}>
-                Натискаючи кнопку, ви погоджуєтеся на обробку персональних даних
-                відповідно до{" "}
+                Kliknutím na tlačítko souhlasíte se zpracováním osobních údajů v
+                souladu s{" "}
                 <Link href="/privacy" className={styles.privacyLink}>
-                  політики конфіденційності
+                  zásadami ochrany osobních údajů
                 </Link>
                 .
               </p>
@@ -289,7 +289,7 @@ export default function Contact() {
               )}
               {submitSuccess && (
                 <p className={styles.note} style={{ color: "#0a513d" }}>
-                  Дякуємо! Заявку прийнято (ID: {submitSuccess}).
+                  Děkujeme! Žádost přijata (ID: {submitSuccess}).
                 </p>
               )}
             </div>

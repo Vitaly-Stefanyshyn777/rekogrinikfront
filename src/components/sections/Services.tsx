@@ -61,7 +61,7 @@ const servicesData = [
   {
     icon: <NetIcon />,
     title: "Podlahářské práce",
-    subtitle: "Laminát, parkety, vinyl",
+    subtitle: "Laminát, parkety, vinyl, dlažba",
     description:
       "Pokládka všech typů podlahových krytin s důrazem na přesnost a dlouhou životnost.",
   },

@@ -4,123 +4,121 @@ export default function PrivacyPage() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <h1 className={styles.title}>Політика конфіденційності</h1>
+        <h1 className={styles.title}>Zásady ochrany osobních údajů</h1>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>1. Загальні положення</h2>
+          <h2 className={styles.sectionTitle}>1. Obecná ustanovení</h2>
           <p>
-            Ця політика конфіденційності описує, як RekoGrinik збирає,
-            використовує та захищає вашу особисту інформацію при використанні
-            нашого веб-сайту та послуг.
+            Tyto zásady ochrany osobních údajů popisují, jak RekoGrinik
+            shromažďuje, používá a chrání vaše osobní informace při používání
+            našeho webu a služeb.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>2. Збір інформації</h2>
-          <p>Ми збираємо наступні типи інформації:</p>
+          <h2 className={styles.sectionTitle}>2. Shromažďování informací</h2>
+          <p>Shromažďujeme následující typy informací:</p>
           <ul>
             <li>
-              <strong>Контактна інформація:</strong> ім&apos;я, телефон, email,
-              адреса
+              <strong>Kontaktní informace:</strong> jméno, telefon, email,
+              adresa
             </li>
             <li>
-              <strong>Технічна інформація:</strong> IP-адреса, тип браузера,
-              операційна система
+              <strong>Technické informace:</strong> IP-adresa, typ prohlížeče,
+              operační systém
             </li>
             <li>
-              <strong>Інформація про використання:</strong> сторінки, які ви
-              відвідуєте, час проведений на сайті
+              <strong>Informace o používání:</strong> stránky, které
+              navštěvujete, čas strávený na webu
             </li>
             <li>
-              <strong>Файли та документи:</strong> завантажені вами зображення
-              та документи
+              <strong>Soubory a dokumenty:</strong> nahrané obrázky a dokumenty
             </li>
           </ul>
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>3. Використання інформації</h2>
-          <p>Ваша інформація використовується для:</p>
+          <h2 className={styles.sectionTitle}>3. Používání informací</h2>
+          <p>Vaše informace se používají pro:</p>
           <ul>
-            <li>Надання послуг з реконструкції</li>
-            <li>Зв&apos;язку з вами щодо ваших запитів</li>
-            <li>Покращення якості наших послуг</li>
-            <li>Відправки важливих повідомлень</li>
+            <li>Poskytování rekonstrukčních služeb</li>
+            <li>Komunikaci s vámi ohledně vašich požadavků</li>
+            <li>Zlepšování kvality našich služeb</li>
+            <li>Odesílání důležitých zpráv</li>
           </ul>
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>4. Захист даних</h2>
+          <h2 className={styles.sectionTitle}>4. Ochrana údajů</h2>
           <p>
-            Ми впроваджуємо відповідні технічні та організаційні заходи для
-            захисту вашої особистої інформації від несанкціонованого доступу,
-            зміни, розкриття або знищення.
+            Implementujeme odpovídající technická a organizační opatření pro
+            ochranu vašich osobních informací před neoprávněným přístupem,
+            změnou, zveřejněním nebo zničením.
           </p>
         </section>
 
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>
-            5. Передача даних третім особам
+            5. Předávání údajů třetím stranám
           </h2>
           <p>
-            Ми не продаємо, не обмінюємо та не передаємо вашу особисту
-            інформацію третім особам без вашої згоди, за винятком випадків,
-            необхідних для надання послуг або виконання правових вимог.
+            Neprodáváme, nevyměňujeme ani nepředáváme vaše osobní informace
+            třetím stranám bez vašeho souhlasu, kromě případů nezbytných pro
+            poskytování služeb nebo plnění právních požadavků.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>6. Ваші права</h2>
-          <p>Ви маєте право:</p>
+          <h2 className={styles.sectionTitle}>6. Vaše práva</h2>
+          <p>Máte právo:</p>
           <ul>
-            <li>Отримати копію ваших особистих даних</li>
-            <li>Виправити неточну інформацію</li>
-            <li>Видалити ваші дані</li>
-            <li>Обмежити обробку ваших даних</li>
-            <li>Відкликати згоду на обробку даних</li>
+            <li>Získat kopii vašich osobních údajů</li>
+            <li>Opravit nepřesné informace</li>
+            <li>Smazat vaše údaje</li>
+            <li>Omezit zpracování vašich údajů</li>
+            <li>Odvolat souhlas se zpracováním údajů</li>
           </ul>
         </section>
 
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>7. Cookies</h2>
           <p>
-            Наш веб-сайт використовує cookies для покращення функціональності та
-            аналізу використання. Ви можете налаштувати ваш браузер для відмови
-            від cookies.
+            Náš web používá cookies pro zlepšení funkčnosti a analýzu používání.
+            Můžete nastavit váš prohlížeč pro odmítnutí cookies.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>8. Зміни в політиці</h2>
+          <h2 className={styles.sectionTitle}>8. Změny v zásadách</h2>
           <p>
-            Ми можемо оновлювати цю політику конфіденційності. Будь-які зміни
-            будуть опубліковані на цій сторінці з оновленою датою.
+            Můžeme aktualizovat tyto zásady ochrany osobních údajů. Jakékoli
+            změny budou zveřejněny na této stránce s aktualizovaným datem.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>9. Контактна інформація</h2>
+          <h2 className={styles.sectionTitle}>9. Kontaktní informace</h2>
           <p>
-            Якщо у вас є питання щодо цієї політики конфіденційності, будь
-            ласка, зв&apos;яжіться з нами:
+            Pokud máte otázky ohledně těchto zásad ochrany osobních údajů,
+            prosím kontaktujte nás:
           </p>
           <ul>
             <li>
               <strong>Email:</strong> info@rekogrinik.cz
             </li>
             <li>
-              <strong>Телефон:</strong> +420 XXX XXX XXX
+              <strong>Telefon:</strong> +420 XXX XXX XXX
             </li>
             <li>
-              <strong>Адреса:</strong> Прага, Чехія
+              <strong>Adresa:</strong> Praha, Česká republika
             </li>
           </ul>
         </section>
 
         <section className={styles.section}>
           <p className={styles.lastUpdated}>
-            <strong>Останнє оновлення:</strong>{" "}
-            {new Date().toLocaleDateString("uk-UA")}
+            <strong>Poslední aktualizace:</strong>{" "}
+            {new Date().toLocaleDateString("cs-CZ")}
           </p>
         </section>
       </div>

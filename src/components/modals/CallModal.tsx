@@ -33,7 +33,7 @@ export default function CallModal({ isOpen, onClose }: CallModalProps) {
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
-          <h2>Підтвердження дзвінка</h2>
+          <h2>Potvrzení hovoru</h2>
           <button className={styles.closeButton} onClick={onClose}>
             ×
           </button>
@@ -41,26 +41,26 @@ export default function CallModal({ isOpen, onClose }: CallModalProps) {
 
         <div className={styles.content}>
           <div className={styles.icon}>📞</div>
-          <h3>Ви хочете зателефонувати нам?</h3>
+          <h3>Chcete nám zavolat?</h3>
           <p className={styles.description}>
-            Натисніть кнопку нижче, щоб зателефонувати за номером:
+            Klikněte na tlačítko níže pro zavolání na číslo:
           </p>
           <p className={styles.phoneNumber}>+420 608 583 115</p>
           <p className={styles.schedule}>
-            <strong>Графік роботи:</strong>
+            <strong>Pracovní doba:</strong>
             <br />
-            Пн-Пт: 08:00 - 20:00
+            Po-Pá: 08:00 - 20:00
             <br />
-            Субота-Неділя: 09:00 - 18:00
+            Sobota-Neděle: 09:00 - 18:00
           </p>
         </div>
 
         <div className={styles.actions}>
           <button className={styles.callButton} onClick={handleCall}>
-            📞 Зателефонувати
+            📞 Zavolat
           </button>
           <button className={styles.cancelButton} onClick={onClose}>
-            Скасувати
+            Zrušit
           </button>
         </div>
       </div>

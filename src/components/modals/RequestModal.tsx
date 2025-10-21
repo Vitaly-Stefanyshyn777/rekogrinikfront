@@ -115,7 +115,7 @@ export default function RequestModal({ isOpen, onClose }: RequestModalProps) {
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
-          <h2>Відправити запит</h2>
+          <h2>Odeslat žádost</h2>
           <button className={styles.closeButton} onClick={onClose}>
             ×
           </button>
@@ -126,12 +126,12 @@ export default function RequestModal({ isOpen, onClose }: RequestModalProps) {
             <div className={styles.fieldPair}>
               <div className={styles.field}>
                 <input
-                  placeholder="Електронна адреса для зв'язку"
+                  placeholder="E-mailová adresa pro kontakt"
                   {...register("email", {
-                    required: "Email обов'язковий",
+                    required: "E-mail je povinný",
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: "Невірний формат email",
+                      message: "Neplatný formát e-mailu",
                     },
                   })}
                 />
@@ -139,12 +139,12 @@ export default function RequestModal({ isOpen, onClose }: RequestModalProps) {
               </div>
               <div className={styles.field}>
                 <input
-                  placeholder="Ваш номер телефону"
+                  placeholder="Vaše telefonní číslo"
                   {...register("phone", {
-                    required: "Телефон обов'язковий",
+                    required: "Telefon je povinný",
                     pattern: {
                       value: /^[\+]?[0-9\s\-\(\)]{10,}$/,
-                      message: "Невірний формат телефону",
+                      message: "Neplatný formát telefonu",
                     },
                   })}
                 />
@@ -154,12 +154,12 @@ export default function RequestModal({ isOpen, onClose }: RequestModalProps) {
             <div className={styles.fieldPair}>
               <div className={styles.field}>
                 <input
-                  placeholder="Ім'я для адреси"
+                  placeholder="Jméno pro adresu"
                   {...register("name", {
-                    required: "Ім'я обов'язкове",
+                    required: "Jméno je povinné",
                     minLength: {
                       value: 2,
-                      message: "Мінімум 2 символи",
+                      message: "Minimálně 2 znaky",
                     },
                   })}
                 />
@@ -167,12 +167,12 @@ export default function RequestModal({ isOpen, onClose }: RequestModalProps) {
               </div>
               <div className={styles.field}>
                 <input
-                  placeholder="Ваша адреса"
+                  placeholder="Vaše adresa"
                   {...register("address", {
-                    required: "Адреса обов'язкова",
+                    required: "Adresa je povinná",
                     minLength: {
                       value: 5,
-                      message: "Мінімум 5 символів",
+                      message: "Minimálně 5 znaků",
                     },
                   })}
                 />
@@ -184,28 +184,30 @@ export default function RequestModal({ isOpen, onClose }: RequestModalProps) {
           <div className={styles.selectRow}>
             <select
               {...register("workType", {
-                required: "Тип роботи обов'язковий",
+                required: "Typ práce je povinný",
               })}
             >
               <option value="" disabled>
-                Виберіть тип роботи
+                Vyberte typ práce
               </option>
-              <option value="Ремонт квартири">Ремонт квартири</option>
-              <option value="Ванні кімнати">Ванні кімнати</option>
-              <option value="Гіпсокартон">Гіпсокартон</option>
-              <option value="Повна реконструкція">Повна реконструкція</option>
-              <option value="Косметичний ремонт">Косметичний ремонт</option>
+              <option value="Oprava bytu">Oprava bytu</option>
+              <option value="Koupelny">Koupelny</option>
+              <option value="Sádrokarton">Sádrokarton</option>
+              <option value="Kompletní rekonstrukce">
+                Kompletní rekonstrukce
+              </option>
+              <option value="Kosmetické opravy">Kosmetické opravy</option>
             </select>
           </div>
 
           <div className={styles.textareaRow}>
             <textarea
               rows={4}
-              placeholder="Розкажіть нам більше про ваш проєкт..."
+              placeholder="Řekněte nám více o vašem projektu..."
               {...register("message", {
                 maxLength: {
                   value: 500,
-                  message: "Максимум 500 символів",
+                  message: "Maximálně 500 znaků",
                 },
               })}
             />
@@ -217,13 +219,13 @@ export default function RequestModal({ isOpen, onClose }: RequestModalProps) {
               className={styles.submit}
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Відправлення..." : "Відправити запит"}
+              {isSubmitting ? "Odesílání..." : "Odeslat žádost"}
             </button>
             <p className={styles.note}>
-              Натискаючи кнопку, ви погоджуєтеся на обробку персональних даних
-              відповідно до{" "}
+              Kliknutím na tlačítko souhlasíte se zpracováním osobních údajů v
+              souladu s{" "}
               <Link href="/privacy" className={styles.privacyLink}>
-                політики конфіденційності
+                zásadami ochrany osobních údajů
               </Link>
               .
             </p>
@@ -234,7 +236,7 @@ export default function RequestModal({ isOpen, onClose }: RequestModalProps) {
             )}
             {submitSuccess && (
               <p className={styles.note} style={{ color: "#0a513d" }}>
-                Дякуємо! Заявку прийнято (ID: {submitSuccess}).
+                Děkujeme! Žádost přijata (ID: {submitSuccess}).
               </p>
             )}
           </div>

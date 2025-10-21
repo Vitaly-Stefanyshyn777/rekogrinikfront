@@ -62,7 +62,7 @@ export default function Hero() {
       >
         <div className={styles.overlay}>
           <div className={styles.centerText}>
-            <div className={styles.loading}>Завантаження...</div>
+            <div className={styles.loading}>Načítání...</div>
           </div>
         </div>
       </section>

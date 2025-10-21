@@ -26,7 +26,7 @@ export default function ConsultationModal({
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState<string | null>(null);
 
-  // Блокування скролу при відкритті модалки
+  // Blokování scrollu při otevření modálu
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -34,7 +34,7 @@ export default function ConsultationModal({
       document.body.style.overflow = "";
     }
 
-    // Очищення при розмонтуванні
+    // Vyčištění při odmontování
     return () => {
       document.body.style.overflow = "";
     };
@@ -82,7 +82,7 @@ export default function ConsultationModal({
         name: data.name,
         phone: data.phone,
         email: data.email,
-        workType: "Безкоштовна консультація",
+        workType: "Bezplatná konzultace",
         message: data.message,
         consent: true,
         address: "",
@@ -101,7 +101,7 @@ export default function ConsultationModal({
       });
     } catch (e: unknown) {
       setSubmitError(
-        e instanceof Error ? e.message : "Помилка відправки форми"
+        e instanceof Error ? e.message : "Chyba odesílání formuláře"
       );
     } finally {
       setIsSubmitting(false);
@@ -114,7 +114,7 @@ export default function ConsultationModal({
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
-          <h2>Отримати безкоштовну консультацію</h2>
+          <h2>Získat bezplatnou konzultaci</h2>
           <button className={styles.closeButton} onClick={onClose}>
             ×
           </button>
@@ -123,20 +123,20 @@ export default function ConsultationModal({
         <div className={styles.content}>
           <div className={styles.icon}>💬</div>
           <p className={styles.description}>
-            Заповніть форму нижче, і наш спеціаліст зв&apos;яжеться з вами
-            протягом години для безкоштовної консультації щодо вашого проєкту.
+            Vyplňte formulář níže a náš specialista vás kontaktuje do hodiny pro
+            bezplatnou konzultaci ohledně vašeho projektu.
           </p>
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.field}>
             <input
-              placeholder="Ваше ім'я"
+              placeholder="Vaše jméno"
               {...register("name", {
-                required: "Ім'я обов'язкове",
+                required: "Jméno je povinné",
                 minLength: {
                   value: 2,
-                  message: "Мінімум 2 символи",
+                  message: "Minimálně 2 znaky",
                 },
               })}
             />
@@ -145,12 +145,12 @@ export default function ConsultationModal({
 
           <div className={styles.field}>
             <input
-              placeholder="Ваш номер телефону"
+              placeholder="Vaše telefonní číslo"
               {...register("phone", {
-                required: "Телефон обов'язковий",
+                required: "Telefon je povinný",
                 pattern: {
                   value: /^[\+]?[0-9\s\-\(\)]{10,}$/,
-                  message: "Невірний формат телефону",
+                  message: "Neplatný formát telefonu",
                 },
               })}
             />
@@ -159,12 +159,12 @@ export default function ConsultationModal({
 
           <div className={styles.field}>
             <input
-              placeholder="Електронна адреса"
+              placeholder="E-mailová adresa"
               {...register("email", {
-                required: "Email обов'язковий",
+                required: "E-mail je povinný",
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Невірний формат email",
+                  message: "Neplatný formát e-mailu",
                 },
               })}
             />
@@ -174,11 +174,11 @@ export default function ConsultationModal({
           <div className={styles.field}>
             <textarea
               rows={4}
-              placeholder="Опишіть ваш проєкт або питання..."
+              placeholder="Popište váš projekt nebo otázku..."
               {...register("message", {
                 maxLength: {
                   value: 500,
-                  message: "Максимум 500 символів",
+                  message: "Maximálně 500 znaků",
                 },
               })}
             />
@@ -190,13 +190,13 @@ export default function ConsultationModal({
               className={styles.submit}
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Відправлення..." : "Отримати консультацію"}
+              {isSubmitting ? "Odesílání..." : "Získat konzultaci"}
             </button>
             <p className={styles.note}>
-              Натискаючи кнопку, ви погоджуєтеся на обробку персональних даних
-              відповідно до{" "}
+              Kliknutím na tlačítko souhlasíte se zpracováním osobních údajů v
+              souladu s{" "}
               <Link href="/privacy" className={styles.privacyLink}>
-                політики конфіденційності
+                zásadami ochrany osobních údajů
               </Link>
               .
             </p>
@@ -207,7 +207,7 @@ export default function ConsultationModal({
             )}
             {submitSuccess && (
               <p className={styles.note} style={{ color: "#0a513d" }}>
-                Дякуємо! Заявку на консультацію прийнято (ID: {submitSuccess}).
+                Děkujeme! Žádost o konzultaci přijata (ID: {submitSuccess}).
               </p>
             )}
           </div>
