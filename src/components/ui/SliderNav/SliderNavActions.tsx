@@ -43,7 +43,7 @@ export default function SliderNav({
         className={s.rightBtn}
         onClick={onNext}
         aria-label="Next slide"
-        style={{ background: buttonBgColor }}
+        // style={{ background: buttonBgColor }}
       >
         <ArrowRightIcon />
       </button>
