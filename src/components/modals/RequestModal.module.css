@@ -97,6 +97,10 @@
   transition: all 0.3s ease;
 }
 
+.field input::placeholder {
+  color: #9ca3af;
+}
+
 .field input:hover {
   border-color: #0a513d;
   background: #f8f9fa;
@@ -183,6 +187,10 @@
   transition: all 0.3s ease;
   resize: vertical;
   min-height: 100px;
+}
+
+.textareaRow textarea::placeholder {
+  color: #9ca3af;
 }
 
 .textareaRow textarea:hover {

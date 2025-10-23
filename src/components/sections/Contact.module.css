@@ -255,6 +255,10 @@
   transition: all 0.3s ease;
 }
 
+.field input::placeholder {
+  color: #9ca3af;
+}
+
 .field input:hover {
   border-color: #0a513d;
   background: #f8f9fa;
@@ -343,6 +347,10 @@
   cursor: pointer;
   transition: all 0.3s ease;
   resize: vertical;
+}
+
+.textareaRow textarea::placeholder {
+  color: #9ca3af;
 }
 
 .textareaRow textarea:hover {
@@ -471,8 +479,6 @@
   }
   .fieldPair {
     gap: 16px;
-  }
-  .field {
   }
   .note {
     font-family: var(--font-family);
