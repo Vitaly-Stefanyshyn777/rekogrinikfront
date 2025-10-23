@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 
 interface MultilingualSEOProps {
   currentLang?: string;
@@ -10,8 +9,6 @@ interface MultilingualSEOProps {
 export default function MultilingualSEO({
   currentLang = "uk",
 }: MultilingualSEOProps) {
-  const router = useRouter();
-
   useEffect(() => {
     // Визначаємо мову користувача
     const detectLanguage = () => {

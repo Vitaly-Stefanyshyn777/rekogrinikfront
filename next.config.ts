@@ -94,7 +94,6 @@ const nextConfig: NextConfig = {
 
   // Експериментальні функції для продуктивності
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ["@/components"],
   },
 

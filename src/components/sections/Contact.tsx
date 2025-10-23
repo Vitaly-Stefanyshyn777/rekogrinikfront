@@ -58,8 +58,6 @@ export default function Contact() {
     handleSubmit,
     formState: { errors },
     reset,
-    setValue,
-    watch,
   } = useForm<FormValues>({
     defaultValues: { workType: "", consent: false },
   });
