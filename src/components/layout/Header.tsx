@@ -67,9 +67,6 @@ export default function Header() {
             <Link href="#about" className={styles.navLink}>
               O nás
             </Link>
-            <Link href="/privacy" className={styles.navLink}>
-              Privacy
-            </Link>
           </nav>
         </div>
         <div className={styles.right}>

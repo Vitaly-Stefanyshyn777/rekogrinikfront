@@ -38,6 +38,49 @@ export default function PrivacyPage() {
         </section>
 
         <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>
+            2.1. Zpracování údajů z formulářů
+          </h2>
+          <p>
+            Při vyplňování formulářů na našem webu (kontaktní formulář, formulář
+            pro bezplatnou konzultaci, formulář pro odeslání žádosti)
+            shromažďujeme a zpracováváme následující osobní údaje:
+          </p>
+          <ul>
+            <li>
+              <strong>Povinné údaje:</strong> jméno, telefonní číslo, e-mailová
+              adresa
+            </li>
+            <li>
+              <strong>Doplňující údaje:</strong> adresa, typ práce, zpráva s
+              popisem projektu
+            </li>
+            <li>
+              <strong>Technické údaje:</strong> čas odeslání formuláře, IP
+              adresa, zdroj návštěvy (UTM parametry)
+            </li>
+            <li>
+              <strong>Marketingové údaje:</strong> souhlas se zpracováním
+              osobních údajů
+            </li>
+          </ul>
+          <p>
+            <strong>Účel zpracování:</strong> Tyto údaje používáme výhradně pro
+            poskytování našich rekonstrukčních služeb, komunikaci s vámi ohledně
+            vašich požadavků a zlepšování kvality našich služeb.
+          </p>
+          <p>
+            <strong>Právní základ:</strong> Zpracování probíhá na základě vašeho
+            souhlasu (čl. 6 odst. 1 písm. a) GDPR) a pro účely plnění smlouvy
+            (čl. 6 odst. 1 písm. b) GDPR).
+          </p>
+          <p>
+            <strong>Doba uchování:</strong> Vaše údaje uchováváme po dobu 3 let
+            od posledního kontaktu nebo do odvolání souhlasu se zpracováním.
+          </p>
+        </section>
+
+        <section className={styles.section}>
           <h2 className={styles.sectionTitle}>3. Používání informací</h2>
           <p>Vaše informace se používají pro:</p>
           <ul>

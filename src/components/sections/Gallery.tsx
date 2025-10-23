@@ -243,9 +243,11 @@ export default function Gallery() {
             </div>
           )}
 
-          <button className={styles.ctaBtn} onClick={handleShowMore}>
-            {hasMoreItems ? "Zobrazit více" : "Zobrazit méně"}
-          </button>
+          {allItems.length > 6 && (
+            <button className={styles.ctaBtn} onClick={handleShowMore}>
+              {hasMoreItems ? "Zobrazit více" : "Zobrazit méně"}
+            </button>
+          )}
         </div>
       </div>
     </section>

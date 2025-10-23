@@ -162,6 +162,12 @@
   background: #e4e4e4;
   border-radius: 50%;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot:hover {
+  background: #0a513d;
+  transform: scale(1.2);
 }
 
 .activeDot {
@@ -216,7 +222,7 @@
   align-items: center;
   width: 44px;
   height: 44px;
-  transition: opacity 0.2s;
+  transition: all 0.3s ease;
   display: flex;
   backdrop-filter: blur(20px);
   background: var(--white);
@@ -224,7 +230,20 @@
   svg {
     width: 20px;
     height: 20px;
+    transition: all 0.3s ease;
   }
+}
+
+.rightBtn:hover {
+  background: #0a513d;
+  border-color: #0a513d;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(10, 81, 61, 0.3);
+}
+
+.rightBtn:hover svg {
+  color: white;
+  transform: translateX(2px);
 }
 
 .leftBtn {
@@ -235,7 +254,7 @@
   align-items: center;
   width: 44px;
   height: 44px;
-  transition: opacity 0.2s;
+  transition: all 0.3s ease;
   display: flex;
   backdrop-filter: blur(20px);
   background: var(--white);
@@ -243,7 +262,20 @@
   svg {
     width: 20px;
     height: 20px;
+    transition: all 0.3s ease;
   }
+}
+
+.leftBtn:hover {
+  background: #0a513d;
+  border-color: #0a513d;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(10, 81, 61, 0.3);
+}
+
+.leftBtn:hover svg {
+  color: white;
+  transform: translateX(-2px);
 }
 
 .arrowBtn {
@@ -255,11 +287,23 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: all 0.3s ease;
   svg {
     width: 20px;
     height: 20px;
+    transition: all 0.3s ease;
   }
+}
+
+.arrowBtn:hover {
+  background: #0a513d;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(10, 81, 61, 0.3);
+}
+
+.arrowBtn:hover svg {
+  color: white;
+  transform: scale(1.1);
 }
 
 @media (max-width: 1024px) {
