@@ -110,33 +110,56 @@
 .selectRow {
   position: relative;
   margin-bottom: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.selectRow select {
+.workTypeInput {
   width: 100%;
   height: 48px;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
-  padding: 0 12px;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: #fff;
-  font-family: var(--font-family);
+  border: none;
+  padding: 0 16px;
+  background: transparent;
+  font-family: var(
+    --font-family,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif
+  );
   font-weight: 400;
   font-size: 14px;
   color: #717182;
   cursor: pointer;
   transition: all 0.3s ease;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
-.selectRow select:hover {
+.workTypeInput::after,
+.workTypeInput::before {
+  display: none !important;
+  content: none !important;
+}
+
+.workTypeInput::placeholder {
+  color: #9ca3af;
+}
+
+.selectRow:hover {
   border-color: #0a513d;
   background: #f8f9fa;
+  box-shadow: 0 2px 8px rgba(10, 81, 61, 0.15);
+  transform: translateY(-1px);
 }
 
-.selectRow select:focus {
-  outline: none;
+.selectRow:focus-within {
   border-color: #0a513d;
   box-shadow: 0 0 0 3px rgba(10, 81, 61, 0.1);
 }
@@ -259,5 +282,9 @@
 
   .form {
     padding: 0 20px 20px 20px;
+  }
+
+  .selectRow {
+    border-radius: 6px;
   }
 }

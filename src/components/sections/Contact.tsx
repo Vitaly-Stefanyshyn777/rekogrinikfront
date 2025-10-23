@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import styles from "./Contact.module.css";
 import {
-  CheckMarkIcon,
   NumberIcon,
   EmailIcon,
   Instagram2Icon,
@@ -59,6 +58,8 @@ export default function Contact() {
     handleSubmit,
     formState: { errors },
     reset,
+    setValue,
+    watch,
   } = useForm<FormValues>({
     defaultValues: { workType: "", consent: false },
   });
@@ -234,25 +235,21 @@ export default function Contact() {
               </div>
             </div>
             <div className={styles.selectRow}>
-              <select
+              <input
+                // list="workTypes"
+                placeholder="Vyberte typ práce"
                 {...register("workType", {
                   required: "Typ práce je povinný",
                 })}
-              >
-                <option value="" disabled>
-                  Vyberte typ práce
-                </option>
-                <option value="Oprava bytu">Oprava bytu</option>
-                <option value="Koupelny">Koupelny</option>
-                <option value="Sádrokarton">Sádrokarton</option>
-                <option value="Kompletní rekonstrukce">
-                  Kompletní rekonstrukce
-                </option>
-                <option value="Kosmetické opravy">Kosmetické opravy</option>
-              </select>
-              <span className={styles.checkIcon}>
-                <CheckMarkIcon />
-              </span>
+                className={styles.workTypeInput}
+              />
+              <datalist id="workTypes">
+                <option value="Oprava bytu" />
+                <option value="Koupelny" />
+                <option value="Sádrokarton" />
+                <option value="Kompletní rekonstrukce" />
+                <option value="Kosmetické opravy" />
+              </datalist>
             </div>
             <div className={styles.textareaRow}>
               <textarea

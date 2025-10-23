@@ -182,22 +182,21 @@ export default function RequestModal({ isOpen, onClose }: RequestModalProps) {
           </div>
 
           <div className={styles.selectRow}>
-            <select
+            <input
+              list="workTypesModal"
+              placeholder="Vyberte typ práce"
               {...register("workType", {
                 required: "Typ práce je povinný",
               })}
-            >
-              <option value="" disabled>
-                Vyberte typ práce
-              </option>
-              <option value="Oprava bytu">Oprava bytu</option>
-              <option value="Koupelny">Koupelny</option>
-              <option value="Sádrokarton">Sádrokarton</option>
-              <option value="Kompletní rekonstrukce">
-                Kompletní rekonstrukce
-              </option>
-              <option value="Kosmetické opravy">Kosmetické opravy</option>
-            </select>
+              className={styles.workTypeInput}
+            />
+            <datalist id="workTypesModal">
+              <option value="Oprava bytu" />
+              <option value="Koupelny" />
+              <option value="Sádrokarton" />
+              <option value="Kompletní rekonstrukce" />
+              <option value="Kosmetické opravy" />
+            </datalist>
           </div>
 
           <div className={styles.textareaRow}>
