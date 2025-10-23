@@ -183,7 +183,7 @@ export default function RequestModal({ isOpen, onClose }: RequestModalProps) {
 
           <div className={styles.selectRow}>
             <input
-              list="workTypesModal"
+              // list="workTypesModal"
               placeholder="Vyberte typ práce"
               {...register("workType", {
                 required: "Typ práce je povinný",
