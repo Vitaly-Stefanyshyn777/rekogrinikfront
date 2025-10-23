@@ -14,8 +14,8 @@ export default function SocialSharing({
   url = typeof window !== "undefined"
     ? window.location.href
     : "https://rekogrinik.com",
-  title = "RekoGrinik - Професійні ремонтні роботи",
-  description = "Професійні ремонтні роботи, реконструкція квартир, ванних кімнат, офісів",
+  title = "RekoGrinik - Professional Renovation Services",
+  description = "Professional renovation services, apartment reconstruction, bathroom renovation, office renovation",
   image = "https://rekogrinik.com/og-image.jpg",
   className = "",
 }: SocialSharingProps) {

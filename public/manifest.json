@@ -1,7 +1,7 @@
 {
-  "name": "RekoGrinik - Професійні ремонтні роботи",
+  "name": "RekoGrinik - Professional Renovation Services",
   "short_name": "RekoGrinik",
-  "description": "Професійні ремонтні роботи, реконструкція квартир, ванних кімнат, офісів",
+  "description": "Professional renovation services, apartment reconstruction, bathroom renovation, office renovation",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

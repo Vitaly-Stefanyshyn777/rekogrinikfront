@@ -590,7 +590,7 @@ export default function MultilingualSEO({
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         name: "RekoGrinik",
-        description: "Професійні ремонтні роботи та реконструкція",
+        description: "Professional renovation and reconstruction services",
         url: "https://rekogrinik.com",
         telephone: "+420-608-583-115",
         email: "rekogrinikcz@gmail.com",
