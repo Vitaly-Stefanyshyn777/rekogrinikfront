@@ -1,0 +1,301 @@
+/* Breadcrumbs Styles */
+.breadcrumbs {
+  margin: 16px 0;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 4px;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.breadcrumb-link {
+  color: #0a513d;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb-link:hover {
+  color: #0a513d;
+  text-decoration: underline;
+}
+
+.breadcrumb-current {
+  color: #333;
+  font-weight: 500;
+}
+
+.breadcrumb-separator {
+  color: #999;
+  margin: 0 4px;
+}
+
+/* Image SEO Styles */
+.seo-image-container {
+  position: relative;
+  display: block;
+  margin: 16px 0;
+}
+
+.seo-image-caption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  font-style: italic;
+}
+
+.seo-image-description {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.seo-image-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  background: #f5f5f5;
+  color: #999;
+  border: 1px dashed #ddd;
+  border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .breadcrumbs {
+    font-size: 12px;
+    margin: 12px 0;
+  }
+
+  .breadcrumb-list {
+    gap: 2px;
+  }
+
+  .breadcrumb-separator {
+    margin: 0 2px;
+  }
+
+  .seo-image-container {
+    margin: 12px 0;
+  }
+
+  .seo-image-caption,
+  .seo-image-description {
+    font-size: 12px;
+  }
+}
+
+/* Accessibility */
+.breadcrumb-link:focus {
+  outline: 2px solid #0a513d;
+  outline-offset: 2px;
+}
+
+.seo-image-container img {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Social Sharing Styles */
+.social-sharing {
+  margin: 24px 0;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.social-sharing h3 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0a513d;
+}
+
+.social-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.social-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Platform-specific colors */
+.social-btn.facebook {
+  border-color: #1877f2;
+  color: #1877f2;
+}
+
+.social-btn.facebook:hover {
+  background: #1877f2;
+  color: white;
+}
+
+.social-btn.twitter {
+  border-color: #1da1f2;
+  color: #1da1f2;
+}
+
+.social-btn.twitter:hover {
+  background: #1da1f2;
+  color: white;
+}
+
+.social-btn.linkedin {
+  border-color: #0077b5;
+  color: #0077b5;
+}
+
+.social-btn.linkedin:hover {
+  background: #0077b5;
+  color: white;
+}
+
+.social-btn.whatsapp {
+  border-color: #25d366;
+  color: #25d366;
+}
+
+.social-btn.whatsapp:hover {
+  background: #25d366;
+  color: white;
+}
+
+.social-btn.telegram {
+  border-color: #0088cc;
+  color: #0088cc;
+}
+
+.social-btn.telegram:hover {
+  background: #0088cc;
+  color: white;
+}
+
+.social-btn.pinterest {
+  border-color: #bd081c;
+  color: #bd081c;
+}
+
+.social-btn.pinterest:hover {
+  background: #bd081c;
+  color: white;
+}
+
+.social-btn.vk {
+  border-color: #4680c2;
+  color: #4680c2;
+}
+
+.social-btn.vk:hover {
+  background: #4680c2;
+  color: white;
+}
+
+.social-btn.copy {
+  border-color: #6b7280;
+  color: #6b7280;
+}
+
+.social-btn.copy:hover {
+  background: #6b7280;
+  color: white;
+}
+
+.social-btn.native {
+  border-color: #0a513d;
+  color: #0a513d;
+}
+
+.social-btn.native:hover {
+  background: #0a513d;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .social-sharing {
+    margin: 16px 0;
+    padding: 16px;
+  }
+
+  .social-buttons {
+    gap: 8px;
+  }
+
+  .social-btn {
+    min-width: 100px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .social-btn {
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .breadcrumbs {
+    display: none;
+  }
+
+  .seo-image-container {
+    break-inside: avoid;
+  }
+
+  .social-sharing {
+    display: none;
+  }
+}

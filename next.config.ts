@@ -1,7 +1,117 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // SEO оптимізація
+  trailingSlash: false,
+  generateEtags: true,
+
+  // Компресія
+  compress: true,
+
+  // Оптимізація зображень
+  images: {
+    formats: ["image/webp", "image/avif"],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60,
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
+
+  // Заголовки безпеки та SEO
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "X-Frame-Options",
+            value: "DENY",
+          },
+          {
+            key: "X-Content-Type-Options",
+            value: "nosniff",
+          },
+          {
+            key: "Referrer-Policy",
+            value: "origin-when-cross-origin",
+          },
+          {
+            key: "X-DNS-Prefetch-Control",
+            value: "on",
+          },
+        ],
+      },
+      {
+        source: "/robots.txt",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "text/plain",
+          },
+        ],
+      },
+      {
+        source: "/sitemap.xml",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "application/xml",
+          },
+        ],
+      },
+    ];
+  },
+
+  // Редиректи для SEO
+  async redirects() {
+    return [
+      {
+        source: "/home",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
+
+  // Переписування для SEO-friendly URLs
+  async rewrites() {
+    return [
+      {
+        source: "/services/:path*",
+        destination: "/#services",
+      },
+      {
+        source: "/gallery/:path*",
+        destination: "/#gallery",
+      },
+      {
+        source: "/contact/:path*",
+        destination: "/#contacts",
+      },
+    ];
+  },
+
+  // Експериментальні функції для продуктивності
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ["@/components"],
+  },
+
+  // Webpack оптимізація
+  webpack: (config, { dev, isServer }) => {
+    if (!dev && !isServer) {
+      config.optimization.splitChunks.cacheGroups = {
+        ...config.optimization.splitChunks.cacheGroups,
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all",
+        },
+      };
+    }
+    return config;
+  },
 };
 
 export default nextConfig;
