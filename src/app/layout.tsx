@@ -8,11 +8,11 @@ import SocialMediaMeta from "@/components/seo/SocialMediaMeta";
 export const metadata: Metadata = {
   title: {
     default:
-      "RekoGrinik - Професійні ремонтні роботи та реконструкція | Чехія, Польща, Україна",
+      "RekoGrinik - Professional Renovation & Reconstruction Services | Czech Republic, Poland, Ukraine",
     template: "%s | RekoGrinik",
   },
   description:
-    "Професійні ремонтні роботи, реконструкція квартир, ванних кімнат, офісів. Якісні будівельні послуги в Чехії, Польщі, Україні. Безкоштовна консультація та оцінка робіт.",
+    "Professional renovation services, apartment reconstruction, bathroom renovation, office renovation. Quality construction services in Czech Republic, Poland, Ukraine. Free consultation and work estimates.",
   keywords: [
     // Українська - основні
     "ремонт квартир",
@@ -526,12 +526,12 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "uk_UA",
+    locale: "en_US",
     url: "https://rekogrinik.com",
     siteName: "RekoGrinik",
-    title: "RekoGrinik - Професійні ремонтні роботи та реконструкція",
+    title: "RekoGrinik - Professional Renovation & Reconstruction Services",
     description:
-      "Професійні ремонтні роботи, реконструкція квартир, ванних кімнат, офісів. Якісні будівельні послуги в Чехії, Польщі, Україні.",
+      "Professional renovation services, apartment reconstruction, bathroom renovation, office renovation. Quality construction services in Czech Republic, Poland, Ukraine.",
     images: [
       {
         url: "/og-image.jpg",
@@ -549,9 +549,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "RekoGrinik - Професійні ремонтні роботи та реконструкція",
+    title: "RekoGrinik - Professional Renovation & Reconstruction Services",
     description:
-      "Професійні ремонтні роботи, реконструкція квартир, ванних кімнат, офісів. Якісні будівельні послуги.",
+      "Professional renovation services, apartment reconstruction, bathroom renovation, office renovation. Quality construction services.",
     images: ["/twitter-image.jpg"],
     creator: "@rekogrinik",
   },
@@ -785,7 +785,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: "RekoGrinik",
               description:
-                "Професійні ремонтні роботи, реконструкція квартир, ванних кімнат, офісів",
+                "Professional renovation services, apartment reconstruction, bathroom renovation, office renovation",
               url: "https://rekogrinik.com",
               logo: "https://rekogrinik.com/logo.png",
               contactPoint: {
@@ -821,30 +821,30 @@ export default function RootLayout({
               },
               hasOfferCatalog: {
                 "@type": "OfferCatalog",
-                name: "Ремонтні послуги",
+                name: "Renovation Services",
                 itemListElement: [
                   {
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "Service",
-                      name: "Ремонт квартир",
-                      description: "Повний ремонт квартир під ключ",
+                      name: "Apartment Renovation",
+                      description: "Complete apartment renovation turnkey",
                     },
                   },
                   {
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "Service",
-                      name: "Реконструкція ванних кімнат",
-                      description: "Сучасний ремонт ванних кімнат",
+                      name: "Bathroom Reconstruction",
+                      description: "Modern bathroom renovation",
                     },
                   },
                   {
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "Service",
-                      name: "Ремонт офісів",
-                      description: "Корпоративний ремонт офісних приміщень",
+                      name: "Office Renovation",
+                      description: "Corporate office renovation",
                     },
                   },
                 ],
