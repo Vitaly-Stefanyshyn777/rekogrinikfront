@@ -24,7 +24,6 @@ export default function SliderNav({
         className={s.leftBtn}
         onClick={onPrev}
         aria-label="Previous slide"
-        style={{ background: buttonBgColor }}
       >
         <ArrowLeftIcon />
       </button>
@@ -39,12 +38,7 @@ export default function SliderNav({
         ))}
       </div>
 
-      <button
-        className={s.rightBtn}
-        onClick={onNext}
-        aria-label="Next slide"
-        // style={{ background: buttonBgColor }}
-      >
+      <button className={s.rightBtn} onClick={onNext} aria-label="Next slide">
         <ArrowRightIcon />
       </button>
     </div>
