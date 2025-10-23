@@ -460,6 +460,49 @@ export const metadata: Metadata = {
     "tamirat tam",
     "tamirat tamam",
     "tamirat kapsamlı",
+
+    // Чеська - спеціальні ключові фрази
+    "komplexní rekonstrukce na klíč",
+    "celková rekonstrukce bytů",
+    "rekonstrukce od projektu po předání",
+    "elektrika instalatérství",
+    "dokončovací práce",
+    "koupelny projekt montáž",
+    "obklady koupelny",
+    "kompletní rekonstrukce koupelen",
+    "moderní design koupelny",
+    "kvalitní obklady",
+    "spolehlivé instalace",
+    "sádrokarton příčky",
+    "sádrokarton podhledy",
+    "zvuková izolace",
+    "profesionální sádrokartonářské práce",
+    "vytváření příček",
+    "víceúrovňové podhledy",
+    "malířské práce",
+    "malování štukování",
+    "dokončovací práce",
+    "profesionální malířské práce",
+    "záruka čistého výsledku",
+    "dlouhá trvanlivost",
+    "bourací práce",
+    "demontáž přípravné práce",
+    "rychlé bourací práce",
+    "bezpečné bourací práce",
+    "odstranění příček",
+    "staré povrchy",
+    "příprava prostoru",
+    "podlahářské práce",
+    "laminát parkety",
+    "vinyl dlažba",
+    "pokládka podlahových krytin",
+    "přesnost dlouhá životnost",
+    "zednické práce",
+    "zdivo omítky",
+    "opravy zednické",
+    "spolehlivé zednické práce",
+    "nové konstrukce",
+    "špičkové provedení",
   ],
   authors: [{ name: "RekoGrinik Team" }],
   creator: "RekoGrinik",
@@ -564,18 +607,18 @@ export default function RootLayout({
         <meta property="article:section" content="Construction & Renovation" />
         <meta
           property="article:tag"
-          content="ремонт,реконструкція,будівництво"
+          content="renovation,reconstruction,construction,building,repair"
         />
 
         {/* LinkedIn метатеги */}
         <meta property="linkedin:owner" content="rekogrinik" />
         <meta
           name="linkedin:title"
-          content="RekoGrinik - Професійні ремонтні роботи"
+          content="RekoGrinik - Professional Renovation Services"
         />
         <meta
           name="linkedin:description"
-          content="Професійні ремонтні роботи, реконструкція квартир, ванних кімнат, офісів"
+          content="Professional renovation services, apartment reconstruction, bathroom renovation, office renovation"
         />
         <meta
           name="linkedin:image"
@@ -585,11 +628,11 @@ export default function RootLayout({
         {/* WhatsApp метатеги */}
         <meta
           property="whatsapp:title"
-          content="RekoGrinik - Ремонтні послуги"
+          content="RekoGrinik - Renovation Services"
         />
         <meta
           property="whatsapp:description"
-          content="Професійні ремонтні роботи в Чехії, Польщі, Україні"
+          content="Professional renovation services in Czech Republic, Poland, Ukraine"
         />
         <meta
           property="whatsapp:image"
@@ -599,11 +642,11 @@ export default function RootLayout({
         {/* Telegram метатеги */}
         <meta
           property="telegram:title"
-          content="RekoGrinik - Ремонт під ключ"
+          content="RekoGrinik - Turnkey Renovation"
         />
         <meta
           property="telegram:description"
-          content="Якісні будівельні послуги та реконструкція"
+          content="Quality construction services and reconstruction"
         />
         <meta
           property="telegram:image"
@@ -611,10 +654,13 @@ export default function RootLayout({
         />
 
         {/* Pinterest метатеги */}
-        <meta name="pinterest:title" content="RekoGrinik - Дизайн та ремонт" />
+        <meta
+          name="pinterest:title"
+          content="RekoGrinik - Design & Renovation"
+        />
         <meta
           name="pinterest:description"
-          content="Ідеї для ремонту квартир, ванних кімнат, офісів"
+          content="Renovation ideas for apartments, bathrooms, offices"
         />
         <meta
           name="pinterest:image"
@@ -625,11 +671,11 @@ export default function RootLayout({
         {/* Instagram метатеги */}
         <meta
           property="instagram:title"
-          content="RekoGrinik - До та після ремонту"
+          content="RekoGrinik - Before & After Renovation"
         />
         <meta
           property="instagram:description"
-          content="Результати наших робіт - галерея проектів"
+          content="Results of our work - project gallery"
         />
         <meta
           property="instagram:image"
@@ -639,11 +685,11 @@ export default function RootLayout({
         {/* TikTok метатеги */}
         <meta
           property="tiktok:title"
-          content="RekoGrinik - Ремонтні лайфхаки"
+          content="RekoGrinik - Renovation Lifehacks"
         />
         <meta
           property="tiktok:description"
-          content="Корисні поради з ремонту та будівництва"
+          content="Useful renovation and construction tips"
         />
         <meta
           property="tiktok:image"
@@ -651,10 +697,13 @@ export default function RootLayout({
         />
 
         {/* YouTube метатеги */}
-        <meta property="youtube:title" content="RekoGrinik - Процес ремонту" />
+        <meta
+          property="youtube:title"
+          content="RekoGrinik - Renovation Process"
+        />
         <meta
           property="youtube:description"
-          content="Відео процесу виконання ремонтних робіт"
+          content="Video of renovation work process"
         />
         <meta
           property="youtube:image"
@@ -662,10 +711,13 @@ export default function RootLayout({
         />
 
         {/* VKontakte метатеги */}
-        <meta property="vk:title" content="RekoGrinik - Ремонт в Україні" />
+        <meta
+          property="vk:title"
+          content="RekoGrinik - Renovation in Ukraine"
+        />
         <meta
           property="vk:description"
-          content="Будівельні послуги в Україні, Чехії, Польщі"
+          content="Construction services in Ukraine, Czech Republic, Poland"
         />
         <meta
           property="vk:image"
@@ -673,10 +725,10 @@ export default function RootLayout({
         />
 
         {/* Odnoklassniki метатеги */}
-        <meta property="ok:title" content="RekoGrinik - Реконструкція" />
+        <meta property="ok:title" content="RekoGrinik - Reconstruction" />
         <meta
           property="ok:description"
-          content="Повний ремонт квартир та офісів"
+          content="Complete apartment and office renovation"
         />
         <meta
           property="ok:image"
@@ -686,11 +738,11 @@ export default function RootLayout({
         {/* Discord метатеги */}
         <meta
           property="discord:title"
-          content="RekoGrinik - Будівельна команда"
+          content="RekoGrinik - Construction Team"
         />
         <meta
           property="discord:description"
-          content="Професійна команда ремонтників"
+          content="Professional renovation team"
         />
         <meta
           property="discord:image"
@@ -698,10 +750,10 @@ export default function RootLayout({
         />
 
         {/* Reddit метатеги */}
-        <meta property="reddit:title" content="RekoGrinik - Ремонтні поради" />
+        <meta property="reddit:title" content="RekoGrinik - Renovation Tips" />
         <meta
           property="reddit:description"
-          content="Корисні поради з ремонту від професіоналів"
+          content="Useful renovation tips from professionals"
         />
         <meta
           property="reddit:image"
@@ -709,10 +761,10 @@ export default function RootLayout({
         />
 
         {/* Snapchat метатеги */}
-        <meta property="snapchat:title" content="RekoGrinik - До/Після" />
+        <meta property="snapchat:title" content="RekoGrinik - Before/After" />
         <meta
           property="snapchat:description"
-          content="Результати ремонту в реальному часі"
+          content="Renovation results in real time"
         />
         <meta
           property="snapchat:image"

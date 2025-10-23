@@ -10,8 +10,8 @@ interface SocialMediaMetaProps {
 }
 
 export default function SocialMediaMeta({
-  title = "RekoGrinik - Професійні ремонтні роботи та реконструкція",
-  description = "Професійні ремонтні роботи, реконструкція квартир, ванних кімнат, офісів. Якісні будівельні послуги в Чехії, Польщі, Україні.",
+  title = "RekoGrinik - Professional Renovation & Reconstruction Services",
+  description = "Professional renovation services, apartment reconstruction, bathroom renovation, office renovation. Quality construction services in Czech Republic, Poland, Ukraine.",
   image = "https://rekogrinik.com/og-image.jpg",
   url = "https://rekogrinik.com",
 }: SocialMediaMetaProps) {
@@ -56,7 +56,7 @@ export default function SocialMediaMeta({
       "og:url": url,
       "og:type": "website",
       "og:site_name": "RekoGrinik",
-      "og:locale": "uk_UA",
+      "og:locale": "en_US",
 
       // Facebook специфічні
       "fb:app_id": "your-facebook-app-id",
@@ -64,7 +64,7 @@ export default function SocialMediaMeta({
       "article:author": "RekoGrinik Team",
       "article:publisher": "https://www.facebook.com/rekogrinik",
       "article:section": "Construction & Renovation",
-      "article:tag": "ремонт,реконструкція,будівництво",
+      "article:tag": "renovation,reconstruction,construction,building,repair",
 
       // Twitter
       "twitter:card": "summary_large_image",
