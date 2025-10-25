@@ -27,18 +27,34 @@ export default function Footer() {
               <h5>Kontakty</h5>
               <div className={styles.contactInfo}>
                 <p>
-                  <span className={styles.label}>Telefon:</span> +420 608 583
-                  115
+                  <span className={styles.label}>Telefon:</span>{" "}
+                  <a href="tel:+420608583115">+420 608 583 115</a>
                 </p>
                 <p>
                   <span className={styles.label}>E-mail:</span>{" "}
-                  rekogrinikcz@gmail.com
+                  <a href="mailto:rekogrinikcz@gmail.com">
+                    rekogrinikcz@gmail.com
+                  </a>
                 </p>
                 <p>Praha, Česká republika</p>
               </div>
               <div className={styles.socialIcons}>
-                <InstagramIcon />
-                <FacebookIcon />
+                <a
+                  href="https://www.instagram.com/rekogrinik_s.r.o?igsh=MTlxMHgyYW11N3B0bQ=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  <InstagramIcon />
+                </a>
+                <a
+                  href="https://www.facebook.com/people/Reko-Grinik/pfbid0q6E1En32P7nAGksiSXGWAVTnq6YLjTucb3ojg54P3kSZCKmREo9sy9J6nVtgPY2Ll/?mibextid=wwXIfr&rdid=gXud8dHHw3wa1RoV&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16dayhFVJA%2F%3Fmibextid%3DwwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                >
+                  <FacebookIcon />
+                </a>
               </div>
             </div>
 

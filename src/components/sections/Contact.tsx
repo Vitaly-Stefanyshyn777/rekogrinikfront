@@ -121,7 +121,9 @@ export default function Contact() {
                   <NumberIcon />
                 </span>
                 <div className={styles.infoText}>
-                  <p className={styles.phoneTitle}>+420 608 583 115</p>
+                  <a href="tel:+420608583115" className={styles.phoneTitle}>
+                    +420 608 583 115
+                  </a>
                   <p className={styles.phoneSub}>Volejte kdykoli</p>
                 </div>
               </div>
@@ -130,7 +132,12 @@ export default function Contact() {
                   <EmailIcon />
                 </span>
                 <div className={styles.infoText}>
-                  <p className={styles.emailTitle}>rekogrinikcz@gmail.com</p>
+                  <a
+                    href="mailto:rekogrinikcz@gmail.com"
+                    className={styles.emailTitle}
+                  >
+                    rekogrinikcz@gmail.com
+                  </a>
                   <p className={styles.emailSub}>Odpovídáme do hodiny</p>
                 </div>
               </div>
@@ -158,12 +165,24 @@ export default function Contact() {
               <div className={styles.socialBlock}>
                 <p className={styles.followTitle}>Sledujte nás</p>
                 <div className={styles.iconsRow}>
-                  <div className={styles.iconWrap}>
+                  <a
+                    href="https://www.instagram.com/rekogrinik_s.r.o?igsh=MTlxMHgyYW11N3B0bQ=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.iconWrap}
+                    aria-label="Instagram"
+                  >
                     <Instagram2Icon />
-                  </div>
-                  <div className={styles.iconWrap}>
+                  </a>
+                  <a
+                    href="https://www.facebook.com/people/Reko-Grinik/pfbid0q6E1En32P7nAGksiSXGWAVTnq6YLjTucb3ojg54P3kSZCKmREo9sy9J6nVtgPY2Ll/?mibextid=wwXIfr&rdid=gXud8dHHw3wa1RoV&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16dayhFVJA%2F%3Fmibextid%3DwwXIfr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.iconWrap}
+                    aria-label="Facebook"
+                  >
                     <TelegramIcon />
-                  </div>
+                  </a>
                   <div className={styles.iconWrap}>
                     <MessageIcon />
                   </div>
