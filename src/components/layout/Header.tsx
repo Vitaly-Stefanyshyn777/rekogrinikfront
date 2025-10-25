@@ -41,7 +41,7 @@ export default function Header() {
         <div className={styles.middle}>
           <nav className={styles.nav} aria-label="Main Navigation">
             <Link href="#hubs" className={styles.navLink}>
-              Pracoviště
+              Naše realizace
             </Link>
             <Link href="#stats" className={styles.navLink}>
               Statistiky
@@ -94,7 +94,7 @@ export default function Header() {
         <div className={styles.mobileMenu}>
           <nav className={styles.mobileNav}>
             <Link href="#hubs" onClick={() => setIsMobileMenuOpen(false)}>
-              Pracoviště
+              Naše realizace
             </Link>
             <Link href="#stats" onClick={() => setIsMobileMenuOpen(false)}>
               Statistiky

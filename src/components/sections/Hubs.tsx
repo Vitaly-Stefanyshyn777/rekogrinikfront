@@ -33,7 +33,7 @@ export default function Hubs() {
     return (
       <section className={styles.section} id="hubs">
         <div className={styles.container}>
-          <h2 className={styles.title}>Naše pracoviště</h2>
+          <h2 className={styles.title}> Naše realizace </h2>
           <div className={styles.sliderWrap}>
             <div className={styles.loading}>Načítání...</div>
           </div>
@@ -53,7 +53,7 @@ export default function Hubs() {
   return (
     <section className={styles.section} id="hubs">
       <div className={styles.container}>
-        <h2 className={styles.title}>Naše pracoviště</h2>
+        <h2 className={styles.title}>Naše realizace </h2>
         <div className={styles.sliderWrap}>
           <Swiper
             modules={[Navigation, Pagination]}
