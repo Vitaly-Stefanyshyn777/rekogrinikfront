@@ -6,8 +6,14 @@ import useIsMobile from "@/components/hooks/useIsMobile";
 import { useFilteredGallery } from "@/hooks/useFilteredGallery";
 
 export default function Gallery() {
-  const [visibleItems, setVisibleItems] = useState(2);
   const isMobile = useIsMobile();
+  // Початкове значення залежно від розміру екрану
+  const [visibleItems, setVisibleItems] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth <= 768 ? 2 : 6;
+    }
+    return 2; // fallback для SSR
+  });
   const { pairs, loading, error } = useFilteredGallery();
 
   // На десктопі показуємо 6 карток за замовчуванням,
@@ -108,7 +114,15 @@ export default function Gallery() {
   }
 
   const displayedItems = allItems.slice(0, visibleItems).filter(Boolean); // Фільтруємо null значення
-  const hasMoreItems = visibleItems < allItems.length;
+
+  // Більш надійна перевірка для мобільної версії
+  const isMobileDevice =
+    typeof window !== "undefined" && window.innerWidth <= 768;
+
+  // Для мобільної версії показуємо кнопку якщо більше 2 елементів, для десктопу - більше або рівно 6
+  const hasMoreItems = isMobileDevice
+    ? allItems.length > 2 && visibleItems < allItems.length
+    : allItems.length >= 6 && visibleItems < allItems.length;
 
   // Дебаг логування
   console.log("=== Gallery Debug Info ===");
@@ -243,9 +257,9 @@ export default function Gallery() {
             </div>
           )}
 
-          {allItems.length > 6 && (
+          {(hasMoreItems || visibleItems > (isMobileDevice ? 2 : 6)) && (
             <button className={styles.ctaBtn} onClick={handleShowMore}>
-              {hasMoreItems ? "Zobrazit více" : "Zobrazit méně"}
+              {hasMoreItems ? "Zobrazit více" : "Sbalit"}
             </button>
           )}
         </div>
