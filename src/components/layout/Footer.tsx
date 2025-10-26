@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./Footer.module.css";
-import { FacebookIcon, InstagramIcon } from "@/components/Icons/Icons";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  WhatsappIcon,
+  TelegramIcon,
+} from "@/components/Icons/Icons";
 
 export default function Footer() {
   return (
@@ -46,6 +51,22 @@ export default function Footer() {
                   aria-label="Instagram"
                 >
                   <InstagramIcon />
+                </a>
+                <a
+                  href="https://wa.me/420608583115"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                >
+                  <WhatsappIcon />
+                </a>
+                <a
+                  href="https://t.me/+420608583115"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Telegram"
+                >
+                  <TelegramIcon />
                 </a>
                 <a
                   href="https://www.facebook.com/people/Reko-Grinik/pfbid0q6E1En32P7nAGksiSXGWAVTnq6YLjTucb3ojg54P3kSZCKmREo9sy9J6nVtgPY2Ll/?mibextid=wwXIfr&rdid=gXud8dHHw3wa1RoV&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16dayhFVJA%2F%3Fmibextid%3DwwXIfr"

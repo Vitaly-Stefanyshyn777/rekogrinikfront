@@ -24,18 +24,21 @@ export default function Gallery() {
 
   // Fallback статичні дані якщо API не працює
   const fallbackItems = [
-    { label: "Před", image: "/Frame 35138.png" },
-    { label: "Po", image: "/Frame 35139.png" },
-    { label: "Před", image: "/Frame 35140.png" },
-    { label: "Po", image: "/Frame 35141.png" },
-    { label: "Před", image: "/Frame 35142.png" },
-    { label: "Po", image: "/Frame 35143.png" },
-    { label: "Před", image: "/Frame 35144.png" },
-    { label: "Po", image: "/Frame 35145.png" },
-    { label: "Před", image: "/Frame 35146.png" },
-    { label: "Po", image: "/Frame 35138.png" },
-    { label: "Před", image: "/Frame 35139.png" },
-    { label: "Po", image: "/Frame 35140.png" },
+    { label: "Před", image: "/photo_2025-10-26 09.44.30.jpeg" },
+    { label: "Před", image: "/photo_2025-10-26 09.44.59.jpeg" },
+    { label: "Před", image: "/photo_2025-10-26 09.45.05.jpeg" },
+    { label: "Po", image: "/photo_2025-10-26 09.44.50.jpeg" },
+    { label: "Po", image: "/photo_2025-10-26 09.45.02.jpeg" },
+    { label: "Po", image: "/photo_2025-10-26 09.45.08.jpeg" },
+  ];
+
+  const fallbackItems2 = [
+    { label: "Před", image: "/photo_2025-10-26 09.44.30.jpeg" },
+    { label: "Po", image: "/photo_2025-10-26 09.44.50.jpeg" },
+    { label: "Před", image: "/photo_2025-10-26 09.44.59.jpeg" },
+    { label: "Po", image: "/photo_2025-10-26 09.45.02.jpeg" },
+    { label: "Před", image: "/photo_2025-10-26 09.45.05.jpeg" },
+    { label: "Po", image: "/photo_2025-10-26 09.45.08.jpeg" },
   ];
 
   // Створюємо колекції по 3 пари "До/Після"
@@ -105,8 +108,9 @@ export default function Gallery() {
   // Перетворюємо колекції в плоский масив для відображення
   const apiItems = photoCollections.flatMap((collection) => collection.photos);
 
-  // Використовуємо дані з API або fallback
-  const allItems = apiItems.length > 0 ? apiItems : fallbackItems;
+  // Використовуємо дані з API або fallback (різні для мобільного та десктопу)
+  const allItems =
+    apiItems.length > 0 ? apiItems : isMobile ? fallbackItems2 : fallbackItems;
 
   // Обробка помилок API
   if (error) {
@@ -185,9 +189,13 @@ export default function Gallery() {
             className={styles.image}
             onError={(e) => {
               console.log("Image failed to load:", item.image);
-              // Fallback to static image if API image fails
+              // Fallback to static image if API image fails (використовуємо відповідний масив для мобільного/десктопу)
+              const currentFallbackItems = isMobile
+                ? fallbackItems2
+                : fallbackItems;
               const fallbackImage =
-                fallbackItems[index % fallbackItems.length]?.image;
+                currentFallbackItems[index % currentFallbackItems.length]
+                  ?.image;
               if (fallbackImage && e.currentTarget.src !== fallbackImage) {
                 e.currentTarget.src = fallbackImage;
               } else {

@@ -8,6 +8,7 @@ import {
   Instagram2Icon,
   TelegramIcon,
   MessageIcon,
+  WhatsappIcon,
   TimeIcon,
 } from "@/components/Icons/Icons";
 import { apiClient } from "@/api/client";
@@ -163,7 +164,7 @@ export default function Contact() {
                 </div>
               </div>
               <div className={styles.socialBlock}>
-                <p className={styles.followTitle}>Sledujte nás</p>
+                <p className={styles.followTitle}>Kontaktujte nás</p>
                 <div className={styles.iconsRow}>
                   <a
                     href="https://www.instagram.com/rekogrinik_s.r.o?igsh=MTlxMHgyYW11N3B0bQ=="
@@ -175,17 +176,23 @@ export default function Contact() {
                     <Instagram2Icon />
                   </a>
                   <a
-                    href="https://www.facebook.com/people/Reko-Grinik/pfbid0q6E1En32P7nAGksiSXGWAVTnq6YLjTucb3ojg54P3kSZCKmREo9sy9J6nVtgPY2Ll/?mibextid=wwXIfr&rdid=gXud8dHHw3wa1RoV&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16dayhFVJA%2F%3Fmibextid%3DwwXIfr"
+                    href="https://wa.me/420608583115"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.iconWrap}
-                    aria-label="Facebook"
+                    aria-label="WhatsApp"
+                  >
+                    <WhatsappIcon />
+                  </a>
+                  <a
+                    href="https://t.me/+420608583115"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.iconWrap}
+                    aria-label="Telegram"
                   >
                     <TelegramIcon />
                   </a>
-                  <div className={styles.iconWrap}>
-                    <MessageIcon />
-                  </div>
                 </div>
               </div>
             </div>

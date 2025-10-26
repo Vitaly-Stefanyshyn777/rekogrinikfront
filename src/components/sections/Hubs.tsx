@@ -18,9 +18,10 @@ export default function Hubs() {
 
   // Fallback images pokud API nefunguje
   const fallbackImages = [
-    "/Frame 35144.png",
-    "/Frame 35145.png",
-    "/Frame 35146.png",
+    "/photo_2025-10-26 09.45.40.jpeg",
+    "/photo_2025-10-26 09.45.23.jpeg",
+    "/photo_2025-10-26 09.45.37.jpeg",
+    "/photo_2025-10-26 09.45.34.jpeg",
   ];
 
   // Používáme data z API nebo fallback

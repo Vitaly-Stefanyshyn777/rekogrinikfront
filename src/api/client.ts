@@ -1,7 +1,9 @@
 // src/api/client.ts
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL ||
-  "https://rekogrinikfrontbeck-production-a699.up.railway.app/api/v1";
+  (typeof window !== "undefined"
+    ? "/api"
+    : "https://rekogrinikfrontbeck-production-a699.up.railway.app/api/v1");
 
 class ApiClient {
   private baseUrl: string;
@@ -55,20 +57,30 @@ class ApiClient {
 
   // Отримати альбом з фото та парами за slug
   async getAlbum(slug: string) {
-    const url = `${this.baseUrl}/public/gallery/albums/${slug}`;
+    const url = `${this.baseUrl}/gallery?album=${slug}`;
     console.log("API Client: Fetching album from:", url);
-    const response = await fetch(url);
-    console.log("API Client: Response status:", response.status);
-    if (!response.ok) {
-      console.error(
-        "API Client: Failed to fetch album, status:",
-        response.status
-      );
-      throw new Error("Failed to fetch album");
+    try {
+      const response = await fetch(url);
+      console.log("API Client: Response status:", response.status);
+      if (!response.ok) {
+        console.error(
+          "API Client: Failed to fetch album, status:",
+          response.status
+        );
+        throw new Error("Failed to fetch album");
+      }
+      const data = await response.json();
+      console.log("API Client: Album data:", data);
+      return data;
+    } catch (error) {
+      console.error("API Client: CORS or network error:", error);
+      // Повертаємо fallback дані при CORS помилці
+      return {
+        photos: [],
+        collections: [],
+        pairs: [],
+      };
     }
-    const data = await response.json();
-    console.log("API Client: Album data:", data);
-    return data;
   }
 
   // Отримати загальну галерею
@@ -123,20 +135,31 @@ class ApiClient {
 
   // Отримати Hero дані
   async getHero() {
-    const url = `${this.baseUrl}/public/hero`;
+    const url = `${this.baseUrl}/hero`;
     console.log("API Client: Fetching hero data from:", url);
-    const response = await fetch(url);
-    console.log("API Client: Response status:", response.status);
-    if (!response.ok) {
-      console.error(
-        "API Client: Failed to fetch hero data, status:",
-        response.status
-      );
-      throw new Error("Failed to fetch hero data");
+    try {
+      const response = await fetch(url);
+      console.log("API Client: Response status:", response.status);
+      if (!response.ok) {
+        console.error(
+          "API Client: Failed to fetch hero data, status:",
+          response.status
+        );
+        throw new Error("Failed to fetch hero data");
+      }
+      const data = await response.json();
+      console.log("API Client: Hero data:", data);
+      return data;
+    } catch (error) {
+      console.error("API Client: CORS or network error:", error);
+      // Повертаємо fallback дані при CORS помилці
+      return {
+        title: "RekoGrinik",
+        subtitle: "Professional Renovation Services",
+        description:
+          "Professional renovation services, apartment reconstruction, bathroom renovation, office renovation",
+      };
     }
-    const data = await response.json();
-    console.log("API Client: Hero data:", data);
-    return data;
   }
 }
 

@@ -18,31 +18,43 @@ import "swiper/css/pagination";
 const reviewsData = [
   {
     avatar: "AN",
+    name: "Anna Nováková",
+    position: "Majitelka bytu",
     quote: `„Maxim a jeho tým odvedli neuvěřitelnou práci! Náš starý byt se proměnil v moderní prostor snů. Všechno bylo hotové včas a ve vysoké kvalitě. Všem to doporučuji!"`,
     project: "Projekt: Kompletní rekonstrukce třípokojového bytu",
   },
   {
     avatar: "PS",
+    name: "Petr Svoboda",
+    position: "Majitel bytu",
     quote: `"Profesionální přístup od začátku do konce. Fixní cena bez překvapení, kvalitní materiály a důraz na detail. Obzvláště jsem ohromen prací v koupelně."`,
     project: "Projekt: Rekonstrukce koupelny a kuchyně",
   },
   {
     avatar: "MC",
+    name: "Martin Černý",
+    position: "Majitel firmy",
     quote: `„Pracoval jsem s mnoha dodavateli, ale RekoGrinik vyniká svým přístupem k práci. Rozumí konstrukčním řešením a bezchybně je realizují."`,
     project: "Projekt: Rekonstrukce designové kanceláře",
   },
   {
     avatar: "TK",
+    name: "Tomáš Kovář",
+    position: "Investor",
     quote: `„S renovací všech mých investičních nemovitostí svěřuji RekoGriniku. Vždy dodrží rozpočet a termíny. To je na trhu rarita!"`,
     project: "Projekt: Rekonstrukce 5 bytů k pronájmu",
   },
   {
     avatar: "OK",
+    name: "Olga Kratochvílová",
+    position: "Majitelka bytu",
     quote: `„Děkujeme za vaši trpělivost a pochopení! Často jsme měnili rozhodnutí, ale tým vždy našel ty nejlepší možnosti. Výsledek předčil očekávání."`,
     project: "Projekt: Evropská rekonstrukce dvoupokojového bytu",
   },
   {
     avatar: "MČ",
+    name: "Michal Černý",
+    position: "Majitel restaurace",
     quote: `"Rychle a efektivně zrekonstruovali naši restauraci mezi sezónami. Minimální prostoje, maximální výsledky. Určitě je znovu kontaktujeme!"`,
     project: "Projekt: Rekonstrukce restaurace",
   },
@@ -77,8 +89,8 @@ export default function Reviews() {
       <div className={styles.cardTop}>
         <div className={styles.avatar}>{review.avatar}</div>
         <div className={styles.person}>
-          <strong>Jméno Příjmení</strong>
-          <span>Majitel bytu</span>
+          <strong>{review.name}</strong>
+          <span>{review.position}</span>
         </div>
         <div className={styles.stars}>
           <AsteriskIcon />
