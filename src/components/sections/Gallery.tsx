@@ -10,6 +10,22 @@ const GalleryModal = dynamic(() => import("@/components/modals/GalleryModal"), {
   ssr: false,
 });
 
+type GalleryPhoto = {
+  label: string;
+  image: string;
+  pairId: string;
+  type: "before" | "after";
+  title?: string;
+  description?: string;
+  pairLabel?: string;
+};
+
+type PhotoCollection = {
+  type: "before-collection" | "after-collection";
+  photos: GalleryPhoto[];
+  collectionId: string;
+};
+
 export default function Gallery() {
   const isMobile = useIsMobile();
   // Початкове значення залежно від розміру екрану
@@ -52,14 +68,14 @@ export default function Gallery() {
 
   // Створюємо колекції по 3 пари "До/Після"
   const createPhotoCollections = () => {
-    const collections: any[] = [];
+    const collections: PhotoCollection[] = [];
 
     // Групуємо пари по 3
     for (let i = 0; i < pairs.length; i += 3) {
       const pairGroup = pairs.slice(i, i + 3);
 
       // Створюємо колекцію "До" (3 фото)
-      const beforePhotos = pairGroup.map(
+      const beforePhotos: GalleryPhoto[] = pairGroup.map(
         (pair: {
           id: string;
           beforePhoto: { url: string; title?: string; description?: string };
@@ -67,9 +83,9 @@ export default function Gallery() {
           label?: string;
         }) => ({
           label: "Před",
-          image: pair.beforePhoto?.url,
+          image: pair.beforePhoto?.url || "",
           pairId: pair.id,
-          type: "before",
+          type: "before" as const,
           title: pair.beforePhoto?.title || "Před",
           description: pair.beforePhoto?.description || "",
           pairLabel: pair.label || "",
@@ -77,7 +93,7 @@ export default function Gallery() {
       );
 
       // Створюємо колекцію "Після" (3 фото)
-      const afterPhotos = pairGroup.map(
+      const afterPhotos: GalleryPhoto[] = pairGroup.map(
         (pair: {
           id: string;
           beforePhoto: { url: string; title?: string; description?: string };
@@ -85,9 +101,9 @@ export default function Gallery() {
           label?: string;
         }) => ({
           label: "Po",
-          image: pair.afterPhoto?.url,
+          image: pair.afterPhoto?.url || "",
           pairId: pair.id,
-          type: "after",
+          type: "after" as const,
           title: pair.afterPhoto?.title || "Po",
           description: pair.afterPhoto?.description || "",
           pairLabel: pair.label || "",
@@ -127,8 +143,12 @@ export default function Gallery() {
       allItems.map((it) => ({
         label: it.label,
         image: it.image,
-        title: it.title,
-        description: it.description,
+        title:
+          ("title" in it && it.title ? String(it.title) : it.label) || it.label,
+        description:
+          ("description" in it && it.description
+            ? String(it.description)
+            : "") || "",
       })),
     [allItems]
   );
