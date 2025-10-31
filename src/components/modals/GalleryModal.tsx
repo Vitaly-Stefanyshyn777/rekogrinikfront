@@ -94,16 +94,6 @@ export default function GalleryModal({
                       <span className={styles.badge}>{item.label}</span>
                     )}
                   </div>
-                  {(item.title || item.description) && (
-                    <div className={styles.meta}>
-                      {item.title && (
-                        <h3 className={styles.title}>{item.title}</h3>
-                      )}
-                      {item.description && (
-                        <p className={styles.description}>{item.description}</p>
-                      )}
-                    </div>
-                  )}
                 </div>
               </SwiperSlide>
             ))}
