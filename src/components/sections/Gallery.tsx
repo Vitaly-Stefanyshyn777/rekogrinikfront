@@ -1,9 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import styles from "./Gallery.module.css";
 import useIsMobile from "@/components/hooks/useIsMobile";
 import { useFilteredGallery } from "@/hooks/useFilteredGallery";
+import dynamic from "next/dynamic";
+
+const GalleryModal = dynamic(() => import("@/components/modals/GalleryModal"), { ssr: false });
 
 export default function Gallery() {
   const isMobile = useIsMobile();
@@ -15,6 +18,10 @@ export default function Gallery() {
     return 2; // fallback для SSR
   });
   const { pairs, loading, error } = useFilteredGallery();
+
+  // Стан модалки та поточного індексу
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalIndex, setModalIndex] = useState(0);
 
   // На десктопі показуємо 6 карток за замовчуванням,
   // на мобільному — 2 картки. Оновлюємо при зміні брейкпоінту.
@@ -43,7 +50,7 @@ export default function Gallery() {
 
   // Створюємо колекції по 3 пари "До/Після"
   const createPhotoCollections = () => {
-    const collections = [];
+    const collections: any[] = [];
 
     // Групуємо пари по 3
     for (let i = 0; i < pairs.length; i += 3) {
@@ -109,8 +116,19 @@ export default function Gallery() {
   const apiItems = photoCollections.flatMap((collection) => collection.photos);
 
   // Використовуємо дані з API або fallback (різні для мобільного та десктопу)
-  const allItems =
-    apiItems.length > 0 ? apiItems : isMobile ? fallbackItems2 : fallbackItems;
+  const allItems = apiItems.length > 0 ? apiItems : isMobile ? fallbackItems2 : fallbackItems;
+
+  // Мемоізований масив для модалки (загальні поля)
+  const modalItems = useMemo(
+    () =>
+      allItems.map((it) => ({
+        label: it.label,
+        image: it.image,
+        title: it.title,
+        description: it.description,
+      })),
+    [allItems]
+  );
 
   // Обробка помилок API
   if (error) {
@@ -128,19 +146,11 @@ export default function Gallery() {
     ? allItems.length > 2 && visibleItems < allItems.length
     : allItems.length >= 6 && visibleItems < allItems.length;
 
-  // Дебаг логування
-  console.log("=== Gallery Debug Info ===");
-  console.log("Loading state:", loading);
-  console.log("Error state:", error);
-  console.log("Pairs from API:", pairs);
-  console.log("Pairs length:", pairs.length);
-  console.log("Photo collections:", photoCollections);
-  console.log("Collections count:", photoCollections.length);
-  console.log("API items:", apiItems);
-  console.log("All items:", allItems);
-  console.log("Displayed items:", displayedItems);
-  console.log("Using fallback:", apiItems.length === 0);
-  console.log("=========================");
+  // Клік по картці: відкриваємо модалку на індексі всієї послідовності
+  const handleCardClick = (globalIndex: number) => {
+    setModalIndex(globalIndex);
+    setIsModalOpen(true);
+  };
 
   const handleShowMore = () => {
     if (hasMoreItems) {
@@ -175,12 +185,29 @@ export default function Gallery() {
       return null;
     }
 
+    // Глобальний індекс по allItems для коректного відкриття модалки з потрібного місця
+    const globalIndex = allItems.findIndex((it, i) => i === index && it.image === item.image);
+
     return (
       <div
         className={`${styles.tile} ${item.pairId ? styles.pairTile : ""}`}
         key={`${item.pairId || index}-${item.type || index}`}
         data-pair-id={item.pairId}
         data-pair-type={item.type}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          handleCardClick(globalIndex >= 0 ? globalIndex : index);
+        }}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            e.stopPropagation();
+            handleCardClick(globalIndex >= 0 ? globalIndex : index);
+          }
+        }}
       >
         <div className={styles.imageContainer}>
           <img
@@ -190,12 +217,9 @@ export default function Gallery() {
             onError={(e) => {
               console.log("Image failed to load:", item.image);
               // Fallback to static image if API image fails (використовуємо відповідний масив для мобільного/десктопу)
-              const currentFallbackItems = isMobile
-                ? fallbackItems2
-                : fallbackItems;
+              const currentFallbackItems = isMobile ? fallbackItems2 : fallbackItems;
               const fallbackImage =
-                currentFallbackItems[index % currentFallbackItems.length]
-                  ?.image;
+                currentFallbackItems[index % currentFallbackItems.length]?.image;
               if (fallbackImage && e.currentTarget.src !== fallbackImage) {
                 e.currentTarget.src = fallbackImage;
               } else {
@@ -272,6 +296,13 @@ export default function Gallery() {
           )}
         </div>
       </div>
+
+      <GalleryModal
+        isOpen={isModalOpen}
+        items={modalItems}
+        startIndex={modalIndex}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }
