@@ -6,7 +6,9 @@ import useIsMobile from "@/components/hooks/useIsMobile";
 import { useFilteredGallery } from "@/hooks/useFilteredGallery";
 import dynamic from "next/dynamic";
 
-const GalleryModal = dynamic(() => import("@/components/modals/GalleryModal"), { ssr: false });
+const GalleryModal = dynamic(() => import("@/components/modals/GalleryModal"), {
+  ssr: false,
+});
 
 export default function Gallery() {
   const isMobile = useIsMobile();
@@ -116,7 +118,8 @@ export default function Gallery() {
   const apiItems = photoCollections.flatMap((collection) => collection.photos);
 
   // Використовуємо дані з API або fallback (різні для мобільного та десктопу)
-  const allItems = apiItems.length > 0 ? apiItems : isMobile ? fallbackItems2 : fallbackItems;
+  const allItems =
+    apiItems.length > 0 ? apiItems : isMobile ? fallbackItems2 : fallbackItems;
 
   // Мемоізований масив для модалки (загальні поля)
   const modalItems = useMemo(
@@ -186,7 +189,9 @@ export default function Gallery() {
     }
 
     // Глобальний індекс по allItems для коректного відкриття модалки з потрібного місця
-    const globalIndex = allItems.findIndex((it, i) => i === index && it.image === item.image);
+    const globalIndex = allItems.findIndex(
+      (it, i) => i === index && it.image === item.image
+    );
 
     return (
       <div
@@ -217,9 +222,12 @@ export default function Gallery() {
             onError={(e) => {
               console.log("Image failed to load:", item.image);
               // Fallback to static image if API image fails (використовуємо відповідний масив для мобільного/десктопу)
-              const currentFallbackItems = isMobile ? fallbackItems2 : fallbackItems;
+              const currentFallbackItems = isMobile
+                ? fallbackItems2
+                : fallbackItems;
               const fallbackImage =
-                currentFallbackItems[index % currentFallbackItems.length]?.image;
+                currentFallbackItems[index % currentFallbackItems.length]
+                  ?.image;
               if (fallbackImage && e.currentTarget.src !== fallbackImage) {
                 e.currentTarget.src = fallbackImage;
               } else {

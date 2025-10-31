@@ -33,10 +33,14 @@
   background: rgba(0, 0, 0, 0.12);
   border: none;
   cursor: pointer;
-  font-size: 22px;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #222;
   z-index: 2;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
 .closeBtn:hover {
@@ -64,9 +68,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-
-  color: #0a513d;
-
+  color: #222;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -83,15 +85,6 @@
 }
 :global(.swiper-button-next) {
   right: 12px;
-}
-
-/* Пагінація більш виразна */
-:global(.swiper-pagination-bullets .swiper-pagination-bullet) {
-  background: #cdd8d3;
-  opacity: 1;
-}
-:global(.swiper-pagination-bullets .swiper-pagination-bullet-active) {
-  background: #0a513d;
 }
 
 .slideContent {
@@ -165,25 +158,128 @@
   color: #434343;
 }
 
+/* Планшети */
 @media (max-width: 960px) {
   .modal {
+    width: 95vw;
+    max-width: 700px;
+    height: 85vh;
+    max-height: 85vh;
+  }
+
+  .sliderWrap {
+    padding: 20px;
+  }
+
+  .slideContent {
+    gap: 16px;
+  }
+
+  .imageBox {
+    flex: 1 1 65%;
+  }
+
+  .meta {
+    flex: 1 1 35%;
+  }
+
+  :global(.swiper-button-prev) {
+    left: 8px;
+  }
+  :global(.swiper-button-next) {
+    right: 8px;
+  }
+}
+
+/* Мобільні пристрої */
+@media (max-width: 768px) {
+  .modal {
     width: 100vw;
-    height: 100vh;
+    height: 450px;
+
     max-height: 100vh;
     border-radius: 0;
   }
-  .sliderWrap {
-    padding: 12px;
-    overflow: hidden;
+
+  .closeBtn {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    top: 8px;
+    right: 11px;
   }
+
+  .sliderWrap {
+    padding: 0px 0px 0px 0px;
+  }
+
   .slideContent {
     flex-direction: column;
+    gap: 8px;
     min-height: auto;
+    height: 100%;
   }
+
+  .imageBox {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: calc(100vh - 120px);
+    height: 100%;
+  }
+
   .meta {
     flex: 0 0 auto;
+    padding-top: 4px;
+    max-height: 80px;
+    overflow-y: auto;
   }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .badge {
+    font-size: 11px;
+    padding: 3px 6px;
+    left: 8px;
+    top: 8px;
+  }
+
+  :global(.swiper-button-next),
+  :global(.swiper-button-prev) {
+    width: 28px;
+    height: 28px;
+  }
+
+  :global(.swiper-button-next::after),
+  :global(.swiper-button-prev::after) {
+    font-size: 12px;
+  }
+
+  :global(.swiper-button-prev) {
+    left: 6px;
+  }
+  :global(.swiper-button-next) {
+    right: 6px;
+  }
+
   .swiper {
-    min-height: 400px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  :global(.swiper-wrapper) {
+    height: 100%;
+  }
+
+  :global(.swiper-slide) {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 }
