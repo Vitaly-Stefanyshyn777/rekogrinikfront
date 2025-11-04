@@ -534,16 +534,10 @@ export const metadata: Metadata = {
       "Professional renovation services, apartment reconstruction, bathroom renovation, office renovation. Quality construction services in Czech Republic, Poland, Ukraine.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/img7.jpg",
         width: 1200,
         height: 630,
         alt: "RekoGrinik - Professional Renovation Services",
-      },
-      {
-        url: "/og-image-square.jpg",
-        width: 1200,
-        height: 1200,
-        alt: "RekoGrinik - Квадратне зображення для соцмереж",
       },
     ],
   },
@@ -552,7 +546,7 @@ export const metadata: Metadata = {
     title: "RekoGrinik - Professional Renovation & Reconstruction Services",
     description:
       "Professional renovation services, apartment reconstruction, bathroom renovation, office renovation. Quality construction services.",
-    images: ["/twitter-image.jpg"],
+    images: ["/img7.jpg"],
     creator: "@rekogrinik",
   },
   robots: {
@@ -582,7 +576,7 @@ export default function RootLayout({
     <html lang="uk" dir="ltr">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/vector-2.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#0a513d" />

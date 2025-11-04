@@ -12,7 +12,7 @@ interface SocialMediaMetaProps {
 export default function SocialMediaMeta({
   title = "RekoGrinik - Professional Renovation & Reconstruction Services",
   description = "Professional renovation services, apartment reconstruction, bathroom renovation, office renovation. Quality construction services in Czech Republic, Poland, Ukraine.",
-  image = "https://rekogrinik.com/og-image.jpg",
+  image = "https://rekogrinik.com/img7.jpg",
   url = "https://rekogrinik.com",
 }: SocialMediaMetaProps) {
   useEffect(() => {
