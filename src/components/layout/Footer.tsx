@@ -16,7 +16,7 @@ export default function Footer() {
           <div className={styles.brandSection}>
             <div className={styles.brandIcon}>
               <Image
-                src="/Logo-2.svg"
+                src="/vector-2.svg"
                 alt="RekoGrinik"
                 width={93}
                 height={93}

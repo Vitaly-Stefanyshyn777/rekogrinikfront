@@ -30,7 +30,7 @@ export default function Header() {
         <div className={styles.left}>
           <Link href="/" aria-label="RekoGrinik" className={styles.brand}>
             <Image
-              src="/Logo.svg"
+              src="/vector-2.svg"
               alt="RekoGrinik"
               width={63}
               height={63}

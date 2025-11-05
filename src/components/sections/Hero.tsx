@@ -19,7 +19,7 @@ export default function Hero() {
     secondaryButtonText: "Více informací",
     primaryButtonLink: "#consult",
     secondaryButtonLink: "#more",
-    logoUrl: "/Logo-Hero.svg?v=hero",
+    logoUrl: "/vector-2.svg",
   };
 
   // Використовуємо дані з API або fallback
