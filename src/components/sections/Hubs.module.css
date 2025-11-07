@@ -45,6 +45,15 @@
   display: block;
 }
 
+.clickableImage {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.clickableImage:active {
+  opacity: 0.8;
+}
+
 .navWrap {
   margin-top: 12px;
 }

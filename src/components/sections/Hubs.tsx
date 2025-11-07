@@ -8,13 +8,27 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SliderNav from "@/components/ui/SliderNav/SliderNavActions";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useGeneralGallery } from "@/hooks/useGeneralGallery";
+import HubsModal from "@/components/modals/HubsModal";
 
 export default function Hubs() {
   const swiperRef = useRef<SwiperType | null>(null);
   const [active, setActive] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalStartIndex, setModalStartIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const { photos, loading, error } = useGeneralGallery();
+
+  // Визначаємо, чи це мобільний пристрій
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Fallback images pokud API nefunguje
   const fallbackImages = [
@@ -69,6 +83,13 @@ export default function Hubs() {
                 <img
                   src={src}
                   alt={`hub-${i + 1}`}
+                  onClick={() => {
+                    if (isMobile) {
+                      setModalStartIndex(i);
+                      setIsModalOpen(true);
+                    }
+                  }}
+                  className={isMobile ? styles.clickableImage : ""}
                   onError={(e) => {
                     console.log("Image failed to load:", src);
                     // Fallback to static image if API image fails
@@ -91,6 +112,12 @@ export default function Hubs() {
           </div>
         </div>
       </div>
+      <HubsModal
+        isOpen={isModalOpen}
+        images={images}
+        startIndex={modalStartIndex}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }

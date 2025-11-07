@@ -1,0 +1,221 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  position: relative;
+  width: 800px;
+  height: 750px;
+  max-height: 750px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  z-index: 1001;
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.12);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #222;
+  z-index: 2;
+  padding: 0;
+  transition: background 0.2s;
+}
+
+.closeBtn:hover {
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.sliderWrap {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+/* Стилізація стрілок свайпера */
+.sliderWrap :global(.swiper-button-next),
+.sliderWrap :global(.swiper-button-prev) {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #222;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sliderWrap :global(.swiper-button-next::after),
+.sliderWrap :global(.swiper-button-prev::after) {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.sliderWrap :global(.swiper-button-prev) {
+  left: 12px;
+}
+
+.sliderWrap :global(.swiper-button-next) {
+  right: 12px;
+}
+
+.slideContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+  justify-content: center;
+  min-height: 0;
+}
+
+.sliderWrap :global(.swiper-slide) {
+  height: 100%;
+  display: flex;
+}
+
+.sliderWrap :global(.swiper-wrapper) {
+  height: 100%;
+}
+
+.imageBox {
+  position: relative;
+  flex: 1 1 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7f7f7;
+  border-radius: 12px;
+  overflow: auto;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.imageBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Планшети */
+@media (max-width: 960px) {
+  .modal {
+    width: 95vw;
+    max-width: 700px;
+    height: 85vh;
+    max-height: 85vh;
+  }
+
+  .sliderWrap {
+    padding: 20px;
+  }
+
+  .slideContent {
+    gap: 16px;
+  }
+
+  .imageBox {
+    flex: 1 1 65%;
+  }
+}
+
+/* Мобільні пристрої */
+@media (max-width: 768px) {
+  .modal {
+    width: 100vw;
+    height: 450px;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  .closeBtn {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    top: 8px;
+    right: 11px;
+  }
+
+  .sliderWrap {
+    padding: 0px 0px 0px 0px;
+  }
+
+  .slideContent {
+    flex-direction: column;
+    gap: 8px;
+    min-height: auto;
+    height: 100%;
+  }
+
+  .imageBox {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: calc(100vh - 120px);
+    height: 100%;
+  }
+
+  .sliderWrap :global(.swiper-button-next),
+  .sliderWrap :global(.swiper-button-prev) {
+    width: 28px;
+    height: 28px;
+  }
+
+  .sliderWrap :global(.swiper-button-next::after),
+  .sliderWrap :global(.swiper-button-prev::after) {
+    font-size: 12px;
+  }
+
+  .sliderWrap :global(.swiper-button-prev) {
+    left: 6px;
+  }
+
+  .sliderWrap :global(.swiper-button-next) {
+    right: 6px;
+  }
+
+  .swiper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sliderWrap :global(.swiper-wrapper) {
+    height: 100%;
+  }
+
+  .sliderWrap :global(.swiper-slide) {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
