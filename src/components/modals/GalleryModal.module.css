@@ -184,10 +184,10 @@
     flex: 1 1 35%;
   }
 
-  .sliderWrap :global(.swiper-button-prev) {
+  :global(.swiper-button-prev) {
     left: 8px;
   }
-  .sliderWrap :global(.swiper-button-next) {
+  :global(.swiper-button-next) {
     right: 8px;
   }
 }

@@ -1,34 +1,15 @@
 // src/api/client.ts
-// Завжди використовуємо Next.js API routes для клієнта (браузер)
-// Для сервера використовуємо Railway URL тільки якщо явно вказано
-const getApiBaseUrl = () => {
-  // Завжди використовуємо /api для браузера
-  if (typeof window !== "undefined") {
-    return "/api";
-  }
-  // Для сервера використовуємо локальний або production URL
-  // Використовуємо 127.0.0.1 замість localhost для серверного рендерингу
-  return process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:3002/api/v1";
-};
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  (typeof window !== "undefined"
+    ? "/api"
+    : "https://rekogrinikfrontbeck-production-a699.up.railway.app/api/v1");
 
 class ApiClient {
   private baseUrl: string;
 
-  constructor(baseUrl?: string) {
-    // Якщо baseUrl не передано, використовуємо функцію для визначення URL
-    this.baseUrl = baseUrl || getApiBaseUrl();
-  }
-  
-  // Метод для отримання правильного URL (завжди /api для браузера)
-  private getUrl(path: string): string {
-    // Якщо виконується в браузері, завжди використовуємо /api
-    if (typeof window !== "undefined") {
-      const cleanPath = path.startsWith('/') ? path : `/${path}`;
-      return `/api${cleanPath}`;
-    }
-    // Для сервера використовуємо поточний baseUrl
-    const cleanPath = path.startsWith('/') ? path : `/${path}`;
-    return `${this.baseUrl}${cleanPath}`;
+  constructor(baseUrl: string = API_BASE_URL) {
+    this.baseUrl = baseUrl;
   }
 
   // Відправити форму з контактами
@@ -76,7 +57,7 @@ class ApiClient {
 
   // Отримати альбом з фото та парами за slug
   async getAlbum(slug: string) {
-    const url = this.getUrl(`/gallery?album=${slug}`);
+    const url = `${this.baseUrl}/gallery?album=${slug}`;
     console.log("API Client: Fetching album from:", url);
     try {
       const response = await fetch(url);
@@ -154,7 +135,7 @@ class ApiClient {
 
   // Отримати Hero дані
   async getHero() {
-    const url = this.getUrl("/hero");
+    const url = `${this.baseUrl}/hero`;
     console.log("API Client: Fetching hero data from:", url);
     try {
       const response = await fetch(url);
