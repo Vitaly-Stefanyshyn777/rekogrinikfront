@@ -582,7 +582,6 @@ export default function RootLayout({
           sizes="any"
         />
         <link rel="shortcut icon" href="/vector-2.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#0a513d" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

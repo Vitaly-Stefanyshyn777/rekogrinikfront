@@ -70,59 +70,105 @@ export default function Gallery() {
   const createPhotoCollections = () => {
     const collections: PhotoCollection[] = [];
 
-    // Групуємо пари по 3
-    for (let i = 0; i < pairs.length; i += 3) {
-      const pairGroup = pairs.slice(i, i + 3);
-
-      // Створюємо колекцію "До" (3 фото)
-      const beforePhotos: GalleryPhoto[] = pairGroup.map(
+    // Для мобільних пристроїв чергуємо пари (Před, Po, Před, Po...)
+    // Для десктопу групуємо (Před, Před, Před, Po, Po, Po...)
+    if (isMobile) {
+      // Мобільна версія: чергуємо пари
+      const mobilePhotos: GalleryPhoto[] = [];
+      pairs.forEach(
         (pair: {
           id: string;
           beforePhoto: { url: string; title?: string; description?: string };
           afterPhoto: { url: string; title?: string; description?: string };
           label?: string;
-        }) => ({
-          label: "Před",
-          image: pair.beforePhoto?.url || "",
-          pairId: pair.id,
-          type: "before" as const,
-          title: pair.beforePhoto?.title || "Před",
-          description: pair.beforePhoto?.description || "",
-          pairLabel: pair.label || "",
-        })
+        }) => {
+          // Додаємо "До"
+          mobilePhotos.push({
+            label: "Před",
+            image: pair.beforePhoto?.url || "",
+            pairId: pair.id,
+            type: "before" as const,
+            title: pair.beforePhoto?.title || "Před",
+            description: pair.beforePhoto?.description || "",
+            pairLabel: pair.label || "",
+          });
+          // Додаємо "Після"
+          mobilePhotos.push({
+            label: "Po",
+            image: pair.afterPhoto?.url || "",
+            pairId: pair.id,
+            type: "after" as const,
+            title: pair.afterPhoto?.title || "Po",
+            description: pair.afterPhoto?.description || "",
+            pairLabel: pair.label || "",
+          });
+        }
       );
 
-      // Створюємо колекцію "Після" (3 фото)
-      const afterPhotos: GalleryPhoto[] = pairGroup.map(
-        (pair: {
-          id: string;
-          beforePhoto: { url: string; title?: string; description?: string };
-          afterPhoto: { url: string; title?: string; description?: string };
-          label?: string;
-        }) => ({
-          label: "Po",
-          image: pair.afterPhoto?.url || "",
-          pairId: pair.id,
-          type: "after" as const,
-          title: pair.afterPhoto?.title || "Po",
-          description: pair.afterPhoto?.description || "",
-          pairLabel: pair.label || "",
-        })
-      );
+      // Групуємо по 6 (3 пари) для мобільної версії
+      for (let i = 0; i < mobilePhotos.length; i += 6) {
+        const group = mobilePhotos.slice(i, i + 6);
+        collections.push({
+          type: "before-collection",
+          photos: group,
+          collectionId: `mobile-${Math.floor(i / 6)}`,
+        });
+      }
+    } else {
+      // Десктоп версія: групуємо пари по 3
+      for (let i = 0; i < pairs.length; i += 3) {
+        const pairGroup = pairs.slice(i, i + 3);
 
-      // Додаємо колекцію "До"
-      collections.push({
-        type: "before-collection",
-        photos: beforePhotos,
-        collectionId: `before-${Math.floor(i / 3)}`,
-      });
+        // Створюємо колекцію "До" (3 фото)
+        const beforePhotos: GalleryPhoto[] = pairGroup.map(
+          (pair: {
+            id: string;
+            beforePhoto: { url: string; title?: string; description?: string };
+            afterPhoto: { url: string; title?: string; description?: string };
+            label?: string;
+          }) => ({
+            label: "Před",
+            image: pair.beforePhoto?.url || "",
+            pairId: pair.id,
+            type: "before" as const,
+            title: pair.beforePhoto?.title || "Před",
+            description: pair.beforePhoto?.description || "",
+            pairLabel: pair.label || "",
+          })
+        );
 
-      // Додаємо колекцію "Після"
-      collections.push({
-        type: "after-collection",
-        photos: afterPhotos,
-        collectionId: `after-${Math.floor(i / 3)}`,
-      });
+        // Створюємо колекцію "Після" (3 фото)
+        const afterPhotos: GalleryPhoto[] = pairGroup.map(
+          (pair: {
+            id: string;
+            beforePhoto: { url: string; title?: string; description?: string };
+            afterPhoto: { url: string; title?: string; description?: string };
+            label?: string;
+          }) => ({
+            label: "Po",
+            image: pair.afterPhoto?.url || "",
+            pairId: pair.id,
+            type: "after" as const,
+            title: pair.afterPhoto?.title || "Po",
+            description: pair.afterPhoto?.description || "",
+            pairLabel: pair.label || "",
+          })
+        );
+
+        // Додаємо колекцію "До"
+        collections.push({
+          type: "before-collection",
+          photos: beforePhotos,
+          collectionId: `before-${Math.floor(i / 3)}`,
+        });
+
+        // Додаємо колекцію "Після"
+        collections.push({
+          type: "after-collection",
+          photos: afterPhotos,
+          collectionId: `after-${Math.floor(i / 3)}`,
+        });
+      }
     }
 
     return collections;

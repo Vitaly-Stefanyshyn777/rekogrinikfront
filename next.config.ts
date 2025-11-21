@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
+  // Виправлення попередження про lockfiles
+  outputFileTracingRoot: path.resolve(__dirname),
+  
   // SEO оптимізація
   trailingSlash: false,
   generateEtags: true,
