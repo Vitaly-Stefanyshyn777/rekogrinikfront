@@ -5,7 +5,7 @@ export async function GET(request: Request) {
     const album = searchParams.get("album") || "general";
 
     const response = await fetch(
-      `https://rekogrinikfrontbeck-production-a699.up.railway.app/api/v1/public/gallery/albums/${album}`
+      `https://rekogrinikfrontbeck-production.up.railway.app/api/v1/public/gallery/albums/${album}`
     );
 
     if (!response.ok) {
