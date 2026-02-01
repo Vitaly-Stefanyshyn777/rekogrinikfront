@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "framer-motion": "^12.23.22",
-    "next": "15.5.4",
+    "next": "15.5.9",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-hook-form": "^7.53.0",
@@ -24,7 +24,7 @@
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
-    "eslint-config-next": "15.5.4",
+    "eslint-config-next": "15.5.9",
     "postcss-functions": "^4.0.2",
     "postcss-px-to-viewport": "^1.1.1",
     "postcss-px-to-viewport-8-media-screen": "^1.0.0",
