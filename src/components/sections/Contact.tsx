@@ -122,8 +122,8 @@ export default function Contact() {
                   <NumberIcon />
                 </span>
                 <div className={styles.infoText}>
-                  <a href="tel:+420608583115" className={styles.phoneTitle}>
-                    +420 608 583 115
+                  <a href="tel:+420776352237" className={styles.phoneTitle}>
+                    +420 776 352 237
                   </a>
                   <p className={styles.phoneSub}>Volejte kdykoli</p>
                 </div>
@@ -176,7 +176,7 @@ export default function Contact() {
                     <Instagram2Icon />
                   </a>
                   <a
-                    href="https://wa.me/420608583115"
+                    href="https://wa.me/420776352237"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.iconWrap}
@@ -185,7 +185,7 @@ export default function Contact() {
                     <WhatsappIcon />
                   </a>
                   <a
-                    href="https://t.me/+420608583115"
+                    href="https://t.me/+420776352237"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.iconWrap}

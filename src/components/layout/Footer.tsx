@@ -33,7 +33,7 @@ export default function Footer() {
               <div className={styles.contactInfo}>
                 <p>
                   <span className={styles.label}>Telefon:</span>{" "}
-                  <a href="tel:+420608583115">+420 608 583 115</a>
+                  <a href="tel:+420776352237">+420 776 352 237</a>
                 </p>
                 <p>
                   <span className={styles.label}>E-mail:</span>{" "}
@@ -53,7 +53,7 @@ export default function Footer() {
                   <InstagramIcon />
                 </a>
                 <a
-                  href="https://wa.me/420608583115"
+                  href="https://wa.me/420776352237"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="WhatsApp"
@@ -61,7 +61,7 @@ export default function Footer() {
                   <WhatsappIcon />
                 </a>
                 <a
-                  href="https://t.me/+420608583115"
+                  href="https://t.me/+420776352237"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Telegram"

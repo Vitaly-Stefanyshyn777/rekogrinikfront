@@ -26,7 +26,7 @@ export default function CallModal({ isOpen, onClose }: CallModalProps) {
   if (!isOpen) return null;
 
   const handleCall = () => {
-    window.open("tel:+420608583115", "_self");
+    window.open("tel:+420776352237", "_self");
   };
 
   return (
@@ -45,7 +45,7 @@ export default function CallModal({ isOpen, onClose }: CallModalProps) {
           <p className={styles.description}>
             Klikněte na tlačítko níže pro zavolání na číslo:
           </p>
-          <p className={styles.phoneNumber}>+420 608 583 115</p>
+          <p className={styles.phoneNumber}>+420 776 352 237</p>
           <p className={styles.schedule}>
             <strong>Pracovní doba:</strong>
             <br />
