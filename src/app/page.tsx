@@ -7,7 +7,6 @@ import About from "@/components/sections/About";
 import Faq from "@/components/sections/Faq";
 import Contact from "@/components/sections/Contact";
 import WorkflowSection from "@/components/sections/WorkflowSection/WorkflowSection";
-import Reveal from "@/components/utils/Reveal";
 import Hubs from "@/components/sections/Hubs";
 
 export default function Home() {
@@ -16,53 +15,35 @@ export default function Home() {
       <div className="page-stack">
         <Hero />
         <section id="hubs">
-          <Reveal>
-            <Hubs />
-          </Reveal>
+          <Hubs />
         </section>
         <section id="stats">
-          <Reveal>
-            <Stats />
-          </Reveal>
+          <Stats />
         </section>
         <section id="gallery">
-          <Reveal>
-            <Gallery />
-          </Reveal>
+          <Gallery />
         </section>
         <section id="services">
-          <Reveal>
-            <Services />
-          </Reveal>
+          <Services />
         </section>
 
         <section id="steps">
-          <Reveal>
-            <WorkflowSection />
-          </Reveal>
+          <WorkflowSection />
         </section>
 
         <section id="reviews">
-          <Reveal>
-            <Reviews />
-          </Reveal>
+          <Reviews />
         </section>
 
         <section id="hubs"></section>
         <section id="faq">
-          <Reveal>
-            <Faq />
-          </Reveal>
+          <Faq />
         </section>
         <section id="contacts">
-          <Reveal>
-            <Contact />
-          </Reveal>
+          <Contact />
         </section>
         <section id="about">
-          <Reveal>
-            <About />
-          </Reveal>
+          <About />
         </section>
       </div>
     </main>
