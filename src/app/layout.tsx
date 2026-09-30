@@ -561,9 +561,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
-    yandex: "your-yandex-verification-code",
-    yahoo: "your-yahoo-verification-code",
+    google: "luibsPfI-U0Lr4CAZQvNgQV4HMq7fsO0mtcTmQPDQ3Y",
   },
 };
 
