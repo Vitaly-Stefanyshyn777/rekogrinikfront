@@ -40,20 +40,6 @@ export default function Hero() {
       }
     : fallbackData;
 
-  // Дебаг логування
-  console.log("=== Hero Debug Info ===");
-  console.log("Loading state:", loading);
-  console.log("Error state:", error);
-  console.log("Hero data from API:", heroData);
-  console.log("Final data being used:", data);
-  console.log(
-    "Using fallback:",
-    !heroData ||
-      (!(heroData as { title?: string; subtitle?: string })?.title &&
-        !(heroData as { title?: string; subtitle?: string })?.subtitle)
-  );
-  console.log("=========================");
-
   if (loading) {
     return (
       <section
