@@ -5,15 +5,16 @@ import Image from "next/image";
 import styles from "./Header.module.css";
 import { BurgerMenuIcon, CloseIcon } from "@/components/Icons/Icons";
 import { useEffect, useState } from "react";
-import RequestModal from "@/components/modals/RequestModal";
-import CallModal from "@/components/modals/CallModal";
-import ConsultationModal from "@/components/modals/ConsultationModal";
+import { mainNav } from "./navLinks";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isRequestModalOpen, setIsRequestModalOpen] = useState(false);
-  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
-  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
+  // Which sub-list (Služby / Lokace) is expanded in the mobile menu
+  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+    setOpenSubmenu(null);
+  };
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -32,55 +33,55 @@ export default function Header() {
             <Image
               src="/vector-2.svg"
               alt="RekoGrinik"
-              width={63}
-              height={63}
+              width={56}
+              height={56}
               priority
             />
+            <span className={styles.brandName}>RekoGrinik s.r.o.</span>
           </Link>
         </div>
         <div className={styles.middle}>
           <nav className={styles.nav} aria-label="Main Navigation">
-            <Link href="#hubs" className={styles.navLink}>
-              Naše realizace
-            </Link>
-            <Link href="#stats" className={styles.navLink}>
-              Statistiky
-            </Link>
-            <Link href="#services" className={styles.navLink}>
-              Naše služby
-            </Link>
-            <Link href="#steps" className={styles.navLink}>
-              Etapy práce
-            </Link>
-            <Link href="#reviews" className={styles.navLink}>
-              Recenze
-            </Link>
-            <Link href="#gallery" className={styles.navLink}>
-              Galerie
-            </Link>
-            <Link href="#faq" className={styles.navLink}>
-              Nejčastější otázky
-            </Link>
-            <Link href="#contacts" className={styles.navLink}>
-              Kontakty
-            </Link>
-            <Link href="#about" className={styles.navLink}>
-              O nás
-            </Link>
+            {mainNav.map((link) =>
+              link.children ? (
+                <div key={link.href} className={styles.navItem}>
+                  <Link href={link.href} className={styles.navLink}>
+                    {link.label}
+                    <span className={styles.chevron} aria-hidden="true" />
+                  </Link>
+                  <div className={styles.dropdown}>
+                    <ul className={styles.dropdownList}>
+                      {link.children.map((child) => (
+                        <li key={child.href}>
+                          <Link
+                            href={child.href}
+                            className={styles.dropdownLink}
+                            // Drop focus so :focus-within doesn't keep the menu open after navigating
+                            onClick={(e) => e.currentTarget.blur()}
+                          >
+                            {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ) : (
+                <Link key={link.href} href={link.href} className={styles.navLink}>
+                  {link.label}
+                </Link>
+              ),
+            )}
           </nav>
         </div>
         <div className={styles.right}>
-          <button
-            className={styles.cta}
-            onClick={() => setIsRequestModalOpen(true)}
-          >
+          <Link href="/kontakt" className={styles.cta} data-cta="header_request">
             Odeslat žádost
-          </button>
+          </Link>
           <button
             className={`${styles.burger} no-vw`}
             aria-label={isMobileMenuOpen ? "Close menu" : "Menu"}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            style={{ width: "40px", height: "40px" }}
+            onClick={() => (isMobileMenuOpen ? closeMobileMenu() : setIsMobileMenuOpen(true))}
           >
             {isMobileMenuOpen ? (
               <CloseIcon className={styles.icon34} />
@@ -93,62 +94,63 @@ export default function Header() {
       {isMobileMenuOpen && (
         <div className={styles.mobileMenu}>
           <nav className={styles.mobileNav}>
-            <Link href="#hubs" onClick={() => setIsMobileMenuOpen(false)}>
-              Naše realizace
-            </Link>
-            <Link href="#stats" onClick={() => setIsMobileMenuOpen(false)}>
-              Statistiky
-            </Link>
-            <Link href="#services" onClick={() => setIsMobileMenuOpen(false)}>
-              Naše služby
-            </Link>
-            <Link href="#steps" onClick={() => setIsMobileMenuOpen(false)}>
-              Etapy práce
-            </Link>
-            <Link href="#reviews" onClick={() => setIsMobileMenuOpen(false)}>
-              Recenze
-            </Link>
-            <Link href="#gallery" onClick={() => setIsMobileMenuOpen(false)}>
-              Galerie
-            </Link>
-            <Link href="#faq" onClick={() => setIsMobileMenuOpen(false)}>
-              Nejčastější otázky
-            </Link>
-            <Link href="#contacts" onClick={() => setIsMobileMenuOpen(false)}>
-              Kontakty
-            </Link>
-            <Link href="#about" onClick={() => setIsMobileMenuOpen(false)}>
-              O nás
-            </Link>
-            <Link href="/privacy" onClick={() => setIsMobileMenuOpen(false)}>
+            {mainNav.map((link) => {
+              if (!link.children) {
+                return (
+                  <Link key={link.href} href={link.href} onClick={closeMobileMenu}>
+                    {link.label}
+                  </Link>
+                );
+              }
+              const isOpen = openSubmenu === link.href;
+              return (
+                <div key={link.href} className={styles.mobileGroup}>
+                  <div className={styles.mobileGroupHead}>
+                    <Link href={link.href} onClick={closeMobileMenu}>
+                      {link.label}
+                    </Link>
+                    <button
+                      type="button"
+                      className={styles.mobileToggle}
+                      aria-expanded={isOpen}
+                      aria-label={`${isOpen ? "Skrýt" : "Zobrazit"}: ${link.label}`}
+                      onClick={() => setOpenSubmenu(isOpen ? null : link.href)}
+                    >
+                      <span
+                        className={`${styles.chevron} ${isOpen ? styles.chevronUp : ""}`}
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
+                  {isOpen && (
+                    <ul className={styles.mobileSubList}>
+                      {link.children.map((child) => (
+                        <li key={child.href}>
+                          <Link href={child.href} onClick={closeMobileMenu}>
+                            {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              );
+            })}
+            <Link href="/privacy" onClick={closeMobileMenu}>
               Privacy
             </Link>
           </nav>
 
-          <button
+          <Link
+            href="/kontakt"
             className={styles.mobileCta}
-            onClick={() => {
-              setIsMobileMenuOpen(false);
-              setIsRequestModalOpen(true);
-            }}
+            data-cta="mobile_menu_request"
+            onClick={closeMobileMenu}
           >
             Odeslat žádost
-          </button>
+          </Link>
         </div>
       )}
-
-      <RequestModal
-        isOpen={isRequestModalOpen}
-        onClose={() => setIsRequestModalOpen(false)}
-      />
-      <CallModal
-        isOpen={isCallModalOpen}
-        onClose={() => setIsCallModalOpen(false)}
-      />
-      <ConsultationModal
-        isOpen={isConsultationModalOpen}
-        onClose={() => setIsConsultationModalOpen(false)}
-      />
     </header>
   );
 }

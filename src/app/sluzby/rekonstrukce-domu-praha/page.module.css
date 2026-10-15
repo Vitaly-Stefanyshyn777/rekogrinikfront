@@ -1,0 +1,234 @@
+/* Extras for the "Rekonstrukce domů Praha" service page. Base styles come from
+   ../../_shared/site.module.css, hub pieces from ../page.module.css,
+   ../../lokace/page.module.css and ../rekonstrukce-bytu-praha/page.module.css.
+   Doubled class selectors override regardless of stylesheet order. */
+
+.boxGap.boxGap {
+  margin-top: 12px;
+}
+
+.whiteBox {
+  margin: 12px 0 0 !important;
+  padding: 24px 26px;
+  background: #fff;
+  font: 500 18px/1.6 Barlow, system-ui, sans-serif;
+  color: #17201c;
+  text-wrap: pretty;
+}
+
+.listCol {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkFont.checkFont {
+  font: 500 17px/1.5 Barlow, system-ui, sans-serif;
+}
+
+/* Numbered lists: "na klíč" scope (01–11) and risk steps (1–6) */
+.numList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid #0a513d;
+  font: 500 17px/1.5 Barlow, system-ui, sans-serif;
+  color: #17201c;
+}
+
+.numList li {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid #d9d5ca;
+}
+
+.numList li > span {
+  flex: none;
+  width: 26px;
+  font: 700 18px "Barlow Condensed", sans-serif;
+  color: #8a6414;
+}
+
+.numList a {
+  color: #17201c;
+  text-decoration: none;
+}
+
+.numList a:hover {
+  color: #01423d;
+  text-decoration: underline;
+}
+
+.riskList.riskList li {
+  padding: 16px 0;
+}
+
+.riskList.riskList li > span {
+  width: 30px;
+  font-size: 24px;
+  line-height: 1;
+  color: #0a513d;
+}
+
+/* Process: 7 steps + the budget checklist card = 8 cells, so the grid
+   steps 4 → 2 → 1 columns and every row stays full. */
+.stepsFlush.stepsFlush {
+  margin-top: 0;
+  grid-template-columns: 1fr;
+  gap: 40px 32px;
+}
+
+@media (min-width: 640px) {
+  .stepsFlush.stepsFlush {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .stepsFlush.stepsFlush {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stepsFlush.stepsFlush > li > span:first-child {
+  font-size: 56px;
+}
+
+.stepCard {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px 26px;
+  background: #01423d;
+  color: #f4f2ec;
+}
+
+.stepsFlush.stepsFlush .stepCard .stepCardTag {
+  font: 700 15px/1 "Barlow Condensed", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #edb849;
+}
+
+.stepSub.stepSub {
+  margin: 0;
+  font: 600 18px/1.4 Barlow, system-ui, sans-serif;
+  color: #f4f2ec;
+}
+
+.stepBullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font: 400 16px/1.5 Barlow, system-ui, sans-serif;
+  color: rgba(244, 242, 236, 0.9);
+}
+
+.stepBullets li {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.stepBullets li::before {
+  content: "";
+  flex: none;
+  width: 6px;
+  height: 6px;
+  background: #edb849;
+  transform: translateY(-2px);
+}
+
+/* Locations: left column follows the longer right one; chips in an even 3×2 grid */
+@media (min-width: 960px) {
+  .stickyCol {
+    position: sticky;
+    top: 96px;
+  }
+}
+
+.chipGrid.chipGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 420px;
+}
+
+.chipGrid.chipGrid > a {
+  text-align: center;
+}
+
+/* All at once vs in stages */
+.etapTable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font: 400 17px/1.5 Barlow, system-ui, sans-serif;
+}
+
+.etapTable th {
+  padding: 12px 24px 12px 0;
+  border-bottom: 2px solid #edb849;
+  font: 700 clamp(22px, 2.2vw, 28px) / 1.1 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  color: #edb849;
+  text-align: left;
+}
+
+.etapTable td {
+  padding: 16px 24px 16px 0;
+  border-bottom: 1px solid rgba(244, 242, 236, 0.2);
+  color: #f4f2ec;
+}
+
+.etapTable th + th,
+.etapTable td + td {
+  padding-left: 24px;
+  padding-right: 0;
+  border-left: 1px solid rgba(244, 242, 236, 0.2);
+}
+
+.etapFoot {
+  margin-top: 48px;
+  align-items: start;
+}
+
+.etapLead {
+  margin: 0;
+  font: 500 19px/1.6 Barlow, system-ui, sans-serif;
+  color: #f4f2ec;
+  text-wrap: pretty;
+}
+
+.etapTip.etapTip {
+  margin: 0 !important;
+}
+
+/* Result: two-column checklist */
+.goalGrid.goalGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0 28px;
+}
+
+.goalGrid.goalGrid li {
+  padding: 12px 0;
+}
+
+/* Before / after gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 4px;
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}

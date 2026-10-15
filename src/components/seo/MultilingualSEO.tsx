@@ -592,7 +592,7 @@ export default function MultilingualSEO({
         name: "RekoGrinik",
         description: "Professional renovation and reconstruction services",
         url: "https://rekogrinik.com",
-        telephone: "+420-608-583-115",
+        telephone: "+420-776-352-237",
         email: "rekogrinikcz@gmail.com",
         address: {
           "@type": "PostalAddress",

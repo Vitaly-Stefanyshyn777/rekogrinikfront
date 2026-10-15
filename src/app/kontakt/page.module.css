@@ -1,0 +1,292 @@
+/* /kontakt page. Base styles come from ../_shared/site.module.css, hub pieces from
+   ../sluzby and ../lokace. Doubled class selectors override regardless of
+   stylesheet order. */
+
+/* Hero: shorter than the service pages, heading centred in the space below
+   the breadcrumb */
+.hero.hero {
+  display: flex;
+  flex-direction: column;
+  min-height: 440px;
+  padding-bottom: 0;
+}
+
+/* Even tint so the centred heading reads across the whole photo */
+.heroOverlay.heroOverlay {
+  background: rgba(1, 38, 30, 0.82);
+}
+
+.heroInner.heroInner {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: clamp(56px, 8vw, 96px);
+}
+
+.heroCenter.heroCenter {
+  margin: auto;
+  max-width: 900px;
+  text-align: center;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.h1Sub {
+  display: block;
+  margin-top: 14px;
+  font: 600 clamp(26px, 2.8vw, 36px) / 1.1 "Barlow Condensed", sans-serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #edb849;
+}
+
+/* Contact details + form */
+.formSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.bigLink.bigLink {
+  font-size: clamp(26px, 2.6vw, 32px);
+}
+
+.addressNote {
+  font: 400 16px/1.5 Barlow, system-ui, sans-serif;
+  color: #4a5550;
+}
+
+.addressDd.addressDd {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.checkCol {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.formCard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: clamp(24px, 3vw, 40px);
+  background: #fff;
+  border-top: 4px solid #edb849;
+}
+
+.formTitle {
+  margin: 0;
+  font: 700 clamp(32px, 3.4vw, 44px) / 1.1 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  color: #0a513d;
+  text-wrap: balance;
+}
+
+/* RequestForm in the page's design (class names match RequestForm's keys) */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.formGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fieldPair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 14px;
+}
+
+.field {
+  position: relative;
+}
+
+.field input,
+.workTypeInput,
+.textareaRow textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  border: 1px solid #d9d5ca;
+  border-radius: 3px;
+  background: #f4f2ec;
+  font: 400 17px/1.4 Barlow, system-ui, sans-serif;
+  color: #17201c;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    box-shadow 0.15s;
+}
+
+.field input::placeholder,
+.workTypeInput::placeholder,
+.textareaRow textarea::placeholder {
+  color: #6b746f;
+}
+
+.field input:hover,
+.workTypeInput:hover,
+.textareaRow textarea:hover {
+  border-color: #0a513d;
+}
+
+.field input:focus,
+.workTypeInput:focus,
+.textareaRow textarea:focus {
+  outline: none;
+  border-color: #0a513d;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(10, 81, 61, 0.15);
+}
+
+.selectRow {
+  position: relative;
+}
+
+/* Type-of-work dropdown: native select with a custom chevron */
+.workTypeInput {
+  appearance: none;
+  padding-right: 44px;
+  cursor: pointer;
+}
+
+.workTypeInput:has(option[value=""]:checked) {
+  color: #6b746f;
+}
+
+.workTypeInput option {
+  color: #17201c;
+}
+
+.selectRow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid #0a513d;
+  border-bottom: 2px solid #0a513d;
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+/* Keep the required marker clear of the chevron */
+.selectRow .err {
+  right: 44px;
+}
+
+.textareaRow textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.err {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font: 700 18px Barlow, system-ui, sans-serif;
+  color: #c0261d;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.submit {
+  min-height: 62px;
+  padding: 14px 28px;
+  border: 0;
+  border-radius: 3px;
+  background: #edb849;
+  color: #1b1a12;
+  font: 600 22px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.submit:hover:not(:disabled) {
+  background: #f5cb6c;
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.note {
+  margin: 0;
+  font: 400 14px/1.5 Barlow, system-ui, sans-serif;
+  color: #4a5550;
+  text-wrap: pretty;
+}
+
+.privacyLink {
+  color: #0a513d;
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+/* Where to find us (no map) */
+.findUs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+.findText {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.findText > p {
+  margin: 0;
+  font: 400 17px/1.6 Barlow, system-ui, sans-serif;
+  color: #3a4540;
+  text-wrap: pretty;
+}
+
+.areas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.areaLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.groupGap {
+  margin-top: 20px !important;
+}

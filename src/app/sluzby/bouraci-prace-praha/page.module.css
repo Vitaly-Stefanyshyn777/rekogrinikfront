@@ -1,0 +1,93 @@
+/* Extras for the "Bourací práce Praha" service page. Base styles come from
+   ../../_shared/site.module.css, hub pieces from ../page.module.css,
+   ../../lokace/page.module.css and the byty / domy / koupelny service pages.
+   Doubled class selectors override regardless of stylesheet order. */
+
+.headGap.headGap {
+  margin-bottom: 56px;
+}
+
+.strongLead.strongLead {
+  font-weight: 500;
+  color: #17201c;
+}
+
+/* Work types: four cards in pairs, the plaster card spans the full row */
+.cardWide {
+  grid-column: 1 / -1;
+}
+
+.cardWideBody {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: 18px 48px;
+  align-items: start;
+}
+
+.cardCol {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.goldLink.goldLink {
+  color: #edb849;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Notes under the tables */
+.afterTable.afterTable {
+  margin: 48px 0 0 !important;
+  max-width: 820px;
+}
+
+/* Flat / house / bathroom */
+.trio {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(28px, 4vw, 48px);
+  align-items: start;
+}
+
+.trioCol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 2px solid #0a513d;
+  font: 400 17px/1.6 Barlow, system-ui, sans-serif;
+  color: #3a4540;
+}
+
+.trioCol h3 {
+  margin: 0;
+  font: 700 clamp(26px, 2.4vw, 32px) / 1.1 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  color: #17201c;
+}
+
+.trioCol p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* Before / after: three portrait shots */
+.shots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 20px;
+}
+
+.shots img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.galleryBtn.galleryBtn {
+  display: inline-block;
+  margin-top: 40px;
+}

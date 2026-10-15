@@ -1,0 +1,181 @@
+/* Extras for the služby hub. Base styles come from ../_shared/site.module.css;
+   doubled class selectors override those regardless of stylesheet order. */
+
+/* Hero (shorter than the homepage hero, with breadcrumb) */
+.heroCompact.heroCompact {
+  min-height: 620px;
+  padding-bottom: 96px;
+}
+
+.heroInnerCompact.heroInnerCompact {
+  padding-top: clamp(48px, 7vw, 88px);
+}
+
+.heroContentWide.heroContentWide {
+  max-width: 780px;
+}
+
+.h1Compact.h1Compact {
+  font-size: clamp(44px, 5.8vw, 78px);
+}
+
+.heroPrompt {
+  margin: 30px 0 14px;
+  max-width: 620px;
+  font: 600 17px/1.5 Barlow, system-ui, sans-serif;
+  color: #f4f2ec;
+  text-wrap: pretty;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: clamp(40px, 6vw, 72px);
+  font: 600 15px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244, 242, 236, 0.75);
+}
+
+.breadcrumb a {
+  color: #edb849;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Anchor targets clear the sticky site header (80px) */
+.anchor {
+  scroll-margin-top: 104px;
+}
+
+/* "If you need X → service Y" tables */
+.chooser {
+  width: 100%;
+  margin-top: 56px;
+  border-collapse: collapse;
+  font: 400 18px/1.5 Barlow, system-ui, sans-serif;
+}
+
+.chooser th {
+  padding: 12px 0;
+  border-bottom: 2px solid #0a513d;
+  font: 600 15px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0a513d;
+  text-align: left;
+}
+
+.chooser th:first-child,
+.chooser td:first-child {
+  width: 50%;
+  padding-right: 24px;
+}
+
+.chooser td {
+  padding: 18px 0;
+  border-bottom: 1px solid #e3e0d8;
+  color: #3a4540;
+}
+
+.chooser td a {
+  font: 700 24px/1.1 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  color: #17201c;
+  text-decoration: none;
+}
+
+.chooser td a:hover {
+  color: #01423d;
+  text-decoration: underline;
+}
+
+.calloutBox {
+  margin: 40px 0 0;
+  padding: 24px 26px;
+  max-width: 860px;
+  background: #f4f2ec;
+  font: 500 18px/1.6 Barlow, system-ui, sans-serif;
+  color: #17201c;
+  text-wrap: pretty;
+}
+
+/* Service articles */
+.listTitle {
+  margin: 8px 0 0 !important;
+  font: 700 20px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #f4f2ec;
+}
+
+.btnOutline {
+  align-self: flex-start;
+  margin-top: 6px;
+  padding: 14px 22px;
+  border: 1px solid #edb849;
+  border-radius: 3px;
+  color: #edb849;
+  font: 600 19px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.btnOutline:hover {
+  background: #edb849;
+  color: #1b1a12;
+}
+
+.tradeLink {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #e3e0d8;
+  font: 600 16px Barlow, system-ui, sans-serif;
+  color: #0a513d;
+  text-decoration: none;
+}
+
+.tradeLink:hover {
+  color: #01423d;
+  text-decoration: underline;
+}
+
+/* Process: seven shorter steps */
+.stepsTight.stepsTight {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+
+.stepsTight.stepsTight li > span {
+  font-size: 56px;
+}
+
+.darkNote {
+  margin: 64px 0 0;
+  padding: 24px 26px;
+  max-width: 860px;
+  background: #01423d;
+  color: #f4f2ec;
+  font: 500 18px/1.55 Barlow, system-ui, sans-serif;
+  text-wrap: pretty;
+}
+
+/* Checklist section */
+.tip {
+  margin: 8px 0 0 !important;
+  padding: 22px 24px;
+  border: 1px solid #edb849;
+  color: #f4f2ec;
+  font: 500 17px/1.55 Barlow, system-ui, sans-serif;
+}
+
+.tip strong {
+  color: #edb849;
+}

@@ -1,0 +1,376 @@
+/* /realizace page. Base styles come from ../_shared/site.module.css, hub pieces
+   from ../sluzby and ../lokace. Doubled class selectors override regardless
+   of stylesheet order. */
+
+.h1Sub {
+  display: block;
+  margin-top: 14px;
+  font: 600 clamp(26px, 2.8vw, 36px) / 1.1 "Barlow Condensed", sans-serif;
+  letter-spacing: 0.02em;
+  color: #edb849;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Gold chips under the hero text jump to each category */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 34px;
+}
+
+.chip {
+  padding: 8px 14px;
+  border: 1px solid #edb849;
+  color: #edb849;
+  font: 600 17px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.chip:hover {
+  background: #edb849;
+  color: #1b1a12;
+}
+
+/* Category head: title + short intro + service link */
+.catHead {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 72px;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+
+.catIntro {
+  margin: 0;
+  max-width: 560px;
+  font: 400 18px/1.6 Barlow, system-ui, sans-serif;
+  color: #3a4540;
+  text-wrap: pretty;
+}
+
+.catIntro a {
+  color: #0a513d;
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+/* One project */
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 24px;
+  border-top: 2px solid #0a513d;
+}
+
+.project + .project {
+  margin-top: 72px;
+}
+
+.projectInfo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: 24px clamp(28px, 5vw, 72px);
+  align-items: start;
+}
+
+.projectTitle {
+  margin: 0;
+  font: 700 clamp(28px, 2.8vw, 36px) / 1.1 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  color: #17201c;
+  text-wrap: balance;
+}
+
+.projectText {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.projectText p {
+  margin: 0;
+  font: 400 18px/1.6 Barlow, system-ui, sans-serif;
+  color: #3a4540;
+  text-wrap: pretty;
+}
+
+.scopeTitle {
+  margin: 0 0 12px;
+  font: 700 20px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #0a513d;
+}
+
+/* Before / after rows */
+.photoGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.groupLabel {
+  align-self: flex-start;
+  margin: 0;
+  padding: 5px 12px;
+  background: #17201c;
+  color: #f4f2ec;
+  font: 600 15px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.groupAfter.groupAfter {
+  background: #edb849;
+  color: #1b1a12;
+}
+
+.photoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  gap: 8px;
+}
+
+.photoBtn {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: #01423d;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.photoBtn img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.photoBtn:hover img {
+  transform: scale(1.03);
+}
+
+/* Category without published projects yet */
+.empty {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: 20px 48px;
+  align-items: center;
+  padding: clamp(24px, 3vw, 36px);
+  border: 1px dashed #b9b4a6;
+  background: #fff;
+}
+
+.empty p {
+  margin: 0;
+  font: 400 18px/1.6 Barlow, system-ui, sans-serif;
+  color: #3a4540;
+  text-wrap: pretty;
+}
+
+.emptyLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  justify-content: flex-start;
+}
+
+/* Closing call to action */
+.cta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: 28px clamp(28px, 5vw, 72px);
+  align-items: center;
+}
+
+.cta p {
+  margin: 16px 0 0;
+  font: 400 18px/1.6 Barlow, system-ui, sans-serif;
+  color: rgba(244, 242, 236, 0.9);
+  text-wrap: pretty;
+}
+
+.cta p a {
+  color: #edb849;
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.cta p a:hover {
+  color: #f5cb6c;
+}
+
+/* "Co jsme předělali" item that links to its service */
+.scopeLink {
+  color: #0a513d;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: #edb849;
+  text-underline-offset: 3px;
+}
+
+.scopeLink:hover {
+  color: #01423d;
+}
+
+.ctaBtns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ctaBtns > a {
+  padding: 14px 28px;
+}
+
+/* Full-screen photo viewer */
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 72px;
+  background: rgba(10, 16, 13, 0.94);
+}
+
+.viewerFigure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.viewerFigure img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 160px);
+  object-fit: contain;
+}
+
+.viewerFigure figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 12px;
+  font: 400 15px/1.4 Barlow, system-ui, sans-serif;
+  color: rgba(244, 242, 236, 0.85);
+  text-align: center;
+}
+
+.viewerLabel {
+  padding: 3px 8px;
+  background: #edb849;
+  color: #1b1a12;
+  font: 600 13px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.viewerCount {
+  font-variant-numeric: tabular-nums;
+  color: rgba(244, 242, 236, 0.6);
+}
+
+.viewerBtn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(244, 242, 236, 0.35);
+  border-radius: 3px;
+  background: rgba(1, 66, 61, 0.6);
+  color: #f4f2ec;
+  font: 400 32px/1 Barlow, system-ui, sans-serif;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.viewerBtn:hover {
+  background: #0a513d;
+}
+
+.viewerPrev {
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.viewerNext {
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.viewerClose {
+  top: 14px;
+  right: 14px;
+}
+
+@media (max-width: 640px) {
+  .viewer {
+    padding: 64px 12px 80px;
+  }
+
+  .viewerPrev,
+  .viewerNext {
+    top: auto;
+    bottom: 16px;
+    transform: none;
+  }
+
+  .viewerPrev {
+    left: calc(50% - 56px);
+  }
+
+  .viewerNext {
+    right: calc(50% - 56px);
+  }
+}
+
+/* Walkthrough video under the photos (portrait phone footage) */
+.videoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.video {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 9 / 16;
+  background: #01423d;
+  object-fit: cover;
+}
+
+.videoCaption {
+  margin: 0;
+  font: 400 15px/1.5 Barlow, system-ui, sans-serif;
+  color: #4a5550;
+}

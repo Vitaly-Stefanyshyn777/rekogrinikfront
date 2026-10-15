@@ -1,0 +1,391 @@
+/* Extras for the lokace page. Base styles come from ../_shared/site.module.css,
+   shared hub pieces (compact hero, breadcrumb, outline button) from
+   ../sluzby/page.module.css. Doubled class selectors override regardless of
+   stylesheet order. */
+
+/* Hero */
+.heroCta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.heroCtaBtn.heroCtaBtn {
+  padding: 14px 28px;
+}
+
+.heroContact.heroContact {
+  margin: 18px 0 0;
+  max-width: 620px;
+  font: 500 17px/1.55 Barlow, system-ui, sans-serif;
+  color: #f4f2ec;
+  text-wrap: pretty;
+}
+
+.heroContact a {
+  color: #edb849;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* Intro checklist (light background) */
+.checkTitle {
+  margin: 0;
+  font: 700 20px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #0a513d;
+}
+
+.checkLight {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #d9d5ca;
+  font: 500 17px/1.5 Barlow, system-ui, sans-serif;
+  color: #17201c;
+}
+
+.checkLight li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 13px 0;
+  border-bottom: 1px solid #d9d5ca;
+}
+
+.checkLight li::before {
+  content: "";
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  border: 1.5px solid #0a513d;
+}
+
+/* Areas */
+.areasHead {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 72px;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 56px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 8px 14px;
+  border: 1px solid #0a513d;
+  color: #0a513d;
+  font: 600 17px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.chip:hover {
+  background: #0a513d;
+  color: #f4f2ec;
+}
+
+.area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px clamp(32px, 5vw, 72px);
+  padding: 40px 0 56px;
+  border-top: 2px solid #0a513d;
+}
+
+.area:last-child {
+  border-bottom: 2px solid #0a513d;
+}
+
+.areaHead {
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.areaNum {
+  font: 700 clamp(96px, 10vw, 148px) / 0.82 "Barlow Condensed", sans-serif;
+  color: #0a513d;
+}
+
+.areaTitle {
+  margin: 0;
+  font: 700 30px/1.1 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  color: #17201c;
+}
+
+.badge {
+  padding: 5px 10px;
+  background: #edb849;
+  color: #1b1a12;
+  font: 600 14px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.areaBody {
+  flex: 2 1 520px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font: 400 17px/1.6 Barlow, system-ui, sans-serif;
+  color: #3a4540;
+}
+
+.areaBody p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.areaListTitle.areaListTitle {
+  margin: 6px 0 0;
+  font: 700 20px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #17201c;
+}
+
+.greenBullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px 24px;
+  color: #17201c;
+}
+
+.greenBullets li {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.greenBullets li::before {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  background: #0a513d;
+  transform: translateY(-2px);
+}
+
+.greenBullets a {
+  color: #17201c;
+  text-decoration: none;
+}
+
+.greenBullets a:hover {
+  color: #01423d;
+  text-decoration: underline;
+}
+
+.areaLink {
+  margin-top: 6px;
+}
+
+/* Services table on dark background */
+.serviceTable {
+  width: 100%;
+  border-collapse: collapse;
+  font: 400 17px/1.5 Barlow, system-ui, sans-serif;
+}
+
+.serviceTable th {
+  padding: 12px 0;
+  border-bottom: 2px solid #edb849;
+  font: 600 15px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #edb849;
+  text-align: left;
+}
+
+.serviceTable th:first-child,
+.serviceTable td:first-child {
+  width: 44%;
+  padding-right: 24px;
+}
+
+.serviceTable td {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(244, 242, 236, 0.2);
+  color: rgba(244, 242, 236, 0.85);
+}
+
+.serviceTable td a {
+  font: 700 24px/1.1 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  color: #f4f2ec;
+  text-decoration: none;
+}
+
+.serviceTable td a:hover {
+  color: #edb849;
+}
+
+.allServices.allServices {
+  display: inline-block;
+  margin-top: 40px;
+}
+
+/* Why us */
+.whyGrid {
+  list-style: none;
+  margin: 56px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 20px;
+}
+
+.whyCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 28px 30px;
+  background: #fff;
+  border-top: 4px solid #0a513d;
+}
+
+.whyCard::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #edb849;
+}
+
+.whyCard strong {
+  font: 700 24px/1.1 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  color: #17201c;
+}
+
+.whyCard span {
+  font: 400 16px/1.6 Barlow, system-ui, sans-serif;
+  color: #4a5550;
+}
+
+/* First visit */
+.visitSteps.visitSteps {
+  gap: 40px;
+}
+
+.visitSteps.visitSteps li > span:first-child {
+  font-size: 56px;
+}
+
+.stepText {
+  font: 500 18px/1.5 Barlow, system-ui, sans-serif;
+  color: #17201c;
+  text-wrap: pretty;
+}
+
+.visitNote.visitNote {
+  margin-top: 56px;
+}
+
+/* Map */
+.mapCol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contactCard {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid #0a513d;
+}
+
+.contactName {
+  margin: 0;
+  padding: 18px 0;
+  border-bottom: 1px solid #e3e0d8;
+  font: 700 26px/1.1 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  color: #17201c;
+}
+
+.contactCard dl {
+  margin: 0;
+}
+
+.contactRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 0;
+  border-bottom: 1px solid #e3e0d8;
+}
+
+.contactRow dt {
+  font: 600 14px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0a513d;
+}
+
+.contactRow dd {
+  margin: 0;
+  font: 500 19px/1.4 Barlow, system-ui, sans-serif;
+  color: #17201c;
+}
+
+.contactRow dd a {
+  font: 600 26px "Barlow Condensed", sans-serif;
+  color: #17201c;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.btnOutlineGreen {
+  align-self: flex-start;
+  padding: 14px 22px;
+  border: 1px solid #0a513d;
+  border-radius: 3px;
+  color: #0a513d;
+  font: 600 19px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.btnOutlineGreen:hover {
+  background: #0a513d;
+  color: #f4f2ec;
+}
+
+.mapHint {
+  margin: 0;
+  font: 400 16px/1.6 Barlow, system-ui, sans-serif;
+  color: #4a5550;
+  text-wrap: pretty;
+}
+
+.map {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: 340px;
+  border: 0;
+  background: #e3e0d8;
+}

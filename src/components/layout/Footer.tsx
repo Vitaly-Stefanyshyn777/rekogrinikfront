@@ -7,6 +7,24 @@ import {
   WhatsappIcon,
   TelegramIcon,
 } from "@/components/Icons/Icons";
+import { pageLinks, serviceLinks, type NavLink } from "./navLinks";
+
+function FooterColumn({ title, links }: { title: string; links: NavLink[] }) {
+  return (
+    <nav className={styles.servicesSection} aria-label={title}>
+      <div className={styles.servicesContent}>
+        <h5>{title}</h5>
+        <ul className={styles.servicesList}>
+          {links.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href}>{link.label}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  );
+}
 
 export default function Footer() {
   return (
@@ -18,13 +36,16 @@ export default function Footer() {
               <Image
                 src="/vector-2.svg"
                 alt="RekoGrinik"
-                width={93}
-                height={93}
+                width={72}
+                height={72}
               />
             </div>
-            <p className={styles.tagline}>
-              Profesionální opravy a renovace v Praze
-            </p>
+            <div className={styles.brandText}>
+              <p className={styles.brandName}>RekoGrinik s.r.o.</p>
+              <p className={styles.tagline}>
+                Profesionální opravy a renovace v Praze
+              </p>
+            </div>
           </div>
 
           <div className={styles.rightBlocks}>
@@ -41,7 +62,10 @@ export default function Footer() {
                     rekogrinikcz@gmail.com
                   </a>
                 </p>
-                <p>Praha, Česká republika</p>
+                <p>
+                  <span className={styles.label}>Adresa:</span> Na Vackově
+                  2895/5, 130 00 Praha 3
+                </p>
               </div>
               <div className={styles.socialIcons}>
                 <a
@@ -79,33 +103,66 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className={styles.servicesSection}>
-              <div className={styles.servicesContent}>
-                <h5>Služby</h5>
-                <div className={styles.servicesList}>
-                  <p>Rekonstrukce bytů</p>
-                  <p>Koupelny</p>
-                  <p>Sádrokartonářské práce</p>
-                  <p>Malířské práce</p>
-                  <p>Obklady</p>
-                </div>
-              </div>
-            </div>
+            <FooterColumn
+              title="Navigace"
+              links={[
+                pageLinks.home,
+                { label: "Všechny služby", href: pageLinks.services.href },
+                pageLinks.locations,
+                pageLinks.process,
+                pageLinks.realizace,
+                pageLinks.reviews,
+                pageLinks.contact,
+              ]}
+            />
+            <FooterColumn title="Služby" links={serviceLinks} />
           </div>
         </div>
+
+        {/* Google Business Profile map (RekoGrinik s.r.o., Na Vackově) */}
+        <iframe
+          className={styles.map}
+          title="Mapa – RekoGrinik s.r.o., Na Vackově 2895/5, Praha 3"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2559.898253057244!2d14.482293777420129!3d50.08819181337993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465c546cda720659%3A0x140985d460c24916!2sRekoGrinik%20s.r.o.!5e0!3m2!1scs!2scz!4v1792063812875!5m2!1scs!2scz"
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
+        />
       </div>
 
-      <div className={styles.bottomSection}>
-        <div className={styles.copyright}>
-          <p>
-            © {new Date().getFullYear()} RekoGrinik s.r.o. Všechna práva
-            vyhrazena.
-          </p>
-        </div>
-        <div className={styles.legalLinks}>
-          <Link href="/privacy" className={styles.legalLink}>
-            Zásady ochrany osobních údajů
-          </Link>
+      <div className={styles.bottomRule}>
+        <div className={styles.bottomSection}>
+          <div className={styles.copyright}>
+            <p>
+              © {new Date().getFullYear()} RekoGrinik s.r.o. Všechna práva
+              vyhrazena.
+            </p>
+          </div>
+          <a
+            className={styles.credit}
+            href="https://mmavencreative.com/"
+            target="_blank"
+            rel="noopener"
+          >
+            SEO a web od
+            <Image
+              src="/mmaven-logo.png"
+              alt=""
+              width={33}
+              height={24}
+              className={styles.creditLogo}
+            />
+            <strong>MMaven Creative</strong>
+          </a>
+          <div className={styles.legalLinks}>
+            <Link href="/privacy" className={styles.legalLink}>
+              Zásady ochrany osobních údajů
+            </Link>
+            {/* CookieYes reopens its preference centre from this class */}
+            <a href="#" className={`${styles.legalLink} cky-banner-element`}>
+              Nastavení cookies
+            </a>
+          </div>
         </div>
       </div>
     </footer>

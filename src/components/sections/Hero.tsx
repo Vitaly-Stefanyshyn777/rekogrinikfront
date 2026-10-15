@@ -1,15 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import styles from "./Hero.module.css";
 import { useHero } from "@/hooks/useHero";
 import { useState } from "react";
 import CallModal from "@/components/modals/CallModal";
-import ConsultationModal from "@/components/modals/ConsultationModal";
 
 export default function Hero() {
   const { heroData, loading, error } = useHero();
   const [isCallModalOpen, setIsCallModalOpen] = useState(false);
-  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
 
   // Fallback дані якщо API не працює
   const fallbackData = {
@@ -80,14 +79,16 @@ export default function Hero() {
           </div>
 
           <div className={styles.actions}>
-            <button
+            <Link
+              href="/kontakt"
               className={styles.primaryBtn}
-              onClick={() => setIsConsultationModalOpen(true)}
+              data-cta="hero_consultation"
             >
               {data.primaryButtonText || fallbackData.primaryButtonText}
-            </button>
+            </Link>
             <button
               className={styles.secondaryBtn}
+              data-cta="hero_call"
               onClick={() => setIsCallModalOpen(true)}
             >
               {data.secondaryButtonText || fallbackData.secondaryButtonText}
@@ -99,10 +100,6 @@ export default function Hero() {
       <CallModal
         isOpen={isCallModalOpen}
         onClose={() => setIsCallModalOpen(false)}
-      />
-      <ConsultationModal
-        isOpen={isConsultationModalOpen}
-        onClose={() => setIsConsultationModalOpen(false)}
       />
     </section>
   );

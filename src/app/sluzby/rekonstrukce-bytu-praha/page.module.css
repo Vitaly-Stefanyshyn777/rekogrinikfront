@@ -1,0 +1,213 @@
+/* Extras for the "Rekonstrukce bytů Praha" service page. Base styles come from
+   ../../_shared/site.module.css, hub pieces from ../page.module.css and
+   ../../lokace/page.module.css. Doubled class selectors override regardless
+   of stylesheet order. */
+
+.darkBox {
+  margin: 0;
+  padding: 24px 26px;
+  background: #01423d;
+  color: #f4f2ec;
+  font: 500 19px/1.55 Barlow, system-ui, sans-serif;
+  text-wrap: pretty;
+}
+
+.splitTop {
+  margin-top: 56px;
+  align-items: start;
+}
+
+/* Complete vs partial table */
+.typeTable {
+  width: 100%;
+  margin-top: 56px;
+  border-collapse: collapse;
+  font: 400 18px/1.5 Barlow, system-ui, sans-serif;
+}
+
+.typeTable th {
+  padding: 12px 0;
+  border-bottom: 2px solid #0a513d;
+  font: 600 15px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0a513d;
+  text-align: left;
+}
+
+.typeTable th:first-child,
+.typeTable td:first-child {
+  width: 40%;
+  padding-right: 24px;
+}
+
+.typeTable td {
+  padding: 18px 0;
+  border-bottom: 1px solid #d9d5ca;
+  color: #3a4540;
+}
+
+.typeTable td:first-child {
+  font: 700 24px/1.1 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  color: #17201c;
+}
+
+/* Scope cards (dark section) */
+.scopeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
+  gap: 20px;
+}
+
+.scopeCard {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: clamp(24px, 3vw, 36px);
+  border: 1px solid rgba(244, 242, 236, 0.22);
+  font: 400 17px/1.6 Barlow, system-ui, sans-serif;
+  color: rgba(244, 242, 236, 0.9);
+}
+
+.scopeCard p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.scopeNum {
+  font: 700 20px "Barlow Condensed", sans-serif;
+  color: #edb849;
+}
+
+.scopeTitle {
+  margin: 0;
+  font: 700 clamp(28px, 2.6vw, 34px) / 1.1 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  color: #edb849;
+}
+
+.scopeListTitle.scopeListTitle {
+  margin: 6px 0 0;
+  font: 700 19px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #f4f2ec;
+}
+
+.scopeNote.scopeNote {
+  padding-top: 16px;
+  border-top: 1px solid rgba(244, 242, 236, 0.22);
+  color: #f4f2ec;
+}
+
+.pushDown.pushDown {
+  margin-top: auto;
+}
+
+.scopeLinks {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Price factors (dark table, plain first column) */
+.factorTable td:first-child {
+  font: 700 24px/1.1 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  color: #f4f2ec;
+}
+
+.darkLeadStack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font: 400 18px/1.6 Barlow, system-ui, sans-serif;
+  color: rgba(244, 242, 236, 0.88);
+}
+
+.darkLeadStack p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.creamNote {
+  margin: 40px 0 0;
+  max-width: 860px;
+  font: 500 19px/1.6 Barlow, system-ui, sans-serif;
+  color: #f4f2ec;
+  text-wrap: pretty;
+}
+
+.inlineBtn.inlineBtn {
+  display: inline-block;
+  margin-top: 40px;
+}
+
+.btnGap.btnGap {
+  margin-top: 8px;
+}
+
+/* Why us */
+.reasonGrid {
+  list-style: none;
+  margin: 48px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 16px;
+}
+
+.reasonCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px 24px;
+  background: #f4f2ec;
+  border-top: 4px solid #0a513d;
+  font: 500 18px/1.45 Barlow, system-ui, sans-serif;
+  color: #17201c;
+}
+
+.reasonCard::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #edb849;
+}
+
+/* Related pages */
+.related {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4.4vw, 56px) clamp(56px, 7vw, 88px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  align-items: center;
+}
+
+.relatedLabel {
+  margin-right: 8px;
+  font: 600 15px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0a513d;
+}
+
+.relatedLink {
+  padding: 8px 14px;
+  border: 1px solid #0a513d;
+  color: #0a513d;
+  font: 600 16px Barlow, system-ui, sans-serif;
+  text-decoration: none;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.relatedLink:hover {
+  background: #0a513d;
+  color: #f4f2ec;
+}

@@ -1,18 +1,24 @@
 import type { Metadata } from "next";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MultilingualSEO from "@/components/seo/MultilingualSEO";
 import SocialMediaMeta from "@/components/seo/SocialMediaMeta";
+import { businessSchema, websiteSchema } from "@/utils/schema";
+
+// Site font, loaded by the browser. Same URL as the page templates use, so
+// React dedupes the stylesheet when a page links it too.
+const FONTS_URL =
+  "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap";
 
 export const metadata: Metadata = {
   title: {
-    default:
-      "RekoGrinik - Professional Renovation & Reconstruction Services | Czech Republic, Poland, Ukraine",
+    default: "Rekonstrukce Praha na klíč | Byty, domy a koupelny | RekoGrinik",
     template: "%s | RekoGrinik",
   },
   description:
-    "Professional renovation services, apartment reconstruction, bathroom renovation, office renovation. Quality construction services in Czech Republic, Poland, Ukraine. Free consultation and work estimates.",
+    "Rekonstrukce bytů, domů a koupelen v Praze na klíč. Zednické, sádrokartonářské, malířské, podlahářské a bourací práce. Bezplatná návštěva mistra a rozpočet s pevnými cenami.",
   keywords: [
     // Українська - основні
     "ремонт квартир",
@@ -526,26 +532,26 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "cs_CZ",
     url: "https://rekogrinik.com",
     siteName: "RekoGrinik",
-    title: "RekoGrinik - Professional Renovation & Reconstruction Services",
+    title: "Rekonstrukce Praha na klíč | Byty, domy a koupelny | RekoGrinik",
     description:
-      "Professional renovation services, apartment reconstruction, bathroom renovation, office renovation. Quality construction services in Czech Republic, Poland, Ukraine.",
+      "Rekonstrukce bytů, domů a koupelen v Praze na klíč. Zednické, sádrokartonářské, malířské, podlahářské a bourací práce. Bezplatná návštěva mistra a rozpočet s pevnými cenami.",
     images: [
       {
         url: "/img7.jpg",
         width: 1200,
         height: 630,
-        alt: "RekoGrinik - Professional Renovation Services",
+        alt: "RekoGrinik, rekonstrukce bytů, domů a koupelen v Praze",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "RekoGrinik - Professional Renovation & Reconstruction Services",
+    title: "Rekonstrukce Praha na klíč | Byty, domy a koupelny | RekoGrinik",
     description:
-      "Professional renovation services, apartment reconstruction, bathroom renovation, office renovation. Quality construction services.",
+      "Rekonstrukce bytů, domů a koupelen v Praze na klíč. Zednické, sádrokartonářské, malířské, podlahářské a bourací práce. Bezplatná návštěva mistra a rozpočet s pevnými cenami.",
     images: ["/img7.jpg"],
     creator: "@rekogrinik",
   },
@@ -571,7 +577,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="uk" dir="ltr">
+    <html lang="cs" dir="ltr">
+      <GoogleTagManager gtmId="GTM-5GRJ6XWP" />
       <head>
         {/* Next.js автоматично додасть icon.svg з app/icon.svg */}
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -768,83 +775,16 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        {/* Site-wide business + website schema; pages add their own on top */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "RekoGrinik",
-              description:
-                "Professional renovation services, apartment reconstruction, bathroom renovation, office renovation",
-              url: "https://rekogrinik.com",
-              logo: "https://rekogrinik.com/logo.png",
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: "+420-608-583-115",
-                contactType: "customer service",
-                availableLanguage: [
-                  "Ukrainian",
-                  "Czech",
-                  "Polish",
-                  "English",
-                  "Russian",
-                  "Turkish",
-                ],
-              },
-              address: {
-                "@type": "PostalAddress",
-                addressCountry: ["CZ", "PL", "UA"],
-              },
-              sameAs: [
-                "https://www.facebook.com/rekogrinik",
-                "https://www.instagram.com/rekogrinik",
-                "https://t.me/rekogrinik",
-              ],
-              serviceArea: {
-                "@type": "GeoCircle",
-                geoMidpoint: {
-                  "@type": "GeoCoordinates",
-                  latitude: 50.0755,
-                  longitude: 14.4378,
-                },
-                geoRadius: "500000",
-              },
-              hasOfferCatalog: {
-                "@type": "OfferCatalog",
-                name: "Renovation Services",
-                itemListElement: [
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Apartment Renovation",
-                      description: "Complete apartment renovation turnkey",
-                    },
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Bathroom Reconstruction",
-                      description: "Modern bathroom renovation",
-                    },
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Office Renovation",
-                      description: "Corporate office renovation",
-                    },
-                  },
-                ],
-              },
-            }),
+            __html: JSON.stringify([businessSchema, websiteSchema]),
           }}
         />
       </head>
       <body>
+        <link rel="stylesheet" href={FONTS_URL} precedence="default" />
         <MultilingualSEO />
         <SocialMediaMeta />
         <Header />
