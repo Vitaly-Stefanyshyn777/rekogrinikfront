@@ -1,8 +1,41 @@
+import type { Metadata } from "next";
 import styles from "./page.module.css";
+import { SITE_URL, webPageSchema } from "@/utils/schema";
+
+const PAGE_URL = "https://rekogrinik.cz/privacy";
+
+export const metadata: Metadata = {
+  title: { absolute: "Zásady ochrany osobních údajů | RekoGrinik" },
+  description:
+    "Zásady ochrany osobních údajů RekoGrinik s.r.o.: jak zpracováváme údaje z poptávek a kontaktních formulářů a jak na webu používáme cookies.",
+  // Absolute: the root layout's metadataBase is rekogrinik.com, which redirects to .cz.
+  alternates: { canonical: PAGE_URL },
+};
+
+const jsonLd = [
+  webPageSchema({
+    url: PAGE_URL,
+    name: "Zásady ochrany osobních údajů",
+    description:
+      "Jak RekoGrinik s.r.o. zpracovává osobní údaje z poptávek a kontaktních formulářů a jak web používá cookies.",
+  }),
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Domů", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Zásady ochrany osobních údajů", item: PAGE_URL },
+    ],
+  },
+];
 
 export default function PrivacyPage() {
   return (
     <div className={styles.container}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className={styles.content}>
         <h1 className={styles.title}>Zásady ochrany osobních údajů</h1>
 
@@ -129,6 +162,14 @@ export default function PrivacyPage() {
             Náš web používá cookies pro zlepšení funkčnosti a analýzu používání.
             Můžete nastavit váš prohlížeč pro odmítnutí cookies.
           </p>
+          {/* TODO: Insert the CookieYes cookie policy text (cookie list) here. */}
+          <p>
+            Svůj souhlas můžete kdykoli změnit v{" "}
+            <a href="#" className="cky-banner-element">
+              nastavení cookies
+            </a>
+            .
+          </p>
         </section>
 
         <section className={styles.section}>
@@ -147,10 +188,12 @@ export default function PrivacyPage() {
           </p>
           <ul>
             <li>
-              <strong>Email:</strong> info@rekogrinik.cz
+              <strong>Email:</strong>{" "}
+              <a href="mailto:info@rekogrinik.cz">info@rekogrinik.cz</a>
             </li>
             <li>
-              <strong>Telefon:</strong> +420 XXX XXX XXX
+              <strong>Telefon:</strong>{" "}
+              <a href="tel:+420776352237">+420 776 352 237</a>
             </li>
             <li>
               <strong>Adresa:</strong> Praha, Česká republika

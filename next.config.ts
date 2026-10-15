@@ -71,23 +71,37 @@ const nextConfig: NextConfig = {
         destination: "/",
         permanent: true,
       },
-    ];
-  },
-
-  // Переписування для SEO-friendly URLs
-  async rewrites() {
-    return [
+      // The new homepage was built at /NEW before it replaced /
+      {
+        source: "/NEW",
+        destination: "/",
+        permanent: true,
+      },
+      // Old site addresses (listed in the old sitemap) -> matching new pages
+      {
+        source: "/services/apartment-renovation",
+        destination: "/sluzby/rekonstrukce-bytu-praha",
+        permanent: true,
+      },
+      {
+        source: "/services/bathroom-renovation",
+        destination: "/sluzby/rekonstrukce-koupelen-praha",
+        permanent: true,
+      },
       {
         source: "/services/:path*",
-        destination: "/#services",
+        destination: "/sluzby",
+        permanent: true,
       },
       {
         source: "/gallery/:path*",
-        destination: "/#gallery",
+        destination: "/realizace",
+        permanent: true,
       },
       {
         source: "/contact/:path*",
-        destination: "/#contacts",
+        destination: "/kontakt",
+        permanent: true,
       },
     ];
   },

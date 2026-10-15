@@ -3,7 +3,10 @@
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { apiClient } from "@/api/client";
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
+import { useAttribution } from "@/hooks/useAttribution";
+import AttributionFields from "@/components/forms/AttributionFields";
+import { attributionPayload, pushEnquiryEvent } from "@/utils/leadTracking";
 import styles from "./ConsultationModal.module.css";
 
 type FormValues = {
@@ -47,22 +50,9 @@ export default function ConsultationModal({
     return "uk";
   }, []);
 
-  const utmSource = useMemo(() => {
-    if (typeof window === "undefined") return undefined;
-    const params = new URLSearchParams(window.location.search);
-    const obj: Record<string, string> = {};
-    [
-      "utm_source",
-      "utm_medium",
-      "utm_campaign",
-      "utm_term",
-      "utm_content",
-    ].forEach((key) => {
-      const val = params.get(key);
-      if (val) obj[key] = val;
-    });
-    return Object.keys(obj).length ? obj : undefined;
-  }, []);
+  // Click IDs + UTMs from the landing URL (hidden fields + payload)
+  const attribution = useAttribution();
+  const inFlight = useRef(false);
 
   const {
     register,
@@ -74,6 +64,9 @@ export default function ConsultationModal({
   });
 
   const onSubmit = async (data: FormValues) => {
+    // One enquiry = one request = one conversion event
+    if (inFlight.current) return;
+    inFlight.current = true;
     setSubmitError(null);
     setSubmitSuccess(null);
     setIsSubmitting(true);
@@ -87,11 +80,17 @@ export default function ConsultationModal({
         consent: true,
         address: "",
         contactTime: undefined,
-        source: utmSource,
+        source: attributionPayload(attribution),
         files: undefined,
         locale,
       };
       const res = await apiClient.submitForm(payload);
+      // Reached only on a 2xx response (submitForm throws otherwise)
+      pushEnquiryEvent({
+        formId: "consultation_modal",
+        email: data.email,
+        phone: data.phone,
+      });
       setSubmitSuccess(res.id);
       reset({
         name: "",
@@ -104,6 +103,7 @@ export default function ConsultationModal({
         e instanceof Error ? e.message : "Chyba odesílání formuláře"
       );
     } finally {
+      inFlight.current = false;
       setIsSubmitting(false);
     }
   };
@@ -129,6 +129,7 @@ export default function ConsultationModal({
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+          <AttributionFields attribution={attribution} />
           <div className={styles.field}>
             <input
               placeholder="Vaše jméno"

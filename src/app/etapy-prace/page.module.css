@@ -1,0 +1,125 @@
+/* /etapy-prace page. Base styles come from ../_shared/site.module.css, hub pieces
+   from ../sluzby, ../lokace and ../realizace. Doubled class selectors override
+   regardless of stylesheet order. */
+
+/* Step list: number + duration on the left, content on the right; stacks
+   on phones. */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 20px clamp(24px, 4vw, 56px);
+  padding: clamp(24px, 3vw, 36px);
+  background: #fff;
+  border-left: 4px solid #0a513d;
+}
+
+.stepAside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.stepNum {
+  font: 700 72px/0.9 "Barlow Condensed", sans-serif;
+  color: #edb849;
+}
+
+.duration {
+  padding: 6px 12px;
+  background: #01423d;
+  color: #f4f2ec;
+  font: 600 16px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.stepBody {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 14px clamp(24px, 4vw, 56px);
+  align-content: start;
+}
+
+.stepTitle {
+  grid-column: 1 / -1;
+  margin: 0;
+  font: 700 clamp(28px, 2.8vw, 36px) / 1.1 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  color: #17201c;
+  text-wrap: balance;
+}
+
+.stepText {
+  margin: 0;
+  font: 400 18px/1.6 Barlow, system-ui, sans-serif;
+  color: #3a4540;
+  text-wrap: pretty;
+}
+
+/* Promise cards */
+.promises {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 16px;
+}
+
+.promise {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 26px 28px;
+  background: #f4f2ec;
+  border-top: 4px solid #edb849;
+}
+
+.promise h3 {
+  margin: 0;
+  font: 700 24px/1.15 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  color: #0a513d;
+}
+
+.promise p {
+  margin: 0;
+  font: 400 17px/1.55 Barlow, system-ui, sans-serif;
+  color: #3a4540;
+  text-wrap: pretty;
+}
+
+.related {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin-top: 40px;
+}
+
+@media (max-width: 640px) {
+  .step {
+    grid-template-columns: 1fr;
+  }
+
+  .stepAside {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .stepNum {
+    font-size: 56px;
+  }
+}

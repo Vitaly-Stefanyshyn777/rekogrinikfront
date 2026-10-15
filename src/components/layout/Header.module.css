@@ -1,211 +1,391 @@
+/* Site header, styled with the same tokens as the page templates
+   (src/app/_shared/site.module.css): Barlow / Barlow Condensed, green, gold, cream. */
+
 .header {
+  --green: #0a513d;
+  --green-dark: #01423d;
+  --gold: #edb849;
+  --gold-light: #f5cb6c;
+  --cream: #f4f2ec;
+  --ink: #17201c;
+  --text: #3a4540;
+  --line: #e3e0d8;
+  --cond: "Barlow Condensed", sans-serif;
+  --body: Barlow, system-ui, sans-serif;
+  --pad-x: clamp(20px, 4.4vw, 56px);
+  --h: 64px;
+
   position: sticky;
   top: 0;
   z-index: 50;
-  background: #101010;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Full nav from 1200px; below that the burger menu */
+@media (min-width: 1200px) {
+  .header {
+    --h: 80px;
+  }
 }
 
 .container {
+  box-sizing: border-box;
+  max-width: 1280px;
+  height: var(--h);
   margin: 0 auto;
-  width: 100%;
-  height: 63px;
+  padding: 0 var(--pad-x);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
-  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.23);
-  background: #fff;
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-}
-
-.brand img {
-  width: 63px;
-  height: 63px;
-  object-fit: contain;
-}
-
-.nav {
-  display: none;
-  gap: 30px;
-}
-
-.cta {
-  display: none;
-  height: 36px;
-  align-items: center;
-  background: #f6b73c;
-  color: #111;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 8px 16px;
-  white-space: nowrap;
-}
-
-.burger {
-  border: none;
-  width: 40px;
-  height: 40px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  color: #111;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-.icon24 {
-  width: 24px;
-  height: 24px;
-}
-.icon34 {
-  width: 34px;
-  height: 34px;
-}
-
-@media (min-width: 960px) {
-  .nav {
-    display: flex;
-  }
-  .cta {
-    display: inline-flex;
-  }
-  .burger {
-    display: none;
-  }
-  .mobileMenu {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .brand img {
-    width: 40px;
-    height: 40px;
-  }
-}
-
-@media (max-width: 1000px) {
-  .container {
-    padding: 0 4px;
-    width: 100%;
-    height: 43px;
-    position: relative;
-  }
-
-  .brand img {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    flex-shrink: 0;
-  }
-
-  .burger {
-    position: absolute;
-    right: 4px;
-    top: 50%;
-    transform: translateY(-50%);
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-  }
-
-  .burger svg {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-.nav a {
-  text-decoration: none;
-}
-
-.navLink {
-  font-family: var(--second-family);
-  font-weight: 400;
-  font-size: 17px;
-  color: #151515;
-}
-
-.navLink:hover {
-  background: rgba(0, 0, 0, 0.06);
+  gap: 24px;
 }
 
 .left {
   display: flex;
   align-items: center;
 }
+
 .middle {
   flex: 1;
   display: flex;
   justify-content: center;
 }
+
 .right {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.mobileMenu {
-  position: fixed;
-  top: 43px; /* start right under header on mobile */
+/* Brand */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand img {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.brandName {
+  font: 700 21px/1 var(--cond);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--green);
+  white-space: nowrap;
+}
+
+@media (min-width: 1200px) {
+  .brand img {
+    width: 56px;
+    height: 56px;
+  }
+  .brandName {
+    font-size: 24px;
+  }
+}
+
+/* Desktop nav: condensed uppercase labels, like the page breadcrumbs */
+.nav {
+  display: none;
+  align-items: center;
+  gap: 28px;
+}
+
+.navLink {
+  position: relative;
+  padding: 6px 0;
+  font: 600 17px/1 var(--cond);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+/* Gold underline on hover */
+.navLink::after {
+  content: "";
+  position: absolute;
   left: 0;
   right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s;
+}
+
+.navLink:hover,
+.navItem:hover > .navLink,
+.navItem:focus-within > .navLink {
+  color: var(--green);
+}
+
+.navLink:hover::after,
+.navItem:hover > .navLink::after,
+.navItem:focus-within > .navLink::after {
+  transform: scaleX(1);
+}
+
+/* Služby / Lokace: sub-list opens on hover or keyboard focus */
+.navItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.navItem > .navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.chevron {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s;
+}
+
+.chevronUp,
+.navItem:hover .chevron,
+.navItem:focus-within .chevron {
+  transform: translateY(1px) rotate(-135deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  /* padding bridges the gap so the menu doesn't close on the way down */
+  padding-top: 18px;
+  transform: translate(-50%, 4px);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.15s,
+    transform 0.15s,
+    visibility 0.15s;
+  z-index: 60;
+}
+
+.navItem:hover .dropdown,
+.navItem:focus-within .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.dropdownList {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+  min-width: 260px;
   background: #fff;
+  border-top: 3px solid var(--green);
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 16px 40px rgba(1, 66, 61, 0.16);
+}
+
+.dropdownLink {
+  display: block;
+  padding: 10px 22px;
+  font: 500 17px/1.4 var(--body);
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.dropdownLink:hover,
+.dropdownLink:focus-visible {
+  background: var(--cream);
+  color: var(--green);
+}
+
+/* CTA: same as the page's gold button, a size smaller */
+.cta {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 24px;
+  background: var(--gold);
+  color: #1b1a12;
+  border: none;
+  border-radius: 3px;
+  font: 600 20px/1 var(--cond);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.cta:hover {
+  background: var(--gold-light);
+}
+
+.header :focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Burger */
+.burger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  margin-right: -8px;
+  border: none;
+  background: transparent;
+  color: var(--green);
+  cursor: pointer;
+}
+
+.icon24 {
+  width: 26px;
+  height: 26px;
+}
+
+.icon34 {
+  width: 32px;
+  height: 32px;
+}
+
+@media (min-width: 1200px) {
+  .nav {
+    display: flex;
+  }
+  .cta {
+    display: inline-flex;
+  }
+  .burger,
+  .mobileMenu {
+    display: none;
+  }
+}
+
+/* Mobile menu */
+.mobileMenu {
+  position: fixed;
+  top: var(--h);
+  left: 0;
+  right: 0;
+  z-index: 40; /* keep header (z:50) above menu */
+  /* expanded sub-lists can outgrow the screen */
+  max-height: calc(100dvh - var(--h));
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 24px 20px;
-  z-index: 40; /* keep header (z:50) above menu */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  gap: 24px;
+  padding: 8px var(--pad-x) 28px;
+  background: #fff;
+  border-top: 1px solid var(--line);
+  box-shadow: 0 16px 40px rgba(1, 66, 61, 0.16);
 }
 
 .mobileNav {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
-.mobileNav a {
-  font-family: var(--second-family);
-  font-size: 16px;
-  color: #151515;
+/* Top-level rows: condensed uppercase with dividers */
+.mobileNav > a,
+.mobileGroup {
+  border-bottom: 1px solid var(--line);
+}
+
+.mobileNav > a,
+.mobileGroupHead > a {
+  display: block;
+  padding: 16px 0;
+  font: 600 20px/1 var(--cond);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
   text-decoration: none;
+}
+
+.mobileNav > a:hover,
+.mobileGroupHead > a:hover {
+  color: var(--green);
+}
+
+.mobileGroupHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mobileToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-right: -12px;
+  border: none;
+  background: transparent;
+  color: var(--green);
+  cursor: pointer;
+}
+
+.mobileSubList {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0 0 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-left: 2px solid var(--gold);
+}
+
+.mobileSubList a {
+  font: 500 17px/1.4 var(--body);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.mobileSubList a:hover {
+  color: var(--green);
 }
 
 .mobileCta {
   display: inline-flex;
-  height: auto;
   align-items: center;
   justify-content: center;
-  background: #f6b73c;
-  color: #111;
-  border-radius: 8px;
+  min-height: 56px;
+  padding: 0 24px;
+  background: var(--gold);
+  color: #1b1a12;
+  border: none;
+  border-radius: 3px;
+  font: 600 22px/1 var(--cond);
+  letter-spacing: 0.02em;
   text-decoration: none;
-  font-weight: 600;
-  padding: 8px 16px;
-  margin-top: 8px;
   white-space: nowrap;
+  cursor: pointer;
 }
 
-.mobileDesc {
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 150%;
-  color: #475467;
-}
-
-@media (min-width: 1000px) {
-  .mobileDesc,
-  .mobileCta {
-    display: none;
-  }
+.mobileCta:hover {
+  background: var(--gold-light);
 }

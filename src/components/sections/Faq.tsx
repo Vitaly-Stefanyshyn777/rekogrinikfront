@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import styles from "./Faq.module.css";
 import { CheckMarkIcon } from "@/components/Icons/Icons";
 
@@ -73,7 +74,7 @@ export default function Faq() {
         </div>
         <div className={styles.bottomNote}>
           <span>Nenašli jste odpověď na svou otázku?</span>
-          <a href="#contacts">Kontaktujte nás</a>
+          <Link href="/kontakt">Kontaktujte nás</Link>
         </div>
       </div>
     </section>

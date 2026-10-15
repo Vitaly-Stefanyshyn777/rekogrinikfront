@@ -12,7 +12,10 @@ import {
   TimeIcon,
 } from "@/components/Icons/Icons";
 import { apiClient } from "@/api/client";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef } from "react";
+import { useAttribution } from "@/hooks/useAttribution";
+import AttributionFields from "@/components/forms/AttributionFields";
+import { attributionPayload, pushEnquiryEvent } from "@/utils/leadTracking";
 
 type FormValues = {
   email: string;
@@ -37,23 +40,9 @@ export default function Contact() {
     return "uk";
   }, []);
 
-  // Збір UTM-міток із URL
-  const utmSource = useMemo(() => {
-    if (typeof window === "undefined") return undefined;
-    const params = new URLSearchParams(window.location.search);
-    const obj: Record<string, string> = {};
-    [
-      "utm_source",
-      "utm_medium",
-      "utm_campaign",
-      "utm_term",
-      "utm_content",
-    ].forEach((key) => {
-      const val = params.get(key);
-      if (val) obj[key] = val;
-    });
-    return Object.keys(obj).length ? obj : undefined;
-  }, []);
+  // Click IDs + UTMs from the landing URL (hidden fields + payload)
+  const attribution = useAttribution();
+  const inFlight = useRef(false);
   const {
     register,
     handleSubmit,
@@ -64,6 +53,9 @@ export default function Contact() {
   });
 
   const onSubmit = async (data: FormValues) => {
+    // One enquiry = one request = one conversion event
+    if (inFlight.current) return;
+    inFlight.current = true;
     setSubmitError(null);
     setSubmitSuccess(null);
     setIsSubmitting(true);
@@ -77,11 +69,18 @@ export default function Contact() {
         consent: true,
         address: data.address,
         contactTime: undefined,
-        source: utmSource,
+        source: attributionPayload(attribution),
         files: undefined,
         locale,
       };
       const res = await apiClient.submitForm(payload);
+      // Reached only on a 2xx response (submitForm throws otherwise)
+      pushEnquiryEvent({
+        formId: "contact_main",
+        workType: data.workType,
+        email: data.email,
+        phone: data.phone,
+      });
       setSubmitSuccess(res.id);
       reset({
         email: "",
@@ -97,6 +96,7 @@ export default function Contact() {
         e instanceof Error ? e.message : "Помилка відправки форми"
       );
     } finally {
+      inFlight.current = false;
       setIsSubmitting(false);
     }
   };
@@ -200,6 +200,7 @@ export default function Contact() {
         </div>
         <div className={styles.right}>
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+            <AttributionFields attribution={attribution} />
             <div className={styles.formGrid}>
               <div className={styles.fieldPair}>
                 <div className={styles.field}>

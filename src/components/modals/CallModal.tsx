@@ -25,10 +25,6 @@ export default function CallModal({ isOpen, onClose }: CallModalProps) {
 
   if (!isOpen) return null;
 
-  const handleCall = () => {
-    window.open("tel:+420776352237", "_self");
-  };
-
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
@@ -45,7 +41,9 @@ export default function CallModal({ isOpen, onClose }: CallModalProps) {
           <p className={styles.description}>
             Klikněte na tlačítko níže pro zavolání na číslo:
           </p>
-          <p className={styles.phoneNumber}>+420 776 352 237</p>
+          <p className={styles.phoneNumber}>
+            <a href="tel:+420776352237">+420 776 352 237</a>
+          </p>
           <p className={styles.schedule}>
             <strong>Pracovní doba:</strong>
             <br />
@@ -56,9 +54,13 @@ export default function CallModal({ isOpen, onClose }: CallModalProps) {
         </div>
 
         <div className={styles.actions}>
-          <button className={styles.callButton} onClick={handleCall}>
+          <a
+            href="tel:+420776352237"
+            className={styles.callButton}
+            data-cta="call_modal_call"
+          >
             📞 Zavolat
-          </button>
+          </a>
           <button className={styles.cancelButton} onClick={onClose}>
             Zrušit
           </button>
