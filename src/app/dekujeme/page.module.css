@@ -1,0 +1,82 @@
+/* /dekujeme thank-you page. The hero reuses the centred hero from
+   ../kontakt/page.module.css; base styles come from ../_shared/site.module.css. */
+
+.heroText.heroText {
+  margin: 24px auto 0;
+  max-width: 620px;
+  text-align: center;
+}
+
+.sectionTitle.sectionTitle {
+  margin-bottom: 56px;
+}
+
+.steps3.steps3 {
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 820px) {
+  .steps3.steps3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.steps3.steps3 > li > span:first-child {
+  font-size: 56px;
+}
+
+/* Call box + way back */
+.next {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+.callBox {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: clamp(24px, 3vw, 40px);
+  background: #01423d;
+  color: #f4f2ec;
+}
+
+.callBox h2 {
+  margin: 0;
+  font: 700 clamp(30px, 3vw, 40px) / 1.1 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  color: #edb849;
+}
+
+.callBox p {
+  margin: 0;
+  font: 400 18px/1.6 Barlow, system-ui, sans-serif;
+  color: rgba(244, 242, 236, 0.92);
+  text-wrap: pretty;
+}
+
+.callBox a {
+  align-self: flex-start;
+  padding: 14px 28px;
+}
+
+.back {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.back p {
+  margin: 0;
+  font: 400 18px/1.6 Barlow, system-ui, sans-serif;
+  color: #3a4540;
+  text-wrap: pretty;
+}
+
+.backLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+}

@@ -1,0 +1,137 @@
+/* Extras for the "Zednické práce Praha" service page. Base styles come from
+   ../../_shared/site.module.css, hub pieces from ../page.module.css,
+   ../../lokace/page.module.css and the byty / domy / koupelny service pages.
+   Doubled class selectors override regardless of stylesheet order. */
+
+.headGap.headGap {
+  margin-bottom: 56px;
+}
+
+.strongLead.strongLead {
+  font-weight: 500;
+  color: #17201c;
+}
+
+/* Work types: five full-width cards with a two-column body */
+.cardStack.cardStack {
+  grid-template-columns: 1fr;
+}
+
+.cardWideBody {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: 18px 48px;
+  align-items: start;
+}
+
+.cardCol {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.goldLink.goldLink {
+  color: #edb849;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Brick vs drywall: plain two-column comparison on dark */
+.compareTable.compareTable th,
+.compareTable.compareTable td {
+  width: 50%;
+  vertical-align: top;
+}
+
+.compareTable.compareTable td {
+  color: #f4f2ec;
+}
+
+.compareTable.compareTable th + th,
+.compareTable.compareTable td + td {
+  padding-left: 24px;
+  border-left: 1px solid rgba(244, 242, 236, 0.2);
+}
+
+.compareAfter {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: clamp(24px, 5vw, 72px);
+  align-items: start;
+  font: 400 18px/1.6 Barlow, system-ui, sans-serif;
+  color: rgba(244, 242, 236, 0.9);
+}
+
+.compareAfter p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* Process step text with an inline link */
+.stepLink.stepLink {
+  color: #0a513d;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Follow-up trades: four columns */
+.quad {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 48px 40px;
+}
+
+.quadCol {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 2px solid #0a513d;
+  font: 400 17px/1.6 Barlow, system-ui, sans-serif;
+  color: #3a4540;
+}
+
+.quadCol h3 {
+  margin: 0;
+  font: 700 clamp(26px, 2.4vw, 32px) / 1.1 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  color: #17201c;
+}
+
+.quadCol p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.moreLink.moreLink {
+  color: #0a513d;
+  font: 600 19px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+}
+
+.moreLink.moreLink:hover {
+  text-decoration: underline;
+}
+
+/* Quality checks: dark list in two columns */
+.darkGrid.darkGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0 28px;
+}
+
+/* Notes under the tables */
+.afterBox.afterBox {
+  margin: 48px 0 0 !important;
+  max-width: 820px;
+}
+
+/* Before/after placeholder section is shorter until photos arrive */
+.slimSection.slimSection {
+  padding-top: clamp(56px, 7vw, 88px);
+  padding-bottom: clamp(56px, 7vw, 88px);
+}

@@ -196,6 +196,8 @@
   background: #f5a623;
   white-space: nowrap;
   min-width: fit-content;
+  display: inline-block;
+  text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
 }

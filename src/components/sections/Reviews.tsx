@@ -2,69 +2,24 @@
 
 import { useState, useRef } from "react";
 import type { Swiper as SwiperType } from "swiper";
+import Link from "next/link";
 import styles from "./Reviews.module.css";
 import { AsteriskIcon, QuotesIcon } from "@/components/Icons/Icons";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import useIsMobile from "@/components/hooks/useIsMobile";
 import SliderNav from "@/components/ui/SliderNav/SliderNavActions";
-import ConsultationModal from "@/components/modals/ConsultationModal";
+import { reviewsData, type Review } from "./reviewsData";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const reviewsData = [
-  {
-    avatar: "AN",
-    name: "Anna Nováková",
-    position: "Majitelka bytu",
-    quote: `„Maxim a jeho tým odvedli neuvěřitelnou práci! Náš starý byt se proměnil v moderní prostor snů. Všechno bylo hotové včas a ve vysoké kvalitě. Všem to doporučuji!"`,
-    project: "Projekt: Kompletní rekonstrukce třípokojového bytu",
-  },
-  {
-    avatar: "PS",
-    name: "Petr Svoboda",
-    position: "Majitel bytu",
-    quote: `"Profesionální přístup od začátku do konce. Fixní cena bez překvapení, kvalitní materiály a důraz na detail. Obzvláště jsem ohromen prací v koupelně."`,
-    project: "Projekt: Rekonstrukce koupelny a kuchyně",
-  },
-  {
-    avatar: "MC",
-    name: "Martin Černý",
-    position: "Majitel firmy",
-    quote: `„Pracoval jsem s mnoha dodavateli, ale RekoGrinik vyniká svým přístupem k práci. Rozumí konstrukčním řešením a bezchybně je realizují."`,
-    project: "Projekt: Rekonstrukce designové kanceláře",
-  },
-  {
-    avatar: "TK",
-    name: "Tomáš Kovář",
-    position: "Investor",
-    quote: `„S renovací všech mých investičních nemovitostí svěřuji RekoGriniku. Vždy dodrží rozpočet a termíny. To je na trhu rarita!"`,
-    project: "Projekt: Rekonstrukce 5 bytů k pronájmu",
-  },
-  {
-    avatar: "OK",
-    name: "Olga Kratochvílová",
-    position: "Majitelka bytu",
-    quote: `„Děkujeme za vaši trpělivost a pochopení! Často jsme měnili rozhodnutí, ale tým vždy našel ty nejlepší možnosti. Výsledek předčil očekávání."`,
-    project: "Projekt: Evropská rekonstrukce dvoupokojového bytu",
-  },
-  {
-    avatar: "MČ",
-    name: "Michal Černý",
-    position: "Majitel restaurace",
-    quote: `"Rychle a efektivně zrekonstruovali naši restauraci mezi sezónami. Minimální prostoje, maximální výsledky. Určitě je znovu kontaktujeme!"`,
-    project: "Projekt: Rekonstrukce restaurace",
-  },
-];
-
 export default function Reviews() {
   const isMobile = useIsMobile();
   const [activeSlide, setActiveSlide] = useState(0);
   const swiperRef = useRef<SwiperType | null>(null);
-  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
 
   const handlePrev = () => {
     if (swiperRef.current) {
@@ -84,7 +39,7 @@ export default function Reviews() {
     }
   };
 
-  const renderCard = (review: (typeof reviewsData)[0], index: number) => (
+  const renderCard = (review: Review, index: number) => (
     <div className={styles.card} key={index}>
       <div className={styles.cardTop}>
         <div className={styles.avatar}>{review.avatar}</div>
@@ -166,19 +121,15 @@ export default function Reviews() {
             </p>
           </div>
 
-          <button
+          <Link
+            href="/kontakt"
             className={styles.ctaBtn}
-            onClick={() => setIsConsultationModalOpen(true)}
+            data-cta="reviews_consultation"
           >
             Získejte bezplatnou konzultaci
-          </button>
+          </Link>
         </div>
       </div>
-
-      <ConsultationModal
-        isOpen={isConsultationModalOpen}
-        onClose={() => setIsConsultationModalOpen(false)}
-      />
     </section>
   );
 }
