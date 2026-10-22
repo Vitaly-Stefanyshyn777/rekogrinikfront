@@ -66,15 +66,15 @@ export default function RecenzePage() {
       />
 
       {/* Hero */}
-      <header className={`${styles.hero} ${hub.heroCompact}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/koupelna-dubova-skrinka.webp`}
-          alt="Hotová koupelna s dubovou skříňkou po rekonstrukci"
-          className={styles.cover}
-          style={{ objectPosition: "50% 50%" }}
-        />
-        <div className={styles.heroOverlay} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${hub.heroCompact}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-koupelna-umyvadlo.webp`}
+            alt="Umyvadlo na dřevěné desce v koupelně po rekonstrukci"
+            style={{ objectPosition: "50% 60%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact}`}>
           <nav aria-label="Drobečková navigace" className={hub.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -94,7 +94,7 @@ export default function RecenzePage() {
       </header>
 
       {/* Reviews */}
-      <section>
+      <section id="recenze">
         <div className={styles.container}>
           <ul className={c.grid} data-reveal-group>
             {reviewsData.map((review) => (
@@ -145,7 +145,7 @@ export default function RecenzePage() {
       </section>
 
       {/* Call to action */}
-      <section className={styles.dark}>
+      <section id="kontakt" className={styles.dark}>
         <div className={`${styles.container} ${r.cta}`}>
           <div data-reveal>
             <h2 className={styles.h2}>

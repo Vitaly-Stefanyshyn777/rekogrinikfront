@@ -252,7 +252,7 @@ const faqs = [
   },
   {
     q: "Ve kterých částech Prahy pracujete?",
-    a: "Nejčastěji působíme v Praze 1, 2, 3, 8, 9 a 10. Jinou lokalitu posoudíme podle místa a rozsahu zakázky.",
+    a: "Nejčastěji působíme na Praze 1, 2, 3, 8, 9 a 10. Jinou lokalitu posoudíme podle místa a rozsahu zakázky.",
   },
 ];
 
@@ -331,15 +331,15 @@ export default function SadrokartonarskePracePage() {
       ))}
 
       {/* Hero */}
-      <header className={`${styles.hero} ${hub.heroCompact}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/wc-a-sprcha.webp`}
-          alt="Závěsné WC a sprchový kout"
-          className={styles.cover}
-          style={{ objectPosition: "50% 50%" }}
-        />
-        <div className={styles.heroOverlay} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${hub.heroCompact}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-wc-predstena.webp`}
+            alt="Instalační předstěna se závěsným WC a skrytými revizními dvířky"
+            style={{ objectPosition: "50% 50%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact}`}>
           <nav aria-label="Drobečková navigace" className={hub.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -374,7 +374,7 @@ export default function SadrokartonarskePracePage() {
       </header>
 
       {/* Intro */}
-      <section className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
+      <section id="predstaveni" className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
         <p className={styles.introLead} data-reveal>
           Stavíme sádrokartonové příčky, jednoduché i víceúrovňové podhledy,
           předstěny a konstrukce připravené pro akustickou izolaci. Sádrokarton
@@ -394,7 +394,7 @@ export default function SadrokartonarskePracePage() {
       </section>
 
       {/* Designed by function */}
-      <section className={styles.white}>
+      <section id="funkce" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -545,7 +545,7 @@ export default function SadrokartonarskePracePage() {
       </section>
 
       {/* Acoustics as a system */}
-      <section className={styles.container}>
+      <section id="zvukova-izolace" className={styles.container}>
         <div className={styles.split} style={{ alignItems: "start" }}>
           <div className={`${styles.stack} ${domy.stickyCol}`} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Zvuková izolace jako celý systém</h2>
@@ -584,7 +584,7 @@ export default function SadrokartonarskePracePage() {
       </section>
 
       {/* What will hang on the wall */}
-      <section className={styles.white}>
+      <section id="vyztuhy" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -641,7 +641,7 @@ export default function SadrokartonarskePracePage() {
       </section>
 
       {/* Inside the construction */}
-      <section className={styles.white}>
+      <section id="konstrukce" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.sectionHead}>
             <h2 className={styles.h2} data-reveal>
@@ -658,7 +658,7 @@ export default function SadrokartonarskePracePage() {
               decoding="async"
               data-reveal="left"
               src={`${IMG}/instalacni-sachta-pred.webp`}
-              alt="Otevřená instalační šachta během bourání"
+              alt="Otevřená instalační šachta s rozvody a měřiči před zakrytím"
               className={styles.serviceImg}
             />
             <div className={domy.listCol} data-reveal>
@@ -685,7 +685,7 @@ export default function SadrokartonarskePracePage() {
       </section>
 
       {/* Surface quality */}
-      <section className={styles.dark}>
+      <section id="povrch" className={styles.dark}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <div className={styles.prepareText} data-reveal>
             <h2 className={styles.h2}>Jak má vypadat hotový povrch</h2>
@@ -716,7 +716,7 @@ export default function SadrokartonarskePracePage() {
       </section>
 
       {/* Flat, house, single room */}
-      <section className={styles.container}>
+      <section id="byt-dum-pokoj" className={styles.container}>
         <h2 className={`${styles.h2} ${s.headGap}`} data-reveal>
           Sádrokarton v bytě, domě a jednotlivém pokoji
         </h2>
@@ -781,7 +781,7 @@ export default function SadrokartonarskePracePage() {
       </section>
 
       {/* Price */}
-      <section className={styles.container}>
+      <section id="cena" className={styles.container}>
         <div className={styles.splitWide}>
           <div className={`${styles.stack} ${domy.stickyCol}`} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Co ovlivňuje cenu</h2>
@@ -816,7 +816,7 @@ export default function SadrokartonarskePracePage() {
           <div className={`${styles.stack} ${domy.stickyCol}`} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Sádrokartonářské práce v Praze</h2>
             <p>
-              Zakázky nejčastěji realizujeme v Praze 1, Praze 2, Praze 3, Praze 8,
+              Zakázky nejčastěji realizujeme na Praze 1, Praze 2, Praze 3, Praze 8,
               Praze 9 a Praze 10.
             </p>
           </div>
@@ -842,10 +842,10 @@ export default function SadrokartonarskePracePage() {
             <p>
               Jak pracujeme v Karlíně a Libni, najdete na stránce{" "}
               <Link className={koup.inlineLink} href="/lokace/rekonstrukce-praha-8">
-                rekonstrukce v Praze 8
+                rekonstrukce na Praze 8
               </Link>. Na Žižkově a Jarově, kde máme i kontaktní adresu, nabízíme{" "}
               <Link className={koup.inlineLink} href="/lokace/rekonstrukce-praha-3">
-                příčky a podhledy v Praze 3
+                příčky a podhledy na Praze 3
               </Link>.
             </p>
           </div>
@@ -853,7 +853,7 @@ export default function SadrokartonarskePracePage() {
       </section>
 
       {/* Checklist before measuring */}
-      <section className={styles.dark}>
+      <section id="priprava" className={styles.dark}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <div className={styles.prepareText} data-reveal>
             <h2 className={styles.h2}>Kontrolní seznam před zaměřením</h2>
@@ -899,7 +899,7 @@ export default function SadrokartonarskePracePage() {
             href={`/lokace/rekonstrukce-praha-${d}`}
             className={byty.relatedLink}
           >
-            Sádrokarton v Praze {d}
+            Sádrokarton na Praze {d}
           </Link>
         ))}
       </nav>
@@ -909,8 +909,8 @@ export default function SadrokartonarskePracePage() {
         <img
           loading="lazy"
           decoding="async"
-          src={`${IMG}/koupelna-zrcadlo.webp`}
-          alt="Umyvadlová skříňka a podsvícené zrcadlo v nové koupelně"
+          src="/realizace/koupelna-na-klic-po-3.webp"
+          alt="Instalační šachta zakrytá obkladem s revizními dvířky k měřičům"
           className={styles.cover}
           style={{ objectPosition: "50% 40%" }}
         />

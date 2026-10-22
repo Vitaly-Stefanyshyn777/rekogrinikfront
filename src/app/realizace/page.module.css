@@ -97,6 +97,41 @@
   text-wrap: balance;
 }
 
+/* Street + district under the project title, with a small pin */
+.projectLocation.projectLocation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: -6px 0 0;
+  font: 600 17px "Barlow Condensed", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8a6414;
+}
+
+.projectLocation a {
+  margin-left: -4px;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: #edb849;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.projectLocation a:hover {
+  color: #0a513d;
+}
+
+.projectLocation::before {
+  content: "";
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #edb849;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+}
+
 .projectText {
   display: flex;
   flex-direction: column;

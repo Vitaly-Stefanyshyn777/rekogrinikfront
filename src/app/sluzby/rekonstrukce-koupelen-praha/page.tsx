@@ -20,6 +20,10 @@ const PHONE_DISPLAY = "+420 776 352 237";
 const EMAIL = "rekogrinikcz@gmail.com";
 const IMG = "/new";
 
+// A file name is in /new; a path starting with "/" points elsewhere (e.g.
+// project photos in /realizace).
+const photo = (src: string) => (src.startsWith("/") ? src : `${IMG}/${src}`);
+
 // Service pages live under /sluzby.
 const service = (slug: string) => `/sluzby/${slug}`;
 
@@ -77,10 +81,13 @@ const storageOptions = [
 ];
 
 const stripPhotos = [
-  { src: "koupelna-zrcadlo.webp", alt: "Umyvadlová skříňka a podsvícené zrcadlo v nové koupelně" },
-  { src: "koupelna-mozaika-wc-pracka.webp", alt: "Koupelna s mozaikou, závěsným WC a pračkou" },
-  { src: "koupelna-mramor-vana.webp", alt: "Koupelna s mramorovým obkladem a vanou po rekonstrukci" },
-  { src: "koupelna-dubova-skrinka.webp", alt: "Umyvadlo s dubovou skříňkou a sprcha" },
+  {
+    src: "/realizace/koupelna-na-klic-po-2.webp",
+    alt: "Umyvadlo na dřevěné desce a sprchová zástěna v nové koupelně",
+  },
+  { src: "koupelna-pruhy-sprchovy-kout.webp", alt: "Sprchový kout se skleněnými dveřmi a žebříkovým radiátorem" },
+  { src: "/realizace/byt-koupelna-zachod-po-1.webp", alt: "Koupelna s vanou a velkoformátovým obkladem" },
+  { src: "koupelna-vana-dekor.webp", alt: "Koupelna s vanou, umyvadlem a dekorativním pásem obkladu" },
 ];
 
 const twoBathrooms = [
@@ -168,18 +175,28 @@ const goals = [
   "Čisté přechody mezi jednotlivými materiály.",
 ];
 
+// Each pair is the same bathroom from a real job (see /realizace).
 const beforeAfter = [
   {
-    before: { src: "koupelna-bourani.webp", alt: "Úzká koupelna po vybourání obkladů" },
-    after: { src: "koupelna-beton.webp", alt: "Úzká koupelna s novým obkladem, sprchou a skříňkou pod umyvadlo" },
+    before: {
+      src: "/realizace/koupelna-na-klic-pred-1.webp",
+      alt: "Koupelna na Murgašově ulici před rekonstrukcí, stěny bez obkladů",
+    },
+    after: {
+      src: "/realizace/koupelna-na-klic-po-1.webp",
+      alt: "Stejná koupelna po rekonstrukci se sprchovým koutem a závěsným WC",
+    },
   },
   {
-    before: { src: "koupelna-bojler-bourani.webp", alt: "Koupelna s bojlerem během bourání" },
-    after: { src: "koupelna-umyvadlo-u-dveri.webp", alt: "Koupelna s novým obkladem a umyvadlem před montáží baterií" },
+    before: { src: "koupelna-bojler-bourani.webp", alt: "Koupelna v bytě na Holečkově ulici po odstranění starých obkladů" },
+    after: { src: "koupelna-umyvadlo-u-dveri.webp", alt: "Stejná koupelna s novým obkladem a umyvadlem se skříňkou" },
   },
   {
-    before: { src: "instalacni-sachta-pred.webp", alt: "Otevřená instalační šachta během bourání" },
-    after: { src: "wc-zavesne-mozaika.webp", alt: "Závěsné WC u mozaikové stěny po rekonstrukci" },
+    before: {
+      src: "/realizace/byt-prosek-pred-3.webp",
+      alt: "Panelový byt na Proseku po odstranění původního bytového jádra",
+    },
+    after: { src: "koupelna-mozaika.webp", alt: "Nová koupelna se sprchovým koutem, pračkou a mozaikou v tomto bytě" },
   },
 ];
 
@@ -251,7 +268,7 @@ const faqs = [
   },
   {
     q: "Ve kterých částech Prahy pracujete?",
-    a: "Nejčastěji přijímáme zakázky v Praze 1, 2, 3, 8, 9 a 10. Jinou lokalitu posoudíme podle místa a rozsahu realizace.",
+    a: "Nejčastěji přijímáme zakázky na Praze 1, 2, 3, 8, 9 a 10. Jinou lokalitu posoudíme podle místa a rozsahu realizace.",
   },
 ];
 
@@ -330,15 +347,15 @@ export default function RekonstrukceKoupelenPage() {
       ))}
 
       {/* Hero */}
-      <header className={`${styles.hero} ${hub.heroCompact}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/koupelna-kamen.webp`}
-          alt="Koupelna se závěsným WC a sprchou v kamenném dekoru"
-          className={styles.cover}
-          style={{ objectPosition: "50% 50%" }}
-        />
-        <div className={styles.heroOverlay} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${hub.heroCompact}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-koupelna-pracka.webp`}
+            alt="Hotová koupelna se sprchovým koutem, závěsným WC a pračkou pod deskou"
+            style={{ objectPosition: "50% 58%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact}`}>
           <nav aria-label="Drobečková navigace" className={hub.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -375,7 +392,7 @@ export default function RekonstrukceKoupelenPage() {
       </header>
 
       {/* Intro */}
-      <section className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
+      <section id="predstaveni" className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
         <p className={styles.introLead} data-reveal>
           Provádíme rekonstrukce koupelen v Praze na klíč i samostatné práce. Můžeme
           zajistit kompletní proměnu koupelny nebo jen obkladačské,{" "}
@@ -402,7 +419,7 @@ export default function RekonstrukceKoupelenPage() {
       </section>
 
       {/* What turnkey means */}
-      <section className={styles.white}>
+      <section id="na-klic" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -522,12 +539,12 @@ export default function RekonstrukceKoupelenPage() {
       {/* Photo strip */}
       <div className={styles.strip} data-reveal-group>
         {stripPhotos.map((p) => (
-          <img key={p.src} loading="lazy" decoding="async" src={`${IMG}/${p.src}`} alt={p.alt} />
+          <img key={p.src} loading="lazy" decoding="async" src={photo(p.src)} alt={p.alt} />
         ))}
       </div>
 
       {/* Bathroom in a flat vs. in a house */}
-      <section className={styles.container}>
+      <section id="byt-a-dum" className={styles.container}>
         <div className={styles.splitWide}>
           <article className={styles.stack} style={{ gap: 20 }} data-reveal>
             <h2 className={styles.h2}>Rekonstrukce koupelny v bytě</h2>
@@ -596,7 +613,7 @@ export default function RekonstrukceKoupelenPage() {
       </section>
 
       {/* What the job can include */}
-      <section className={styles.white}>
+      <section id="rozsah" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.sectionHead}>
             <h2 className={styles.h2} data-reveal>
@@ -651,7 +668,7 @@ export default function RekonstrukceKoupelenPage() {
       </section>
 
       {/* Tiles */}
-      <section className={styles.dark}>
+      <section id="obklady" className={styles.dark}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <div className={styles.prepareText} data-reveal>
             <h2 className={styles.h2}>Obklady nejsou jen dekorace</h2>
@@ -685,7 +702,7 @@ export default function RekonstrukceKoupelenPage() {
       </section>
 
       {/* Complete vs partial */}
-      <section className={styles.container}>
+      <section id="kompletni-nebo-castecna" className={styles.container}>
         <div className={styles.sectionHead}>
           <h2 className={styles.h2} data-reveal>
             Kompletní, nebo částečná rekonstrukce
@@ -745,14 +762,14 @@ export default function RekonstrukceKoupelenPage() {
       </section>
 
       {/* Goal */}
-      <section className={styles.white}>
+      <section id="cil" className={styles.white}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <img
             loading="lazy"
             decoding="async"
             data-reveal="left"
-            src={`${IMG}/koupelna-ctvrtkruhovy-kout.webp`}
-            alt="Čtvrtkruhový sprchový kout a umyvadlo"
+            src={`${IMG}/koupelna-pruhy-celek.webp`}
+            alt="Praktická koupelna se sprchovým koutem, umyvadlem, WC a pračkou"
             className={styles.serviceImg}
           />
           <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -796,7 +813,7 @@ export default function RekonstrukceKoupelenPage() {
                 <img
                   loading="lazy"
                   decoding="async"
-                  src={`${IMG}/${before.src}`}
+                  src={photo(before.src)}
                   alt={before.alt}
                   className={styles.serviceImg}
                 />
@@ -806,7 +823,7 @@ export default function RekonstrukceKoupelenPage() {
                 <img
                   loading="lazy"
                   decoding="async"
-                  src={`${IMG}/${after.src}`}
+                  src={photo(after.src)}
                   alt={after.alt}
                   className={styles.serviceImg}
                 />
@@ -821,7 +838,7 @@ export default function RekonstrukceKoupelenPage() {
       </section>
 
       {/* Budget */}
-      <section className={styles.white}>
+      <section id="cena" className={styles.white}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <div className={`${styles.stack} ${domy.stickyCol}`} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Co ovlivňuje rozpočet</h2>
@@ -856,7 +873,7 @@ export default function RekonstrukceKoupelenPage() {
           <div className={`${styles.stack} ${domy.stickyCol}`} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Rekonstrukce koupelen v Praze</h2>
             <p>
-              Koupelny nejčastěji rekonstruujeme v Praze 1, Praze 2, Praze 3, Praze 8,
+              Koupelny nejčastěji rekonstruujeme na Praze 1, Praze 2, Praze 3, Praze 8,
               Praze 9 a Praze 10.
             </p>
           </div>
@@ -876,10 +893,10 @@ export default function RekonstrukceKoupelenPage() {
             <p>
               Bytová jádra v panelových domech na Proseku a ve Vysočanech popisujeme u{" "}
               <Link className={s.inlineLink} href="/lokace/rekonstrukce-praha-9">
-                rekonstrukcí v Praze 9
+                rekonstrukcí na Praze 9
               </Link>. Kontaktní adresu máme na Žižkově, podívejte se proto i na{" "}
               <Link className={s.inlineLink} href="/lokace/rekonstrukce-praha-3">
-                koupelny v Praze 3
+                koupelny na Praze 3
               </Link>.
             </p>
           </div>
@@ -887,7 +904,7 @@ export default function RekonstrukceKoupelenPage() {
       </section>
 
       {/* Checklist before measuring */}
-      <section className={styles.dark}>
+      <section id="priprava" className={styles.dark}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <div className={styles.prepareText} data-reveal>
             <h2 className={styles.h2}>Kontrolní seznam před zaměřením</h2>
@@ -936,7 +953,7 @@ export default function RekonstrukceKoupelenPage() {
             href={`/lokace/rekonstrukce-praha-${d}`}
             className={byty.relatedLink}
           >
-            Koupelny v Praze {d}
+            Koupelny na Praze {d}
           </Link>
         ))}
       </nav>
@@ -946,8 +963,8 @@ export default function RekonstrukceKoupelenPage() {
         <img
           loading="lazy"
           decoding="async"
-          src={`${IMG}/koupelna-mozaika.webp`}
-          alt="Sprchový kout, pračka a umyvadlo u mozaikové stěny"
+          src={`${IMG}/koupelna-umyvadlo-deska.webp`}
+          alt="Umyvadlo na dřevěné desce a zrcadlo v nové koupelně"
           className={styles.cover}
           style={{ objectPosition: "50% 40%" }}
         />

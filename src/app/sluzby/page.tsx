@@ -184,7 +184,7 @@ const faqs = [
   },
   {
     q: "Ve kterých částech Prahy pracujete?",
-    a: "Nejčastěji realizujeme zakázky v Praze 3, Praze 1, Praze 2, Praze 10, Praze 9 a Praze 8. Jinou lokalitu posoudíme podle místa a rozsahu zakázky.",
+    a: "Nejčastěji realizujeme zakázky na Praze 3, Praze 1, Praze 2, Praze 10, Praze 9 a Praze 8. Jinou lokalitu posoudíme podle místa a rozsahu zakázky.",
   },
 ];
 
@@ -287,15 +287,15 @@ export default function SluzbyPage() {
       ))}
 
       {/* Hero */}
-      <header className={`${styles.hero} ${s.heroCompact}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/roubenka-dlazba.webp`}
-          alt="Velkoformátová dlažba při rekonstrukci roubeného domu"
-          className={styles.cover}
-          style={{ objectPosition: "50% 55%" }}
-        />
-        <div className={styles.heroOverlay} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${s.heroCompact}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-koupelna-pruhy.webp`}
+            alt="Nová koupelna se sprchovým koutem, umyvadlem a žebříkovým radiátorem"
+            style={{ objectPosition: "50% 55%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${s.heroInnerCompact}`}>
           <nav aria-label="Drobečková navigace" className={s.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -331,7 +331,7 @@ export default function SluzbyPage() {
       </header>
 
       {/* Intro */}
-      <section className={`${styles.intro} ${styles.split}`}>
+      <section id="predstaveni" className={`${styles.intro} ${styles.split}`}>
         <p className={styles.introLead} data-reveal>
           Provádíme rekonstrukce domů a bytů v Praze, rekonstrukce koupelen a
           navazující řemeslné práce. Obrátit se na nás můžete s realizací na klíč i
@@ -358,7 +358,7 @@ export default function SluzbyPage() {
       </section>
 
       {/* From full renovation to single trades */}
-      <section className={styles.white}>
+      <section id="prehled" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split}>
             <h2 className={styles.h2} data-reveal>
@@ -402,8 +402,8 @@ export default function SluzbyPage() {
               loading="lazy"
               decoding="async"
               data-reveal="left"
-              src={`${IMG}/lodzie-podlaha.webp`}
-              alt="Zasklená lodžie s novou podlahou po rekonstrukci bytu"
+              src="/realizace/byt-koupelna-zachod-po-7.webp"
+              alt="Pokoj s dřevěnou podlahou ve vzoru rybí kost po rekonstrukci bytu"
               className={styles.serviceImg}
             />
             <div className={styles.serviceBody} data-reveal>
@@ -467,8 +467,8 @@ export default function SluzbyPage() {
               loading="lazy"
               decoding="async"
               data-reveal="right"
-              src={`${IMG}/veranda-dlazba.webp`}
-              alt="Nová dlažba na zasklené verandě rodinného domu"
+              src={`${IMG}/dum-schodiste-dekorativni-omitka.webp`}
+              alt="Schodiště v rodinném domě a stěny s dekorativní omítkou"
               className={styles.serviceImg}
             />
           </article>
@@ -478,8 +478,8 @@ export default function SluzbyPage() {
               loading="lazy"
               decoding="async"
               data-reveal="left"
-              src={`${IMG}/koupelna-kamen.webp`}
-              alt="Koupelna se závěsným WC a sprchou v kamenném dekoru"
+              src="/realizace/koupelna-na-klic-po-2.webp"
+              alt="Umyvadlo na dřevěné desce a sprchová zástěna v nové koupelně"
               className={styles.serviceImg}
             />
             <div className={styles.serviceBody} data-reveal>
@@ -531,8 +531,8 @@ export default function SluzbyPage() {
             <img
               loading="lazy"
               decoding="async"
-              src={`${IMG}/koupelna-bojler-bourani.webp`}
-              alt="Koupelna s bojlerem během bouracích prací"
+              src="/realizace/byt-prosek-behem-1.webp"
+              alt="Vyzdívání nových příček z pórobetonových tvárnic"
               className={styles.cover}
             />
           </div>
@@ -540,7 +540,7 @@ export default function SluzbyPage() {
       </section>
 
       {/* How to choose */}
-      <section className={styles.white}>
+      <section id="vyber-sluzby" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split}>
             <h2 className={styles.h2} data-reveal>
@@ -589,7 +589,7 @@ export default function SluzbyPage() {
           <div className={styles.stack} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Rekonstrukce v jednotlivých částech Prahy</h2>
             <p>
-              Nejčastěji pracujeme v Praze 3, Praze 1, Praze 2, Praze 10, Praze 9 a
+              Nejčastěji pracujeme na Praze 3, Praze 1, Praze 2, Praze 10, Praze 9 a
               Praze 8. V jednotlivých lokalitách se liší typy domů i praktické
               podmínky realizace.
             </p>
@@ -625,7 +625,7 @@ export default function SluzbyPage() {
       </section>
 
       {/* Checklist */}
-      <section className={styles.dark}>
+      <section id="priprava" className={styles.dark}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <div className={styles.prepareText} data-reveal>
             <h2 className={styles.h2}>Kontrolní seznam před poptávkou</h2>

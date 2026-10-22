@@ -173,15 +173,15 @@ export default function EtapyPracePage() {
       />
 
       {/* Hero */}
-      <header className={`${styles.hero} ${hub.heroCompact}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/koupelna-bourani.webp`}
-          alt="Koupelna během bouracích prací při rekonstrukci"
-          className={styles.cover}
-          style={{ objectPosition: "50% 50%" }}
-        />
-        <div className={styles.heroOverlay} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${hub.heroCompact}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-hydroizolace.webp`}
+            alt="Koupelna s hydroizolací během rekonstrukce, připravená pro obklady"
+            style={{ objectPosition: "50% 50%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact}`}>
           <nav aria-label="Drobečková navigace" className={hub.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -209,7 +209,7 @@ export default function EtapyPracePage() {
       </header>
 
       {/* Steps */}
-      <section>
+      <section id="etapy">
         <div className={styles.container}>
           <div className={styles.sectionHead}>
             <h2 className={styles.h2} data-reveal>
@@ -253,7 +253,7 @@ export default function EtapyPracePage() {
       </section>
 
       {/* What the client can count on */}
-      <section className={styles.white}>
+      <section id="zaruky" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.sectionHead}>
             <h2 className={styles.h2} data-reveal>
@@ -287,7 +287,7 @@ export default function EtapyPracePage() {
       </section>
 
       {/* Call to action */}
-      <section className={styles.dark}>
+      <section id="kontakt" className={styles.dark}>
         <div className={`${styles.container} ${r.cta}`}>
           <div data-reveal>
             <h2 className={styles.h2}>Začněme prvním krokem</h2>

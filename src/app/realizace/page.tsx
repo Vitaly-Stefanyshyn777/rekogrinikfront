@@ -9,6 +9,11 @@ import r from "./page.module.css";
 import ScrollEffects from "../_shared/ScrollEffects";
 import ProjectGallery, { type PhotoGroup } from "./ProjectGallery";
 import { BUSINESS_ID, webPageSchema } from "@/utils/schema";
+import { locationLinks } from "@/components/layout/navLinks";
+
+// Page of a district we have a location page for, e.g. "Praha 9".
+const districtHref = (district: string) =>
+  locationLinks.find((l) => l.label === district)?.href;
 
 const FONTS_URL =
   "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap";
@@ -38,6 +43,9 @@ type Project = {
   // uploadDate (YYYY-MM-DD) and duration (ISO 8601, e.g. PT1M) feed the
   // VideoObject schema.
   video?: { src: string; poster: string; label: string; uploadDate: string; duration: string };
+  // Where the job was done: street (no house number), optional neighbourhood
+  // and city district. A district with its own page is linked.
+  location?: { street: string; area?: string; district: string };
 };
 
 type Category = {
@@ -60,6 +68,7 @@ const categories: Category[] = [
     projects: [
       {
         id: "koupelna-na-klic",
+        location: { street: "Murgašova", district: "Praha 4" },
         title: "Kompletní rekonstrukce koupelny na klíč",
         paragraphs: [
           "Původní koupelnu jsme proměnili v moderní a praktický prostor se sprchovým koutem, závěsným WC a místem pro pračku.",
@@ -123,6 +132,7 @@ const categories: Category[] = [
     projects: [
       {
         id: "byt-koupelna-zachod",
+        location: { street: "Holečkova", district: "Praha 5" },
         video: {
           src: `${IMG}/byt-koupelna-zachod-video.mp4`,
           poster: `${IMG}/byt-koupelna-zachod-video.webp`,
@@ -202,6 +212,76 @@ const categories: Category[] = [
           },
         ],
       },
+      {
+        id: "panelovy-byt-prosek",
+        location: { street: "Jetřichovická", area: "Prosek", district: "Praha 9" },
+        title: "Rekonstrukce panelového bytu na Proseku",
+        paragraphs: [
+          "V panelovém bytě jsme odstranili původní bytové jádro i staré povrchy a na jeho místě vyzdili novou koupelnu z pórobetonových tvárnic.",
+          "Před obkladem jsme koupelnu ošetřili hydroizolací, obložili ji mozaikou a dlažbou a osadili sprchový kout, umyvadlo se skříňkou a místo pro pračku.",
+        ],
+        scope: [
+          "Odstranění původního bytového jádra a starých povrchů.",
+          "Nové stěny koupelny z pórobetonových tvárnic.",
+          "Hydroizolace podlahy a stěn v koupelně.",
+          "Obklady s mozaikou a světlá dlažba.",
+          "Sprchový kout s posuvnými skleněnými dveřmi.",
+          "Umyvadlo se skříňkou a místo pro pračku.",
+          "Oprava a příprava stěn a stropů v pokojích.",
+        ],
+        photos: [
+          {
+            label: "Před",
+            tone: "before",
+            photos: [
+              {
+                src: `${IMG}/byt-prosek-pred-1.webp`,
+                alt: "Pokoj panelového bytu po odstranění starých povrchů, stěny a strop před opravou",
+              },
+              {
+                src: `${IMG}/byt-prosek-pred-2.webp`,
+                alt: "Pohled do vybouraného pokoje s okny, nářadím a materiálem na podlaze",
+              },
+              {
+                src: `${IMG}/byt-prosek-pred-3.webp`,
+                alt: "Prostor po odstranění původního bytového jádra v panelovém bytě",
+              },
+              {
+                src: `${IMG}/byt-prosek-pred-4.webp`,
+                alt: "Předsíň s vchodovými dveřmi a místem pro novou koupelnu",
+              },
+            ],
+          },
+          {
+            label: "Během prací",
+            tone: "before",
+            photos: [
+              {
+                src: `${IMG}/byt-prosek-behem-1.webp`,
+                alt: "Vyzdívání nových stěn koupelny z pórobetonových tvárnic vedle instalační šachty",
+              },
+              {
+                src: `${IMG}/byt-prosek-behem-2.webp`,
+                alt: "Koupelna s hydroizolací podlahy a stěn před pokládkou obkladů",
+              },
+            ],
+          },
+          {
+            label: "Po",
+            tone: "after",
+            photos: [
+              {
+                src: `${IMG}/byt-prosek-po-1.webp`,
+                alt: "Hotová koupelna se sprchovým koutem, pračkou a umyvadlem se skříňkou",
+              },
+              {
+                src: `${IMG}/byt-prosek-po-2.webp`,
+                alt: "Sprchový kout s posuvnými dveřmi a obklad s mozaikou vedle pračky",
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
   {
@@ -251,6 +331,20 @@ const projectsJsonLd = {
         name: p.title,
         description: p.paragraphs.join(" "),
         creator: { "@id": BUSINESS_ID },
+        ...(p.location && {
+          locationCreated: {
+            "@type": "Place",
+            name: [p.location.street, p.location.area, p.location.district]
+              .filter(Boolean)
+              .join(", "),
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: p.location.street,
+              addressLocality: p.location.district,
+              addressCountry: "CZ",
+            },
+          },
+        }),
         image: p.photos.flatMap((g) => g.photos).map((ph) => abs(ph.src)),
         ...(p.video && {
           video: {
@@ -280,15 +374,15 @@ export default function RealizacePage() {
       />
 
       {/* Hero */}
-      <header className={`${styles.hero} ${hub.heroCompact}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/koupelna-na-klic-po-1.webp`}
-          alt="Hotová koupelna po kompletní rekonstrukci"
-          className={styles.cover}
-          style={{ objectPosition: "50% 45%" }}
-        />
-        <div className={styles.heroOverlay} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${hub.heroCompact}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src="/new/hero-koupelna-kvetinova.webp"
+            alt="Hotová koupelna po kompletní rekonstrukci"
+            style={{ objectPosition: "50% 58%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact}`}>
           <nav aria-label="Drobečková navigace" className={hub.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -338,6 +432,18 @@ export default function RealizacePage() {
                   <div className={r.projectInfo} data-reveal>
                     <div className={r.projectText}>
                       <h3 className={r.projectTitle}>{p.title}</h3>
+                      {p.location && (
+                        <p className={r.projectLocation}>
+                          {p.location.street}, {p.location.area && `${p.location.area}, `}
+                          {districtHref(p.location.district) ? (
+                            <Link href={districtHref(p.location.district)!}>
+                              {p.location.district}
+                            </Link>
+                          ) : (
+                            p.location.district
+                          )}
+                        </p>
+                      )}
                       {p.paragraphs.map((text) => (
                         <p key={text}>{text}</p>
                       ))}
@@ -384,10 +490,8 @@ export default function RealizacePage() {
                   Fotografie z těchto realizací právě připravujeme. Mezitím se podívejte na
                   službu nebo nám rovnou popište, co plánujete.
                 </p>
+                {/* The service is already linked in the category intro above. */}
                 <div className={r.emptyLinks}>
-                  <Link href={c.service.href} className={byty.relatedLink}>
-                    {c.service.label}
-                  </Link>
                   <Link href="/kontakt" className={byty.relatedLink}>
                     Poptat rekonstrukci
                   </Link>
@@ -399,7 +503,7 @@ export default function RealizacePage() {
       ))}
 
       {/* Call to action */}
-      <section className={styles.dark}>
+      <section id="kontakt" className={styles.dark}>
         <div className={`${styles.container} ${r.cta}`}>
           <div data-reveal>
             <h2 className={styles.h2}>Chcete podobný výsledek?</h2>

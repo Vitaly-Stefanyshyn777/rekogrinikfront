@@ -11,11 +11,6 @@
   padding-bottom: 0;
 }
 
-/* Even tint so the centred heading reads across the whole photo */
-.heroOverlay.heroOverlay {
-  background: rgba(1, 38, 30, 0.82);
-}
-
 .heroInner.heroInner {
   flex: 1;
   width: 100%;

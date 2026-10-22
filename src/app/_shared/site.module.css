@@ -22,6 +22,11 @@
   overflow-x: hidden;
 }
 
+/* Any section reached by #anchor (ads, links) stops below the sticky header */
+.page [id] {
+  scroll-margin-top: 96px;
+}
+
 .page :focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 2px;
@@ -559,6 +564,29 @@
   object-fit: cover;
 }
 
+/* One photo beside a text column: as tall as the text on desktop, a plain
+   4:5 photo when the columns stack. */
+.sidePhoto {
+  position: relative;
+  align-self: stretch;
+  min-height: 420px;
+}
+
+.sidePhoto img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 960px) {
+  .sidePhoto {
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+  }
+}
+
 .checklist {
   list-style: none;
   margin: 0;
@@ -942,41 +970,77 @@
   animation-delay: 0.6s;
 }
 
-/* Scroll reveal: only hidden once ScrollEffects has set data-anim, so the
-   page stays fully visible without JS. Transition lives on the shown state
-   so hiding is instant and only the entrance animates. */
-.page[data-anim] [data-reveal]:not([data-shown]) {
-  opacity: 0;
-  transform: translateY(36px);
+/* Blend hero (every page): solid green on the left fading into a photo that
+   fills only the right side, so an upright phone photo is not stretched.
+   Height comes from the page's own hero class. */
+.heroMedia {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 58%;
+  overflow: hidden;
 }
 
-.page[data-anim] [data-reveal="left"]:not([data-shown]) {
-  transform: translateX(-48px);
+.heroMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 58%;
+  animation: heroZoom 2.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.page[data-anim] [data-reveal="right"]:not([data-shown]) {
-  transform: translateX(48px);
+/* Green -> transparent across the photo's left part */
+.heroMedia::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    var(--green-dark) 0%,
+    rgba(1, 66, 61, 0.85) 18%,
+    rgba(1, 66, 61, 0.45) 42%,
+    rgba(1, 66, 61, 0.1) 70%,
+    rgba(1, 66, 61, 0) 100%
+  );
 }
 
-.page[data-anim] [data-reveal="zoom"]:not([data-shown]) {
-  transform: scale(0.94);
-}
+@media (max-width: 960px) {
+  .heroBlend.heroBlend.heroBlend {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding-bottom: 0;
+  }
 
-.page[data-anim] [data-reveal][data-shown] {
-  opacity: 1;
-  transform: none;
-  transition:
-    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: var(--reveal-delay, 0ms);
-}
+  .heroBlend .heroInner {
+    order: 1;
+    width: 100%;
+    box-sizing: border-box;
+  }
 
-.page [data-count] {
-  font-variant-numeric: tabular-nums;
+  /* Photo below the text, fading in from the green above */
+  .heroMedia {
+    position: relative;
+    order: 2;
+    width: 100%;
+    height: clamp(300px, 70vw, 520px);
+    margin-top: 32px;
+  }
+
+  .heroMedia::after {
+    background: linear-gradient(
+      180deg,
+      var(--green-dark) 0%,
+      rgba(1, 66, 61, 0.5) 25%,
+      rgba(1, 66, 61, 0) 55%
+    );
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero > .cover,
+  .heroMedia img,
   .heroContent > * {
     animation: none;
   }

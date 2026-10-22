@@ -1,102 +1,248 @@
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    sans-serif;
-  line-height: 1.6;
-  color: #333;
+/* /privacy: a readable legal document in the site's style. Base tokens and
+   fonts come from ../_shared/site.module.css (.page). */
+
+.head {
+  background: var(--green-dark);
+  color: var(--cream);
 }
 
-.content {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
+.headInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(40px, 6vw, 72px) var(--pad-x) clamp(36px, 5vw, 56px);
 }
 
 .title {
-  color: #2c3e50;
-  border-bottom: 3px solid #3498db;
-  padding-bottom: 0.5rem;
-  margin-bottom: 2rem;
-  font-size: 2.5rem;
+  margin: 18px 0 0;
+  font: 700 clamp(38px, 5vw, 64px) / 1.05 var(--cond);
+  text-transform: uppercase;
+  text-wrap: balance;
 }
 
-.sectionTitle {
-  color: #34495e;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  border-left: 4px solid #3498db;
-  padding-left: 1rem;
+.effective {
+  margin: 14px 0 0;
+  font: 600 18px var(--cond);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Table of contents beside the text on desktop, above it on phones */
+.layout {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(40px, 6vw, 80px) var(--pad-x) clamp(64px, 8vw, 110px);
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+.toc {
+  position: sticky;
+  top: 104px;
+  padding: 22px 24px;
+  background: #fff;
+  border-top: 4px solid var(--green);
+}
+
+.tocTitle {
+  margin: 0 0 10px;
+  font: 700 18px var(--cond);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.toc ol {
+  margin: 0;
+  padding-left: 20px;
+  font: 500 15px/1.45 var(--body);
+  color: var(--muted);
+}
+
+.toc li + li {
+  margin-top: 7px;
+}
+
+.toc a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.toc a:hover {
+  color: var(--green);
+  text-decoration: underline;
+}
+
+.doc {
+  max-width: 760px;
+  font: 400 17px/1.7 var(--body);
+  color: var(--text);
+}
+
+.doc p,
+.doc ul {
+  margin: 0 0 16px;
+}
+
+.doc ul {
+  padding-left: 22px;
+}
+
+.doc li + li {
+  margin-top: 6px;
+}
+
+.doc a {
+  color: var(--green);
+  font-weight: 600;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.lead {
+  font-size: 19px;
+  color: var(--ink);
 }
 
 .section {
-  margin-bottom: 2rem;
+  padding-top: 36px;
+  margin-top: 36px;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 100px;
 }
 
-.section p {
-  margin-bottom: 1rem;
-  text-align: justify;
+.section h2 {
+  margin: 0 0 18px;
+  font: 700 clamp(26px, 2.6vw, 32px) / 1.15 var(--cond);
+  text-transform: uppercase;
+  color: var(--green);
 }
 
-.section ul {
-  margin: 1rem 0;
-  padding-left: 2rem;
+.section h3 {
+  margin: 30px 0 10px;
+  font: 700 21px/1.25 var(--cond);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ink);
 }
 
-.section li {
-  margin-bottom: 0.5rem;
+/* Company details */
+.company {
+  margin: 0 0 18px;
+  border-top: 1px solid var(--line);
 }
 
-.section strong {
-  color: #2c3e50;
+.company > div {
+  display: grid;
+  grid-template-columns: minmax(0, 200px) minmax(0, 1fr);
+  gap: 4px 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.company dt {
   font-weight: 600;
+  color: var(--ink);
 }
 
-.lastUpdated {
-  background: #f8f9fa;
-  padding: 1rem;
-  border-radius: 4px;
-  border-left: 4px solid #28a745;
-  margin-top: 2rem;
-  font-style: italic;
+.company dd {
+  margin: 0;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .container {
-    padding: 1rem 0.5rem;
-  }
-
-  .content {
-    padding: 1.5rem;
-  }
-
-  .title {
-    font-size: 2rem;
-  }
-
-  .sectionTitle {
-    font-size: 1.3rem;
-  }
+/* Účel / Právní základ / Doba uložení */
+.facts {
+  margin: 4px 0 16px;
+  padding: 16px 20px;
+  background: #fff;
+  border-left: 3px solid var(--gold);
 }
 
-@media (max-width: 480px) {
-  .container {
-    padding: 0.5rem;
+.facts > div + div {
+  margin-top: 8px;
+}
+
+.facts dt {
+  display: inline;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.facts dt::after {
+  content: ": ";
+}
+
+.facts dd {
+  display: inline;
+  margin: 0;
+}
+
+/* Cookie tables scroll sideways on narrow phones */
+.tableWrap {
+  margin: 8px 0 20px;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  background: #fff;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.table caption {
+  padding: 0 0 8px;
+  text-align: left;
+  font: 700 18px var(--cond);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.table th {
+  padding: 10px 12px;
+  background: var(--green-dark);
+  color: var(--cream);
+  font: 600 14px var(--cond);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.table code {
+  font: 600 14px ui-monospace, Consolas, monospace;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.cookieLink.cookieLink {
+  cursor: pointer;
+}
+
+.note {
+  padding: 16px 20px;
+  background: #fff;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .content {
-    padding: 1rem;
+  .toc {
+    position: static;
   }
 
-  .title {
-    font-size: 1.8rem;
-  }
-
-  .sectionTitle {
-    font-size: 1.2rem;
+  .company > div {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

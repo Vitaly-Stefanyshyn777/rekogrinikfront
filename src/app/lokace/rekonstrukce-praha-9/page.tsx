@@ -21,6 +21,10 @@ const PHONE_DISPLAY = "+420 776 352 237";
 const ADDRESS = "Na Vackově 2895/5, 130 00 Praha 3";
 const IMG = "/new";
 
+// A file name is in /new; a path starting with "/" points elsewhere (e.g.
+// project photos in /realizace).
+const photo = (src: string) => (src.startsWith("/") ? src : `${IMG}/${src}`);
+
 // Service pages live under /sluzby.
 const service = (slug: string) => `/sluzby/${slug}`;
 
@@ -184,9 +188,9 @@ const serviceCards = [
 ];
 
 const stripPhotos = [
-  { src: "koupelna-mozaika-wc-pracka.webp", alt: "Koupelna s mozaikou, WC a místem pro pračku" },
-  { src: "lodzie-podlaha.webp", alt: "Nová podlaha na lodžii" },
-  { src: "koupelna-umyvadlo-u-dveri.webp", alt: "Dokončená koupelna s umyvadlem u dveří" },
+  { src: "/realizace/byt-prosek-pred-1.webp", alt: "Panelový byt na Proseku po odstranění původních povrchů" },
+  { src: "/realizace/byt-prosek-behem-1.webp", alt: "Nové stěny koupelny z pórobetonu v panelovém bytě na Proseku" },
+  { src: "koupelna-mozaika.webp", alt: "Hotová koupelna s mozaikou a pračkou v panelovém bytě na Proseku" },
 ];
 
 const panelChecks = [
@@ -292,8 +296,8 @@ const faqs = [
     a: "Ano. Dům můžeme řešit jako celý projekt nebo jej rozdělit podle podlaží a funkčních částí.",
   },
   {
-    q: "Máte pobočku v Praze 9?",
-    a: "Ne. Skutečná kontaktní adresa RekoGrinik je Na Vackově 2895/5 v Praze 3. Za zákazníky v Praze 9 přijíždíme.",
+    q: "Máte pobočku na Praze 9?",
+    a: "Ne. Skutečná kontaktní adresa RekoGrinik je Na Vackově 2895/5 na Praze 3. Za zákazníky na Praze 9 přijíždíme.",
   },
   {
     q: "Mohu si objednat jen podlahu nebo malování?",
@@ -347,7 +351,7 @@ const serviceJsonLd = {
   "@type": "Service",
   "@id": `${PAGE_URL}#service`,
   name: "Rekonstrukce Praha 9",
-  description: "Kompletní a částečné rekonstrukce bytů, domů a koupelen v Praze 9.",
+  description: "Kompletní a částečné rekonstrukce bytů, domů a koupelen na Praze 9.",
   serviceType: "Rekonstrukce na klíč",
   provider: { "@id": `${SITE_URL}#business` },
   areaServed: { "@type": "AdministrativeArea", name: "Praha 9" },
@@ -422,15 +426,15 @@ export default function RekonstrukcePraha9Page() {
       ))}
 
       {/* Hero */}
-      <header className={`${styles.hero} ${hub.heroCompact}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/koupelna-beton.webp`}
-          alt="Koupelna s obkladem v betonovém dekoru po rekonstrukci"
-          className={styles.cover}
-          style={{ objectPosition: "50% 50%" }}
-        />
-        <div className={styles.heroOverlay} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${hub.heroCompact}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-prosek-koupelna.webp`}
+            alt="Nová koupelna s mozaikou a pračkou v panelovém bytě na Proseku"
+            style={{ objectPosition: "50% 50%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact}`}>
           <nav aria-label="Drobečková navigace" className={hub.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -456,7 +460,7 @@ export default function RekonstrukcePraha9Page() {
                 href={`tel:${PHONE}`}
                 data-cta="praha9_hero_phone"
               >
-                Domluvit bezplatné zaměření v Praze 9
+                Domluvit bezplatné zaměření na Praze 9
               </a>
             </div>
             <p className={loc.heroContact}>
@@ -468,10 +472,10 @@ export default function RekonstrukcePraha9Page() {
       </header>
 
       {/* Intro */}
-      <section className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
+      <section id="predstaveni" className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
         <div className={d.introCol} data-reveal>
           <p className={`${styles.introLead} ${d.inlineLinks}`}>
-            RekoGrinik provádí rekonstrukce v Praze 9 od prvních demontáží až po konečné
+            RekoGrinik provádí rekonstrukce na Praze 9 od prvních demontáží až po konečné
             dokončení. Zajistíme kompletní rekonstrukci bytu, domu nebo koupelny na klíč.
             Objednat si můžete také samostatné{" "}
             bourací,{" "}
@@ -580,16 +584,16 @@ export default function RekonstrukcePraha9Page() {
       </section>
 
       {/* Photo strip — TODO: nahradit skutečnými realizacemi z Prahy 9. Lokální alt texty
-          (např. „Kompletní rekonstrukce panelového bytu na Proseku v Praze 9“) používat
+          (např. „Kompletní rekonstrukce panelového bytu na Proseku na Praze 9“) používat
           jen u fotografie z ověřené zakázky. */}
       <div className={styles.strip} data-reveal-group>
         {stripPhotos.map((p) => (
-          <img key={p.src} loading="lazy" decoding="async" src={`${IMG}/${p.src}`} alt={p.alt} />
+          <img key={p.src} loading="lazy" decoding="async" src={photo(p.src)} alt={p.alt} />
         ))}
       </div>
 
       {/* Panel flats */}
-      <section className={styles.white}>
+      <section id="panelove-byty" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -614,7 +618,7 @@ export default function RekonstrukcePraha9Page() {
       </section>
 
       {/* Newer flats */}
-      <section className={styles.container}>
+      <section id="novejsi-byty" className={styles.container}>
         <div className={styles.split} style={{ alignItems: "start" }}>
           <div className={styles.stack} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Úpravy novějších bytů</h2>
@@ -640,7 +644,7 @@ export default function RekonstrukcePraha9Page() {
       </section>
 
       {/* Trades under one lead */}
-      <section className={styles.dark}>
+      <section id="remesla" className={styles.dark}>
         <div className={styles.container}>
           <div className={loc.areasHead}>
             <h2 className={styles.h2} data-reveal>
@@ -667,7 +671,7 @@ export default function RekonstrukcePraha9Page() {
       </section>
 
       {/* Pre-offer checks */}
-      <section className={styles.white}>
+      <section id="proverujeme" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -691,11 +695,11 @@ export default function RekonstrukcePraha9Page() {
       </section>
 
       {/* Transport */}
-      <section className={styles.dark}>
+      <section id="logistika" className={styles.dark}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={d.darkText} data-reveal>
-              <h2 className={styles.h2}>Doprava materiálu v Praze 9</h2>
+              <h2 className={styles.h2}>Doprava materiálu na Praze 9</h2>
               <p className={d.darkLead}>
                 Praha 9 má dobrou dopravní dostupnost, jednotlivé lokality se však při
                 zásobování výrazně liší.
@@ -731,7 +735,7 @@ export default function RekonstrukcePraha9Page() {
             </li>
           ))}
         </ol>
-        {/* TODO: doplnit sekci „Naše práce v Praze 9“ se skutečnými případovými studiemi (ověřená čtvrť, typ domu, stav, rozsah, problém, řešení, fotky před/během/po, skutečná recenze se souhlasem). Smyšlené reference nepoužívat. */}
+        {/* TODO: doplnit sekci „Naše práce na Praze 9“ se skutečnými případovými studiemi (ověřená čtvrť, typ domu, stav, rozsah, problém, řešení, fotky před/během/po, skutečná recenze se souhlasem). Smyšlené reference nepoužívat. */}
       </section>
 
       {/* Contact point + map */}
@@ -765,7 +769,7 @@ export default function RekonstrukcePraha9Page() {
               bytě nebo domě.
             </p>
             <div className={d.tagBlock}>
-              <p className={d.tagLabel}>Obsluhované lokality v Praze 9</p>
+              <p className={d.tagLabel}>Obsluhované lokality na Praze 9</p>
               <ul className={d.greenTags}>
                 {servedAreas.map((a) => (
                   <li key={a}>{a}</li>
@@ -792,7 +796,7 @@ export default function RekonstrukcePraha9Page() {
             />
             <figcaption className={d.mapCta}>
               <a className={styles.btnGold} href={`tel:${PHONE}`} data-cta="praha9_map_phone">
-                Domluvit zaměření v Praze 9
+                Domluvit zaměření na Praze 9
               </a>
             </figcaption>
           </figure>
@@ -832,15 +836,15 @@ export default function RekonstrukcePraha9Page() {
         <img
           loading="lazy"
           decoding="async"
-          src={`${IMG}/sprchovy-kout-mozaika.webp`}
-          alt="Sprchový kout s mozaikovým obkladem"
+          src={`${IMG}/wc-zavesne-mozaika.webp`}
+          alt="Závěsné WC s mozaikou v panelovém bytě na Proseku"
           className={styles.cover}
           style={{ objectPosition: "50% 40%" }}
         />
         <div className={styles.contactOverlay} />
         <div className={styles.contactInner}>
           <div className={styles.contactText} data-reveal>
-            <h2 className={styles.contactTitle}>Poptat rekonstrukci v Praze 9</h2>
+            <h2 className={styles.contactTitle}>Poptat rekonstrukci na Praze 9</h2>
             <p>
               Plánujete rekonstrukci na Proseku, ve Vysočanech, Libni, Hrdlořezích nebo v
               části Střížkova či Hloubětína patřící pod Prahu 9?
@@ -857,7 +861,7 @@ export default function RekonstrukcePraha9Page() {
               href="/kontakt"
               data-cta="praha9_contact_zamereni"
             >
-              Domluvit bezplatné zaměření v Praze 9
+              Domluvit bezplatné zaměření na Praze 9
             </Link>
           </div>
           <dl className={styles.contactList} data-reveal-group>

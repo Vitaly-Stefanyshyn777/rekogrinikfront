@@ -51,15 +51,15 @@ export default function DekujemePage() {
       <link rel="stylesheet" href={FONTS_URL} precedence="default" />
 
       {/* Hero */}
-      <header className={`${styles.hero} ${k.hero}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/koupelna-mramor-vana.webp`}
-          alt=""
-          className={styles.cover}
-          style={{ objectPosition: "50% 50%" }}
-        />
-        <div className={`${styles.heroOverlay} ${k.heroOverlay}`} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${k.hero}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-koupelna-pracka.webp`}
+            alt=""
+            style={{ objectPosition: "50% 58%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact} ${k.heroInner}`}>
           <div className={`${styles.heroContent} ${k.heroCenter}`}>
             <h1 className={`${styles.h1} ${hub.h1Compact}`}>
@@ -75,7 +75,7 @@ export default function DekujemePage() {
       </header>
 
       {/* What happens next */}
-      <section className={styles.container}>
+      <section id="dalsi-kroky" className={styles.container}>
         <h2 className={`${styles.h2} ${t.sectionTitle}`} data-reveal>
           Co bude následovat
         </h2>
@@ -91,7 +91,7 @@ export default function DekujemePage() {
       </section>
 
       {/* Call + way back */}
-      <section className={styles.white}>
+      <section id="kontakt" className={styles.white}>
         <div className={`${styles.container} ${t.next}`}>
           <div className={t.callBox} data-reveal>
             <h2>Spěcháte?</h2>

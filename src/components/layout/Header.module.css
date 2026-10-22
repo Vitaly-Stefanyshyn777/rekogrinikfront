@@ -21,6 +21,18 @@
   background: #fff;
   border-bottom: 1px solid var(--line);
   -webkit-font-smoothing: antialiased;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Slid out of view while scrolling down (see Header.tsx) */
+.headerHidden {
+  transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header {
+    transition: none;
+  }
 }
 
 /* Full nav from 1200px; below that the burger menu */
