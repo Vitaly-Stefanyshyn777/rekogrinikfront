@@ -21,6 +21,10 @@ const PHONE_DISPLAY = "+420 776 352 237";
 const EMAIL = "rekogrinikcz@gmail.com";
 const IMG = "/new";
 
+// A file name is in /new; a path starting with "/" points elsewhere (e.g.
+// project photos in /realizace).
+const photo = (src: string) => (src.startsWith("/") ? src : `${IMG}/${src}`);
+
 // Service pages live under /sluzby.
 const service = (slug: string) => `/sluzby/${slug}`;
 
@@ -80,9 +84,9 @@ const woodChecks = [
 ];
 
 const stripPhotos = [
-  { src: "veranda-dlazba.webp", alt: "Nová dlažba na zasklené verandě rodinného domu" },
-  { src: "roubenka-dlazba.webp", alt: "Velkoformátová dlažba při rekonstrukci roubeného domu" },
-  { src: "roubenka-dlazba-sokl.webp", alt: "Dlažba se soklem u roubené stěny" },
+  { src: "/realizace/byt-koupelna-zachod-po-7.webp", alt: "Dřevěná podlaha ve vzoru rybí kost po pokládce" },
+  { src: "byt-kuchyn-laminat.webp", alt: "Nová laminátová podlaha v obývacím prostoru s kuchyní" },
+  { src: "lodzie-podlaha.webp", alt: "Nová vinylová podlaha na zasklené lodžii" },
 ];
 
 const baseStates = [
@@ -233,7 +237,7 @@ const faqs = [
   },
   {
     q: "Ve kterých částech Prahy pracujete?",
-    a: "Nejčastěji realizujeme podlahářské práce v Praze 1, 2, 3, 8, 9 a 10. Další lokality posuzujeme podle místa a rozsahu zakázky.",
+    a: "Nejčastěji realizujeme podlahářské práce na Praze 1, 2, 3, 8, 9 a 10. Další lokality posuzujeme podle místa a rozsahu zakázky.",
   },
 ];
 
@@ -335,15 +339,15 @@ export default function PodlaharskePracePage() {
       ))}
 
       {/* Hero */}
-      <header className={`${styles.hero} ${hub.heroCompact}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/lodzie-podlaha.webp`}
-          alt="Zasklená lodžie s novou podlahou po rekonstrukci bytu"
-          className={styles.cover}
-          style={{ objectPosition: "50% 50%" }}
-        />
-        <div className={styles.heroOverlay} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${hub.heroCompact}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-parkety-okno.webp`}
+            alt="Nová dřevěná podlaha ve vzoru rybí kost v pokoji s oknem"
+            style={{ objectPosition: "50% 88%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact}`}>
           <nav aria-label="Drobečková navigace" className={hub.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -379,7 +383,7 @@ export default function PodlaharskePracePage() {
       </header>
 
       {/* Intro */}
-      <section className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
+      <section id="predstaveni" className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
         <p className={styles.introLead} data-reveal>
           Provádíme podlahářské práce v Praze při rekonstrukcích bytů a domů i jako
           samostatnou službu. Pokládáme laminátové, vinylové a dřevěné podlahy včetně
@@ -403,7 +407,7 @@ export default function PodlaharskePracePage() {
       </section>
 
       {/* Under the surface */}
-      <section className={styles.white}>
+      <section id="kvalita-podlahy" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -553,12 +557,12 @@ export default function PodlaharskePracePage() {
       {/* Photo strip */}
       <div className={styles.strip} data-reveal-group>
         {stripPhotos.map((p) => (
-          <img key={p.src} loading="lazy" decoding="async" src={`${IMG}/${p.src}`} alt={p.alt} />
+          <img key={p.src} loading="lazy" decoding="async" src={photo(p.src)} alt={p.alt} />
         ))}
       </div>
 
       {/* Checking the base */}
-      <section className={styles.container}>
+      <section id="kontrola-podkladu" className={styles.container}>
         <div className={styles.sectionHead} style={{ marginBottom: 56 }}>
           <h2 className={styles.h2} data-reveal>
             Jak kontrolujeme podklad
@@ -587,7 +591,7 @@ export default function PodlaharskePracePage() {
       </section>
 
       {/* Floating vs glued */}
-      <section className={styles.white}>
+      <section id="plovouci-nebo-lepena" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.sectionHead} style={{ marginBottom: 56 }}>
             <h2 className={styles.h2} data-reveal>
@@ -634,7 +638,7 @@ export default function PodlaharskePracePage() {
       </section>
 
       {/* Height and transitions */}
-      <section className={styles.container}>
+      <section id="vyska-podlahy" className={styles.container}>
         <div className={styles.split} style={{ alignItems: "start" }}>
           <div className={styles.stack} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Výška podlahy a návaznosti</h2>
@@ -682,7 +686,7 @@ export default function PodlaharskePracePage() {
       </section>
 
       {/* Underfloor heating */}
-      <section className={styles.dark}>
+      <section id="podlahove-vytapeni" className={styles.dark}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <div className={styles.prepareText} data-reveal>
             <h2 className={styles.h2}>Podlahové vytápění</h2>
@@ -712,7 +716,7 @@ export default function PodlaharskePracePage() {
       </section>
 
       {/* Rooms */}
-      <section className={styles.container}>
+      <section id="mistnosti" className={styles.container}>
         <div className={styles.sectionHead} style={{ marginBottom: 56 }}>
           <h2 className={styles.h2} data-reveal>
             Podlaha v jednotlivých místnostech
@@ -762,7 +766,7 @@ export default function PodlaharskePracePage() {
       </section>
 
       {/* Price */}
-      <section className={styles.container}>
+      <section id="cena" className={styles.container}>
         <h2 className={`${styles.h2} ${s.headGap}`} data-reveal>
           Co ovlivňuje cenu
         </h2>
@@ -781,7 +785,7 @@ export default function PodlaharskePracePage() {
           <div className={`${styles.stack} ${domy.stickyCol}`} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Podlahářské práce v Praze</h2>
             <p>
-              Nejčastěji pracujeme v Praze 1, Praze 2, Praze 3, Praze 8, Praze 9 a
+              Nejčastěji pracujeme na Praze 1, Praze 2, Praze 3, Praze 8, Praze 9 a
               Praze 10.
             </p>
           </div>
@@ -802,11 +806,11 @@ export default function PodlaharskePracePage() {
               Ve starších bytech na Vinohradech se pod krytinou někdy objeví původní parkety,
               více o této oblasti najdete u{" "}
               <Link className={koup.inlineLink} href="/lokace/rekonstrukce-praha-2">
-                rekonstrukce v Praze 2
+                rekonstrukce na Praze 2
               </Link>. V centru řešíme hlavně dopravu materiálu a ochranu společných prostor,
               podívejte se na{" "}
               <Link className={koup.inlineLink} href="/lokace/rekonstrukce-praha-1">
-                rekonstrukce bytů v Praze 1
+                rekonstrukce bytů na Praze 1
               </Link>.
             </p>
           </div>
@@ -814,7 +818,7 @@ export default function PodlaharskePracePage() {
       </section>
 
       {/* Checklist before the visit */}
-      <section className={styles.dark}>
+      <section id="priprava" className={styles.dark}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <div className={styles.prepareText} data-reveal>
             <h2 className={styles.h2}>Kontrolní seznam</h2>
@@ -860,7 +864,7 @@ export default function PodlaharskePracePage() {
             href={`/lokace/rekonstrukce-praha-${d}`}
             className={byty.relatedLink}
           >
-            Podlahy v Praze {d}
+            Podlahy na Praze {d}
           </Link>
         ))}
       </nav>
@@ -870,8 +874,8 @@ export default function PodlaharskePracePage() {
         <img
           loading="lazy"
           decoding="async"
-          src={`${IMG}/roubenka-dlazba.webp`}
-          alt="Velkoformátová dlažba při rekonstrukci roubeného domu"
+          src={`${IMG}/byt-obyvaci-prostor-podlaha.webp`}
+          alt="Nová podlaha v prostorném obývacím pokoji"
           className={styles.cover}
           style={{ objectPosition: "50% 40%" }}
         />

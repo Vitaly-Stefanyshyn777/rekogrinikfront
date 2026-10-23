@@ -91,15 +91,15 @@ export default function KontaktPage() {
       ))}
 
       {/* Hero */}
-      <header className={`${styles.hero} ${k.hero}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/koupelna-dubova-skrinka.webp`}
-          alt="Umyvadlo s dubovou skříňkou a sprcha"
-          className={styles.cover}
-          style={{ objectPosition: "50% 40%" }}
-        />
-        <div className={`${styles.heroOverlay} ${k.heroOverlay}`} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${k.hero}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-koupelna-pruhy.webp`}
+            alt="Nová koupelna se sprchovým koutem a umyvadlem"
+            style={{ objectPosition: "50% 55%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact} ${k.heroInner}`}>
           <nav aria-label="Drobečková navigace" className={hub.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -166,12 +166,12 @@ export default function KontaktPage() {
       </section>
 
       {/* Where to find us */}
-      <section className={styles.white}>
+      <section id="kde-nas-najdete" className={styles.white}>
         <div className={`${styles.container} ${k.findUs}`}>
           <div className={k.findText} data-reveal>
             <h2 className={styles.h2}>Kde nás najdete</h2>
             <p>
-              Kontaktní adresa RekoGrinik je Na Vackově 2895/5 v Praze 3. Na zaměření a
+              Kontaktní adresa RekoGrinik je Na Vackově 2895/5 na Praze 3. Na zaměření a
               realizace vyjíždíme po celé Praze. Pro přípravu rekonstrukce je obvykle
               vhodnější setkat se přímo v upravované nemovitosti.
             </p>

@@ -15,6 +15,30 @@ export default function Header() {
     setIsMobileMenuOpen(false);
     setOpenSubmenu(null);
   };
+  // Hide while scrolling down, show again as soon as the visitor scrolls up
+  // (or is near the top), so the menu is always one small scroll away.
+  const [isHidden, setIsHidden] = useState(false);
+  useEffect(() => {
+    let lastY = window.scrollY;
+    let frame = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const y = window.scrollY;
+        const delta = y - lastY;
+        if (y < 120) setIsHidden(false);
+        else if (delta > 6) setIsHidden(true);
+        else if (delta < -6) setIsHidden(false);
+        if (Math.abs(delta) > 6) lastY = y;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -26,7 +50,13 @@ export default function Header() {
     };
   }, [isMobileMenuOpen]);
   return (
-    <header className={styles.header}>
+    <header
+      className={
+        isHidden && !isMobileMenuOpen ? `${styles.header} ${styles.headerHidden}` : styles.header
+      }
+      // Keyboard users tabbing into the menu bring the header back
+      onFocus={() => setIsHidden(false)}
+    >
       <div className={styles.container}>
         <div className={styles.left}>
           <Link href="/" aria-label="RekoGrinik" className={styles.brand}>

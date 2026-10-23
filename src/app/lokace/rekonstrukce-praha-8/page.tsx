@@ -21,6 +21,10 @@ const PHONE_DISPLAY = "+420 776 352 237";
 const ADDRESS = "Na Vackově 2895/5, 130 00 Praha 3";
 const IMG = "/new";
 
+// A file name is in /new; a path starting with "/" points elsewhere (e.g.
+// project photos in /realizace).
+const photo = (src: string) => (src.startsWith("/") ? src : `${IMG}/${src}`);
+
 // Service pages live under /sluzby.
 const service = (slug: string) => `/sluzby/${slug}`;
 
@@ -217,9 +221,9 @@ const serviceCards: ServiceCard[] = [
 ];
 
 const stripPhotos = [
-  { src: "koupelna-dubova-skrinka.webp", alt: "Koupelna s dubovou skříňkou pod umyvadlem" },
-  { src: "koupelna-kamen.webp", alt: "Koupelna s obkladem v dekoru kamene" },
-  { src: "wc-a-sprcha.webp", alt: "Koupelna se sprchou a závěsným WC" },
+  { src: "/realizace/byt-koupelna-zachod-po-6.webp", alt: "Pokoj s novou dřevěnou podlahou a vymalovanými stěnami" },
+  { src: "wc-velkoformat-obklad.webp", alt: "Závěsné WC a velkoformátový obklad v novém záchodě" },
+  { src: "roubenka-dlazba.webp", alt: "Velkoformátová dlažba v obytné části rodinného domu" },
 ];
 
 const buildingTypes = [
@@ -299,8 +303,8 @@ const faqs = [
     a: "Ano. Kompletní nebo etapovou rekonstrukci domu připravíme podle jeho stavu, rozsahu a toho, zda se v něm bude během prací bydlet.",
   },
   {
-    q: "Máte pobočku v Praze 8?",
-    a: "Ne. Kontaktní adresa RekoGrinik je Na Vackově 2895/5 v Praze 3. Praha 8 je oblast, kam za zákazníky vyjíždíme.",
+    q: "Máte pobočku na Praze 8?",
+    a: "Ne. Kontaktní adresa RekoGrinik je Na Vackově 2895/5 na Praze 3. Praha 8 je oblast, kam za zákazníky vyjíždíme.",
   },
   {
     q: "Zajistíte rekonstrukci od bourání po malování?",
@@ -362,7 +366,7 @@ const serviceJsonLd = {
   "@type": "Service",
   "@id": `${PAGE_URL}#service`,
   name: "Rekonstrukce Praha 8",
-  description: "Kompletní a částečné rekonstrukce bytů, domů a koupelen v Praze 8.",
+  description: "Kompletní a částečné rekonstrukce bytů, domů a koupelen na Praze 8.",
   serviceType: "Rekonstrukce na klíč",
   provider: { "@id": `${SITE_URL}#business` },
   areaServed: { "@type": "AdministrativeArea", name: "Praha 8" },
@@ -424,15 +428,15 @@ export default function RekonstrukcePraha8Page() {
       ))}
 
       {/* Hero */}
-      <header className={`${styles.hero} ${hub.heroCompact}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/koupelna-mramor-vana.webp`}
-          alt="Koupelna s vanou a mramorovým obkladem po rekonstrukci"
-          className={styles.cover}
-          style={{ objectPosition: "50% 50%" }}
-        />
-        <div className={styles.heroOverlay} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${hub.heroCompact}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-parkety-okno.webp`}
+            alt="Pokoj s novou dřevěnou podlahou po rekonstrukci bytu"
+            style={{ objectPosition: "50% 88%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact}`}>
           <nav aria-label="Drobečková navigace" className={hub.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -449,7 +453,7 @@ export default function RekonstrukcePraha8Page() {
             <p className={styles.heroText}>
               Plánujete rekonstrukci bytu v Karlíně, novou koupelnu v Kobylisích nebo
               modernizaci domu v Čimicích? RekoGrinik provádí kompletní i částečné
-              rekonstrukce v Praze 8. Přijedeme přímo na místo, prostor zaměříme a
+              rekonstrukce na Praze 8. Přijedeme přímo na místo, prostor zaměříme a
               navrhneme postup podle skutečného stavu nemovitosti.
             </p>
             <div className={loc.heroCta}>
@@ -470,7 +474,7 @@ export default function RekonstrukcePraha8Page() {
       </header>
 
       {/* Intro */}
-      <section className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
+      <section id="predstaveni" className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
         <div className={d.introCol} data-reveal>
           <p className={styles.introLead}>
             Zajistíme kompletní realizaci od prvních demontáží až po podlahy, malování a
@@ -484,7 +488,7 @@ export default function RekonstrukcePraha8Page() {
           </p>
         </div>
         <div className={domy.listCol} data-reveal>
-          <p className={loc.checkTitle}>V Praze 8 provádíme:</p>
+          <p className={loc.checkTitle}>Na Praze 8 provádíme:</p>
           <ul className={`${loc.checkLight} ${d.checkLinks}`}>
             {offered.map((item) => (
               <li key={item.text}>
@@ -496,7 +500,7 @@ export default function RekonstrukcePraha8Page() {
       </section>
 
       {/* One district, many renovation types */}
-      <section className={styles.white}>
+      <section id="typy-rekonstrukci" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -533,7 +537,7 @@ export default function RekonstrukcePraha8Page() {
         <div className={styles.container}>
           <div className={loc.areasHead}>
             <h2 className={styles.h2} data-reveal>
-              Kde v Praze 8 pracujeme
+              Kde na Praze 8 pracujeme
             </h2>
             <nav aria-label="Čtvrti Prahy 8" className={d.goldChips} data-reveal>
               {areas.map((a) => (
@@ -566,7 +570,7 @@ export default function RekonstrukcePraha8Page() {
       {/* Services */}
       <section id="sluzby" className={`${styles.container} ${hub.anchor}`}>
         <h2 className={`${styles.h2} ${d.headGap}`} data-reveal>
-          Co v Praze 8 realizujeme
+          Co na Praze 8 realizujeme
         </h2>
         <div className={koup.tableScroll} data-reveal>
           <table className={`${byty.typeTable} ${koup.tableFlush} ${d.needTable}`}>
@@ -621,16 +625,16 @@ export default function RekonstrukcePraha8Page() {
       </section>
 
       {/* Photo strip — TODO: nahradit skutečnými realizacemi z Prahy 8. Lokální alt texty
-          (např. „Kompletní rekonstrukce staršího bytu v Karlíně v Praze 8“) používat jen
+          (např. „Kompletní rekonstrukce staršího bytu v Karlíně na Praze 8“) používat jen
           u doložené realizace. */}
       <div className={styles.strip} data-reveal-group>
         {stripPhotos.map((p) => (
-          <img key={p.src} loading="lazy" decoding="async" src={`${IMG}/${p.src}`} alt={p.alt} />
+          <img key={p.src} loading="lazy" decoding="async" src={photo(p.src)} alt={p.alt} />
         ))}
       </div>
 
       {/* Building types */}
-      <section className={styles.white}>
+      <section id="typy-domu" className={styles.white}>
         <div className={styles.container}>
           <h2 className={`${styles.h2} ${d.headGap}`} data-reveal>
             Jak přistupujeme k různým domům
@@ -648,7 +652,7 @@ export default function RekonstrukcePraha8Page() {
       </section>
 
       {/* Logistics and protection */}
-      <section className={styles.dark}>
+      <section id="logistika" className={styles.dark}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={d.darkText} data-reveal>
@@ -696,7 +700,7 @@ export default function RekonstrukcePraha8Page() {
       </section>
 
       {/* Why us */}
-      <section className={styles.container}>
+      <section id="proc-my" className={styles.container}>
         <h2 className={styles.h2} data-reveal>
           Proč si vybrat RekoGrinik
         </h2>
@@ -707,7 +711,7 @@ export default function RekonstrukcePraha8Page() {
             </li>
           ))}
         </ul>
-        {/* TODO: Nevkládat smyšlené výroky zákazníků. Doplnit blok „Realizace v Praze 8“ se skutečnými projekty (lokalita, typ nemovitosti, výchozí stav, rozsah, komplikace, řešení, fotky před/během/po). */}
+        {/* TODO: Nevkládat smyšlené výroky zákazníků. Doplnit blok „Realizace na Praze 8“ se skutečnými projekty (lokalita, typ nemovitosti, výchozí stav, rozsah, komplikace, řešení, fotky před/během/po). */}
       </section>
 
       {/* Contact point + map */}
@@ -733,10 +737,10 @@ export default function RekonstrukcePraha8Page() {
             <p className={`${loc.mapHint} ${d.inlineLinks}`}>
               Praha 8 je naší výjezdovou oblastí. Nemáme zde samostatnou pobočku a za
               zákazníky přijíždíme přímo na místo plánované rekonstrukce. Kontaktní místo
-              najdete v sousední <Link href="/lokace/rekonstrukce-praha-3">Praze 3</Link>.
+              najdete na sousední <Link href="/lokace/rekonstrukce-praha-3">Praze 3</Link>.
             </p>
             <div className={d.tagBlock}>
-              <p className={d.tagLabel}>Obsluhované lokality v Praze 8</p>
+              <p className={d.tagLabel}>Obsluhované lokality na Praze 8</p>
               <ul className={d.greenTags}>
                 {servedAreas.map((a) => (
                   <li key={a}>{a}</li>
@@ -803,15 +807,15 @@ export default function RekonstrukcePraha8Page() {
         <img
           loading="lazy"
           decoding="async"
-          src={`${IMG}/koupelna-zrcadlo.webp`}
-          alt="Dokončená koupelna se zrcadlem"
+          src={`${IMG}/koupelna-pruhy-umyvadlo.webp`}
+          alt="Nová koupelna s umyvadlem a sprchovým koutem"
           className={styles.cover}
           style={{ objectPosition: "50% 40%" }}
         />
         <div className={styles.contactOverlay} />
         <div className={styles.contactInner}>
           <div className={styles.contactText} data-reveal>
-            <h2 className={styles.contactTitle}>Poptat rekonstrukci v Praze 8</h2>
+            <h2 className={styles.contactTitle}>Poptat rekonstrukci na Praze 8</h2>
             <p>
               Plánujete rekonstrukci bytu, domu nebo koupelny v Karlíně, Libni,
               Kobylisích, Bohnicích či Čimicích? Pošlete nám adresu, několik fotografií a
@@ -826,7 +830,7 @@ export default function RekonstrukcePraha8Page() {
               href="/kontakt"
               data-cta="praha8_contact_zamereni"
             >
-              Domluvit bezplatné zaměření v Praze 8
+              Domluvit bezplatné zaměření na Praze 8
             </Link>
           </div>
           <dl className={styles.contactList} data-reveal-group>

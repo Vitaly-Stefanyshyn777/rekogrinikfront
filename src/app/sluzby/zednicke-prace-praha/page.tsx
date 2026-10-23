@@ -22,6 +22,10 @@ const PHONE_DISPLAY = "+420 776 352 237";
 const EMAIL = "rekogrinikcz@gmail.com";
 const IMG = "/new";
 
+// A file name is in /new; a path starting with "/" points elsewhere (e.g.
+// project photos in /realizace).
+const photo = (src: string) => (src.startsWith("/") ? src : `${IMG}/${src}`);
+
 // Service pages live under /sluzby.
 const service = (slug: string) => `/sluzby/${slug}`;
 
@@ -103,9 +107,9 @@ const tilePrep = [
 ];
 
 const stripPhotos = [
-  { src: "sprchovy-kout-mozaika.webp", alt: "Sprchový kout u mozaikové stěny a světlá dlažba" },
-  { src: "koupelna-kamen.webp", alt: "Koupelna se závěsným WC a sprchou v kamenném dekoru" },
-  { src: "wc-a-sprcha.webp", alt: "Závěsné WC a sprchový kout" },
+  { src: "/realizace/byt-prosek-behem-2.webp", alt: "Nově vyzděné stěny koupelny s hydroizolací před obkladem" },
+  { src: "/realizace/byt-koupelna-zachod-pred-2.webp", alt: "Zdivo s vysekanými drážkami pro nové rozvody" },
+  { src: "koupelna-pred-obklady-odstraneny.webp", alt: "Zdivo z tvárnic po odstranění původních obkladů" },
 ];
 
 const wallCompare = [
@@ -255,7 +259,7 @@ const faqs = [
   },
   {
     q: "Ve kterých částech Prahy pracujete?",
-    a: "Nejčastěji provádíme zednické práce v Praze 1, 2, 3, 8, 9 a 10. Další lokality posuzujeme podle místa a rozsahu zakázky.",
+    a: "Nejčastěji provádíme zednické práce na Praze 1, 2, 3, 8, 9 a 10. Další lokality posuzujeme podle místa a rozsahu zakázky.",
   },
 ];
 
@@ -334,15 +338,15 @@ export default function ZednickePracePage() {
       ))}
 
       {/* Hero */}
-      <header className={`${styles.hero} ${hub.heroCompact}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/instalacni-sachta-pred.webp`}
-          alt="Otevřená instalační šachta během stavebních úprav"
-          className={styles.cover}
-          style={{ objectPosition: "50% 50%" }}
-        />
-        <div className={styles.heroOverlay} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${hub.heroCompact}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-zdeni.webp`}
+            alt="Nové příčky z pórobetonových tvárnic během rekonstrukce bytu"
+            style={{ objectPosition: "50% 50%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact}`}>
           <nav aria-label="Drobečková navigace" className={hub.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -377,7 +381,7 @@ export default function ZednickePracePage() {
       </header>
 
       {/* Intro */}
-      <section className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
+      <section id="predstaveni" className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
         <p className={styles.introLead} data-reveal>
           Provádíme zednické práce v Praze při rekonstrukcích bytů a domů i jako
           samostatnou službu. Stavíme nové příčky a dozdívky, opravujeme poškozené
@@ -399,7 +403,7 @@ export default function ZednickePracePage() {
       </section>
 
       {/* Precise construction */}
-      <section className={styles.white}>
+      <section id="presnost" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -581,12 +585,12 @@ export default function ZednickePracePage() {
       {/* Photo strip */}
       <div className={styles.strip} data-reveal-group>
         {stripPhotos.map((p) => (
-          <img key={p.src} loading="lazy" decoding="async" src={`${IMG}/${p.src}`} alt={p.alt} />
+          <img key={p.src} loading="lazy" decoding="async" src={photo(p.src)} alt={p.alt} />
         ))}
       </div>
 
       {/* Brick vs drywall */}
-      <section className={styles.dark}>
+      <section id="zdena-nebo-sadrokartonova" className={styles.dark}>
         <div className={styles.container}>
           <div className={styles.sectionHead} style={{ marginBottom: 56 }}>
             <h2 className={styles.h2} data-reveal>
@@ -630,7 +634,7 @@ export default function ZednickePracePage() {
       </section>
 
       {/* Plaster must not hide problems */}
-      <section className={styles.container}>
+      <section id="omitky" className={styles.container}>
         <div className={styles.split} style={{ alignItems: "start" }}>
           <div className={styles.stack} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Omítka nemá zakrývat problém</h2>
@@ -681,7 +685,7 @@ export default function ZednickePracePage() {
       </section>
 
       {/* Follow-up trades */}
-      <section className={styles.container}>
+      <section id="navaznost" className={styles.container}>
         <div className={styles.sectionHead} style={{ marginBottom: 56 }}>
           <h2 className={styles.h2} data-reveal>
             Návaznost na další řemesla
@@ -734,7 +738,7 @@ export default function ZednickePracePage() {
       </section>
 
       {/* Quality control */}
-      <section className={styles.dark}>
+      <section id="kontrola-kvality" className={styles.dark}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <div className={styles.prepareText} data-reveal>
             <h2 className={styles.h2}>Kontrola přesnosti a kvality</h2>
@@ -782,7 +786,7 @@ export default function ZednickePracePage() {
       </section>
 
       {/* Price */}
-      <section className={styles.container}>
+      <section id="cena" className={styles.container}>
         <h2 className={`${styles.h2} ${s.headGap}`} data-reveal>
           Co ovlivňuje cenu
         </h2>
@@ -817,7 +821,7 @@ export default function ZednickePracePage() {
           <div className={`${styles.stack} ${domy.stickyCol}`} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Zednické práce v Praze</h2>
             <p>
-              Nejčastěji pracujeme v Praze 1, Praze 2, Praze 3, Praze 8, Praze 9 a
+              Nejčastěji pracujeme na Praze 1, Praze 2, Praze 3, Praze 8, Praze 9 a
               Praze 10.
             </p>
           </div>
@@ -843,7 +847,7 @@ export default function ZednickePracePage() {
               Staré omítky a dodatečně upravované otvory známe hlavně z domů v centru,
               podívejte se na{" "}
               <Link className={koup.inlineLink} href="/lokace/rekonstrukce-praha-1">
-                naše práce v Praze 1
+                naše práce na Praze 1
               </Link>. Ve Vršovicích a Strašnicích děláme dozdívky i opravy omítek, více na stránce{" "}
               <Link className={koup.inlineLink} href="/lokace/rekonstrukce-praha-10">
                 rekonstrukce Praha 10
@@ -854,7 +858,7 @@ export default function ZednickePracePage() {
       </section>
 
       {/* Checklist before the visit */}
-      <section className={styles.dark}>
+      <section id="priprava" className={styles.dark}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <div className={styles.prepareText} data-reveal>
             <h2 className={styles.h2}>Kontrolní seznam před návštěvou</h2>
@@ -901,7 +905,7 @@ export default function ZednickePracePage() {
             href={`/lokace/rekonstrukce-praha-${d}`}
             className={byty.relatedLink}
           >
-            Zednické práce v Praze {d}
+            Zednické práce na Praze {d}
           </Link>
         ))}
       </nav>
@@ -912,7 +916,7 @@ export default function ZednickePracePage() {
           loading="lazy"
           decoding="async"
           src={`${IMG}/koupelna-mozaika.webp`}
-          alt="Sprchový kout, pračka a umyvadlo u mozaikové stěny"
+          alt="Hotová koupelna v nově vyzděném bytovém jádře"
           className={styles.cover}
           style={{ objectPosition: "50% 40%" }}
         />

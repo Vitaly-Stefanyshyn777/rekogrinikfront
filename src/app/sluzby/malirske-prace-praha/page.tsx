@@ -21,6 +21,10 @@ const PHONE_DISPLAY = "+420 776 352 237";
 const EMAIL = "rekogrinikcz@gmail.com";
 const IMG = "/new";
 
+// A file name is in /new; a path starting with "/" points elsewhere (e.g.
+// project photos in /realizace).
+const photo = (src: string) => (src.startsWith("/") ? src : `${IMG}/${src}`);
+
 // Service pages live under /sluzby.
 const service = (slug: string) => `/sluzby/${slug}`;
 
@@ -97,10 +101,10 @@ const afterWorks: Item[] = [
 ];
 
 const stripPhotos = [
-  { src: "roubenka-dlazba-sokl.webp", alt: "Dlažba se soklem u roubené stěny" },
-  { src: "koupelna-zrcadlo.webp", alt: "Umyvadlová skříňka a podsvícené zrcadlo v nové koupelně" },
-  { src: "roubenka-dlazba.webp", alt: "Velkoformátová dlažba při rekonstrukci roubeného domu" },
-  { src: "koupelna-dubova-skrinka.webp", alt: "Umyvadlo s dubovou skříňkou a sprcha" },
+  { src: "/realizace/byt-koupelna-zachod-po-6.webp", alt: "Nově vymalovaný pokoj s bílými stěnami a parketami" },
+  { src: "byt-obyvaci-prostor-podlaha.webp", alt: "Obývací pokoj se stěnami v dekorativní úpravě" },
+  { src: "byt-kuchyn-laminat.webp", alt: "Vymalovaný obývací prostor s kuchyní" },
+  { src: "/realizace/byt-koupelna-zachod-po-7.webp", alt: "Pokoj s nově vymalovanými stěnami po rekonstrukci bytu" },
 ];
 
 const surfaceStates = [
@@ -255,7 +259,7 @@ const faqs = [
   },
   {
     q: "Ve kterých částech Prahy pracujete?",
-    a: "Nejčastěji realizujeme malířské práce v Praze 1, 2, 3, 8, 9 a 10. Jinou lokalitu posoudíme podle místa a velikosti zakázky.",
+    a: "Nejčastěji realizujeme malířské práce na Praze 1, 2, 3, 8, 9 a 10. Jinou lokalitu posoudíme podle místa a velikosti zakázky.",
   },
 ];
 
@@ -345,15 +349,15 @@ export default function MalirskePracePage() {
       ))}
 
       {/* Hero */}
-      <header className={`${styles.hero} ${hub.heroCompact}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/veranda-dlazba.webp`}
-          alt="Nová dlažba na zasklené verandě rodinného domu"
-          className={styles.cover}
-          style={{ objectPosition: "50% 50%" }}
-        />
-        <div className={styles.heroOverlay} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${hub.heroCompact}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-schodiste.webp`}
+            alt="Schodiště v rodinném domě a stěny s dekorativní omítkou"
+            style={{ objectPosition: "50% 40%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact}`}>
           <nav aria-label="Drobečková navigace" className={hub.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -388,7 +392,7 @@ export default function MalirskePracePage() {
       </header>
 
       {/* Intro */}
-      <section className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
+      <section id="predstaveni" className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
         <p className={styles.introLead} data-reveal>
           Provádíme malířské práce v Praze pro byty, rodinné domy i jednotlivé
           pokoje. Zajistíme malování, štukování, opravy povrchů a dokončení stěn po
@@ -411,7 +415,7 @@ export default function MalirskePracePage() {
       </section>
 
       {/* Durability starts under the paint */}
-      <section className={styles.white}>
+      <section id="priprava-povrchu" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -575,12 +579,12 @@ export default function MalirskePracePage() {
       {/* Photo strip */}
       <div className={styles.strip} data-reveal-group>
         {stripPhotos.map((p) => (
-          <img key={p.src} loading="lazy" decoding="async" src={`${IMG}/${p.src}`} alt={p.alt} />
+          <img key={p.src} loading="lazy" decoding="async" src={photo(p.src)} alt={p.alt} />
         ))}
       </div>
 
       {/* Wall condition first */}
-      <section className={styles.container}>
+      <section id="stav-sten" className={styles.container}>
         <div className={styles.sectionHead} style={{ marginBottom: 56 }}>
           <h2 className={styles.h2} data-reveal>
             Nejdříve zjistíme stav stěn
@@ -625,7 +629,7 @@ export default function MalirskePracePage() {
       </section>
 
       {/* Covering */}
-      <section className={styles.white}>
+      <section id="zakryti" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -677,7 +681,7 @@ export default function MalirskePracePage() {
       </section>
 
       {/* Choosing paint */}
-      <section className={styles.dark}>
+      <section id="vyber-barvy" className={styles.dark}>
         <div className={styles.container}>
           <div className={styles.sectionHead} style={{ marginBottom: 56 }}>
             <h2 className={styles.h2} data-reveal>
@@ -715,7 +719,7 @@ export default function MalirskePracePage() {
       </section>
 
       {/* White or coloured walls */}
-      <section className={styles.container}>
+      <section id="bile-nebo-barevne" className={styles.container}>
         <div className={styles.split} style={{ alignItems: "start" }}>
           <div className={styles.stack} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Bílé, nebo barevné stěny</h2>
@@ -765,7 +769,7 @@ export default function MalirskePracePage() {
       </section>
 
       {/* Price */}
-      <section className={styles.container}>
+      <section id="cena" className={styles.container}>
         <div className={styles.split} style={{ alignItems: "start" }}>
           <div className={`${styles.stack} ${domy.stickyCol}`} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Co ovlivňuje cenu</h2>
@@ -799,7 +803,7 @@ export default function MalirskePracePage() {
           <div className={`${styles.stack} ${domy.stickyCol}`} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Malířské práce v Praze</h2>
             <p>
-              Nejčastěji pracujeme v Praze 1, Praze 2, Praze 3, Praze 8, Praze 9 a
+              Nejčastěji pracujeme na Praze 1, Praze 2, Praze 3, Praze 8, Praze 9 a
               Praze 10.
             </p>
           </div>
@@ -825,11 +829,11 @@ export default function MalirskePracePage() {
               V historických domech v centru pracujeme se štuky a původními omítkami,
               podívejte se na{" "}
               <Link className={koup.inlineLink} href="/lokace/rekonstrukce-praha-1">
-                rekonstrukce v Praze 1
+                rekonstrukce na Praze 1
               </Link>. Starší byty na Vinohradech a v Nuslích často malujeme i s opravou omítek,
               více u{" "}
               <Link className={koup.inlineLink} href="/lokace/rekonstrukce-praha-2">
-                malování v Praze 2
+                malování na Praze 2
               </Link>.
             </p>
           </div>
@@ -837,7 +841,7 @@ export default function MalirskePracePage() {
       </section>
 
       {/* Checklist before the visit */}
-      <section className={styles.dark}>
+      <section id="priprava" className={styles.dark}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <div className={styles.prepareText} data-reveal>
             <h2 className={styles.h2}>Kontrolní seznam před návštěvou</h2>
@@ -884,7 +888,7 @@ export default function MalirskePracePage() {
             href={`/lokace/rekonstrukce-praha-${d}`}
             className={byty.relatedLink}
           >
-            Malování v Praze {d}
+            Malování na Praze {d}
           </Link>
         ))}
       </nav>
@@ -894,8 +898,8 @@ export default function MalirskePracePage() {
         <img
           loading="lazy"
           decoding="async"
-          src={`${IMG}/koupelna-mramor-vana.webp`}
-          alt="Koupelna s mramorovým obkladem a vanou po rekonstrukci"
+          src={`${IMG}/dum-schodiste-dekorativni-omitka.webp`}
+          alt="Stěny s dekorativní omítkou u schodiště v rodinném domě"
           className={styles.cover}
           style={{ objectPosition: "50% 40%" }}
         />

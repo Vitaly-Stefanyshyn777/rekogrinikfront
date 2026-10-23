@@ -21,6 +21,10 @@ const PHONE_DISPLAY = "+420 776 352 237";
 const ADDRESS = "Na Vackově 2895/5, 130 00 Praha 3";
 const IMG = "/new";
 
+// A file name is in /new; a path starting with "/" points elsewhere (e.g.
+// project photos in /realizace).
+const photo = (src: string) => (src.startsWith("/") ? src : `${IMG}/${src}`);
+
 // Service pages live under /sluzby.
 const service = (slug: string) => `/sluzby/${slug}`;
 
@@ -126,9 +130,9 @@ const needs = [
 ];
 
 const stripPhotos = [
+  { src: "/realizace/byt-koupelna-zachod-po-7.webp", alt: "Pokoj s dřevěnou podlahou ve vzoru rybí kost po rekonstrukci bytu" },
+  { src: "koupelna-pruhy-sprchovy-kout.webp", alt: "Nová koupelna se sprchovým koutem a žebříkovým radiátorem" },
   { src: "koupelna-bojler-bourani.webp", alt: "Odstraněný obklad a původní instalace během bouracích prací" },
-  { src: "koupelna-mramor-vana.webp", alt: "Dokončená koupelna s vanou a obkladem v mramorovém dekoru" },
-  { src: "koupelna-dubova-skrinka.webp", alt: "Koupelna s dubovou skříňkou pod umyvadlem" },
 ];
 
 const visitChecks = [
@@ -177,13 +181,13 @@ const processSteps = [
 
 const reasons = [
   "Zajistíme kompletní rekonstrukci i samostatnou práci.",
-  "Přijedeme přímo na adresu realizace v Praze 1.",
+  "Přijedeme přímo na adresu realizace na Praze 1.",
   "Před bouráním označíme zachované a odstraňované části.",
   "Připravíme položkový rozsah prací.",
   "Koordinujeme návaznost jednotlivých profesí.",
   "Myslíme na přístup, vykládku a společné prostory.",
   "Řešíme rekonstrukci od demontáže po finální malování.",
-  "Netvrdíme, že máme v Praze 1 neexistující provozovnu.",
+  "Netvrdíme, že máme na Praze 1 neexistující provozovnu.",
 ];
 
 const faqs = [
@@ -196,8 +200,8 @@ const faqs = [
     a: "Ano. V těchto lokalitách je potřeba věnovat zvýšenou pozornost dopravě materiálu, parkování, úzkým průchodům a případné památkové ochraně.",
   },
   {
-    q: "Máte provozovnu v Praze 1?",
-    a: "Ne. Kontaktní adresa RekoGrinik je Na Vackově 2895/5 v Praze 3. Praha 1 je oblast, kam vyjíždíme za zákazníky.",
+    q: "Máte provozovnu na Praze 1?",
+    a: "Ne. Kontaktní adresa RekoGrinik je Na Vackově 2895/5 na Praze 3. Praha 1 je oblast, kam vyjíždíme za zákazníky.",
   },
   {
     q: "Rekonstruujete historické byty?",
@@ -318,15 +322,15 @@ export default function RekonstrukcePraha1Page() {
       ))}
 
       {/* Hero */}
-      <header className={`${styles.hero} ${hub.heroCompact}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/koupelna-bourani.webp`}
-          alt="Bourací práce před rekonstrukcí koupelny"
-          className={styles.cover}
-          style={{ objectPosition: "50% 50%" }}
-        />
-        <div className={styles.heroOverlay} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${hub.heroCompact}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-koupelna-sprcha.webp`}
+            alt="Nová koupelna se sprchovým koutem a skleněnými dveřmi"
+            style={{ objectPosition: "50% 50%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact}`}>
           <nav aria-label="Drobečková navigace" className={hub.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -363,16 +367,16 @@ export default function RekonstrukcePraha1Page() {
       </header>
 
       {/* Intro */}
-      <section className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
+      <section id="predstaveni" className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
         <div className={d.introCol} data-reveal>
           <p className={styles.introLead}>
-            RekoGrinik provádí rekonstrukce v Praze 1 od prvotního zaměření přes
+            RekoGrinik provádí rekonstrukce na Praze 1 od prvotního zaměření přes
             bourací a přípravné práce až po finální malování a předání. Můžete nás
             oslovit kvůli kompletní rekonstrukci na klíč i jedné konkrétní práci.
           </p>
           <p className={byty.darkBox} style={{ fontSize: 18 }}>
-            Nemáme pobočku v Praze 1 a netvrdíme opak. Naše kontaktní adresa je v Praze
-            3 a za zákazníky v Praze 1 přijíždíme přímo na místo plánované
+            Nemáme pobočku na Praze 1 a netvrdíme opak. Naše kontaktní adresa je na Praze
+            3 a za zákazníky na Praze 1 přijíždíme přímo na místo plánované
             rekonstrukce.
           </p>
         </div>
@@ -389,7 +393,7 @@ export default function RekonstrukcePraha1Page() {
       </section>
 
       {/* Centre rules */}
-      <section className={styles.white}>
+      <section id="pravidla-centra" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -413,7 +417,7 @@ export default function RekonstrukcePraha1Page() {
             </div>
             <div className={domy.listCol} data-reveal>
               <p className={loc.checkTitle}>
-                Před zahájením rekonstrukce v Praze 1 řešíme zejména:
+                Před zahájením rekonstrukce na Praze 1 řešíme zejména:
               </p>
               <ol className={domy.numList}>
                 {centreChecks.map((item, i) => (
@@ -433,7 +437,7 @@ export default function RekonstrukcePraha1Page() {
         <div className={styles.container}>
           <div className={loc.areasHead}>
             <h2 className={styles.h2} data-reveal>
-              Kde v Praze 1 pracujeme
+              Kde na Praze 1 pracujeme
             </h2>
             <nav aria-label="Čtvrti Prahy 1" className={d.goldChips} data-reveal>
               {areas.map((a) => (
@@ -469,7 +473,7 @@ export default function RekonstrukcePraha1Page() {
       {/* What we do here */}
       <section id="sluzby" className={`${styles.container} ${hub.anchor}`}>
         <h2 className={`${styles.h2} ${d.headGap}`} data-reveal>
-          Co v Praze 1 realizujeme
+          Co na Praze 1 realizujeme
         </h2>
         <div className={koup.tableScroll} data-reveal>
           <table className={`${byty.typeTable} ${koup.tableFlush} ${d.needTable}`}>
@@ -512,12 +516,12 @@ export default function RekonstrukcePraha1Page() {
       {/* Photo strip */}
       <div className={styles.strip} data-reveal-group>
         {stripPhotos.map((p) => (
-          <img key={p.src} loading="lazy" decoding="async" src={`${IMG}/${p.src}`} alt={p.alt} />
+          <img key={p.src} loading="lazy" decoding="async" src={photo(p.src)} alt={p.alt} />
         ))}
       </div>
 
       {/* Older flats */}
-      <section className={styles.white}>
+      <section id="starsi-byty" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -552,7 +556,7 @@ export default function RekonstrukcePraha1Page() {
       </section>
 
       {/* Local logistics */}
-      <section className={styles.dark}>
+      <section id="logistika" className={styles.dark}>
         <div className={styles.container}>
           <h2 className={`${styles.h2} ${d.headGap}`} data-reveal>
             Jak řešíme místní logistiku
@@ -587,7 +591,7 @@ export default function RekonstrukcePraha1Page() {
       </section>
 
       {/* Why us */}
-      <section className={styles.container}>
+      <section id="proc-my" className={styles.container}>
         <h2 className={styles.h2} data-reveal>
           Proč si vybrat RekoGrinik
         </h2>
@@ -622,7 +626,7 @@ export default function RekonstrukcePraha1Page() {
               </dl>
             </div>
             <p className={loc.mapHint}>
-              Kontaktní adresa se nachází v Praze 3. Do Prahy 1 přijíždíme na zaměření a
+              Kontaktní adresa se nachází na Praze 3. Do Prahy 1 přijíždíme na zaměření a
               realizaci za zákazníkem. Osobní návštěvu na adrese Na Vackově si domluvte
               předem.
             </p>
@@ -684,15 +688,15 @@ export default function RekonstrukcePraha1Page() {
         <img
           loading="lazy"
           decoding="async"
-          src={`${IMG}/koupelna-mramor-vana.webp`}
-          alt="Koupelna s vanou po dokončené rekonstrukci"
+          src={`${IMG}/koupelna-umyvadlo-deska.webp`}
+          alt="Umyvadlo na dřevěné desce v nové koupelně"
           className={styles.cover}
           style={{ objectPosition: "50% 40%" }}
         />
         <div className={styles.contactOverlay} />
         <div className={styles.contactInner}>
           <div className={styles.contactText} data-reveal>
-            <h2 className={styles.contactTitle}>Poptat rekonstrukci v Praze 1</h2>
+            <h2 className={styles.contactTitle}>Poptat rekonstrukci na Praze 1</h2>
             <p>
               Plánujete rekonstrukci na Starém Městě, Novém Městě, Josefově, Malé
               Straně nebo Hradčanech? Pošlete nám adresu, fotografie a stručný popis
@@ -708,7 +712,7 @@ export default function RekonstrukcePraha1Page() {
               href="/kontakt"
               data-cta="praha1_contact_poptavka"
             >
-              Poptat rekonstrukci v Praze 1
+              Poptat rekonstrukci na Praze 1
             </Link>
           </div>
           <dl className={styles.contactList} data-reveal-group>

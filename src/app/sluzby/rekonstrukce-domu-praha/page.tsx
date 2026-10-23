@@ -83,11 +83,12 @@ const bathroomInputs = [
   "Napojení podlah na chodby a sousední místnosti.",
 ];
 
+// Houses only: entrance, living area, staircase, bathroom.
 const stripPhotos = [
-  { src: "koupelna-zrcadlo.webp", alt: "Umyvadlová skříňka a podsvícené zrcadlo v nové koupelně" },
-  { src: "koupelna-ctvrtkruhovy-kout.webp", alt: "Čtvrtkruhový sprchový kout a umyvadlo" },
-  { src: "koupelna-mramor-vana.webp", alt: "Koupelna s mramorovým obkladem a vanou po rekonstrukci" },
-  { src: "koupelna-dubova-skrinka.webp", alt: "Umyvadlo s dubovou skříňkou a sprcha" },
+  { src: "veranda-schody-dlazba.webp", alt: "Nové vstupní schody s dlažbou u zasklené verandy rodinného domu" },
+  { src: "roubenka-dlazba.webp", alt: "Velkoformátová dlažba v obytné části roubeného domu" },
+  { src: "dum-schodiste-dekorativni-omitka.webp", alt: "Schodiště v rodinném domě a stěny s dekorativní omítkou" },
+  { src: "roubenka-sprchovy-kout.webp", alt: "Sprchový kout s velkoformátovým obkladem v roubeném domě" },
 ];
 
 const turnkeyScope: { text: string; href?: string }[] = [
@@ -324,15 +325,15 @@ export default function RekonstrukceDomuPage() {
       ))}
 
       {/* Hero */}
-      <header className={`${styles.hero} ${hub.heroCompact}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/roubenka-dlazba.webp`}
-          alt="Velkoformátová dlažba při rekonstrukci roubeného domu"
-          className={styles.cover}
-          style={{ objectPosition: "50% 55%" }}
-        />
-        <div className={styles.heroOverlay} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${hub.heroCompact}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-roubenka.webp`}
+            alt="Nová velkoformátová dlažba se soklem v rodinném domě"
+            style={{ objectPosition: "50% 62%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact}`}>
           <nav aria-label="Drobečková navigace" className={hub.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -369,7 +370,7 @@ export default function RekonstrukceDomuPage() {
       </header>
 
       {/* Intro */}
-      <section className={`${styles.intro} ${styles.split}`}>
+      <section id="predstaveni" className={`${styles.intro} ${styles.split}`}>
         <p className={styles.introLead} data-reveal>
           Provádíme kompletní rekonstrukce domů na klíč i částečné úpravy vybraných
           podlaží a místností. Postaráme se o bourací, zednické, sádrokartonářské,
@@ -386,7 +387,7 @@ export default function RekonstrukceDomuPage() {
       </section>
 
       {/* When a house needs a complete renovation */}
-      <section className={styles.white}>
+      <section id="kdy-rekonstruovat" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -420,7 +421,7 @@ export default function RekonstrukceDomuPage() {
       </section>
 
       {/* Inspection first */}
-      <section className={styles.container}>
+      <section id="stav-domu" className={styles.container}>
         <div className={styles.split} style={{ alignItems: "start" }}>
           <div className={styles.stack} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Nejdříve poznáme skutečný stav domu</h2>
@@ -555,7 +556,7 @@ export default function RekonstrukceDomuPage() {
       </div>
 
       {/* What turnkey means */}
-      <section className={styles.container}>
+      <section id="na-klic" className={styles.container}>
         <div className={styles.split} style={{ alignItems: "start" }}>
           <div className={styles.stack} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Co pro nás znamená rekonstrukce na klíč</h2>
@@ -618,7 +619,7 @@ export default function RekonstrukceDomuPage() {
       </section>
 
       {/* All at once or in stages */}
-      <section className={styles.dark}>
+      <section id="najednou-nebo-po-etapach" className={styles.dark}>
         <div className={styles.container}>
           <div className={styles.sectionHead}>
             <h2 className={styles.h2} data-reveal>
@@ -663,7 +664,7 @@ export default function RekonstrukceDomuPage() {
       </section>
 
       {/* Risks of an older house */}
-      <section className={styles.container}>
+      <section id="rizika" className={styles.container}>
         <div className={styles.splitWide}>
           <div className={styles.stack} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Jak pracujeme s riziky staršího domu</h2>
@@ -692,14 +693,14 @@ export default function RekonstrukceDomuPage() {
       </section>
 
       {/* Result */}
-      <section className={styles.white}>
+      <section id="vysledek" className={styles.white}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <img
             loading="lazy"
             decoding="async"
             data-reveal="left"
-            src={`${IMG}/koupelna-mozaika-wc-pracka.webp`}
-            alt="Koupelna s mozaikou, závěsným WC a pračkou"
+            src={`${IMG}/roubenka-chodba-sprcha.webp`}
+            alt="Chodba a nový sprchový kout v roubeném domě"
             className={styles.serviceImg}
           />
           <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -751,7 +752,7 @@ export default function RekonstrukceDomuPage() {
           <div className={`${styles.stack} ${s.stickyCol}`} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Rekonstrukce domů v Praze</h2>
             <p>
-              Nejčastěji pracujeme v Praze 1, Praze 2, Praze 3, Praze 8, Praze 9 a
+              Nejčastěji pracujeme na Praze 1, Praze 2, Praze 3, Praze 8, Praze 9 a
               Praze 10. S rekonstrukcemi domů se setkáváme například ve Strašnicích,
               Záběhlicích, Hrdlořezích, na Proseku, v Kobylisích, Bohnicích nebo na
               Jarově.
@@ -786,10 +787,10 @@ export default function RekonstrukceDomuPage() {
             <p>
               Rekonstruujete dům ve Strašnicích nebo Záběhlicích? Podívejte se,{" "}
               <Link className={koup.inlineLink} href="/lokace/rekonstrukce-praha-10">
-                jak pracujeme v Praze 10
+                jak pracujeme na Praze 10
               </Link>. Pro Kobylisy a Bohnice najdete podrobnosti u{" "}
               <Link className={koup.inlineLink} href="/lokace/rekonstrukce-praha-8">
-                rekonstrukcí v Praze 8
+                rekonstrukcí na Praze 8
               </Link>.
             </p>
           </div>
@@ -797,7 +798,7 @@ export default function RekonstrukceDomuPage() {
       </section>
 
       {/* What to prepare */}
-      <section className={styles.dark}>
+      <section id="priprava" className={styles.dark}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <div className={styles.prepareText} data-reveal>
             <h2 className={styles.h2}>Co připravit před návštěvou</h2>
@@ -820,7 +821,7 @@ export default function RekonstrukceDomuPage() {
       </section>
 
       {/* Why us */}
-      <section className={styles.white}>
+      <section id="proc-my" className={styles.white}>
         <div className={styles.container}>
           <h2 className={styles.h2} data-reveal>
             Proč svěřit dům RekoGrinik
@@ -862,7 +863,7 @@ export default function RekonstrukceDomuPage() {
             href={`/lokace/rekonstrukce-praha-${d}`}
             className={byty.relatedLink}
           >
-            Domy v Praze {d}
+            Domy na Praze {d}
           </Link>
         ))}
       </nav>
@@ -872,8 +873,8 @@ export default function RekonstrukceDomuPage() {
         <img
           loading="lazy"
           decoding="async"
-          src={`${IMG}/sprchovy-kout-mozaika.webp`}
-          alt="Sprchový kout u mozaikové stěny a světlá dlažba"
+          src={`${IMG}/koupelna-pruhy-celek.webp`}
+          alt="Nová koupelna se sprchovým koutem, umyvadlem a pračkou"
           className={styles.cover}
           style={{ objectPosition: "50% 40%" }}
         />

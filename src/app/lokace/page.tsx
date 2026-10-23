@@ -50,7 +50,7 @@ const areas: Area[] = [
   {
     num: "1",
     paragraphs: [
-      "V Praze 1 přijímáme poptávky ze Starého Města, Josefova, Nového Města, Malé Strany a Hradčan. Tyto čtvrti tvoří historické jádro Prahy a velká část území má památkově chráněný charakter.",
+      "Na Praze 1 přijímáme poptávky ze Starého Města, Josefova, Nového Města, Malé Strany a Hradčan. Tyto čtvrti tvoří historické jádro Prahy a velká část území má památkově chráněný charakter.",
       "Při rekonstrukci bytu blízko Václavského náměstí, Národní třídy, Staroměstského náměstí nebo Malostranského náměstí je důležitá především logistika. Před zahájením řešíme možnost zastavení, trasu odnosu materiálu, ochranu schodiště a výtahu i dobu vhodnou pro hlučnější práce.",
       "V historických objektech může být potřeba prověřit, zda zamýšlená změna nezasahuje do chráněných konstrukcí nebo vzhledu budovy. Příslušný režim je vhodné ověřit před objednáním materiálu a zahájením bourání.",
     ],
@@ -66,7 +66,7 @@ const areas: Area[] = [
   {
     num: "2",
     paragraphs: [
-      "V Praze 2 pracujeme na Vinohradech, Novém Městě, Vyšehradě a v části Nuslí. Městská část zahrnuje celé katastrální území Vyšehrad a části Nového Města, Vinohrad a Nuslí.",
+      "Na Praze 2 pracujeme na Vinohradech, Novém Městě, Vyšehradě a v části Nuslí. Městská část zahrnuje celé katastrální území Vyšehrad a části Nového Města, Vinohrad a Nuslí.",
       "U vinohradských bytů se často setkáváme s vysokými stropy, staršími omítkami, dřevěnými podlahami a dispozičními řešeními typickými pro činžovní domy. Každou konstrukci ale posuzujeme individuálně — samotná lokalita není spolehlivým ukazatelem skutečného stavu bytu.",
       "V okolí náměstí Míru, I. P. Pavlova nebo Rašínova nábřeží je vhodné předem promyslet vykládku a odvoz materiálu. Sobotní provoz na Náplavce ovlivňují farmářské trhy, proto může být praktičtější naplánovat větší zásobování na jiný čas.",
       "Praha 2 zahrnuje části Pražské památkové rezervace i městských památkových zón, takže u některých zásahů může být nutné předem ověřit požadavky památkové péče.",
@@ -79,13 +79,13 @@ const areas: Area[] = [
       "Praha 3 je naší domovskou oblastí. Vyjíždíme na Žižkov, Jarov, Vinohrady i do okrajových částí Strašnic a Vysočan, které do městské části zasahují.",
       "Na Žižkově se potkávají starší činžovní domy s pavlačemi a dvory, panelová zástavba i novější projekty. Oficiální podklady městské části popisují Žižkov jako hustou zástavbu s menšími parcelami, úzkými a často prudce stoupajícími ulicemi. Při přípravě rekonstrukce proto kontrolujeme nejen samotný byt, ale také přístup od vozu, šířku průjezdu, výtah a možnosti ochrany společných prostor.",
       "V okolí náměstí Jiřího z Poděbrad je vhodné počítat s provozem souvisejícím s místními trhy, které se konají od středy do soboty. U větší dodávky materiálu proto doporučujeme potvrdit čas příjezdu předem.",
-      "V Praze 3 nabízíme kompletní rekonstrukce i jednotlivé práce. Z kontaktní adresy Na Vackově vyjíždíme na zaměření přímo k zákazníkovi.",
+      "Na Praze 3 nabízíme kompletní rekonstrukce i jednotlivé práce. Z kontaktní adresy Na Vackově vyjíždíme na zaměření přímo k zákazníkovi.",
     ],
   },
   {
     num: "8",
     paragraphs: [
-      "V Praze 8 obsluhujeme zejména Karlín, Libeň, Kobylisy, Bohnice, Čimice a Střížkov. Městská část má rozmanitý charakter: Karlín a Libeň bezprostředně navazují na centrum, zatímco severní části mají odlišnou zástavbu a dopravní podmínky.",
+      "Na Praze 8 obsluhujeme zejména Karlín, Libeň, Kobylisy, Bohnice, Čimice a Střížkov. Městská část má rozmanitý charakter: Karlín a Libeň bezprostředně navazují na centrum, zatímco severní části mají odlišnou zástavbu a dopravní podmínky.",
       "V Karlíně se často pracuje v obnovených činžovních nebo industriálních objektech a novějších rezidenčních domech. V Libni, Kobylisích a Bohnicích se setkávají starší domy, panelové byty i modernizované interiéry. Konkrétní postup proto vždy určujeme podle stavby, nikoli pouze podle názvu čtvrti.",
       "Při rekonstrukci v okolí Karlínského náměstí, Palmovky nebo Zenklovy ulice řešíme především příjezd, parkování a pohyb materiálu domem. V panelových bytech na severu Prahy 8 bývá důležité přesně určit, do kterých konstrukcí lze zasahovat, a respektovat pravidla domu.",
     ],
@@ -93,7 +93,7 @@ const areas: Area[] = [
   {
     num: "9",
     paragraphs: [
-      "V Praze 9 přijímáme zakázky z Vysočan, Proseka, Střížkova, Hrdlořez, Hloubětína a části Libně. Tyto oblasti tvoří městskou část Praha 9 podle jejího oficiálního územního vymezení.",
+      "Na Praze 9 přijímáme zakázky z Vysočan, Proseka, Střížkova, Hrdlořez, Hloubětína a části Libně. Tyto oblasti tvoří městskou část Praha 9 podle jejího oficiálního územního vymezení.",
       "Praha 9 kombinuje panelové domy na Proseku, vilovou zástavbu a rychle se rozvíjející rezidenční projekty ve Vysočanech a Libni. V roce 2025 zde podle městské části žilo více než 58 tisíc obyvatel a oblast zaznamenávala výrazný rozvoj nové bytové výstavby.",
       "U novějšího bytu poblíž Kolbenovy, Vysočanské nebo O2 areny může být poptávkou spíše změna dispozice, sádrokarton, malování či nová podlaha. Ve starším nebo panelovém bytě na Proseku může být potřeba rozsáhlejší obnova koupelny a povrchů.",
       "Při akcích v O2 areně může být provoz v okolí Českomoravské výrazně hustší. Větší závoz materiálu je proto vhodné plánovat s ohledem na místní dopravu.",
@@ -102,7 +102,7 @@ const areas: Area[] = [
   {
     num: "10",
     paragraphs: [
-      "V Praze 10 pracujeme ve Vršovicích, Strašnicích, Malešicích, Záběhlicích a dalších přilehlých lokalitách. Oficiální přehled městské části uvádí na jejím území přibližně 7 000 domů a 55 000 bytů.",
+      "Na Praze 10 pracujeme ve Vršovicích, Strašnicích, Malešicích, Záběhlicích a dalších přilehlých lokalitách. Oficiální přehled městské části uvádí na jejím území přibližně 7 000 domů a 55 000 bytů.",
       "Ve Vršovicích řešíme starší činžovní byty i modernizované interiéry. Ve Strašnicích, Malešicích a Záběhlicích se vedle bytových domů objevují také rodinné domy, kde může být vhodná kompletní rekonstrukce nebo postupná realizace po místnostech.",
       "Při práci v okolí Vršovické ulice, Kubánského náměstí nebo Želivského je důležité předem domluvit možnost vykládky. U rodinných domů v Záběhlicích či Strašnicích zase řešíme především přístup, uskladnění materiálu a to, zda se bude během realizace v domě bydlet.",
     ],
@@ -141,11 +141,11 @@ const visitSteps = [
 const faqs = [
   {
     q: "Ve kterých částech Prahy pracujete?",
-    a: "Nejčastěji přijímáme zakázky v Praze 1, 2, 3, 8, 9 a 10. Zakázku v jiné části města posoudíme podle lokality a rozsahu.",
+    a: "Nejčastěji přijímáme zakázky na Praze 1, 2, 3, 8, 9 a 10. Zakázku v jiné části města posoudíme podle lokality a rozsahu.",
   },
   {
     q: "Máte pobočku v každé uvedené městské části?",
-    a: "Ne. Máme jednu kontaktní adresu v Praze 3 a do ostatních oblastí za zákazníky vyjíždíme.",
+    a: "Ne. Máme jednu kontaktní adresu na Praze 3 a do ostatních oblastí za zákazníky vyjíždíme.",
   },
   {
     q: "Je návštěva mistra opravdu bezplatná?",
@@ -161,7 +161,7 @@ const faqs = [
   },
   {
     q: "Provádíte rekonstrukce v centru Prahy?",
-    a: "Ano, pracujeme také v Praze 1 a Praze 2. Před zahájením potřebujeme ověřit možnosti příjezdu, vykládky a pravidla konkrétního domu.",
+    a: "Ano, pracujeme také na Praze 1 a Praze 2. Před zahájením potřebujeme ověřit možnosti příjezdu, vykládky a pravidla konkrétního domu.",
   },
   {
     q: "Rekonstruujete byty v památkově chráněných domech?",
@@ -240,15 +240,15 @@ export default function LokacePage() {
       ))}
 
       {/* Hero */}
-      <header className={`${styles.hero} ${hub.heroCompact}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/sprchovy-kout-mozaika.webp`}
-          alt="Sprchový kout u mozaikové stěny a světlá dlažba po rekonstrukci"
-          className={styles.cover}
-          style={{ objectPosition: "50% 55%" }}
-        />
-        <div className={styles.heroOverlay} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${hub.heroCompact}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-koupelna-umyvadlo.webp`}
+            alt="Umyvadlo na dřevěné desce v nové koupelně"
+            style={{ objectPosition: "50% 60%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact}`}>
           <nav aria-label="Drobečková navigace" className={hub.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -260,7 +260,7 @@ export default function LokacePage() {
             <h2 className={styles.heroSub}>Oblasti, kde pracujeme</h2>
             <p className={styles.heroText}>
               Hledáte firmu na rekonstrukci bytu, domu nebo koupelny ve své části
-              Prahy? RekoGrinik provádí rekonstrukce na klíč v Praze 1, Praze 2,
+              Prahy? RekoGrinik provádí rekonstrukce na klíč na Praze 1, Praze 2,
               Praze 3, Praze 8, Praze 9 a Praze 10. Přijedeme přímo k vám,
               prohlédneme prostor a společně upřesníme potřebné práce.
             </p>
@@ -282,7 +282,7 @@ export default function LokacePage() {
       </header>
 
       {/* Intro */}
-      <section className={`${styles.intro} ${styles.split}`}>
+      <section id="predstaveni" className={`${styles.intro} ${styles.split}`}>
         <p className={styles.introLead} data-reveal>
           Zajistíme kompletní rekonstrukci i samostatné řemeslo. Můžete nás oslovit
           kvůli sádrokartonu, malování, bourání, nové podlaze nebo zednickým
@@ -300,7 +300,7 @@ export default function LokacePage() {
       </section>
 
       {/* We come to you */}
-      <section className={styles.white}>
+      <section id="prijedeme" className={styles.white}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <img
             loading="lazy"
@@ -369,7 +369,7 @@ export default function LokacePage() {
                 ))}
                 {a.services && (
                   <>
-                    <p className={s.areaListTitle}>V Praze {a.num} provádíme:</p>
+                    <p className={s.areaListTitle}>Na Praze {a.num} provádíme:</p>
                     <ul className={s.greenBullets}>
                       {a.services.map((item) => (
                         <li key={item.label}>
@@ -383,7 +383,7 @@ export default function LokacePage() {
                   href={areaHref(a.num)}
                   className={`${s.btnOutlineGreen} ${s.areaLink}`}
                 >
-                  Více o rekonstrukcích v Praze {a.num} →
+                  Více o rekonstrukcích na Praze {a.num} →
                 </Link>
               </div>
             </article>
@@ -392,7 +392,7 @@ export default function LokacePage() {
       </section>
 
       {/* Services in all areas */}
-      <section className={styles.dark}>
+      <section id="sluzby" className={styles.dark}>
         <div className={styles.container}>
           <div className={styles.sectionHead}>
             <h2 className={styles.h2} data-reveal>
@@ -425,7 +425,7 @@ export default function LokacePage() {
       </section>
 
       {/* Why us */}
-      <section className={styles.container}>
+      <section id="proc-my" className={styles.container}>
         <h2 className={styles.h2} data-reveal>
           Proč si nás vybírají Pražané
         </h2>
@@ -440,7 +440,7 @@ export default function LokacePage() {
       </section>
 
       {/* First visit */}
-      <section className={styles.white}>
+      <section id="prvni-navsteva" className={styles.white}>
         <div className={styles.container}>
           <h2 className={styles.h2} data-reveal>
             Jak probíhá první návštěva
@@ -463,7 +463,7 @@ export default function LokacePage() {
       </section>
 
       {/* Local conditions */}
-      <section className={`${styles.container} ${styles.splitWide}`}>
+      <section id="mistni-podminky" className={`${styles.container} ${styles.splitWide}`}>
         <div className={styles.stack} style={{ gap: 22 }} data-reveal>
           <h2 className={styles.h2}>Místní podmínky realizace</h2>
           <p>

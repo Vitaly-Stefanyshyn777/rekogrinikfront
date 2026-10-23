@@ -21,6 +21,10 @@ const PHONE_DISPLAY = "+420 776 352 237";
 const ADDRESS = "Na Vackově 2895/5, 130 00 Praha 3";
 const IMG = "/new";
 
+// A file name is in /new; a path starting with "/" points elsewhere (e.g.
+// project photos in /realizace).
+const photo = (src: string) => (src.startsWith("/") ? src : `${IMG}/${src}`);
+
 // Service pages live under /sluzby.
 const service = (slug: string) => `/sluzby/${slug}`;
 
@@ -77,7 +81,7 @@ const areas: Area[] = [
     chip: "Žižkov a Vítkov",
     title: "Žižkov a okolí Vítkova",
     left: [
-      "Na Žižkově přijímáme poptávky z okolí Hartigovy ulice, Seifertovy, Olšanského náměstí, Tachovského náměstí, Vítkova i dalších míst v Praze 3.",
+      "Na Žižkově přijímáme poptávky z okolí Hartigovy ulice, Seifertovy, Olšanského náměstí, Tachovského náměstí, Vítkova i dalších míst na Praze 3.",
       "Ve starších domech se při rekonstrukci mohou objevit vysoké stropy, několik vrstev původních nátěrů, nerovné podlahy nebo omítky opravované v různých obdobích. Neznamená to, že každý žižkovský byt potřebuje kompletní odstranění všech povrchů. Rozsah určíme až po kontrole jejich skutečného stavu.",
       {
         note: "Pokud se mají zachovat původní parkety, dveře nebo jiné prvky, označíme je před zahájením a zahrneme jejich ochranu do domluveného postupu.",
@@ -197,9 +201,9 @@ const serviceCards: ServiceCard[] = [
 ];
 
 const stripPhotos = [
-  { src: "sprchovy-kout-mozaika.webp", alt: "Sprchový kout s mozaikovým obkladem" },
-  { src: "koupelna-ctvrtkruhovy-kout.webp", alt: "Koupelna se čtvrtkruhovým sprchovým koutem" },
-  { src: "wc-zavesne-mozaika.webp", alt: "Závěsné WC s mozaikovým obkladem" },
+  { src: "byt-obyvaci-prostor-podlaha.webp", alt: "Obývací pokoj s novou podlahou po kompletní rekonstrukci" },
+  { src: "koupelna-kvetinovy-obklad-pracka.webp", alt: "Koupelna se sprchovým koutem, závěsným WC a pračkou" },
+  { src: "veranda-schody-dlazba.webp", alt: "Nové vstupní schody s dlažbou u rodinného domu" },
 ];
 
 const afterDemolition = [
@@ -234,7 +238,7 @@ const processSteps = [
 ];
 
 const reasons = [
-  "Máme skutečnou kontaktní adresu v Praze 3.",
+  "Máme skutečnou kontaktní adresu na Praze 3.",
   "Přijedeme přímo do vašeho bytu nebo domu.",
   "Zvládneme kompletní projekt i jednotlivé řemeslo.",
   "Před zahájením připravíme podrobný rozpočet.",
@@ -246,7 +250,7 @@ const reasons = [
 
 const faqs = [
   {
-    q: "Opravdu sídlíte v Praze 3?",
+    q: "Opravdu sídlíte na Praze 3?",
     a: "Ano. Kontaktní adresa RekoGrinik je Na Vackově 2895/5, 130 00 Praha 3. Osobní schůzku je potřeba domluvit předem.",
   },
   {
@@ -389,15 +393,15 @@ export default function RekonstrukcePraha3Page() {
       ))}
 
       {/* Hero */}
-      <header className={`${styles.hero} ${hub.heroCompact}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/koupelna-mozaika.webp`}
-          alt="Koupelna s mozaikovým obkladem po rekonstrukci"
-          className={styles.cover}
-          style={{ objectPosition: "50% 50%" }}
-        />
-        <div className={styles.heroOverlay} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${hub.heroCompact}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-koupelna-pruhy-celek.webp`}
+            alt="Nová koupelna se sprchovým koutem, umyvadlem a pračkou"
+            style={{ objectPosition: "50% 55%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact}`}>
           <nav aria-label="Drobečková navigace" className={hub.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -413,7 +417,7 @@ export default function RekonstrukcePraha3Page() {
             </h1>
             <p className={styles.heroText}>
               Plánujete rekonstrukci bytu na Žižkově, novou koupelnu na Jarově nebo úpravu
-              domu v okolí Vackova? RekoGrinik sídlí v Praze 3 a zajišťuje zde kompletní i
+              domu v okolí Vackova? RekoGrinik sídlí na Praze 3 a zajišťuje zde kompletní i
               částečné rekonstrukce.
             </p>
             <div className={loc.heroCta}>
@@ -434,7 +438,7 @@ export default function RekonstrukcePraha3Page() {
       </header>
 
       {/* Intro */}
-      <section className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
+      <section id="predstaveni" className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
         <div className={d.introCol} data-reveal>
           <p className={styles.introLead}>
             Postaráme se o celý dohodnutý rozsah – od demontáže původního vybavení a
@@ -462,7 +466,7 @@ export default function RekonstrukcePraha3Page() {
       </section>
 
       {/* Local firm */}
-      <section className={styles.white}>
+      <section id="mistni-firma" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -501,7 +505,7 @@ export default function RekonstrukcePraha3Page() {
         <div className={styles.container}>
           <div className={loc.areasHead}>
             <h2 className={styles.h2} data-reveal>
-              Kde v Praze 3 pracujeme
+              Kde na Praze 3 pracujeme
             </h2>
             <nav aria-label="Čtvrti Prahy 3" className={d.goldChips} data-reveal>
               {areas.map((a) => (
@@ -594,16 +598,16 @@ export default function RekonstrukcePraha3Page() {
       </section>
 
       {/* Photo strip — TODO: nahradit skutečnými realizacemi z Prahy 3. Lokální alt texty
-          (např. „Kompletní rekonstrukce bytu na Žižkově v Praze 3“) používat jen u fotek
+          (např. „Kompletní rekonstrukce bytu na Žižkově na Praze 3“) používat jen u fotek
           ze skutečné zakázky. */}
       <div className={styles.strip} data-reveal-group>
         {stripPhotos.map((p) => (
-          <img key={p.src} loading="lazy" decoding="async" src={`${IMG}/${p.src}`} alt={p.alt} />
+          <img key={p.src} loading="lazy" decoding="async" src={photo(p.src)} alt={p.alt} />
         ))}
       </div>
 
       {/* Older houses */}
-      <section className={styles.white}>
+      <section id="starsi-domy" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -648,7 +652,7 @@ export default function RekonstrukcePraha3Page() {
       </section>
 
       {/* Occupied building */}
-      <section className={styles.dark}>
+      <section id="bydleni-behem-prace" className={styles.dark}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={d.darkText} data-reveal>
@@ -680,7 +684,7 @@ export default function RekonstrukcePraha3Page() {
       </section>
 
       {/* Why us */}
-      <section className={styles.container}>
+      <section id="proc-my" className={styles.container}>
         <h2 className={styles.h2} data-reveal>
           Proč místní volí RekoGrinik
         </h2>
@@ -786,7 +790,7 @@ export default function RekonstrukcePraha3Page() {
         <div className={styles.contactOverlay} />
         <div className={styles.contactInner}>
           <div className={styles.contactText} data-reveal>
-            <h2 className={styles.contactTitle}>Poptat rekonstrukci v Praze 3</h2>
+            <h2 className={styles.contactTitle}>Poptat rekonstrukci na Praze 3</h2>
             <p>
               Plánujete rekonstrukci bytu, domu nebo koupelny na Žižkově, Jarově, Vackově
               či Vinohradech? Pošlete nám adresu, fotografie a stručný popis požadovaných

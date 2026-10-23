@@ -261,7 +261,7 @@ const faqs = [
   },
   {
     q: "Ve kterých částech Prahy pracujete?",
-    a: "Nejčastěji realizujeme bourací práce v Praze 1, 2, 3, 8, 9 a 10. Další lokality posuzujeme podle místa a rozsahu zakázky.",
+    a: "Nejčastěji realizujeme bourací práce na Praze 1, 2, 3, 8, 9 a 10. Další lokality posuzujeme podle místa a rozsahu zakázky.",
   },
 ];
 
@@ -353,15 +353,15 @@ export default function BouraciPracePage() {
       ))}
 
       {/* Hero */}
-      <header className={`${styles.hero} ${hub.heroCompact}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/koupelna-bourani.webp`}
-          alt="Úzká koupelna po vybourání obkladů"
-          className={styles.cover}
-          style={{ objectPosition: "50% 50%" }}
-        />
-        <div className={styles.heroOverlay} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${hub.heroCompact}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-bourani-byt.webp`}
+            alt="Byt po odstranění původních povrchů a vybavení před rekonstrukcí"
+            style={{ objectPosition: "50% 55%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact}`}>
           <nav aria-label="Drobečková navigace" className={hub.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -398,7 +398,7 @@ export default function BouraciPracePage() {
       </header>
 
       {/* Intro */}
-      <section className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
+      <section id="predstaveni" className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
         <p className={styles.introLead} data-reveal>
           Provádíme bourací práce v Praze před kompletní i částečnou rekonstrukcí bytů
           a domů. Demontujeme vybrané vybavení, odstraňujeme staré povrchy, obklady,
@@ -422,7 +422,7 @@ export default function BouraciPracePage() {
       </section>
 
       {/* Plan first */}
-      <section className={styles.white}>
+      <section id="planovani" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -569,7 +569,7 @@ export default function BouraciPracePage() {
       </section>
 
       {/* What we check */}
-      <section className={styles.container}>
+      <section id="overeni" className={styles.container}>
         <div className={styles.sectionHead} style={{ marginBottom: 56 }}>
           <h2 className={styles.h2} data-reveal>
             Co před bouráním ověřujeme
@@ -605,7 +605,7 @@ export default function BouraciPracePage() {
       </section>
 
       {/* Protection */}
-      <section className={styles.white}>
+      <section id="ochrana" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -655,7 +655,7 @@ export default function BouraciPracePage() {
       </section>
 
       {/* What demolition can reveal */}
-      <section className={styles.dark}>
+      <section id="co-odhali-demontaz" className={styles.dark}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <div className={styles.prepareText} data-reveal>
             <h2 className={styles.h2}>Co může odhalit demontáž</h2>
@@ -689,7 +689,7 @@ export default function BouraciPracePage() {
       </section>
 
       {/* Waste */}
-      <section className={styles.container}>
+      <section id="odpad" className={styles.container}>
         <div className={styles.split} style={{ alignItems: "start" }}>
           <div className={styles.stack} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Kam se stavebním odpadem</h2>
@@ -718,7 +718,7 @@ export default function BouraciPracePage() {
       </section>
 
       {/* Flat, house, bathroom */}
-      <section className={styles.white}>
+      <section id="byt-dum-koupelna" className={styles.white}>
         <div className={styles.container}>
           <h2 className={`${styles.h2} ${s.headGap}`} data-reveal>
             Bourací práce v bytě, domě a koupelně
@@ -796,7 +796,7 @@ export default function BouraciPracePage() {
       </section>
 
       {/* Price */}
-      <section className={styles.white}>
+      <section id="cena" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={`${styles.stack} ${domy.stickyCol}`} style={{ gap: 22 }} data-reveal>
@@ -824,7 +824,7 @@ export default function BouraciPracePage() {
         <div className={`${styles.stack} ${domy.stickyCol}`} style={{ gap: 22 }} data-reveal>
           <h2 className={styles.h2}>Bourací práce v Praze</h2>
           <p>
-            Nejčastěji pracujeme v Praze 1, Praze 2, Praze 3, Praze 8, Praze 9 a Praze
+            Nejčastěji pracujeme na Praze 1, Praze 2, Praze 3, Praze 8, Praze 9 a Praze
             10.
           </p>
         </div>
@@ -845,18 +845,18 @@ export default function BouraciPracePage() {
             U panelových bytů na Proseku a ve Vysočanech je nejdřív potřeba ověřit
             konstrukční systém, více najdete u{" "}
             <Link className={koup.inlineLink} href="/lokace/rekonstrukce-praha-9">
-              rekonstrukcí v Praze 9
+              rekonstrukcí na Praze 9
             </Link>. Ve Vršovicích a Strašnicích plánujeme bourání i podle pravidel domu,
             podívejte se na{" "}
             <Link className={koup.inlineLink} href="/lokace/rekonstrukce-praha-10">
-              práce v Praze 10
+              práce na Praze 10
             </Link>.
           </p>
         </div>
       </section>
 
       {/* Checklist before the visit */}
-      <section className={styles.dark}>
+      <section id="priprava" className={styles.dark}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <div className={styles.prepareText} data-reveal>
             <h2 className={styles.h2}>Kontrolní seznam před prohlídkou</h2>
@@ -902,7 +902,7 @@ export default function BouraciPracePage() {
             href={`/lokace/rekonstrukce-praha-${d}`}
             className={byty.relatedLink}
           >
-            Bourání v Praze {d}
+            Bourání na Praze {d}
           </Link>
         ))}
       </nav>
@@ -912,8 +912,8 @@ export default function BouraciPracePage() {
         <img
           loading="lazy"
           decoding="async"
-          src={`${IMG}/koupelna-bojler-bourani.webp`}
-          alt="Koupelna s bojlerem během bouracích prací"
+          src="/realizace/byt-prosek-pred-1.webp"
+          alt="Pokoj po odstranění původních povrchů, připravený pro rekonstrukci"
           className={styles.cover}
           style={{ objectPosition: "50% 40%" }}
         />

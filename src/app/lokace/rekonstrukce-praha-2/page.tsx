@@ -21,6 +21,10 @@ const PHONE_DISPLAY = "+420 776 352 237";
 const ADDRESS = "Na Vackově 2895/5, 130 00 Praha 3";
 const IMG = "/new";
 
+// A file name is in /new; a path starting with "/" points elsewhere (e.g.
+// project photos in /realizace).
+const photo = (src: string) => (src.startsWith("/") ? src : `${IMG}/${src}`);
+
 // Service pages live under /sluzby.
 const service = (slug: string) => `/sluzby/${slug}`;
 
@@ -172,9 +176,9 @@ const serviceCards = [
 ];
 
 const stripPhotos = [
+  { src: "byt-kuchyn-laminat.webp", alt: "Obývací prostor s kuchyní a novou podlahou po rekonstrukci bytu" },
+  { src: "/realizace/koupelna-na-klic-po-2.webp", alt: "Umyvadlo na dřevěné desce a sprchová zástěna v nové koupelně" },
   { src: "instalacni-sachta-pred.webp", alt: "Instalační šachta před zahájením rekonstrukce" },
-  { src: "lodzie-podlaha.webp", alt: "Nově položená podlaha" },
-  { src: "koupelna-zrcadlo.webp", alt: "Dokončená koupelna se zrcadlem nad umyvadlem" },
 ];
 
 const olderFlatTypes = [
@@ -215,14 +219,14 @@ const processSteps = [
 ];
 
 const reasons = [
-  "Přijedeme přímo do bytu nebo domu v Praze 2.",
+  "Přijedeme přímo do bytu nebo domu na Praze 2.",
   "Zvládneme kompletní rekonstrukci i jednu dílčí práci.",
   "Propojíme bourání, nové konstrukce a dokončení.",
   "Předem si vyjasníme stav, ve kterém prostor převezmeme a předáme.",
   "Myslíme na výtah, schodiště, vykládku i sousedy.",
   "Zachované prvky označíme před zahájením.",
   "Neočekávané nálezy nejdříve zdokumentujeme.",
-  "Nevytváříme falešnou provozovnu v Praze 2.",
+  "Nevytváříme falešnou provozovnu na Praze 2.",
 ];
 
 const faqs = [
@@ -232,15 +236,15 @@ const faqs = [
   },
   {
     q: "Pracujete také u I. P. Pavlova a Karlova náměstí?",
-    a: "Ano. Část Nového Města v Praze 2 patří mezi obsluhované lokality. Dopravu a vykládku řešíme podle konkrétní ulice.",
+    a: "Ano. Část Nového Města na Praze 2 patří mezi obsluhované lokality. Dopravu a vykládku řešíme podle konkrétní ulice.",
   },
   {
     q: "Přijedete na Vyšehrad a do Nuslí?",
     a: "Ano. Zakázky přijímáme také na Vyšehradě a v části Nuslí spadající do Prahy 2.",
   },
   {
-    q: "Máte v Praze 2 pobočku?",
-    a: "Ne. Kontaktní adresa je Na Vackově 2895/5 v Praze 3. Do Prahy 2 za zákazníky vyjíždíme.",
+    q: "Máte na Praze 2 pobočku?",
+    a: "Ne. Kontaktní adresa je Na Vackově 2895/5 na Praze 3. Do Prahy 2 za zákazníky vyjíždíme.",
   },
   {
     q: "Zajistíte celou rekonstrukci od bourání?",
@@ -299,13 +303,13 @@ const serviceJsonLd = {
   "@type": "Service",
   "@id": `${PAGE_URL}#service`,
   name: "Rekonstrukce Praha 2",
-  description: "Kompletní a částečné rekonstrukce bytů, domů a koupelen v Praze 2.",
+  description: "Kompletní a částečné rekonstrukce bytů, domů a koupelen na Praze 2.",
   serviceType: "Rekonstrukce na klíč a jednotlivé stavební práce",
   provider: { "@id": `${SITE_URL}#business` },
   areaServed: { "@type": "AdministrativeArea", name: "Praha 2" },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Rekonstrukční práce v Praze 2",
+    name: "Rekonstrukční práce na Praze 2",
     itemListElement: [
       "Rekonstrukce bytů",
       "Rekonstrukce koupelen",
@@ -358,15 +362,15 @@ export default function RekonstrukcePraha2Page() {
       ))}
 
       {/* Hero */}
-      <header className={`${styles.hero} ${hub.heroCompact}`}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/koupelna-kamen.webp`}
-          alt="Koupelna s kamenným obkladem po rekonstrukci"
-          className={styles.cover}
-          style={{ objectPosition: "50% 50%" }}
-        />
-        <div className={styles.heroOverlay} />
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend} ${hub.heroCompact}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-koupelna-pracka-wc.webp`}
+            alt="Nová koupelna s pračkou, WC a obkladem s pruhy"
+            style={{ objectPosition: "50% 58%" }}
+          />
+        </div>
         <div className={`${styles.heroInner} ${hub.heroInnerCompact}`}>
           <nav aria-label="Drobečková navigace" className={hub.breadcrumb}>
             <Link href="/">Domů</Link>
@@ -404,16 +408,16 @@ export default function RekonstrukcePraha2Page() {
       </header>
 
       {/* Intro */}
-      <section className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
+      <section id="predstaveni" className={`${styles.intro} ${styles.split}`} style={{ alignItems: "start" }}>
         <div className={d.introCol} data-reveal>
           <p className={styles.introLead}>
-            Provádíme rekonstrukce v Praze 2 od prvotního zaměření až po kompletní
+            Provádíme rekonstrukce na Praze 2 od prvotního zaměření až po kompletní
             předání. Můžeme převzít celý projekt na klíč, nebo se postarat jen o
             konkrétní fázi, kterou máte právě před sebou.
           </p>
           <p className={byty.darkBox} style={{ fontSize: 18 }}>
-            Nemáme pobočku v Praze 2 a nevytváříme dojem, že sídlíme na každém rohu.
-            Naše kontaktní adresa je v Praze 3 a za zákazníky v Praze 2 přijíždíme přímo
+            Nemáme pobočku na Praze 2 a nevytváříme dojem, že sídlíme na každém rohu.
+            Naše kontaktní adresa je na Praze 3 a za zákazníky na Praze 2 přijíždíme přímo
             do bytu nebo domu, kde se mají práce provádět.
           </p>
         </div>
@@ -430,7 +434,7 @@ export default function RekonstrukcePraha2Page() {
       </section>
 
       {/* House by house */}
-      <section className={styles.white}>
+      <section id="typy-domu" className={styles.white}>
         <div className={styles.container}>
           <div className={styles.split} style={{ alignItems: "start" }}>
             <div className={styles.stack} style={{ gap: 22 }} data-reveal>
@@ -470,7 +474,7 @@ export default function RekonstrukcePraha2Page() {
         <div className={styles.container}>
           <div className={loc.areasHead}>
             <h2 className={styles.h2} data-reveal>
-              Kde v Praze 2 pracujeme
+              Kde na Praze 2 pracujeme
             </h2>
             <nav aria-label="Čtvrti Prahy 2" className={d.goldChips} data-reveal>
               {areas.map((a) => (
@@ -572,12 +576,12 @@ export default function RekonstrukcePraha2Page() {
       {/* Photo strip — TODO: nahradit skutečnými realizacemi z Prahy 2 */}
       <div className={styles.strip} data-reveal-group>
         {stripPhotos.map((p) => (
-          <img key={p.src} loading="lazy" decoding="async" src={`${IMG}/${p.src}`} alt={p.alt} />
+          <img key={p.src} loading="lazy" decoding="async" src={photo(p.src)} alt={p.alt} />
         ))}
       </div>
 
       {/* Older flats */}
-      <section className={styles.container}>
+      <section id="starsi-byty" className={styles.container}>
         <div className={styles.split} style={{ alignItems: "start" }}>
           <div className={styles.stack} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Na co myslíme u starších bytů</h2>
@@ -603,10 +607,10 @@ export default function RekonstrukcePraha2Page() {
       </section>
 
       {/* Local logistics */}
-      <section className={styles.dark}>
+      <section id="logistika" className={styles.dark}>
         <div className={styles.container}>
           <h2 className={`${styles.h2} ${d.headGap}`} data-reveal>
-            Logistika v Praze 2
+            Logistika na Praze 2
           </h2>
           <div className={d.cols} data-reveal-group>
             {logistics.map((l) => (
@@ -638,7 +642,7 @@ export default function RekonstrukcePraha2Page() {
       </section>
 
       {/* Why us */}
-      <section className={styles.container}>
+      <section id="proc-my" className={styles.container}>
         <h2 className={styles.h2} data-reveal>
           Proč si místní vybírají RekoGrinik
         </h2>
@@ -673,7 +677,7 @@ export default function RekonstrukcePraha2Page() {
               </dl>
             </div>
             <p className={loc.mapHint}>
-              Kontaktní adresa se nachází v Praze 3. Praha 2 je obsluhovaná oblast – na
+              Kontaktní adresa se nachází na Praze 3. Praha 2 je obsluhovaná oblast – na
               prohlídku a zaměření přijedeme za vámi.
             </p>
             <a
@@ -735,15 +739,15 @@ export default function RekonstrukcePraha2Page() {
         <img
           loading="lazy"
           decoding="async"
-          src={`${IMG}/koupelna-beton.webp`}
-          alt="Koupelna s obkladem v betonovém dekoru po rekonstrukci"
+          src={`${IMG}/koupelna-vana-dekor.webp`}
+          alt="Koupelna s vanou a dekorativním pásem obkladu"
           className={styles.cover}
           style={{ objectPosition: "50% 40%" }}
         />
         <div className={styles.contactOverlay} />
         <div className={styles.contactInner}>
           <div className={styles.contactText} data-reveal>
-            <h2 className={styles.contactTitle}>Poptat rekonstrukci v Praze 2</h2>
+            <h2 className={styles.contactTitle}>Poptat rekonstrukci na Praze 2</h2>
             <p>
               Plánujete rekonstrukci na Vinohradech, Novém Městě, Vyšehradě nebo v
               Nuslích? Pošlete nám adresu, fotografie prostoru a stručný popis
@@ -759,7 +763,7 @@ export default function RekonstrukcePraha2Page() {
               href="/kontakt"
               data-cta="praha2_contact_poptavka"
             >
-              Poptat rekonstrukci v Praze 2
+              Poptat rekonstrukci na Praze 2
             </Link>
           </div>
           <dl className={styles.contactList} data-reveal-group>

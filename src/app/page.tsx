@@ -39,12 +39,17 @@ const reasons = [
   { title: "Kvalita", text: "Používáme pouze osvědčené materiály" },
 ];
 
+// A file name is in /new; a path starting with "/" points elsewhere (e.g.
+// project photos in /realizace).
+const photo = (src: string) => (src.startsWith("/") ? src : `${IMG}/${src}`);
+
+// One of each: flat, house, bathroom, house bathroom, WC.
 const stripPhotos = [
-  { src: "sprchovy-kout-mozaika.webp", alt: "Sprchový kout u mozaikové stěny a světlá dlažba" },
-  { src: "koupelna-mozaika.webp", alt: "Sprchový kout, pračka a umyvadlo u mozaikové stěny" },
-  { src: "koupelna-ctvrtkruhovy-kout.webp", alt: "Čtvrtkruhový sprchový kout a umyvadlo" },
+  { src: "byt-kuchyn-laminat.webp", alt: "Obývací prostor s kuchyní a novou laminátovou podlahou" },
+  { src: "dum-schodiste-dekorativni-omitka.webp", alt: "Schodiště v rodinném domě a stěny s dekorativní omítkou" },
+  { src: "koupelna-pruhy-sprchovy-kout.webp", alt: "Nová koupelna se sprchovým koutem a žebříkovým radiátorem" },
+  { src: "roubenka-sprchovy-kout.webp", alt: "Sprchový kout s velkoformátovým obkladem v roubeném domě" },
   { src: "wc-a-sprcha.webp", alt: "Závěsné WC a sprchový kout" },
-  { src: "koupelna-kamen.webp", alt: "Koupelna se závěsným WC a sprchou v kamenném dekoru" },
 ];
 
 const helpSteps = [
@@ -82,18 +87,28 @@ const bathroomChecklist = [
   "Větrání a každodenní údržbu.",
 ];
 
+// Each pair is the same room from a real job (see /realizace).
 const beforeAfter = [
   {
-    before: { src: "koupelna-bourani.webp", alt: "Úzká koupelna po vybourání obkladů" },
-    after: { src: "koupelna-beton.webp", alt: "Úzká koupelna s novým obkladem, sprchou a skříňkou pod umyvadlo" },
+    before: {
+      src: "/realizace/koupelna-na-klic-pred-1.webp",
+      alt: "Koupelna na Murgašově ulici před rekonstrukcí, stěny bez obkladů",
+    },
+    after: {
+      src: "/realizace/koupelna-na-klic-po-1.webp",
+      alt: "Stejná koupelna po rekonstrukci se sprchovým koutem a závěsným WC",
+    },
   },
   {
-    before: { src: "koupelna-bojler-bourani.webp", alt: "Koupelna s bojlerem během bourání" },
-    after: { src: "koupelna-umyvadlo-u-dveri.webp", alt: "Koupelna s novým obkladem a umyvadlem před montáží baterií" },
+    before: { src: "koupelna-bojler-bourani.webp", alt: "Koupelna v bytě na Holečkově ulici po odstranění starých obkladů" },
+    after: { src: "koupelna-umyvadlo-u-dveri.webp", alt: "Stejná koupelna s novým obkladem a umyvadlem se skříňkou" },
   },
   {
-    before: { src: "instalacni-sachta-pred.webp", alt: "Otevřená instalační šachta během bourání" },
-    after: { src: "wc-zavesne-mozaika.webp", alt: "Závěsné WC u mozaikové stěny po rekonstrukci" },
+    before: {
+      src: "/realizace/byt-prosek-pred-3.webp",
+      alt: "Panelový byt na Proseku po odstranění původního bytového jádra",
+    },
+    after: { src: "koupelna-mozaika.webp", alt: "Nová koupelna se sprchovým koutem, pračkou a mozaikou v tomto bytě" },
   },
 ];
 
@@ -229,7 +244,7 @@ const faqs = [
   },
   {
     q: "Ve kterých částech Prahy pracujete?",
-    a: "Nejčastěji pracujeme v Praze 3, Praze 1, Praze 2, Praze 10, Praze 9 a Praze 8. Realizaci v jiné části Prahy posoudíme podle konkrétní zakázky.",
+    a: "Nejčastěji pracujeme na Praze 3, Praze 1, Praze 2, Praze 10, Praze 9 a Praze 8. Realizaci v jiné části Prahy posoudíme podle konkrétní zakázky.",
   },
 ];
 
@@ -295,15 +310,16 @@ export default function NewHomePage() {
       />
 
       {/* Hero */}
-      <header className={styles.hero}>
-        <img
-          fetchPriority="high"
-          src={`${IMG}/koupelna-mramor-vana.webp`}
-          alt="Koupelna s mramorovým obkladem a vanou po rekonstrukci"
-          className={styles.cover}
-          style={{ objectPosition: "50% 55%" }}
-        />
-        <div className={styles.heroOverlay} />
+      {/* Blend hero: our photos are upright phone shots, so the photo only
+          fills the right side (no upscaling) and the green fades into it. */}
+      <header id="uvod" className={`${styles.hero} ${styles.heroBlend}`}>
+        <div className={styles.heroMedia}>
+          <img
+            fetchPriority="high"
+            src={`${IMG}/hero-koupelna-kvetinova.webp`}
+            alt="Hotová koupelna na Murgašově ulici na Praze 4 se sprchovým koutem, květinovým obkladem a závěsným WC"
+          />
+        </div>
         <div className={styles.heroInner}>
           <div className={styles.heroContent}>
             <h1 className={styles.h1}>Rekonstrukce Praha</h1>
@@ -330,7 +346,7 @@ export default function NewHomePage() {
       </header>
 
       {/* Intro */}
-      <section className={`${styles.intro} ${styles.split}`}>
+      <section id="predstaveni" className={`${styles.intro} ${styles.split}`}>
         <p className={styles.introLead} data-reveal>
           Každá rekonstrukce začíná jiným prostorem a jinou představou. Někdo
           potřebuje kompletně proměnit starší byt, jiný chce modernizovat koupelnu
@@ -356,7 +372,7 @@ export default function NewHomePage() {
       </section>
 
       {/* Stats */}
-      <section className={styles.dark}>
+      <section id="cisla" className={styles.dark}>
         <div className={styles.container}>
           <div className={styles.sectionHead} style={{ marginBottom: 56 }} data-reveal>
             <h2 className={styles.h2}>Rekonstrukce v číslech</h2>
@@ -398,14 +414,14 @@ export default function NewHomePage() {
             key={p.src}
             loading="lazy"
             decoding="async"
-            src={`${IMG}/${p.src}`}
+            src={photo(p.src)}
             alt={p.alt}
           />
         ))}
       </div>
 
       {/* Complete renovation */}
-      <section className={styles.container}>
+      <section id="na-klic" className={styles.container}>
         <div className={styles.split}>
           <h2 className={styles.h2} data-reveal>
             Kompletní rekonstrukce bez zbytečných komplikací
@@ -458,8 +474,8 @@ export default function NewHomePage() {
               loading="lazy"
               decoding="async"
               data-reveal="left"
-              src={`${IMG}/lodzie-podlaha.webp`}
-              alt="Zasklená lodžie s novou podlahou po rekonstrukci bytu"
+              src="/realizace/byt-koupelna-zachod-po-7.webp"
+              alt="Pokoj s dřevěnou podlahou ve vzoru rybí kost a vymalovanými stěnami po rekonstrukci bytu"
               className={styles.serviceImg}
             />
             <div className={styles.serviceBody} data-reveal>
@@ -540,8 +556,8 @@ export default function NewHomePage() {
               loading="lazy"
               decoding="async"
               data-reveal="left"
-              src={`${IMG}/koupelna-zrcadlo.webp`}
-              alt="Umyvadlová skříňka a podsvícené zrcadlo v nové koupelně"
+              src={`${IMG}/koupelna-kvetinovy-obklad-pracka.webp`}
+              alt="Koupelna se sprchovým koutem, závěsným WC a pračkou pod dřevěnou deskou"
               className={styles.serviceImg}
             />
             <div className={styles.serviceBody} data-reveal>
@@ -594,7 +610,7 @@ export default function NewHomePage() {
                   <img
                     loading="lazy"
                     decoding="async"
-                    src={`${IMG}/${before.src}`}
+                    src={photo(before.src)}
                     alt={before.alt}
                     className={styles.serviceImg}
                   />
@@ -604,7 +620,7 @@ export default function NewHomePage() {
                   <img
                     loading="lazy"
                     decoding="async"
-                    src={`${IMG}/${after.src}`}
+                    src={photo(after.src)}
                     alt={after.alt}
                     className={styles.serviceImg}
                   />
@@ -639,8 +655,8 @@ export default function NewHomePage() {
             <img
               loading="lazy"
               decoding="async"
-              src={`${IMG}/koupelna-mozaika-wc-pracka.webp`}
-              alt="Koupelna s mozaikou, závěsným WC a pračkou"
+              src="/realizace/byt-prosek-behem-1.webp"
+              alt="Vyzdívání nových příček z pórobetonových tvárnic při rekonstrukci bytu"
               className={styles.cover}
             />
           </div>
@@ -648,20 +664,14 @@ export default function NewHomePage() {
       </section>
 
       {/* Why together */}
-      <section className={styles.white}>
+      <section id="proc-spolecne" className={styles.white}>
         <div className={`${styles.container} ${styles.splitWide}`}>
-          <div className={styles.photoPair} data-reveal-group>
+          <div className={styles.sidePhoto} data-reveal>
             <img
               loading="lazy"
               decoding="async"
-              src={`${IMG}/roubenka-dlazba-sokl.webp`}
-              alt="Dlažba se soklem u roubené stěny"
-            />
-            <img
-              loading="lazy"
-              decoding="async"
-              src={`${IMG}/veranda-dlazba.webp`}
-              alt="Nová dlažba na zasklené verandě"
+              src="/realizace/byt-prosek-behem-2.webp"
+              alt="Koupelna s hydroizolací podlahy a stěn připravená pro obklady"
             />
           </div>
           <div className={styles.stack} style={{ gap: 22 }} data-reveal-group>
@@ -754,7 +764,7 @@ export default function NewHomePage() {
       </section>
 
       {/* What to prepare */}
-      <section className={styles.dark}>
+      <section id="priprava" className={styles.dark}>
         <div className={`${styles.container} ${styles.splitWide}`}>
           <div className={styles.prepareText} data-reveal>
             <h2 className={styles.h2}>Co si připravit</h2>
