@@ -20,15 +20,31 @@ export const EMPTY_ATTRIBUTION = Object.fromEntries(
   ATTRIBUTION_KEYS.map((key) => [key, ""])
 ) as Attribution;
 
-// Reads click IDs and UTMs from the current URL only (no cookies/storage).
+// Reads click IDs and UTMs from the current URL.
 // Values are kept exactly as given — GCLID is case-sensitive.
-export function readAttributionFromUrl(): Attribution {
+function readAttributionFromUrl(): Attribution {
   const params = new URLSearchParams(window.location.search);
   const result = { ...EMPTY_ATTRIBUTION };
   ATTRIBUTION_KEYS.forEach((key) => {
     result[key] = params.get(key) ?? "";
   });
   return result;
+}
+
+// Landing-page values, kept in memory (no cookies/storage) so an enquiry sent
+// after moving to another page, e.g. ad -> /sluzby/... -> /kontakt, still
+// carries them. Survives client-side navigation, not a full reload.
+let landingAttribution: Attribution = { ...EMPTY_ATTRIBUTION };
+
+// Call on every page load; a URL with any click ID / UTM replaces the kept set.
+export function captureAttribution() {
+  const fromUrl = readAttributionFromUrl();
+  if (Object.values(fromUrl).some(Boolean)) landingAttribution = fromUrl;
+}
+
+export function getAttribution(): Attribution {
+  captureAttribution();
+  return { ...landingAttribution };
 }
 
 // Only the non-empty values, for the form payload's `source` field.
