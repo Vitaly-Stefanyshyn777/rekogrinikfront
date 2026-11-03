@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MultilingualSEO from "@/components/seo/MultilingualSEO";
 import SocialMediaMeta from "@/components/seo/SocialMediaMeta";
+import AttributionCapture from "@/components/forms/AttributionCapture";
 import { businessSchema, websiteSchema } from "@/utils/schema";
 
 // Site font, loaded by the browser. Same URL as the page templates use, so
@@ -787,6 +788,7 @@ export default function RootLayout({
         <link rel="stylesheet" href={FONTS_URL} precedence="default" />
         <MultilingualSEO />
         <SocialMediaMeta />
+        <AttributionCapture />
         <Header />
         {children}
         <Footer />
