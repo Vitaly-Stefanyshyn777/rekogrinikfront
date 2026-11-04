@@ -27,11 +27,27 @@ class ApiClient {
     locale?: string;
   }) {
     const url = `${this.baseUrl}/public/form`;
-    const response = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
+    const send = () =>
+      fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+    // The backend occasionally answers 500 and the enquiry is lost, so a
+    // server error or network failure gets one retry before the visitor sees
+    // an error. Validation errors (4xx) are not retried.
+    let response: Response | null;
+    try {
+      response = await send();
+    } catch {
+      response = null;
+    }
+    if (!response || response.status >= 500) {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      response = await send();
+    }
+
     if (!response.ok) {
       const text = await response.text().catch(() => "");
       throw new Error(
