@@ -73,8 +73,13 @@ const categories: Category[] = [
         paragraphs: [
           "Původní koupelnu jsme proměnili v moderní a praktický prostor se sprchovým koutem, závěsným WC a místem pro pračku.",
           "Zakázku jsme zajistili kompletně na klíč, od přípravy stěn, podlahy a rozvodů až po obklady, dlažbu a montáž vybavení.",
+          "Realizace trvala 14 dní. Cena pro zákazníka byla 215 000 Kč včetně vybavení a obkladů.",
         ],
         scope: [
+          "Bourání a odvoz odpadu.",
+          "Nové rozvody vody, odpadu a elektřiny.",
+          "Hydroizolace.",
+          "Sádrokartonový podhled s bodovými světly.",
           "Příprava stěn a podlahy pod nové obklady.",
           "Sprchový kout se sprchovým žlábkem a pevnou matnou zástěnou.",
           "Závěsné WC s podomítkovým modulem.",
