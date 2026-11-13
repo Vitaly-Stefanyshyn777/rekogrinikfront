@@ -58,8 +58,8 @@ export default function Footer() {
                 </p>
                 <p>
                   <span className={styles.label}>E-mail:</span>{" "}
-                  <a href="mailto:rekogrinikcz@gmail.com">
-                    rekogrinikcz@gmail.com
+                  <a href="mailto:maksimgrinik36@gmail.com">
+                    maksimgrinik36@gmail.com
                   </a>
                 </p>
                 <p>
