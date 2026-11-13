@@ -593,7 +593,7 @@ export default function MultilingualSEO({
         description: "Professional renovation and reconstruction services",
         url: "https://rekogrinik.com",
         telephone: "+420-776-352-237",
-        email: "rekogrinikcz@gmail.com",
+        email: "maksimgrinik36@gmail.com",
         address: {
           "@type": "PostalAddress",
           addressCountry: ["CZ", "PL", "UA"],
