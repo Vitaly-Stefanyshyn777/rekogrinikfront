@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     absolute: "Rekonstrukce koupelen Praha | Obklady a jádra | RekoGrinik",
   },
   description:
-    "Rekonstrukce koupelen Praha na klíč i částečně. Obklady, bytová jádra, instalace a dokončení. Bezplatné zaměření a pevný rozpočet předem.",
+    "Rekonstrukce koupelny v Praze od 160 000 Kč (do 5 m²), zděné jádro místo umakartu od 230 000 Kč. Bourání, rozvody, hydroizolace. Bezplatné zaměření.",
   // Absolute: the root layout's metadataBase is rekogrinik.com, which redirects to .cz.
   alternates: { canonical: PAGE_URL },
 };
@@ -200,6 +200,43 @@ const beforeAfter = [
   },
 ];
 
+// Starting prices confirmed by the client (email, 2026-11-11). Keep them in
+// step with the ads: a price in an ad headline must match this table.
+const prices = [
+  {
+    scope: "Kompletní rekonstrukce koupelny do 5 m²",
+    price: 160000,
+    note: "Včetně materiálu, bez obkladů a sanity.",
+  },
+  {
+    scope: "Nové zděné jádro místo umakartového, do 5 m²",
+    price: 230000,
+    note: "Výměna bytového jádra v panelovém domě.",
+  },
+];
+
+const priceIncludes = [
+  "Bourání a odvoz odpadu.",
+  "Nové rozvody vody a kanalizace.",
+  "Hydroizolace.",
+  "Montáž sanity.",
+];
+
+// Murgašova, Praha 4: the job in the first before/after pair and on /realizace.
+const referenceJob = {
+  price: 215000,
+  days: 14,
+  scope: [
+    "Bourání a odvoz odpadu.",
+    "Nové rozvody vody, odpadu a elektřiny.",
+    "Hydroizolace.",
+    "Sádrokartonový podhled s bodovými světly.",
+    "Obklady, dlažba a vybavení v ceně.",
+  ],
+};
+
+const czk = (n: number) => `${n.toLocaleString("cs-CZ")} Kč`;
+
 const budgetFactors = [
   "Stav po odstranění původních vrstev.",
   "Rozsah bouracích prací.",
@@ -231,6 +268,10 @@ const prepareList = [
 
 const faqs = [
   {
+    q: "Kolik stojí rekonstrukce koupelny?",
+    a: "Kompletní rekonstrukce koupelny do 5 m² začíná na 160 000 Kč včetně materiálu, bez obkladů a sanity. Nové zděné jádro místo umakartového do 5 m² začíná na 230 000 Kč. V ceně je bourání a odvoz odpadu, nové rozvody vody a kanalizace, hydroizolace a montáž sanity. Koupelna na Murgašově ulici na Praze 4 stála zákazníka 215 000 Kč včetně vybavení a obkladů. Přesnou cenu dostanete v rozpočtu po bezplatném zaměření.",
+  },
+  {
     q: "Co zahrnuje rekonstrukce koupelny na klíč?",
     a: "Konkrétní rozsah stanovuje nabídka. Může zahrnovat demontáž, přípravu stěn a podlah, instalace, hydroizolaci, obklady, sanitu, nábytek a dokončovací práce.",
   },
@@ -244,7 +285,7 @@ const faqs = [
   },
   {
     q: "Jak dlouho bude koupelna mimo provoz?",
-    a: "Doba závisí na rozsahu demontáže, stavu podkladů, instalačních změnách, technologických přestávkách a dostupnosti vybavení. Harmonogram připravíme pro konkrétní zakázku.",
+    a: "Doba závisí na rozsahu demontáže, stavu podkladů, instalačních změnách, technologických přestávkách a dostupnosti vybavení. Například kompletní koupelnu na Murgašově ulici jsme dokončili za 14 dní. Harmonogram připravíme pro konkrétní zakázku.",
   },
   {
     q: "Musím mít vybavení vybrané předem?",
@@ -296,11 +337,21 @@ const serviceJsonLd = {
     "@type": "OfferCatalog",
     name: "Práce při rekonstrukci koupelny",
     itemListElement: [
-      "Rekonstrukce koupelny na klíč",
-      "Rekonstrukce bytového jádra",
-      "Obkladačské práce",
-      "Bourací a zednické práce",
-    ].map((name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } })),
+      { name: "Rekonstrukce koupelny na klíč", minPrice: prices[0].price },
+      { name: "Rekonstrukce bytového jádra", minPrice: prices[1].price },
+      { name: "Obkladačské práce" },
+      { name: "Bourací a zednické práce" },
+    ].map(({ name, minPrice }) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name },
+      ...(minPrice && {
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          minPrice,
+          priceCurrency: "CZK",
+        },
+      }),
+    })),
   },
 };
 
@@ -373,6 +424,10 @@ export default function RekonstrukceKoupelenPage() {
               zástěna nesmí narazit do skříňky nebo pračky. Pod viditelnými obklady se
               přitom skrývá příprava, která rozhoduje o spolehlivém používání celé
               místnosti.
+            </p>
+            <p className={s.heroPrice}>
+              Koupelna do 5 m² od <strong>{czk(prices[0].price)}</strong>{" "}
+              <a href="#cena">Co je v ceně →</a>
             </p>
             <div className={loc.heroCta}>
               <a
@@ -837,9 +892,75 @@ export default function RekonstrukceKoupelenPage() {
         </Link>
       </section>
 
-      {/* Budget */}
+      {/* Prices + budget */}
       <section id="cena" className={styles.white}>
-        <div className={`${styles.container} ${styles.splitWide}`}>
+        <div className={styles.container}>
+          <div className={styles.sectionHead}>
+            <h2 className={styles.h2} data-reveal>
+              Kolik stojí rekonstrukce koupelny
+            </h2>
+            <p className={styles.lead} data-reveal>
+              Orientační ceny pro koupelnu do 5 m². Přesnou částku dostanete v
+              podrobném rozpočtu po bezplatném zaměření.
+            </p>
+          </div>
+          <div className={s.tableScroll} data-reveal>
+            <table className={`${byty.typeTable} ${s.tableFlush} ${s.priceTable}`}>
+              <thead>
+                <tr>
+                  <th>Rozsah</th>
+                  <th>Cena</th>
+                </tr>
+              </thead>
+              <tbody>
+                {prices.map((p) => (
+                  <tr key={p.scope}>
+                    <td>{p.scope}</td>
+                    <td>
+                      <span className={s.price}>od {czk(p.price)}</span>
+                      {p.note}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className={s.includes} data-reveal>
+            <p className={loc.checkTitle}>V ceně je:</p>
+            <ul className={styles.checklist}>
+              {priceIncludes.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <article className={s.reference} data-reveal>
+            <img
+              loading="lazy"
+              decoding="async"
+              src="/realizace/koupelna-na-klic-po-3.webp"
+              alt="Koupelna na Murgašově ulici po rekonstrukci: závěsné WC, revizní dvířka a pračka pod deskou"
+            />
+            <div className={s.referenceText}>
+              <p className={s.referenceLabel}>Příklad z praxe · Murgašova, Praha 4</p>
+              <p className={s.referencePrice}>{czk(referenceJob.price)}</p>
+              <p>
+                Cena pro zákazníka včetně vybavení a obkladů.{" "}
+                <span className={s.nowrap}>Hotovo za {referenceJob.days} dní.</span>
+              </p>
+              <ul className={s.darkList}>
+                {referenceJob.scope.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <a className={s.referenceLink} href="#pred-a-po">
+                Fotografie před a po →
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <div className={`${styles.container} ${styles.splitWide} ${s.budgetSplit}`}>
           <div className={`${styles.stack} ${domy.stickyCol}`} style={{ gap: 22 }} data-reveal>
             <h2 className={styles.h2}>Co ovlivňuje rozpočet</h2>
             <p>
