@@ -17,7 +17,7 @@ const HUB_URL = "https://rekogrinik.cz/sluzby";
 const PAGE_URL = "https://rekogrinik.cz/sluzby/rekonstrukce-domu-praha";
 const PHONE = "+420776352237";
 const PHONE_DISPLAY = "+420 776 352 237";
-const EMAIL = "rekogrinikcz@gmail.com";
+const EMAIL = "maksimgrinik36@gmail.com";
 const IMG = "/new";
 
 // Service pages live under /sluzby.

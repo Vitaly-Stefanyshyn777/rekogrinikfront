@@ -20,7 +20,7 @@ export const businessSchema = {
   logo: `${SITE_URL}vector-2.svg`,
   image: `${SITE_URL}new/koupelna-mramor-vana.webp`,
   telephone: "+420776352237",
-  email: "rekogrinikcz@gmail.com",
+  email: "maksimgrinik36@gmail.com",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Na Vackově 2895/5",

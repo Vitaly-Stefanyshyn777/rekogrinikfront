@@ -134,10 +134,10 @@ export default function Contact() {
                 </span>
                 <div className={styles.infoText}>
                   <a
-                    href="mailto:rekogrinikcz@gmail.com"
+                    href="mailto:maksimgrinik36@gmail.com"
                     className={styles.emailTitle}
                   >
-                    rekogrinikcz@gmail.com
+                    maksimgrinik36@gmail.com
                   </a>
                   <p className={styles.emailSub}>Odpovídáme do hodiny</p>
                 </div>

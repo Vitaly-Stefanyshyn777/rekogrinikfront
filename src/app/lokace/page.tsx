@@ -13,7 +13,7 @@ const SITE_URL = "https://rekogrinik.cz/";
 const PAGE_URL = "https://rekogrinik.cz/lokace";
 const PHONE = "+420776352237";
 const PHONE_DISPLAY = "+420 776 352 237";
-const EMAIL = "rekogrinikcz@gmail.com";
+const EMAIL = "maksimgrinik36@gmail.com";
 const ADDRESS = "Na Vackově 2895/5, 130 00 Praha 3";
 const IMG = "/new";
 
